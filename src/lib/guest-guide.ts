@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { balconies, houseRules } from './apartment';
 import { liveLinks, dayTrips, diningDirectory, essentials, venues } from './local-links';
+import { localQuestions } from './local-questions';
 
 export const AIRBNB_URL = 'https://www.airbnb.co.uk/rooms/1300151240294300447';
 
@@ -36,5 +37,9 @@ AREA
 - Useful links: ${essentials.map(e => `${e.name} — ${e.detail} — ${e.url}`).join('; ')}.
 - Live webcams, snow forecast, lift news and events: ${liveLinks.map(l => `${l.name} ${l.url}`).join('; ')}.
 - Day trips: ${dayTrips.map(d => `${d.name} (${d.detail}) ${d.url}`).join('; ')}.
-- Bars & restaurants: ${venues.map(v => `${v.name} (${v.type}) ${v.url}`).join('; ')}. Full directory: ${diningDirectory}. Opening days vary by season; advise checking with the venue.`;
+- Bars & restaurants: ${venues.map(v => `${v.name} (${v.type}) ${v.url}`).join('; ')}. Full directory: ${diningDirectory}. Opening days vary by season; advise checking with the venue.
+
+LOCAL QUESTIONS — Tripadvisor listings cross-checked with tourism and venue sources
+${localQuestions.map(q => `Q: ${q.question}\nA: ${q.answer}\nSources: ${q.sources.join(' ; ')}`).join('\n\n')}
+Use these notes only where relevant. Include a useful source link for local activity or review recommendations. Tripadvisor reviews are subjective; never treat them as owner-confirmed apartment facts, live conditions or guarantees. Do not claim to have searched live during the chat.`;
 }

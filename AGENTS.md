@@ -21,3 +21,4 @@
 - Mount background audio once in the root layout and use client-side links for internal page navigation so playback survives page changes.
 - Use the shared LogoMark for public-page header branding so the owner's supplied artwork has consistent prominence.
 - Guest chat restores only a recent tab-scoped conversation; old persistent browser IDs must not repopulate the public Questions section.
+- Keep source-backed local Q&A in a browser-safe knowledge module used by the assistant; separate review opinions from official facts and never present research as live availability.

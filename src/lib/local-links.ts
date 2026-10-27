@@ -18,7 +18,7 @@ export const essentials = [
 export const liveLinks = [
   { name: 'Telecabine webcam', detail: 'Live view of the snow front at the cable car', url: 'http://m.webcam-hd.com/thollon-les-memises/front-de-neige', kind: 'webcam' },
   { name: 'Parchet summit webcam', detail: 'Live view from the top — on a clear day the lake is spectacular', url: 'https://m.webcam-hd.com/thollon-les-memises/sommet-parchet', kind: 'webcam' },
-  { name: 'Snow forecast', detail: '6-day snow and weather forecast for the slopes', url: 'https://www.snow-forecast.com/resorts/Thollon-les-Memises/6day/mid', kind: 'forecast' },
+  { name: 'Snow forecast', detail: '6-day snow and weather forecast for the slopes', url: 'https://www.snow-forecast.com/resorts/Thollon/6day/mid', kind: 'forecast' },
   { name: 'Telecabine news', detail: 'Lift opening, offers and updates on Facebook', url: 'https://www.facebook.com/T%C3%A9l%C3%A9cabine-Thollon-417908308355476/', kind: 'news' },
   { name: 'What’s on in Thollon', detail: 'Markets, concerts, torch descents and fondue nights from the tourist office', url: 'https://www.facebook.com/thollontourisme', kind: 'events' },
   { name: 'Thollon.org', detail: 'English-language guide and news for visitors', url: 'https://www.thollon.org/', kind: 'news' },
