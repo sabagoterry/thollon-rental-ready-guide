@@ -30,3 +30,5 @@
 - [ ] Keep music continuous across pages
 - [ ] Group Location photos by mountains, lake, surroundings and balconies; keep interiors unchanged
 - [ ] Make the owner logo more prominent
+
+- [ ] Keep every logo placement circular
