@@ -4,7 +4,7 @@ import { ArrowUp, LoaderCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionHeading } from '@/components/section-heading';
-import logo from '@/assets/logo.png.asset.json';
+import logo from '@/assets/cyclamens-logo.jpg.asset.json';
 
 type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean };
 const STORAGE_KEY = 'les-cyclamens-guest-chat';
