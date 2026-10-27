@@ -6,6 +6,7 @@ import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
 import { LocalGuide } from '@/components/local-guide';
+import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
@@ -233,6 +234,7 @@ function Index() {
       </section>
 
       <LocalGuide />
+      <GuestChat />
       <AvailabilityCalendar />
 
       <section className="bg-primary text-primary-foreground">

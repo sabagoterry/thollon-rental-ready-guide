@@ -16,3 +16,4 @@
 - Local visitor links live in a focused guide component, using official venue or tourism pages and a directory link rather than claiming an exhaustive business list.
 - Enquiries are validated public server calls to a fixed CallMeBot recipient with server-only credentials; store private enquiry rows and idempotent request IDs before sending, and distinguish provider queue acceptance from unconfirmed delivery.
 - Site logo placements share a single uploaded asset pointer; the favicon is a padded square derivative of the same source so branding remains consistent.
+- The guest Q&A assistant streams from a server route that loads history server-side by an unguessable browser conversation ID and stores messages in a private table; its knowledge comes from shared apartment and local-links modules so the page and the assistant stay consistent.

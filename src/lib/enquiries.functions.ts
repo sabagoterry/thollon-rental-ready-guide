@@ -14,7 +14,7 @@ export const sendEnquiry = createServerFn({ method: 'POST' })
     try {
       // Fixed recipient and provider; visitors never supply a destination or credentials.
       const { supabaseAdmin } = await import('@/integrations/supabase/client.server');
-      const { error: insertError } = await supabaseAdmin.from('enquiries').insert({ id: data.id, name: data.name, email: data.email, message: data.message });
+      const { error: insertError } = await supabaseAdmin.from('enquiries').insert({ id: data.id, name: data.name, email: data.email, message: enquiryMessage(data) });
       if (insertError) {
         if (insertError.code !== '23505') return failed;
         const { data: existing, error } = await supabaseAdmin.from('enquiries').select('status').eq('id', data.id).maybeSingle();
