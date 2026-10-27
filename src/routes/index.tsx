@@ -232,7 +232,17 @@ function Index() {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <img src={lake.url} alt="Lake Geneva seen from Thollon" loading="lazy" className="rounded-sm shadow-xl" />
+        <Link
+          to="/location"
+          className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-sm border border-primary/10 bg-secondary p-8 transition hover:border-accent"
+        >
+          <img src={logo.url} alt="" aria-hidden="true" className="absolute -bottom-6 -right-4 h-40 w-40 object-contain opacity-25 mix-blend-multiply transition group-hover:scale-105" />
+          <span className="relative text-xs uppercase tracking-[0.3em] text-accent">Location</span>
+          <span className="relative font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
+          <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary">
+            Open the location page <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+          </span>
+        </Link>
         <div>
           <SectionHeading kicker="Four seasons">Every season in Thollon</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
