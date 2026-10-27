@@ -4,6 +4,7 @@ import { format, parseISO, addMonths } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
+import { SectionHeading } from '@/components/section-heading';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
 
