@@ -8,6 +8,28 @@ import ski from "@/assets/photos/ski.jpg.asset.json";
 import snowView from "@/assets/photos/snow-view.jpg.asset.json";
 import balconyWinter from "@/assets/photos/balcony-winter.jpg.asset.json";
 import balconyDusk from "@/assets/photos/balcony-dusk.jpg.asset.json";
+import lakeBeach from "@/assets/photos/lake-beach.jpg.asset.json";
+import sunsetMeadow from "@/assets/photos/sunset-meadow.jpg.asset.json";
+import sunsetLake from "@/assets/photos/sunset-lake.jpg.asset.json";
+import cliffsGolden from "@/assets/photos/cliffs-golden.jpg.asset.json";
+import villageChalets from "@/assets/photos/village-chalets.jpg.asset.json";
+import paragliders from "@/assets/photos/paragliders.jpg.asset.json";
+import twinPeaks from "@/assets/photos/twin-peaks.jpg.asset.json";
+import cliffsSummer from "@/assets/photos/cliffs-summer.jpg.asset.json";
+import forestPath from "@/assets/photos/forest-path.jpg.asset.json";
+import mountainForest from "@/assets/photos/mountain-forest.jpg.asset.json";
+import lakePanorama from "@/assets/photos/lake-panorama.jpg.asset.json";
+import balconyForest from "@/assets/photos/balcony-forest.jpg.asset.json";
+import balconyTrees from "@/assets/photos/balcony-trees.jpg.asset.json";
+import lakeWater from "@/assets/photos/lake-water.jpg.asset.json";
+import pisteChairlift from "@/assets/photos/piste-chairlift.jpg.asset.json";
+import skiersLake from "@/assets/photos/skiers-lake.jpg.asset.json";
+import pisteLake from "@/assets/photos/piste-lake.jpg.asset.json";
+import widePiste from "@/assets/photos/wide-piste.jpg.asset.json";
+import balconySunset from "@/assets/photos/balcony-sunset.jpg.asset.json";
+import winterCliffs from "@/assets/photos/winter-cliffs.jpg.asset.json";
+import meadowCliffs from "@/assets/photos/meadow-cliffs.jpg.asset.json";
+import valleyRidge from "@/assets/photos/valley-ridge.jpg.asset.json";
 import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/location")({
@@ -40,6 +62,28 @@ const shots: Shot[] = [
   { src: snowView.url, alt: "Snow outside the apartment", caption: "Snow outside the door", season: "winter" },
   { src: balconyWinter.url, alt: "The balcony in the snow", caption: "The balcony in winter", season: "winter" },
   { src: balconyDusk.url, alt: "The view from the balcony at dusk", caption: "Dusk from the balcony", season: "winter" },
+  { src: lakeBeach.url, alt: "Sunbathers on the grass by Lake Geneva", caption: "Beach & lido on the lake", season: "summer" },
+  { src: sunsetMeadow.url, alt: "Sunset over Lake Geneva seen from a meadow", caption: "Sunset over the lake", season: "summer" },
+  { src: sunsetLake.url, alt: "Evening sun setting beyond Lake Geneva", caption: "Evening over Lake Geneva", season: "summer" },
+  { src: cliffsGolden.url, alt: "Limestone cliffs lit gold at sunset", caption: "The cliffs at sunset", season: "summer" },
+  { src: villageChalets.url, alt: "Wooden chalets in the village beneath the cliffs", caption: "Chalets in the village", season: "summer" },
+  { src: paragliders.url, alt: "Paragliders above the mountain slopes", caption: "Paragliders overhead", season: "summer" },
+  { src: twinPeaks.url, alt: "Rocky peaks above forest and meadow", caption: "Peaks above the forest", season: "summer" },
+  { src: cliffsSummer.url, alt: "Summer cliffs and pine forest", caption: "Summer on the cliffs", season: "summer" },
+  { src: forestPath.url, alt: "Walkers on a path through the forest", caption: "A walk from the door", season: "summer" },
+  { src: mountainForest.url, alt: "Evergreen forest below the mountain cliffs", caption: "Woodland under the cliffs", season: "summer" },
+  { src: lakePanorama.url, alt: "Lake Geneva seen from high on the mountain", caption: "The lake from up high", season: "summer" },
+  { src: balconyForest.url, alt: "Trees and a paraglider seen from the balcony", caption: "From the balcony", season: "summer" },
+  { src: balconyTrees.url, alt: "Evening clouds above the forest from the balcony", caption: "Evening from the balcony", season: "summer" },
+  { src: lakeWater.url, alt: "Out on Lake Geneva with mountains beyond", caption: "Out on the lake", season: "summer" },
+  { src: balconySunset.url, alt: "Pink and orange evening sky seen from the balcony", caption: "Sunset from the balcony", season: "summer" },
+  { src: pisteChairlift.url, alt: "Ski slope with chairlift and Lake Geneva behind", caption: "Skiing above the lake", season: "winter" },
+  { src: skiersLake.url, alt: "Skiers on the piste with the lake behind", caption: "Skiers with a lake view", season: "winter" },
+  { src: pisteLake.url, alt: "The piste running down past snowy trees", caption: "Down the piste", season: "winter" },
+  { src: widePiste.url, alt: "Wide open snow slope under a blue sky", caption: "Open slopes", season: "winter" },
+  { src: winterCliffs.url, alt: "Snow-covered cliffs above the forest", caption: "Snow on the cliffs", season: "winter" },
+  { src: meadowCliffs.url, alt: "Green meadow beneath the limestone cliffs", caption: "Meadow under the cliffs", season: "summer" },
+  { src: valleyRidge.url, alt: "A walking trail through green valley pastures", caption: "A valley walk", season: "summer" },
 ];
 
 function LocationPage() {
