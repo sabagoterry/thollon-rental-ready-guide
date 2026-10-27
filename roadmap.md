@@ -11,3 +11,5 @@
 - [x] Point Airbnb button to the real listing (listing ID from the owner's calendar link — owner to confirm the page opens their apartment)
 - [x] Make white section headers more interesting with the logo
 - [x] Add background chill-out music to the site
+- [ ] Add AI guest question assistant (saved conversations)
+- [ ] Contact form with rental dates + contact details, highlighting instant Airbnb booking
