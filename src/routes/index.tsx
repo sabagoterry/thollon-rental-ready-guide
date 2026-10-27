@@ -4,6 +4,7 @@ import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
 import { LocalGuide } from '@/components/local-guide';
+import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -140,8 +141,9 @@ function Index() {
           <p className="mt-6 max-w-xl text-lg opacity-90">
             A charming apartment close to the cable car, shops and restaurants — open for stays all year round.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <BookButton />
+            <WhatsAppEnquiry />
           </div>
         </div>
       </section>
@@ -230,7 +232,10 @@ function Index() {
             <h2 className="text-4xl">Check dates & book</h2>
             <p className="mt-2 opacity-80">See availability and prices on Airbnb.</p>
           </div>
-          <BookButton />
+          <div className="flex flex-wrap items-center gap-4">
+            <BookButton />
+            <WhatsAppEnquiry />
+          </div>
         </div>
       </section>
 
