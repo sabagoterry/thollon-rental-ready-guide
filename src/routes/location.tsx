@@ -50,6 +50,16 @@ const shots: Shot[] = [
   { src: snowView.url, alt: "Snow outside the apartment", caption: "Snow outside the door", season: "winter" },
   { src: balconyWinter.url, alt: "The balcony in the snow", caption: "The balcony in winter", season: "winter" },
   { src: balconyDusk.url, alt: "The view from the balcony at dusk", caption: "Dusk from the balcony", season: "winter" },
+  { src: lakeBeach.url, alt: "Sunbathers on the grass by Lake Geneva", caption: "Beach & lido on the lake", season: "summer" },
+  { src: sunsetMeadow.url, alt: "Sunset over Lake Geneva seen from a meadow", caption: "Sunset over the lake", season: "summer" },
+  { src: sunsetLake.url, alt: "Evening sun setting beyond Lake Geneva", caption: "Evening over Lake Geneva", season: "summer" },
+  { src: cliffsGolden.url, alt: "Limestone cliffs lit gold at sunset", caption: "The cliffs at sunset", season: "summer" },
+  { src: villageChalets.url, alt: "Wooden chalets in the village beneath the cliffs", caption: "Chalets in the village", season: "summer" },
+  { src: paragliders.url, alt: "Paragliders above the mountain slopes", caption: "Paragliders overhead", season: "summer" },
+  { src: twinPeaks.url, alt: "Rocky peaks above forest and meadow", caption: "Peaks above the forest", season: "summer" },
+  { src: cliffsSummer.url, alt: "Summer cliffs and pine forest", caption: "Summer on the cliffs", season: "summer" },
+  { src: forestPath.url, alt: "Walkers on a path through the forest", caption: "A walk from the door", season: "summer" },
+  { src: mountainForest.url, alt: "Evergreen forest below the mountain cliffs", caption: "Woodland under the cliffs", season: "summer" },
 ];
 
 function LocationPage() {
