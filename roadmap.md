@@ -41,3 +41,4 @@
 - [x] Replace snow forecast with owner-supplied Thollon URL
 
 - [x] Replace What’s on in Thollon with owner-supplied tourism events calendar
+- [x] Point Télécabine (cabin) news at the owner-supplied Facebook page
