@@ -22,6 +22,8 @@ export function BackgroundMusic() {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audioRef.current = audio;
+    // Exposed for diagnostics; not used by the UI.
+    (window as any).__lesCyclamensAudio = audio;
 
     const start = (e?: Event) => {
       const target = e?.target as HTMLElement | null;
@@ -29,7 +31,10 @@ export function BackgroundMusic() {
       // otherwise a single click starts and instantly pauses the track.
       if (target?.closest("[data-background-music]")) return;
       triedAuto.current = true;
-      void audio.play().catch(() => {});
+      audio.play().catch((err: unknown) => {
+        const e2 = err as { name?: string; message?: string };
+        console.debug("background music start blocked:", e2?.name, e2?.message);
+      });
       window.removeEventListener("pointerdown", start);
       window.removeEventListener("keydown", start);
     };
@@ -49,8 +54,12 @@ export function BackgroundMusic() {
   const toggle = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (audio.paused) void audio.play().catch(() => {});
-    else audio.pause();
+    if (audio.paused) {
+      audio.play().catch((err: unknown) => {
+        const e2 = err as { name?: string; message?: string };
+        console.debug("background music play blocked:", e2?.name, e2?.message);
+      });
+    } else audio.pause();
   };
 
   return (
