@@ -21,6 +21,7 @@ import balconyDusk from "@/assets/photos/balcony-dusk.jpg.asset.json";
 import snowView from "@/assets/photos/snow-view.jpg.asset.json";
 import ski from "@/assets/photos/ski.jpg.asset.json";
 import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
+import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
@@ -132,6 +133,12 @@ function Gallery() {
 function Index() {
   return (
     <main>
+      <header className="border-b bg-card">
+        <a href="/" aria-label="Les Cyclamens home" className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-3">
+          <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} className="h-[68px] w-[72px] shrink-0 object-contain" />
+          <span className="font-display text-2xl text-primary">Les Cyclamens</span>
+        </a>
+      </header>
       <section className="relative flex min-h-[92vh] items-end">
         <img src={exterior.url} alt="Les Cyclamens building in Thollon-les-Memises" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
@@ -228,9 +235,12 @@ function Index() {
 
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
-          <div>
+          <div className="flex items-center gap-5">
+            <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={80} height={76} loading="lazy" className="h-[76px] w-20 shrink-0 object-contain" />
+            <div>
             <h2 className="text-4xl">Check dates & book</h2>
             <p className="mt-2 opacity-80">See availability and prices on Airbnb.</p>
+            </div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <BookButton />
@@ -240,6 +250,7 @@ function Index() {
       </section>
 
       <footer className="py-8 text-center text-sm text-muted-foreground">
+        <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} loading="lazy" className="mx-auto mb-3 h-[68px] w-[72px] object-contain" />
         Les Cyclamens · Thollon-les-Memises, France
       </footer>
     </main>
