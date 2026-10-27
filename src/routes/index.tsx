@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeading } from '@/components/section-heading';
 import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
