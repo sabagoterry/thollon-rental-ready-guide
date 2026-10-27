@@ -26,3 +26,7 @@
 - [ ] Replace Sherpa link with https://www.sherpa.net/magasins/thollon-les-memises-village
 - [x] Swap background music to uploaded Ski_Sunday.mp3 (loop)
 - [x] Replace Sherpa link with https://www.sherpa.net/magasins/thollon-les-memises-village
+
+- [ ] Keep music continuous across pages
+- [ ] Group Location photos by mountains, lake, surroundings and balconies; keep interiors unchanged
+- [ ] Make the owner logo more prominent
