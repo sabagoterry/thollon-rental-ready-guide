@@ -1,5 +1,6 @@
 import { ArrowUpRight, MountainSnow, MapPin, Utensils, ShoppingBasket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SectionHeading } from '@/components/section-heading';
 
 const diningDirectory = 'https://www.leman-mountains-explore.com/en/discover/our-villages/thollon-les-memises/where-to-eat-in-thollon-les-memises/';
 const venues = [

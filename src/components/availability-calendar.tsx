@@ -15,15 +15,13 @@ export function AvailabilityCalendar() {
   return (
     <section id="availability" className="border-t bg-card">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h2 className="text-4xl text-primary">Availability</h2>
-            <p className="mt-3 text-muted-foreground">Final availability and prices are confirmed on Airbnb.</p>
-          </div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <SectionHeading kicker="Before you book">Availability</SectionHeading>
           <Button variant="outline" size="icon" title="Refresh availability" aria-label="Refresh availability" disabled={isFetching} onClick={() => void refetch()}>
             <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
           </Button>
         </div>
+        <p className="mt-4 text-muted-foreground">Final availability and prices are confirmed on Airbnb.</p>
         <div className="mt-8 flex flex-wrap gap-6 text-sm" aria-label="Calendar legend">
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm border border-primary bg-background" />{ready ? 'Not blocked on Airbnb' : 'Availability unconfirmed'}</span>
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-muted" />Unavailable</span>
