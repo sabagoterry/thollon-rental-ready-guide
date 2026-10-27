@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from '@/components/section-heading';
+import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
@@ -250,9 +251,12 @@ function Index() {
         </div>
       </section>
 
+      <BackgroundMusic />
+
       <footer className="py-8 text-center text-sm text-muted-foreground">
         <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} loading="lazy" className="mx-auto mb-3 h-[68px] w-[72px] object-contain" />
         Les Cyclamens · Thollon-les-Memises, France
+        <p className="mt-2 text-xs opacity-75">Background music: “Meditation Impromptu 01” by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0.</p>
       </footer>
     </main>
   );
