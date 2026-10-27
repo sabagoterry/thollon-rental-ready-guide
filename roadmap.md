@@ -32,3 +32,5 @@
 - [ ] Make the owner logo more prominent
 
 - [ ] Keep every logo placement circular
+
+- [ ] Add Scoobies to local recommendations
