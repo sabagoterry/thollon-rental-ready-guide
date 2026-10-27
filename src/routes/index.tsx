@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from '@/components/section-heading';
 import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
@@ -9,7 +10,6 @@ import { LocalGuide } from '@/components/local-guide';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
-import lake from "@/assets/photos/lake.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
 import sofabed from "@/assets/photos/sofabed.jpg.asset.json";
 import lounge from "@/assets/photos/lounge.jpg.asset.json";
@@ -19,12 +19,8 @@ import bunks2 from "@/assets/photos/bunks2.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower.jpg.asset.json";
 import bath from "@/assets/photos/bath.jpg.asset.json";
-import balconyWinter from "@/assets/photos/balcony-winter.jpg.asset.json";
-import balconyDusk from "@/assets/photos/balcony-dusk.jpg.asset.json";
-import snowView from "@/assets/photos/snow-view.jpg.asset.json";
-import ski from "@/assets/photos/ski.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
-import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
+import floorplan from "@/assets/photos/floorplan.png.asset.json";
 import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
@@ -67,22 +63,17 @@ const facts = [
   [String(balconies.length), "Balconies"],
 ];
 
-type Photo = { src: string; alt: string; season: "all" | "summer" | "winter" };
+type Photo = { src: string; alt: string };
+// Only photos taken inside the apartment. Outdoor views live on the /location page.
 const photos: Photo[] = [
-  { src: living.url, alt: "Living and dining room", season: "all" },
-  { src: lounge.url, alt: "Armchairs and dresser", season: "all" },
-  { src: sofabed.url, alt: "Sofa bed made up", season: "all" },
-  { src: kitchen.url, alt: "Kitchen", season: "all" },
-  { src: master.url, alt: "Double bedroom", season: "all" },
-  { src: bunks2.url, alt: "Bunk beds", season: "all" },
-  { src: shower.url, alt: "Shower room", season: "all" },
-  { src: bath.url, alt: "Bathroom", season: "all" },
-  { src: lake.url, alt: "Lake Geneva in summer", season: "summer" },
-  { src: exterior.url, alt: "The building in summer", season: "summer" },
-  { src: balconyWinter.url, alt: "Balcony in the snow", season: "winter" },
-  { src: balconyDusk.url, alt: "Balcony view at dusk", season: "winter" },
-  { src: snowView.url, alt: "Snowy view from the apartment", season: "winter" },
-  { src: ski.url, alt: "Ski slopes in Thollon", season: "winter" },
+  { src: living.url, alt: "Living and dining room" },
+  { src: lounge.url, alt: "Armchairs and dresser" },
+  { src: sofabed.url, alt: "Sofa bed made up" },
+  { src: kitchen.url, alt: "Kitchen" },
+  { src: master.url, alt: "Double bedroom" },
+  { src: bunks2.url, alt: "Bunk beds" },
+  { src: shower.url, alt: "Shower room" },
+  { src: bath.url, alt: "Bathroom" },
 ];
 
 function BookButton() {
@@ -97,27 +88,23 @@ function BookButton() {
 }
 
 function Gallery() {
-  const [filter, setFilter] = useState<"all" | "summer" | "winter">("all");
   const [open, setOpen] = useState<Photo | null>(null);
-  const list = filter === "all" ? photos : photos.filter((p) => p.season === filter);
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <SectionHeading kicker="Gallery">Photos</SectionHeading>
-        <div className="flex gap-2">
-          {(["all", "summer", "winter"] as const).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`rounded-sm border px-4 py-2 text-sm capitalize transition ${filter === f ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}
-            >
-              {f === "all" ? "All" : f}
-            </button>
-          ))}
-        </div>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <SectionHeading kicker="Gallery">Inside the apartment</SectionHeading>
+        <Link
+          to="/location"
+          className="inline-flex items-center gap-2 text-sm font-medium text-primary underline-offset-4 transition hover:underline"
+        >
+          See the location &amp; views <ArrowRight className="size-4" />
+        </Link>
       </div>
+      <p className="mt-4 max-w-xl text-muted-foreground">
+        Every photo below is taken inside the apartment. The views, the lake and the slopes have their own page.
+      </p>
       <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {list.map((p) => (
+        {photos.map((p) => (
           <button key={p.src} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-sm">
             <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
           </button>
@@ -149,6 +136,7 @@ function Index() {
           </a>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
+            <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">Local area</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">Ask us</a>
             <Link to="/book" className="rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground">Book</Link>
@@ -239,12 +227,22 @@ function Index() {
               <li>Hall — 4 m² · Shower room — 2.75 m²</li>
             </ul>
           </div>
-          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] rounded-sm bg-card p-4 shadow-xl" />
+          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />
         </div>
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <img src={lake.url} alt="Lake Geneva seen from Thollon" loading="lazy" className="rounded-sm shadow-xl" />
+        <Link
+          to="/location"
+          className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-sm border border-primary/10 bg-secondary p-8 transition hover:border-accent"
+        >
+          <img src={logo.url} alt="" aria-hidden="true" className="absolute -bottom-6 -right-4 h-40 w-40 object-contain opacity-25 mix-blend-multiply transition group-hover:scale-105" />
+          <span className="relative text-xs uppercase tracking-[0.3em] text-accent">Location</span>
+          <span className="relative font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
+          <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary">
+            Open the location page <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+          </span>
+        </Link>
         <div>
           <SectionHeading kicker="Four seasons">Every season in Thollon</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
