@@ -23,8 +23,11 @@ export function BackgroundMusic() {
     audio.addEventListener("pause", onPause);
     audioRef.current = audio;
 
-    const start = () => {
-      if (triedAuto.current) return;
+    const start = (e?: Event) => {
+      const target = e?.target as HTMLElement | null;
+      // Clicks on the music button itself are handled by toggle() instead,
+      // otherwise a single click starts and instantly pauses the track.
+      if (target?.closest("[data-background-music]")) return;
       triedAuto.current = true;
       void audio.play().catch(() => {});
       window.removeEventListener("pointerdown", start);
@@ -53,6 +56,7 @@ export function BackgroundMusic() {
   return (
     <button
       type="button"
+      data-background-music
       onClick={toggle}
       aria-label={playing ? "Turn background music off" : "Turn background music on"}
       title={playing ? "Pause the music" : "Play the music"}
