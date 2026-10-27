@@ -82,6 +82,8 @@ const shots: Shot[] = [
   { src: pisteLake.url, alt: "The piste running down past snowy trees", caption: "Down the piste", season: "winter" },
   { src: widePiste.url, alt: "Wide open snow slope under a blue sky", caption: "Open slopes", season: "winter" },
   { src: winterCliffs.url, alt: "Snow-covered cliffs above the forest", caption: "Snow on the cliffs", season: "winter" },
+  { src: meadowCliffs.url, alt: "Green meadow beneath the limestone cliffs", caption: "Meadow under the cliffs", season: "summer" },
+  { src: valleyRidge.url, alt: "A walking trail through green valley pastures", caption: "A valley walk", season: "summer" },
 ];
 
 function LocationPage() {
