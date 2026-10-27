@@ -40,4 +40,4 @@
 
 - [x] Replace snow forecast with owner-supplied Thollon URL
 
-- [ ] Replace What’s on in Thollon with owner-supplied tourism events calendar
+- [x] Replace What’s on in Thollon with owner-supplied tourism events calendar
