@@ -17,8 +17,7 @@ import snowView from "@/assets/photos/snow-view.jpg.asset.json";
 import ski from "@/assets/photos/ski.jpg.asset.json";
 import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
 
-// TODO: replace with the real Airbnb listing link
-const AIRBNB_URL = "https://www.airbnb.com";
+const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
 export const Route = createFileRoute("/")({
   head: () => ({
