@@ -13,3 +13,10 @@
 - [x] Add background chill-out music to the site
 - [x] Add AI guest question assistant (saved conversations)
 - [x] Contact form with rental dates + contact details, highlighting instant Airbnb booking
+
+- [x] Booking page: pick dates, guests, nights, instant Airbnb link
+- [x] Private owner page to read enquiries and guest Q&A
+- [x] Assistant knows price, check-in time, cancellation policy, house rules (needs owner details)
+- [ ] Email enquiries to terry@thekavanaghs.co.uk as backup (needs email domain)
+- [x] Redesign top header to be more interesting
+- [ ] Add nightly price to assistant (waiting on owner)

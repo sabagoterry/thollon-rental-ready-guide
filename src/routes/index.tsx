@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeading } from '@/components/section-heading';
 import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
@@ -86,14 +86,12 @@ const photos: Photo[] = [
 
 function BookButton() {
   return (
-    <a
-      href={AIRBNB_URL}
-      target="_blank"
-      rel="noreferrer"
+    <Link
+      to="/book"
       className="inline-block rounded-sm bg-accent px-6 py-3 font-medium text-accent-foreground transition hover:opacity-90"
     >
-      Book on Airbnb
-    </a>
+      Choose dates & book
+    </Link>
   );
 }
 
@@ -136,11 +134,25 @@ function Gallery() {
 function Index() {
   return (
     <main>
-      <header className="border-b bg-card">
-        <a href="/" aria-label="Les Cyclamens home" className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-3">
-          <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} className="h-[68px] w-[72px] shrink-0 object-contain" />
-          <span className="font-display text-2xl text-primary">Les Cyclamens</span>
-        </a>
+      <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
+        <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+          <a href="/" aria-label="Les Cyclamens home" className="group flex items-center gap-4">
+            <span className="relative grid size-16 shrink-0 place-items-center rounded-full bg-background ring-1 ring-primary/20 ring-offset-4 ring-offset-card transition group-hover:ring-accent">
+              <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={52} height={49} className="h-[49px] w-[52px] object-contain mix-blend-multiply transition group-hover:rotate-[-6deg]" />
+            </span>
+            <span className="leading-tight">
+              <span className="block font-display text-2xl text-primary md:text-3xl">Les Cyclamens</span>
+              <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">Thollon-les-Mémises · Lake Geneva</span>
+            </span>
+          </a>
+          <nav aria-label="Main" className="flex items-center gap-6 text-sm">
+            <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
+            <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">Local area</a>
+            <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">Ask us</a>
+            <Link to="/book" className="rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground">Book</Link>
+          </nav>
+        </div>
       </header>
       <section className="relative flex min-h-[92vh] items-end">
         <img src={exterior.url} alt="Les Cyclamens building in Thollon-les-Memises" className="absolute inset-0 h-full w-full object-cover" />
