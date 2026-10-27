@@ -70,6 +70,16 @@ const shots: Shot[] = [
   { src: cliffsSummer.url, alt: "Summer cliffs and pine forest", caption: "Summer on the cliffs", season: "summer" },
   { src: forestPath.url, alt: "Walkers on a path through the forest", caption: "A walk from the door", season: "summer" },
   { src: mountainForest.url, alt: "Evergreen forest below the mountain cliffs", caption: "Woodland under the cliffs", season: "summer" },
+  { src: lakePanorama.url, alt: "Lake Geneva seen from high on the mountain", caption: "The lake from up high", season: "summer" },
+  { src: balconyForest.url, alt: "Trees and a paraglider seen from the balcony", caption: "From the balcony", season: "summer" },
+  { src: balconyTrees.url, alt: "Evening clouds above the forest from the balcony", caption: "Evening from the balcony", season: "summer" },
+  { src: lakeWater.url, alt: "Out on Lake Geneva with mountains beyond", caption: "Out on the lake", season: "summer" },
+  { src: balconySunset.url, alt: "Pink and orange evening sky seen from the balcony", caption: "Sunset from the balcony", season: "summer" },
+  { src: pisteChairlift.url, alt: "Ski slope with chairlift and Lake Geneva behind", caption: "Skiing above the lake", season: "winter" },
+  { src: skiersLake.url, alt: "Skiers on the piste with the lake behind", caption: "Skiers with a lake view", season: "winter" },
+  { src: pisteLake.url, alt: "The piste running down past snowy trees", caption: "Down the piste", season: "winter" },
+  { src: widePiste.url, alt: "Wide open snow slope under a blue sky", caption: "Open slopes", season: "winter" },
+  { src: winterCliffs.url, alt: "Snow-covered cliffs above the forest", caption: "Snow on the cliffs", season: "winter" },
 ];
 
 function LocationPage() {
