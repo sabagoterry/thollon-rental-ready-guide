@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { SectionHeading } from '@/components/section-heading';
+import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
@@ -100,8 +102,8 @@ function Gallery() {
   const list = filter === "all" ? photos : photos.filter((p) => p.season === filter);
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 className="text-4xl text-primary">Photos</h2>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <SectionHeading kicker="Gallery">Photos</SectionHeading>
         <div className="flex gap-2">
           {(["all", "summer", "winter"] as const).map((f) => (
             <button
@@ -168,7 +170,7 @@ function Index() {
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
         <div>
-          <h2 className="text-4xl text-primary">Furnished to a high standard</h2>
+          <SectionHeading kicker="The apartment">Furnished to a high standard</SectionHeading>
           <p className="mt-5 text-lg text-muted-foreground">
             On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter
             and hiking, paragliding and lake trips in summer.
@@ -179,7 +181,7 @@ function Index() {
 
       <section className="bg-secondary">
         <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="text-4xl text-primary">Inside the apartment</h2>
+          <SectionHeading kicker="Rooms">Inside the apartment</SectionHeading>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rooms.map((r) => (
               <div key={r.name} className="overflow-hidden rounded-sm border bg-card">
@@ -202,7 +204,7 @@ function Index() {
       <section className="bg-secondary">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
           <div>
-            <h2 className="text-4xl text-primary">Floor plan</h2>
+            <SectionHeading kicker="39 m²">Floor plan</SectionHeading>
             <p className="mt-5 text-lg text-muted-foreground">39 m² in total, with two balconies.</p>
             <ul className="mt-4 space-y-2 text-muted-foreground">
               {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{b.position} balcony — {b.facing}-facing</li>)}
@@ -221,7 +223,7 @@ function Index() {
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
         <img src={lake.url} alt="Lake Geneva seen from Thollon" loading="lazy" className="rounded-sm shadow-xl" />
         <div>
-          <h2 className="text-4xl text-primary">Every season in Thollon</h2>
+          <SectionHeading kicker="Four seasons">Every season in Thollon</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
             <li><span className="font-medium text-foreground">Winter —</span> ski the Mémises slopes, the cable car is just a short walk away.</li>
             <li><span className="font-medium text-foreground">Summer —</span> alpine hikes, paragliding and Lake Geneva beaches below.</li>
@@ -249,9 +251,12 @@ function Index() {
         </div>
       </section>
 
+      <BackgroundMusic />
+
       <footer className="py-8 text-center text-sm text-muted-foreground">
         <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} loading="lazy" className="mx-auto mb-3 h-[68px] w-[72px] object-contain" />
         Les Cyclamens · Thollon-les-Memises, France
+        <p className="mt-2 text-xs opacity-75">Background music: “Meditation Impromptu 01” by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0.</p>
       </footer>
     </main>
   );

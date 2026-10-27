@@ -1,5 +1,6 @@
 import { ArrowUpRight, MountainSnow, MapPin, Utensils, ShoppingBasket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SectionHeading } from '@/components/section-heading';
 
 const diningDirectory = 'https://www.leman-mountains-explore.com/en/discover/our-villages/thollon-les-memises/where-to-eat-in-thollon-les-memises/';
 const venues = [
@@ -21,7 +22,7 @@ export function LocalGuide() {
   return (
     <section id="local-guide" className="bg-secondary">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="text-4xl text-primary">Around Thollon</h2>
+        <SectionHeading kicker="Local area">Around Thollon</SectionHeading>
         <div className="mt-10 grid gap-x-12 gap-y-6 md:grid-cols-2">
           {essentials.map(item => (
             <div key={item.name} className="flex items-start gap-4 border-b pb-5">
