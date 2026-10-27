@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793128912369,
+      "tag": "0000_create_public_availability_cache",
+      "breakpoints": true
+    }
+  ]
 }

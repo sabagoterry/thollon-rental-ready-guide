@@ -14,7 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      availability_cache: {
+        Row: {
+          blocked_ranges: Json
+          checked_at: string
+          id: string
+          sync_ok: boolean
+          synced_at: string | null
+        }
+        Insert: {
+          blocked_ranges?: Json
+          checked_at?: string
+          id: string
+          sync_ok?: boolean
+          synced_at?: string | null
+        }
+        Update: {
+          blocked_ranges?: Json
+          checked_at?: string
+          id?: string
+          sync_ok?: boolean
+          synced_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
