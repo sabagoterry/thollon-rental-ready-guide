@@ -20,5 +20,5 @@
 - [ ] Email enquiries to terry@thekavanaghs.co.uk as backup (needs email domain)
 - [x] Redesign top header to be more interesting
 - [ ] Add nightly price to assistant (waiting on owner)
-- [ ] Blend the floor plan seamlessly into its section (no white card)
-- [ ] Move all non-apartment photos to a new Location page
+- [x] Blend the floor plan seamlessly into its section (no white card)
+- [x] Move all non-apartment photos to a new Location page
