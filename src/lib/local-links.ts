@@ -1,5 +1,6 @@
 export const diningDirectory = 'https://www.leman-mountains-explore.com/en/discover/our-villages/thollon-les-memises/where-to-eat-in-thollon-les-memises/';
 export const venues = [
+  { name: 'Scoobies — Le Scoubidou', type: 'Bar, café & pizzeria', url: 'https://le-scoubidou-thollon.metro.rest/?lang=en' },
   { name: 'L’Ourson', type: 'Bar & restaurant', url: 'https://www.barlourson.com/en' },
   { name: 'Le Tibetan', type: 'Restaurant, pub & bar', url: 'https://tibetan-thollon.com/' },
   { name: 'Bon Séjour', type: 'Hotel restaurant', url: 'https://www.bon-sejour.com/' },
@@ -17,9 +18,9 @@ export const essentials = [
 export const liveLinks = [
   { name: 'Telecabine webcam', detail: 'Live view of the snow front at the cable car', url: 'http://m.webcam-hd.com/thollon-les-memises/front-de-neige', kind: 'webcam' },
   { name: 'Parchet summit webcam', detail: 'Live view from the top — on a clear day the lake is spectacular', url: 'https://m.webcam-hd.com/thollon-les-memises/sommet-parchet', kind: 'webcam' },
-  { name: 'Snow forecast', detail: '6-day snow and weather forecast for the slopes', url: 'https://www.snow-forecast.com/resorts/Thollon-les-Memises/6day/mid', kind: 'forecast' },
+  { name: 'Snow forecast', detail: '6-day snow and weather forecast for the slopes', url: 'https://www.snow-forecast.com/resorts/Thollon/6day/mid', kind: 'forecast' },
   { name: 'Telecabine news', detail: 'Lift opening, offers and updates on Facebook', url: 'https://www.facebook.com/T%C3%A9l%C3%A9cabine-Thollon-417908308355476/', kind: 'news' },
-  { name: 'What’s on in Thollon', detail: 'Markets, concerts, torch descents and fondue nights from the tourist office', url: 'https://www.facebook.com/thollontourisme', kind: 'events' },
+  { name: 'What’s on in Thollon', detail: 'Thollon-les-Mémises events calendar from the tourist office', url: 'https://www.leman-mountains-explore.com/en/agenda/the-resorts-calendar-of-events/agenda-for-thollon-les-memises/', kind: 'events' },
   { name: 'Thollon.org', detail: 'English-language guide and news for visitors', url: 'https://www.thollon.org/', kind: 'news' },
 ] as const;
 export const dayTrips = [

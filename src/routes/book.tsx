@@ -11,7 +11,7 @@ import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
 import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
-import logo from '@/assets/cyclamens-logo.jpg.asset.json';
+import { LogoMark } from '@/components/logo-mark';
 
 export const Route = createFileRoute('/book')({
   loader: ({ context }) => context.queryClient.ensureQueryData(availabilityQuery),
@@ -63,7 +63,7 @@ function BookPage() {
     <header className="border-b bg-card">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={48} height={45} className="h-[45px] w-12 object-contain" />
+          <LogoMark />
           <span className="font-display text-xl text-primary">Les Cyclamens</span>
         </Link>
         <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" />Back to apartment</Link>

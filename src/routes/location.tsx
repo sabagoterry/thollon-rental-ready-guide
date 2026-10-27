@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
+import { LogoMark } from '@/components/logo-mark';
+import { Button } from '@/components/ui/button';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
 import ski from "@/assets/photos/ski.jpg.asset.json";
@@ -86,6 +88,13 @@ const shots: Shot[] = [
   { src: valleyRidge.url, alt: "A walking trail through green valley pastures", caption: "A valley walk", season: "summer" },
 ];
 
+const photoGroups = [
+  { title: 'Views from the mountains', sources: [lake, ski, twinPeaks, cliffsSummer, mountainForest, lakePanorama, pisteChairlift, skiersLake, pisteLake, widePiste, meadowCliffs, valleyRidge] },
+  { title: 'Views at the lake', sources: [lakeBeach, lakeWater] },
+  { title: 'The surroundings', sources: [exterior, snowView, sunsetMeadow, sunsetLake, cliffsGolden, villageChalets, paragliders, forestPath, winterCliffs] },
+  { title: 'Views from the balconies', sources: [balconyWinter, balconyDusk, balconyForest, balconyTrees, balconySunset] },
+];
+
 function LocationPage() {
   const [filter, setFilter] = useState<"all" | "summer" | "winter">("all");
   const [open, setOpen] = useState<Shot | null>(null);
@@ -97,17 +106,9 @@ function LocationPage() {
         <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
           <Link to="/" className="group flex items-center gap-4" aria-label="Les Cyclamens home">
-            <span className="relative grid size-16 shrink-0 place-items-center rounded-full bg-background ring-1 ring-primary/20 ring-offset-4 ring-offset-card transition group-hover:ring-accent">
-              <img
-                src={logo.url}
-                alt="Les Cyclamens cyclamen flower logo"
-                width={52}
-                height={49}
-                className="h-[49px] w-[52px] object-contain mix-blend-multiply transition group-hover:rotate-[-6deg]"
-              />
-            </span>
+            <LogoMark />
             <span className="leading-tight">
-              <span className="block font-display text-2xl text-primary md:text-3xl">Location</span>
+              <span className="block font-display text-xl text-primary sm:text-2xl md:text-3xl">Les Cyclamens</span>
               <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">
                 Thollon-les-Mémises · Lake Geneva
               </span>
@@ -145,15 +146,15 @@ function LocationPage() {
           <SectionHeading kicker="Location">Views & surroundings</SectionHeading>
           <div className="flex gap-2">
             {(["all", "summer", "winter"] as const).map((f) => (
-              <button
+              <Button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`rounded-sm border px-4 py-2 text-sm capitalize transition ${
-                  filter === f ? "bg-primary text-primary-foreground" : "hover:bg-secondary"
-                }`}
+                variant={filter === f ? 'default' : 'outline'}
+                aria-pressed={filter === f}
+                className="capitalize"
               >
                 {f === "all" ? "All" : f}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -161,12 +162,18 @@ function LocationPage() {
           Photos of the village, the lake and the mountain — in summer and in winter.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((s) => (
-            <button
+        {photoGroups.map(group => {
+          const groupShots = list.filter(shot => group.sources.some(source => source.url === shot.src));
+          if (!groupShots.length) return null;
+          return <section key={group.title} aria-label={group.title} className="mt-14">
+          <h3 className="border-b border-primary/20 pb-4 text-2xl text-primary">{group.title}</h3>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {groupShots.map((s) => (
+            <Button
               key={s.src}
               onClick={() => setOpen(s)}
-              className="group overflow-hidden rounded-sm border bg-card text-left"
+              variant="ghost"
+              className="group block h-auto w-full overflow-hidden whitespace-normal rounded-sm border bg-card p-0 text-left"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
@@ -180,9 +187,11 @@ function LocationPage() {
                 <span className="font-medium">{s.caption}</span>
                 <span className="text-xs uppercase tracking-[0.2em] text-accent">{s.season}</span>
               </div>
-            </button>
+            </Button>
           ))}
         </div>
+        </section>;
+        })}
 
         <div className="mt-14 flex flex-wrap gap-4">
           <Link
@@ -191,12 +200,13 @@ function LocationPage() {
           >
             <ArrowLeft className="size-4" /> Back to the apartment
           </Link>
-          <a
-            href="/#local-guide"
+          <Link
+            to="/"
+            hash="local-guide"
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground"
           >
             Shops, lifts & where to eat
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -218,7 +228,7 @@ function LocationPage() {
           width={72}
           height={68}
           loading="lazy"
-          className="mx-auto mb-3 h-[68px] w-[72px] object-contain"
+          className="mx-auto mb-4 size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm"
         />
         Les Cyclamens · Thollon-les-Mémises, France
       </footer>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from '@/components/section-heading';
-import { BackgroundMusic } from '@/components/background-music';
+import { LogoMark } from '@/components/logo-mark';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
@@ -125,15 +125,13 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
         <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <a href="/" aria-label="Les Cyclamens home" className="group flex items-center gap-4">
-            <span className="relative grid size-16 shrink-0 place-items-center rounded-full bg-background ring-1 ring-primary/20 ring-offset-4 ring-offset-card transition group-hover:ring-accent">
-              <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={52} height={49} className="h-[49px] w-[52px] object-contain mix-blend-multiply transition group-hover:rotate-[-6deg]" />
-            </span>
+          <Link to="/" aria-label="Les Cyclamens home" className="group flex items-center gap-4">
+            <LogoMark />
             <span className="leading-tight">
-              <span className="block font-display text-2xl text-primary md:text-3xl">Les Cyclamens</span>
+              <span className="block font-display text-xl text-primary sm:text-2xl md:text-3xl">Les Cyclamens</span>
               <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">Thollon-les-Mémises · Lake Geneva</span>
             </span>
-          </a>
+          </Link>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
@@ -236,9 +234,9 @@ function Index() {
           to="/location"
           className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-sm border border-primary/10 bg-secondary p-8 transition hover:border-accent"
         >
-          <img src={logo.url} alt="" aria-hidden="true" className="absolute -bottom-6 -right-4 h-40 w-40 object-contain opacity-25 mix-blend-multiply transition group-hover:scale-105" />
+          <img src={logo.url} alt="" aria-hidden="true" className="absolute bottom-4 right-4 size-28 rounded-full border-2 border-accent bg-card p-3 object-contain transition group-hover:scale-105" />
           <span className="relative text-xs uppercase tracking-[0.3em] text-accent">Location</span>
-          <span className="relative font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
+          <span className="relative pr-24 font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
           <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary">
             Open the location page <ArrowRight className="size-4 transition group-hover:translate-x-1" />
           </span>
@@ -260,7 +258,7 @@ function Index() {
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-5">
-            <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={80} height={76} loading="lazy" className="h-[76px] w-20 shrink-0 object-contain" />
+            <LogoMark />
             <div>
             <h2 className="text-4xl">Check dates & book</h2>
             <p className="mt-2 opacity-80">See availability and prices on Airbnb.</p>
@@ -273,10 +271,8 @@ function Index() {
         </div>
       </section>
 
-      <BackgroundMusic />
-
       <footer className="py-8 text-center text-sm text-muted-foreground">
-        <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} loading="lazy" className="mx-auto mb-3 h-[68px] w-[72px] object-contain" />
+        <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={96} height={96} loading="lazy" className="mx-auto mb-4 size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm" />
         Les Cyclamens · Thollon-les-Memises, France
       </footer>
     </main>

@@ -23,6 +23,21 @@
 - [x] Blend the floor plan seamlessly into its section (no white card)
 - [x] Move all non-apartment photos to a new Location page
 - [x] Add 10 extra outdoor photos (lake, balcony views, pistes, sunset, cliffs) to Location gallery
-- [ ] Replace Sherpa link with https://www.sherpa.net/magasins/thollon-les-memises-village
 - [x] Swap background music to uploaded Ski_Sunday.mp3 (loop)
 - [x] Replace Sherpa link with https://www.sherpa.net/magasins/thollon-les-memises-village
+
+- [x] Keep music continuous across pages
+- [x] Group Location photos by mountains, lake, surroundings and balconies; keep interiors unchanged
+- [x] Make the owner logo more prominent
+
+- [x] Keep every logo placement circular
+
+- [x] Add Scoobies to local recommendations
+
+- [x] Keep Questions section clear outside an active visitor chat
+
+- [x] Expand guest Q&A using Tripadvisor Thollon listings
+
+- [x] Replace snow forecast with owner-supplied Thollon URL
+
+- [x] Replace What’s on in Thollon with owner-supplied tourism events calendar
