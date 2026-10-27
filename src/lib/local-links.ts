@@ -11,7 +11,7 @@ export const essentials = [
   { name: 'ESF Thollon', detail: 'Ski school & lessons', url: 'https://www.esfthollon.com/fr/' },
   { name: 'Tourist office', detail: 'Thollon-les-Mémises visitor information', url: 'https://hautesavoiemontblanc-tourisme.com/offres/bureau-dinformation-touristique-de-thollon-les-memises-thollon-les-memises-fr-5864907/' },
   { name: 'Lift passes', detail: 'Thollon-les-Mémises ski lifts', url: 'https://thollon.axess.shop/fr/Products/Tickets/Category?cID=2' },
-  { name: 'Sherpa', detail: 'Not directly in the village — check the store location before setting off.', url: 'https://www.sherpa.net/en/stores/thollon-les-memises' },
+  { name: 'Sherpa', detail: 'In the village — check opening hours before setting off.', url: 'https://www.sherpa.net/magasins/thollon-les-memises-village' },
 ];
 /** Ideas picked from thollon.org (an English-language visitor guide). */
 export const liveLinks = [
