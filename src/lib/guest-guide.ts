@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { balconies } from './apartment';
+import { balconies, houseRules } from './apartment';
 import { diningDirectory, essentials, venues } from './local-links';
 
 export const AIRBNB_URL = 'https://www.airbnb.co.uk/rooms/1300151240294300447';

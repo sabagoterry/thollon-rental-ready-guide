@@ -17,3 +17,5 @@
 - [ ] Booking page: pick dates, guests, nights, instant Airbnb link
 - [ ] Private owner page to read enquiries and guest Q&A
 - [ ] Assistant knows price, check-in time, cancellation policy, house rules (needs owner details)
+- [ ] Email enquiries to terry@thekavanaghs.co.uk as backup (needs email domain)
+- [ ] Redesign top header to be more interesting
