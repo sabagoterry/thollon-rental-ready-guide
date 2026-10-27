@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
+import { balconies } from '@/lib/apartment';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -29,12 +30,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Charming 39 m² 2-bedroom apartment in Thollon-les-Memises, above Lake Geneva. Sleeps 6, three balconies, open all year.",
+          "Charming 39 m² 2-bedroom apartment in Thollon-les-Memises, above Lake Geneva. Sleeps 6, two balconies: south-facing front and north-facing rear.",
       },
       { property: "og:title", content: "Les Cyclamens — Thollon-les-Memises apartment" },
       {
         property: "og:description",
-        content: "2 bedrooms, 2 bathrooms, three balconies, views over the mountains. Available all year.",
+        content: "2 bedrooms, 2 bathrooms, two balconies: south-facing front and north-facing rear. Open all year.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -46,8 +47,8 @@ export const Route = createFileRoute("/")({
 const rooms = [
   { name: "Living & dining room", size: "10.9 m²", img: living.url, text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed for two extra guests." },
   { name: "Kitchen", size: "", img: kitchen.url, text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle." },
-  { name: "Double bedroom", size: "8.9 m²", img: master.url, text: "Double bed, built-in wardrobes and its own balcony, next to the shower room." },
-  { name: "Bunk room", size: "5.6 m²", img: bunks.url, text: "Cosy wood-panelled room with bunk beds and its own balcony — kids love it." },
+  { name: "Double bedroom", size: "8.9 m²", img: master.url, text: "Double bed and built-in wardrobes, next to the shower room." },
+  { name: "Bunk room", size: "5.6 m²", img: bunks.url, text: "Cosy wood-panelled room with bunk beds — kids love it." },
   { name: "Shower room", size: "2.75 m²", img: shower.url, text: "Walk-in shower, washbasin, toilet and lit mirror." },
   { name: "Bathroom", size: "", img: bath.url, text: "Bathtub with shower, washbasin and toilet." },
 ];
@@ -56,7 +57,7 @@ const facts = [
   ["39 m²", "Living space"],
   ["Up to 6", "Guests"],
   ["2", "Bathrooms"],
-  ["3", "Balconies"],
+  [String(balconies.length), "Balconies"],
 ];
 
 type Photo = { src: string; alt: string; season: "all" | "summer" | "winter" };
@@ -192,11 +193,14 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="text-4xl text-primary">Floor plan</h2>
-            <p className="mt-5 text-lg text-muted-foreground">39 m² in total, with a balcony off the living room and each bedroom.</p>
+            <p className="mt-5 text-lg text-muted-foreground">39 m² in total, with two balconies.</p>
+            <ul className="mt-4 space-y-2 text-muted-foreground">
+              {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{b.position} balcony — {b.facing}-facing</li>)}
+            </ul>
             <ul className="mt-6 space-y-2 text-muted-foreground">
-              <li>Living room — 10.9 m² · balcony 4.4 m²</li>
-              <li>Double bedroom — 8.9 m² · balcony 5.3 m²</li>
-              <li>Bunk room — 5.6 m² · balcony 4.9 m²</li>
+              <li>Living room — 10.9 m²</li>
+              <li>Double bedroom — 8.9 m²</li>
+              <li>Bunk room — 5.6 m²</li>
               <li>Hall — 4 m² · Shower room — 2.75 m²</li>
             </ul>
           </div>
