@@ -5,7 +5,7 @@
 - [x] Add verified local bar and restaurant links
 - [x] Replace direct WhatsApp links with a private CallMeBot enquiry form
 - [x] Confirm CallMeBot delivery — owner confirmed the test arrived on WhatsApp
-- [ ] Add the owner's logo throughout the site and as the browser icon
+- [x] Add the owner's logo throughout the site and as the browser icon
 - [x] Replace stock images with owner's real photos, add gallery + floor plan
 - [x] Remove Booking.com button
 - [x] Point Airbnb button to the real listing (listing ID from the owner's calendar link — owner to confirm the page opens their apartment)
