@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from '@/components/section-heading';
-import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
@@ -125,7 +124,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
         <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <a href="/" aria-label="Les Cyclamens home" className="group flex items-center gap-4">
+          <Link to="/" aria-label="Les Cyclamens home" className="group flex items-center gap-4">
             <span className="relative grid size-16 shrink-0 place-items-center rounded-full bg-background ring-1 ring-primary/20 ring-offset-4 ring-offset-card transition group-hover:ring-accent">
               <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={52} height={49} className="h-[49px] w-[52px] object-contain mix-blend-multiply transition group-hover:rotate-[-6deg]" />
             </span>
@@ -133,7 +132,7 @@ function Index() {
               <span className="block font-display text-2xl text-primary md:text-3xl">Les Cyclamens</span>
               <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">Thollon-les-Mémises · Lake Geneva</span>
             </span>
-          </a>
+          </Link>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
@@ -272,8 +271,6 @@ function Index() {
           </div>
         </div>
       </section>
-
-      <BackgroundMusic />
 
       <footer className="py-8 text-center text-sm text-muted-foreground">
         <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} loading="lazy" className="mx-auto mb-3 h-[68px] w-[72px] object-contain" />

@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Music, Pause } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import track from "@/assets/music/ski-sunday.mp3.asset.json";
 
 /**
  * Owner-supplied track. Low volume, looping. Starts on the visitor's first
- * interaction (browsers block sound before that) and can be paused with the
- * that) and can be paused with the floating button.
+ * interaction (browsers block sound before that). Mounted in the root layout
+ * so navigation never replaces the audio instance; the button can pause it.
  */
 export function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const triedAuto = useRef(false);
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
@@ -28,11 +28,13 @@ export function BackgroundMusic() {
       // Clicks on the music button itself are handled by toggle() instead,
       // otherwise a single click starts and instantly pauses the track.
       if (target?.closest("[data-background-music]")) return;
-      triedAuto.current = true;
-      void audio.play().catch(() => {});
+      void audio.play().then(stopListening).catch(() => {});
+    };
+    const stopListening = () => {
       window.removeEventListener("pointerdown", start);
       window.removeEventListener("keydown", start);
     };
+    audio.addEventListener("play", stopListening);
     window.addEventListener("pointerdown", start);
     window.addEventListener("keydown", start);
 
@@ -42,6 +44,7 @@ export function BackgroundMusic() {
       audio.pause();
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("play", stopListening);
       audioRef.current = null;
     };
   }, []);
@@ -54,8 +57,10 @@ export function BackgroundMusic() {
   };
 
   return (
-    <button
+    <Button
       type="button"
+      variant="outline"
+      size="icon"
       data-background-music
       onClick={toggle}
       aria-label={playing ? "Turn background music off" : "Turn background music on"}
@@ -69,6 +74,6 @@ export function BackgroundMusic() {
         />
       )}
       {playing ? <Pause className="size-5" /> : <Music className="size-5" />}
-    </button>
+    </Button>
   );
 }

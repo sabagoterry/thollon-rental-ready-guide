@@ -191,12 +191,13 @@ function LocationPage() {
           >
             <ArrowLeft className="size-4" /> Back to the apartment
           </Link>
-          <a
-            href="/#local-guide"
+          <Link
+            to="/"
+            hash="local-guide"
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground"
           >
             Shops, lifts & where to eat
-          </a>
+          </Link>
         </div>
       </section>
 
