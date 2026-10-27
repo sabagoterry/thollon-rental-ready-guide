@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { balconies, houseRules } from './apartment';
-import { diningDirectory, essentials, venues } from './local-links';
+import { liveLinks, dayTrips, diningDirectory, essentials, venues } from './local-links';
 
 export const AIRBNB_URL = 'https://www.airbnb.co.uk/rooms/1300151240294300447';
 
@@ -34,5 +34,7 @@ AREA
 - Summer: alpine hikes, paragliding, Lake Geneva beaches below.
 - Nearby: Évian-les-Bains, the Swiss Riviera, Geneva.
 - Useful links: ${essentials.map(e => `${e.name} — ${e.detail} — ${e.url}`).join('; ')}.
+- Live webcams, snow forecast, lift news and events: ${liveLinks.map(l => `${l.name} ${l.url}`).join('; ')}.
+- Day trips: ${dayTrips.map(d => `${d.name} (${d.detail}) ${d.url}`).join('; ')}.
 - Bars & restaurants: ${venues.map(v => `${v.name} (${v.type}) ${v.url}`).join('; ')}. Full directory: ${diningDirectory}. Opening days vary by season; advise checking with the venue.`;
 }

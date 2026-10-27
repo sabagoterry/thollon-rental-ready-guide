@@ -13,3 +13,16 @@ export const essentials = [
   { name: 'Lift passes', detail: 'Thollon-les-Mémises ski lifts', url: 'https://thollon.axess.shop/fr/Products/Tickets/Category?cID=2' },
   { name: 'Sherpa', detail: 'Not directly in the village — check the store location before setting off.', url: 'https://www.sherpa.net/en/stores/thollon-les-memises' },
 ];
+/** Ideas picked from thollon.org (an English-language visitor guide). */
+export const liveLinks = [
+  { name: 'Telecabine webcam', detail: 'Live view of the snow front at the cable car', url: 'http://m.webcam-hd.com/thollon-les-memises/front-de-neige', kind: 'webcam' },
+  { name: 'Parchet summit webcam', detail: 'Live view from the top — on a clear day the lake is spectacular', url: 'https://m.webcam-hd.com/thollon-les-memises/sommet-parchet', kind: 'webcam' },
+  { name: 'Snow forecast', detail: '6-day snow and weather forecast for the slopes', url: 'https://www.snow-forecast.com/resorts/Thollon-les-Memises/6day/mid', kind: 'forecast' },
+  { name: 'Telecabine news', detail: 'Lift opening, offers and updates on Facebook', url: 'https://www.facebook.com/T%C3%A9l%C3%A9cabine-Thollon-417908308355476/', kind: 'news' },
+  { name: 'What’s on in Thollon', detail: 'Markets, concerts, torch descents and fondue nights from the tourist office', url: 'https://www.facebook.com/thollontourisme', kind: 'events' },
+  { name: 'Thollon.org', detail: 'English-language guide and news for visitors', url: 'https://www.thollon.org/', kind: 'news' },
+] as const;
+export const dayTrips = [
+  { name: 'Évian-les-Bains', detail: 'Lakeside town, spa and the renovated Buvette Cachat', url: 'https://www.evian-tourisme.com/en/' },
+  { name: 'Bernex', detail: 'Neighbouring resort with its own activity programme', url: 'https://www.bernexstation.fr/en/programme-animations' },
+] as const;
