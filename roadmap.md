@@ -13,3 +13,6 @@
 - [x] Add background chill-out music to the site
 - [x] Add AI guest question assistant (saved conversations)
 - [x] Contact form with rental dates + contact details, highlighting instant Airbnb booking
+
+- [ ] Booking page: pick dates, guests, nights, instant Airbnb link
+- [ ] Private owner page to read enquiries and guest Q&A
