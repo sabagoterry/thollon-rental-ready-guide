@@ -23,3 +23,5 @@
 - [x] Blend the floor plan seamlessly into its section (no white card)
 - [x] Move all non-apartment photos to a new Location page
 - [x] Add 10 extra outdoor photos (lake, balcony views, pistes, sunset, cliffs) to Location gallery
+- [ ] Replace Sherpa link with https://www.sherpa.net/magasins/thollon-les-memises-village
+- [x] Swap background music to uploaded Ski_Sunday.mp3 (loop)
