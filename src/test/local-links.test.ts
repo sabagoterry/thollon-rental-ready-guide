@@ -7,3 +7,6 @@ it('uses the owner-supplied Thollon snow forecast address', () => {
 it('uses the owner-supplied Thollon events calendar address', () => {
   expect(liveLinks.find(link => link.name === 'What’s on in Thollon')?.url).toBe('https://www.leman-mountains-explore.com/en/agenda/the-resorts-calendar-of-events/agenda-for-thollon-les-memises/');
 });
+it('uses the owner-supplied Télécabine Thollon Facebook page for cabin news', () => {
+  expect(liveLinks.find(link => link.name === 'Télécabine news')?.url).toBe('https://www.facebook.com/profile.php?id=100069952870413');
+});
