@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { AvailabilityCalendar } from '@/components/availability-calendar';
+import { availabilityQuery } from '@/lib/availability.query';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -20,6 +22,7 @@ import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(availabilityQuery),
   head: () => ({
     meta: [
       { title: "Les Cyclamens — Holiday apartment in Thollon-les-Memises" },
@@ -212,6 +215,8 @@ function Index() {
           </ul>
         </div>
       </section>
+
+      <AvailabilityCalendar />
 
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">

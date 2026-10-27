@@ -151,3 +151,9 @@
   body { font-family: var(--font-sans); }
 }
 .bg-overlay { background: var(--overlay); }
+
+.availability-calendar .rdp-month { width: 280px; }
+.availability-calendar .rdp-months { gap: 3rem; }
+@media (max-width: 767px) {
+  .availability-calendar .rdp-months { gap: 2rem; }
+}
