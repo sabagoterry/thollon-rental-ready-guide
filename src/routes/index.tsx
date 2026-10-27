@@ -20,7 +20,7 @@ import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower.jpg.asset.json";
 import bath from "@/assets/photos/bath.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
-import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
+import floorplan from "@/assets/photos/floorplan.png.asset.json";
 import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
@@ -227,7 +227,7 @@ function Index() {
               <li>Hall — 4 m² · Shower room — 2.75 m²</li>
             </ul>
           </div>
-          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] w-full object-contain opacity-90 mix-blend-multiply" />
+          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />
         </div>
       </section>
 
