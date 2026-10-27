@@ -65,25 +65,25 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.975 0.012 85);
-  --foreground: oklch(0.24 0.03 160);
-  --card: oklch(0.99 0.008 85);
-  --card-foreground: oklch(0.24 0.03 160);
-  --popover: oklch(0.99 0.008 85);
-  --popover-foreground: oklch(0.24 0.03 160);
-  --primary: oklch(0.36 0.06 160);
-  --primary-foreground: oklch(0.975 0.012 85);
-  --secondary: oklch(0.93 0.025 80);
-  --secondary-foreground: oklch(0.24 0.03 160);
-  --muted: oklch(0.93 0.02 85);
-  --muted-foreground: oklch(0.48 0.03 160);
-  --accent: oklch(0.68 0.13 55);
+  --background: oklch(0.98 0.012 225);
+  --foreground: oklch(0.25 0.05 250);
+  --card: oklch(0.995 0.006 225);
+  --card-foreground: oklch(0.25 0.05 250);
+  --popover: oklch(0.995 0.006 225);
+  --popover-foreground: oklch(0.25 0.05 250);
+  --primary: oklch(0.45 0.13 245);
+  --primary-foreground: oklch(0.99 0.01 225);
+  --secondary: oklch(0.94 0.06 85);
+  --secondary-foreground: oklch(0.3 0.06 55);
+  --muted: oklch(0.94 0.03 225);
+  --muted-foreground: oklch(0.47 0.05 245);
+  --accent: oklch(0.7 0.18 45);
   --accent-foreground: oklch(0.99 0.008 85);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.36 0.06 160);
+  --border: oklch(0.88 0.03 225);
+  --input: oklch(0.88 0.03 225);
+  --ring: oklch(0.45 0.13 245);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -97,7 +97,7 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-  --overlay: linear-gradient(180deg, oklch(0.2 0.03 160 / 0.15), oklch(0.2 0.03 160 / 0.7));
+  --overlay: linear-gradient(180deg, oklch(0.75 0.15 60 / 0.15), oklch(0.25 0.1 250 / 0.75));
 }
 
 .dark {
@@ -142,6 +142,8 @@
 
   body {
     background-color: var(--color-background);
+    background-image: radial-gradient(60rem 40rem at 100% 0%, oklch(0.93 0.08 80 / 0.55), transparent 70%), radial-gradient(60rem 40rem at 0% 30%, oklch(0.92 0.05 230 / 0.6), transparent 70%);
+    background-attachment: fixed;
     color: var(--color-foreground);
   }
 }
