@@ -43,6 +43,7 @@ export function GuestChat() {
     setConversationId(id);
     const controller = new AbortController();
     if (activeId) {
+      request.current = controller;
       touchChat(id);
       fetch(`/api/guest-chat?id=${id}`, { signal: controller.signal }).then(r => r.json()).then(d => { if (!controller.signal.aborted && Array.isArray(d.messages)) setMessages(d.messages); }).catch(() => {});
     } else sessionStorage.removeItem(CHAT_SESSION_KEY);
@@ -57,6 +58,7 @@ export function GuestChat() {
   async function ask(text: string) {
     const question = text.trim();
     if (!question || busy || !conversationId) return;
+    request.current?.abort();
     const controller = new AbortController();
     request.current = controller;
     touchChat(conversationId);

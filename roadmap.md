@@ -34,6 +34,6 @@
 
 - [x] Add Scoobies to local recommendations
 
-- [ ] Keep Questions section clear outside an active visitor chat
+- [x] Keep Questions section clear outside an active visitor chat
 
 - [ ] Expand guest Q&A using Tripadvisor Thollon listings
