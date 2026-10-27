@@ -39,3 +39,5 @@
 - [ ] Expand guest Q&A using Tripadvisor Thollon listings
 
 - [ ] Replace snow forecast with owner-supplied Thollon URL
+
+- [ ] Replace What’s on in Thollon with owner-supplied tourism events calendar
