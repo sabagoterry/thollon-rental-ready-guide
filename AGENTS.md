@@ -13,3 +13,4 @@
 - Store only sanitized date intervals in the public read-only availability cache; service-role access is limited to fixed-source cache refreshes, never ordinary public reads.
 - Parse iCalendar with ical.js and preserve exclusive checkout dates; failed or stale syncs must not imply dates are available.
 - Owner-confirmed balcony data lives in a shared apartment module used by the facts and layout descriptions so count and orientation stay consistent.
+- Local visitor links live in a focused guide component, using official venue or tourism pages and a directory link rather than claiming an exhaustive business list.

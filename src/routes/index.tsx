@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
+import { LocalGuide } from '@/components/local-guide';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -220,6 +221,7 @@ function Index() {
         </div>
       </section>
 
+      <LocalGuide />
       <AvailabilityCalendar />
 
       <section className="bg-primary text-primary-foreground">
