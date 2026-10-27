@@ -8,6 +8,16 @@ import ski from "@/assets/photos/ski.jpg.asset.json";
 import snowView from "@/assets/photos/snow-view.jpg.asset.json";
 import balconyWinter from "@/assets/photos/balcony-winter.jpg.asset.json";
 import balconyDusk from "@/assets/photos/balcony-dusk.jpg.asset.json";
+import lakeBeach from "@/assets/photos/lake-beach.jpg.asset.json";
+import sunsetMeadow from "@/assets/photos/sunset-meadow.jpg.asset.json";
+import sunsetLake from "@/assets/photos/sunset-lake.jpg.asset.json";
+import cliffsGolden from "@/assets/photos/cliffs-golden.jpg.asset.json";
+import villageChalets from "@/assets/photos/village-chalets.jpg.asset.json";
+import paragliders from "@/assets/photos/paragliders.jpg.asset.json";
+import twinPeaks from "@/assets/photos/twin-peaks.jpg.asset.json";
+import cliffsSummer from "@/assets/photos/cliffs-summer.jpg.asset.json";
+import forestPath from "@/assets/photos/forest-path.jpg.asset.json";
+import mountainForest from "@/assets/photos/mountain-forest.jpg.asset.json";
 import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/location")({
