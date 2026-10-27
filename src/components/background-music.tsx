@@ -53,6 +53,7 @@ export function BackgroundMusic() {
 
   const toggle = () => {
     const audio = audioRef.current;
+    console.debug("music toggle, audio present:", !!audio);
     if (!audio) return;
     if (audio.paused) {
       audio.play().catch((err: unknown) => {
