@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from '@/components/section-heading';
 import { BackgroundMusic } from '@/components/background-music';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
@@ -108,7 +109,7 @@ function Gallery() {
         Every photo below is taken inside the apartment. The views, the lake and the slopes have their own page.
       </p>
       <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {list.map((p) => (
+        {photos.map((p) => (
           <button key={p.src} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-sm">
             <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
           </button>
