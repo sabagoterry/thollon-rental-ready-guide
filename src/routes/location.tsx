@@ -18,6 +18,16 @@ import twinPeaks from "@/assets/photos/twin-peaks.jpg.asset.json";
 import cliffsSummer from "@/assets/photos/cliffs-summer.jpg.asset.json";
 import forestPath from "@/assets/photos/forest-path.jpg.asset.json";
 import mountainForest from "@/assets/photos/mountain-forest.jpg.asset.json";
+import lakePanorama from "@/assets/photos/lake-panorama.jpg.asset.json";
+import balconyForest from "@/assets/photos/balcony-forest.jpg.asset.json";
+import balconyTrees from "@/assets/photos/balcony-trees.jpg.asset.json";
+import lakeWater from "@/assets/photos/lake-water.jpg.asset.json";
+import pisteChairlift from "@/assets/photos/piste-chairlift.jpg.asset.json";
+import skiersLake from "@/assets/photos/skiers-lake.jpg.asset.json";
+import pisteLake from "@/assets/photos/piste-lake.jpg.asset.json";
+import widePiste from "@/assets/photos/wide-piste.jpg.asset.json";
+import balconySunset from "@/assets/photos/balcony-sunset.jpg.asset.json";
+import winterCliffs from "@/assets/photos/winter-cliffs.jpg.asset.json";
 import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/location")({
