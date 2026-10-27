@@ -143,7 +143,7 @@ function Index() {
             </span>
             <span className="leading-tight">
               <span className="block font-display text-2xl text-primary md:text-3xl">Les Cyclamens</span>
-              <span className="block text-[0.65rem] uppercase tracking-[0.35em] text-accent">Thollon-les-Mémises · Lake Geneva</span>
+              <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">Thollon-les-Mémises · Lake Geneva</span>
             </span>
           </a>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
