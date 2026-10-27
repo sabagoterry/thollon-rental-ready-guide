@@ -1,0 +1,2 @@
+export const WHATSAPP_NUMBER = '+447900888896';
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}?text=${encodeURIComponent('Hello, I’d like to enquire about a stay at Les Cyclamens in Thollon-les-Mémises.')}`;
