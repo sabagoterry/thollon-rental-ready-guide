@@ -7,7 +7,7 @@ const failed: Result = { status: 'failed', message: 'Your enquiry could not be s
 const unknown: Result = { status: 'unknown', message: 'Your enquiry was saved, but WhatsApp acceptance could not be confirmed. Please do not resend; contact the owner through Airbnb if needed.' };
 
 export const sendEnquiry = createServerFn({ method: 'POST' })
-  .inputValidator(input => enquirySchema.parse(input))
+  .validator(input => enquirySchema.parse(input))
   .handler(async ({ data }): Promise<Result> => {
     const key = process.env['CALLMEBOT_API_KEY'];
     if (!key) return failed;
