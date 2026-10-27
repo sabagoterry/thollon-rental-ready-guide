@@ -236,7 +236,7 @@ function Index() {
         >
           <img src={logo.url} alt="" aria-hidden="true" className="absolute bottom-4 right-4 size-28 rounded-full border-2 border-accent bg-card p-3 object-contain transition group-hover:scale-105" />
           <span className="relative text-xs uppercase tracking-[0.3em] text-accent">Location</span>
-          <span className="relative font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
+          <span className="relative pr-24 font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
           <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary">
             Open the location page <ArrowRight className="size-4 transition group-hover:translate-x-1" />
           </span>

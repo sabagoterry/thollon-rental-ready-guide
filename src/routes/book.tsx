@@ -11,7 +11,6 @@ import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
 import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
-import logo from '@/assets/cyclamens-logo.jpg.asset.json';
 import { LogoMark } from '@/components/logo-mark';
 
 export const Route = createFileRoute('/book')({
