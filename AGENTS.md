@@ -20,3 +20,4 @@
 - Owner-only pages live under the _authenticated layout and read private tables through admin-only RLS (has_role) using the browser client; guests never sign in.
 - Mount background audio once in the root layout and use client-side links for internal page navigation so playback survives page changes.
 - Use the shared LogoMark for public-page header branding so the owner's supplied artwork has consistent prominence.
+- Guest chat restores only a recent tab-scoped conversation; old persistent browser IDs must not repopulate the public Questions section.

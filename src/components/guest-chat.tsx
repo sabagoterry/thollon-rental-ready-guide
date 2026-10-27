@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { ArrowUp, LoaderCircle } from 'lucide-react';
+import { ArrowUp, LoaderCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionHeading } from '@/components/section-heading';
 import logo from '@/assets/cyclamens-logo.jpg.asset.json';
+import { activeConversation, CHAT_IDLE_MS, CHAT_SESSION_KEY } from '@/lib/guest-chat-session';
 
 type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean };
-const STORAGE_KEY = 'les-cyclamens-guest-chat';
 const suggestions = ['How many people can stay?', 'What’s in the kitchen?', 'Where can we eat nearby?', 'Is there skiing close by?'];
 
 export function GuestChat() {
@@ -16,24 +16,62 @@ export function GuestChat() {
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const scroller = useRef<HTMLDivElement>(null);
+  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const request = useRef<AbortController | null>(null);
+
+  function endChat() {
+    request.current?.abort();
+    request.current = null;
+    if (idleTimer.current) clearTimeout(idleTimer.current);
+    sessionStorage.removeItem(CHAT_SESSION_KEY);
+    setConversationId(crypto.randomUUID());
+    setMessages([]);
+    setInput('');
+    setBusy(false);
+  }
+
+  function touchChat(id: string) {
+    sessionStorage.setItem(CHAT_SESSION_KEY, JSON.stringify({ id, updatedAt: Date.now() }));
+    if (idleTimer.current) clearTimeout(idleTimer.current);
+    idleTimer.current = setTimeout(endChat, CHAT_IDLE_MS);
+  }
 
   useEffect(() => {
-    let id = localStorage.getItem(STORAGE_KEY);
-    if (!id) { id = crypto.randomUUID(); localStorage.setItem(STORAGE_KEY, id); }
+    const activeId = activeConversation(sessionStorage.getItem(CHAT_SESSION_KEY), Date.now());
+    const id = activeId ?? crypto.randomUUID();
+    localStorage.removeItem('les-cyclamens-guest-chat');
     setConversationId(id);
-    fetch(`/api/guest-chat?id=${id}`).then(r => r.json()).then(d => { if (Array.isArray(d.messages)) setMessages(d.messages); }).catch(() => {});
+    const controller = new AbortController();
+    if (activeId) {
+      touchChat(id);
+      fetch(`/api/guest-chat?id=${id}`, { signal: controller.signal }).then(r => r.json()).then(d => { if (!controller.signal.aborted && Array.isArray(d.messages)) setMessages(d.messages); }).catch(() => {});
+    } else sessionStorage.removeItem(CHAT_SESSION_KEY);
+    return () => {
+      controller.abort();
+      request.current?.abort();
+      if (idleTimer.current) clearTimeout(idleTimer.current);
+    };
   }, []);
   useEffect(() => { scroller.current?.scrollTo({ top: scroller.current.scrollHeight }); }, [messages]);
 
   async function ask(text: string) {
     const question = text.trim();
     if (!question || busy || !conversationId) return;
+    const controller = new AbortController();
+    request.current = controller;
+    touchChat(conversationId);
     setInput('');
     setBusy(true);
     setMessages(m => [...m, { role: 'user', content: question }, { role: 'assistant', content: '' }]);
-    const update = (fn: (last: Msg) => Msg) => setMessages(m => [...m.slice(0, -1), fn(m[m.length - 1]!)]);
+    const update = (fn: (last: Msg) => Msg) => {
+      if (controller.signal.aborted) return;
+      setMessages(m => {
+        const last = m.at(-1);
+        return last ? [...m.slice(0, -1), fn(last)] : m;
+      });
+    };
     try {
-      const res = await fetch('/api/guest-chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversationId, message: question }) });
+      const res = await fetch('/api/guest-chat', { signal: controller.signal, method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversationId, message: question }) });
       if (!res.ok || !res.body) {
         const err = await res.json().catch(() => ({}));
         update(l => ({ ...l, content: err.error ?? 'Sorry, the assistant could not answer.', error: true }));
@@ -51,7 +89,7 @@ export function GuestChat() {
       }
     } catch {
       update(l => ({ ...l, content: l.content || 'Connection lost. Please try again.', error: !l.content }));
-    } finally { setBusy(false); }
+    } finally { if (!controller.signal.aborted) { setBusy(false); touchChat(conversationId); } }
   }
 
   function submit(e: FormEvent) { e.preventDefault(); void ask(input); }
@@ -62,6 +100,10 @@ export function GuestChat() {
         <SectionHeading kicker="Ask us anything">Questions about your stay?</SectionHeading>
         <p className="mt-4 text-muted-foreground">Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.</p>
         <div className="mt-8 rounded-md border bg-card shadow-sm">
+          {messages.length > 0 && <div className="flex items-center justify-between border-b px-5 py-2">
+            <span className="text-sm text-muted-foreground">{busy ? 'Answering…' : 'Chat in progress'}</span>
+            <Button variant="ghost" size="sm" onClick={endChat}><X />End chat</Button>
+          </div>}
           <div ref={scroller} className="max-h-[28rem] min-h-48 space-y-5 overflow-y-auto p-5" aria-live="polite">
             {messages.length === 0 && (
               <div className="flex flex-wrap gap-2">
@@ -79,7 +121,7 @@ export function GuestChat() {
                 </div>)}
           </div>
           <form onSubmit={submit} className="flex items-end gap-2 border-t p-3">
-            <Textarea value={input} onChange={e => setInput(e.target.value)} maxLength={1000} rows={1} placeholder="Ask about the apartment or Thollon…" aria-label="Your question"
+            <Textarea value={input} onChange={e => { setInput(e.target.value); if (messages.length) touchChat(conversationId); }} maxLength={1000} rows={1} placeholder="Ask about the apartment or Thollon…" aria-label="Your question"
               className="min-h-10 resize-none border-0 shadow-none focus-visible:ring-0"
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); void ask(input); } }} />
             <Button type="submit" size="icon" disabled={busy || !input.trim() || !conversationId} aria-label="Send question">
