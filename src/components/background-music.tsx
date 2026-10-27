@@ -24,10 +24,10 @@ export function BackgroundMusic() {
     audioRef.current = audio;
 
     const start = (e?: Event) => {
-      const target = e?.target as HTMLElement | null;
+      const target = e?.target;
       // Clicks on the music button itself are handled by toggle() instead,
       // otherwise a single click starts and instantly pauses the track.
-      if (target?.closest("[data-background-music]")) return;
+      if (target instanceof Element && target.closest("[data-background-music]")) return;
       void audio.play().then(stopListening).catch(() => {});
     };
     const stopListening = () => {

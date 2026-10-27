@@ -20,7 +20,7 @@ export function SectionHeading({ kicker, children, className = "" }: Props) {
         alt=""
         aria-hidden
         loading="lazy"
-        className="h-14 w-14 shrink-0 -rotate-6 object-contain mix-blend-multiply transition-transform duration-300 hover:rotate-0 md:h-16 md:w-16"
+        className="size-20 shrink-0 object-contain mix-blend-multiply md:size-24"
       />
       <div className="min-w-0">
         {kicker && (
