@@ -8,6 +8,13 @@
       "when": 1793128912369,
       "tag": "0000_create_public_availability_cache",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793129303267,
+      "tag": "0001_create_private_enquiries",
+      "breakpoints": true
     }
   ]
 }
