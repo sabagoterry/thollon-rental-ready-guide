@@ -136,6 +136,7 @@ function Index() {
           </a>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
+            <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">Local area</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">Ask us</a>
             <Link to="/book" className="rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground">Book</Link>
@@ -226,7 +227,7 @@ function Index() {
               <li>Hall — 4 m² · Shower room — 2.75 m²</li>
             </ul>
           </div>
-          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] rounded-sm bg-card p-4 shadow-xl" />
+          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] w-full object-contain opacity-90 mix-blend-multiply" />
         </div>
       </section>
 
