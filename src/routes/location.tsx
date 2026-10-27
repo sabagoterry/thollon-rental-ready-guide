@@ -228,7 +228,7 @@ function LocationPage() {
           width={72}
           height={68}
           loading="lazy"
-          className="mx-auto mb-3 h-[68px] w-[72px] object-contain"
+          className="mx-auto mb-4 size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm"
         />
         Les Cyclamens · Thollon-les-Mémises, France
       </footer>

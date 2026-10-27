@@ -234,7 +234,7 @@ function Index() {
           to="/location"
           className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-sm border border-primary/10 bg-secondary p-8 transition hover:border-accent"
         >
-          <img src={logo.url} alt="" aria-hidden="true" className="absolute -bottom-6 -right-4 h-40 w-40 object-contain opacity-25 mix-blend-multiply transition group-hover:scale-105" />
+          <img src={logo.url} alt="" aria-hidden="true" className="absolute bottom-4 right-4 size-28 rounded-full border-2 border-accent bg-card p-3 object-contain transition group-hover:scale-105" />
           <span className="relative text-xs uppercase tracking-[0.3em] text-accent">Location</span>
           <span className="relative font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
           <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary">
@@ -258,7 +258,7 @@ function Index() {
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-5">
-            <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={80} height={76} loading="lazy" className="h-[76px] w-20 shrink-0 object-contain" />
+            <LogoMark />
             <div>
             <h2 className="text-4xl">Check dates & book</h2>
             <p className="mt-2 opacity-80">See availability and prices on Airbnb.</p>
@@ -272,7 +272,7 @@ function Index() {
       </section>
 
       <footer className="py-8 text-center text-sm text-muted-foreground">
-        <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={72} height={68} loading="lazy" className="mx-auto mb-3 h-[68px] w-[72px] object-contain" />
+        <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={96} height={96} loading="lazy" className="mx-auto mb-4 size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm" />
         Les Cyclamens · Thollon-les-Memises, France
       </footer>
     </main>

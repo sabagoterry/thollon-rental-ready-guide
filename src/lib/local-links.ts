@@ -1,5 +1,6 @@
 export const diningDirectory = 'https://www.leman-mountains-explore.com/en/discover/our-villages/thollon-les-memises/where-to-eat-in-thollon-les-memises/';
 export const venues = [
+  { name: 'Scoobies — Le Scoubidou', type: 'Bar, café & pizzeria', url: 'https://le-scoubidou-thollon.metro.rest/?lang=en' },
   { name: 'L’Ourson', type: 'Bar & restaurant', url: 'https://www.barlourson.com/en' },
   { name: 'Le Tibetan', type: 'Restaurant, pub & bar', url: 'https://tibetan-thollon.com/' },
   { name: 'Bon Séjour', type: 'Hotel restaurant', url: 'https://www.bon-sejour.com/' },
