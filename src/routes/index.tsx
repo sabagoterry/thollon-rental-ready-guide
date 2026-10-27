@@ -1,11 +1,24 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import hero from "@/assets/hero.jpg";
-import living from "@/assets/living.jpg";
-import bedroom from "@/assets/bedroom.jpg";
+import exterior from "@/assets/photos/exterior.jpg.asset.json";
+import lake from "@/assets/photos/lake.jpg.asset.json";
+import living from "@/assets/photos/living.jpg.asset.json";
+import sofabed from "@/assets/photos/sofabed.jpg.asset.json";
+import lounge from "@/assets/photos/lounge.jpg.asset.json";
+import master from "@/assets/photos/master.jpg.asset.json";
+import bunks from "@/assets/photos/bunks.jpg.asset.json";
+import bunks2 from "@/assets/photos/bunks2.jpg.asset.json";
+import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
+import shower from "@/assets/photos/shower.jpg.asset.json";
+import bath from "@/assets/photos/bath.jpg.asset.json";
+import balconyWinter from "@/assets/photos/balcony-winter.jpg.asset.json";
+import balconyDusk from "@/assets/photos/balcony-dusk.jpg.asset.json";
+import snowView from "@/assets/photos/snow-view.jpg.asset.json";
+import ski from "@/assets/photos/ski.jpg.asset.json";
+import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
 
-// TODO: replace with the real listing links
+// TODO: replace with the real Airbnb listing link
 const AIRBNB_URL = "https://www.airbnb.com";
-const BOOKING_URL = "https://www.booking.com";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,57 +27,100 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Charming 2-bedroom apartment near the cable car in Thollon-les-Memises, above Lake Geneva. Sleeps 6, two balconies, open all year.",
+          "Charming 39 m² 2-bedroom apartment in Thollon-les-Memises, above Lake Geneva. Sleeps 6, three balconies, open all year.",
       },
       { property: "og:title", content: "Les Cyclamens — Thollon-les-Memises apartment" },
       {
         property: "og:description",
-        content: "2 bedrooms, 2 bathrooms, two balconies, steps from the cable car. Available all year.",
+        content: "2 bedrooms, 2 bathrooms, three balconies, views over the mountains. Available all year.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
 });
 
 const rooms = [
-  { name: "Living room", text: "Bright and welcoming, with a comfortable sofa bed for two extra guests." },
-  {
-    name: "Open kitchen",
-    text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle.",
-  },
-  { name: "Master bedroom", text: "Double bed with its own en-suite shower room and toilet." },
-  { name: "Second bedroom", text: "Bunk beds — perfect for children or friends." },
-  { name: "Bathroom", text: "A full family bathroom with toilet." },
-  { name: "Two balconies", text: "Morning coffee or an evening drink in the mountain air." },
+  { name: "Living & dining room", size: "10.9 m²", img: living.url, text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed for two extra guests." },
+  { name: "Kitchen", size: "", img: kitchen.url, text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle." },
+  { name: "Double bedroom", size: "8.9 m²", img: master.url, text: "Double bed, built-in wardrobes and its own balcony, next to the shower room." },
+  { name: "Bunk room", size: "5.6 m²", img: bunks.url, text: "Cosy wood-panelled room with bunk beds and its own balcony — kids love it." },
+  { name: "Shower room", size: "2.75 m²", img: shower.url, text: "Walk-in shower, washbasin, toilet and lit mirror." },
+  { name: "Bathroom", size: "", img: bath.url, text: "Bathtub with shower, washbasin and toilet." },
 ];
 
 const facts = [
-  ["2", "Bedrooms"],
+  ["39 m²", "Living space"],
   ["Up to 6", "Guests"],
   ["2", "Bathrooms"],
-  ["2", "Balconies"],
+  ["3", "Balconies"],
 ];
 
-function BookButtons() {
+type Photo = { src: string; alt: string; season: "all" | "summer" | "winter" };
+const photos: Photo[] = [
+  { src: living.url, alt: "Living and dining room", season: "all" },
+  { src: lounge.url, alt: "Armchairs and dresser", season: "all" },
+  { src: sofabed.url, alt: "Sofa bed made up", season: "all" },
+  { src: kitchen.url, alt: "Kitchen", season: "all" },
+  { src: master.url, alt: "Double bedroom", season: "all" },
+  { src: bunks2.url, alt: "Bunk beds", season: "all" },
+  { src: shower.url, alt: "Shower room", season: "all" },
+  { src: bath.url, alt: "Bathroom", season: "all" },
+  { src: lake.url, alt: "Lake Geneva in summer", season: "summer" },
+  { src: exterior.url, alt: "The building in summer", season: "summer" },
+  { src: balconyWinter.url, alt: "Balcony in the snow", season: "winter" },
+  { src: balconyDusk.url, alt: "Balcony view at dusk", season: "winter" },
+  { src: snowView.url, alt: "Snowy view from the apartment", season: "winter" },
+  { src: ski.url, alt: "Ski slopes in Thollon", season: "winter" },
+];
+
+function BookButton() {
   return (
-    <div className="flex flex-wrap gap-3">
-      <a
-        href={AIRBNB_URL}
-        target="_blank"
-        rel="noreferrer"
-        className="rounded-sm bg-accent px-6 py-3 font-medium text-accent-foreground transition hover:opacity-90"
-      >
-        Book on Airbnb
-      </a>
-      <a
-        href={BOOKING_URL}
-        target="_blank"
-        rel="noreferrer"
-        className="rounded-sm border border-current px-6 py-3 font-medium transition hover:opacity-80"
-      >
-        Book on Booking.com
-      </a>
-    </div>
+    <a
+      href={AIRBNB_URL}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-block rounded-sm bg-accent px-6 py-3 font-medium text-accent-foreground transition hover:opacity-90"
+    >
+      Book on Airbnb
+    </a>
+  );
+}
+
+function Gallery() {
+  const [filter, setFilter] = useState<"all" | "summer" | "winter">("all");
+  const [open, setOpen] = useState<Photo | null>(null);
+  const list = filter === "all" ? photos : photos.filter((p) => p.season === filter);
+  return (
+    <section className="mx-auto max-w-6xl px-6 py-24">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <h2 className="text-4xl text-primary">Photos</h2>
+        <div className="flex gap-2">
+          {(["all", "summer", "winter"] as const).map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`rounded-sm border px-4 py-2 text-sm capitalize transition ${filter === f ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}
+            >
+              {f === "all" ? "All" : f}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {list.map((p) => (
+          <button key={p.src} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-sm">
+            <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
+          </button>
+        ))}
+      </div>
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/85 p-6" onClick={() => setOpen(null)}>
+          <img src={open.src} alt={open.alt} className="max-h-full max-w-full rounded-sm" />
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -72,7 +128,7 @@ function Index() {
   return (
     <main>
       <section className="relative flex min-h-[92vh] items-end">
-        <img src={hero} alt="Balcony view over Lake Geneva from Thollon-les-Memises" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={exterior.url} alt="Les Cyclamens building in Thollon-les-Memises" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 text-primary-foreground">
           <p className="mb-4 text-sm uppercase tracking-[0.3em]">Thollon-les-Memises · Haute-Savoie</p>
@@ -81,7 +137,7 @@ function Index() {
             A charming apartment close to the cable car, shops and restaurants — open for stays all year round.
           </p>
           <div className="mt-8">
-            <BookButtons />
+            <BookButton />
           </div>
         </div>
       </section>
@@ -105,31 +161,55 @@ function Index() {
             and hiking, paragliding and lake trips in summer.
           </p>
         </div>
-        <img src={living} alt="Living room and open kitchen" width={1200} height={912} loading="lazy" className="rounded-sm shadow-xl" />
+        <img src={living.url} alt="Living and dining room" loading="lazy" className="rounded-sm shadow-xl" />
       </section>
 
       <section className="bg-secondary">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <h2 className="text-4xl text-primary">Inside the apartment</h2>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-sm border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rooms.map((r) => (
-              <div key={r.name} className="bg-card p-8">
-                <h3 className="text-xl">{r.name}</h3>
-                <p className="mt-2 text-muted-foreground">{r.text}</p>
+              <div key={r.name} className="overflow-hidden rounded-sm border bg-card">
+                <img src={r.img} alt={r.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                <div className="p-6">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="text-xl">{r.name}</h3>
+                    {r.size && <span className="text-sm text-muted-foreground">{r.size}</span>}
+                  </div>
+                  <p className="mt-2 text-muted-foreground">{r.text}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <Gallery />
+
+      <section className="bg-secondary">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
+          <div>
+            <h2 className="text-4xl text-primary">Floor plan</h2>
+            <p className="mt-5 text-lg text-muted-foreground">39 m² in total, with a balcony off the living room and each bedroom.</p>
+            <ul className="mt-6 space-y-2 text-muted-foreground">
+              <li>Living room — 10.9 m² · balcony 4.4 m²</li>
+              <li>Double bedroom — 8.9 m² · balcony 5.3 m²</li>
+              <li>Bunk room — 5.6 m² · balcony 4.9 m²</li>
+              <li>Hall — 4 m² · Shower room — 2.75 m²</li>
+            </ul>
+          </div>
+          <img src={floorplan.url} alt="Apartment floor plan" loading="lazy" className="mx-auto max-h-[640px] rounded-sm bg-card p-4 shadow-xl" />
+        </div>
+      </section>
+
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <img src={bedroom} alt="Bedroom with bunk beds" width={1200} height={912} loading="lazy" className="rounded-sm shadow-xl md:order-none" />
+        <img src={lake.url} alt="Lake Geneva seen from Thollon" loading="lazy" className="rounded-sm shadow-xl" />
         <div>
           <h2 className="text-4xl text-primary">Every season in Thollon</h2>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
-            <li><span className="text-foreground font-medium">Winter —</span> ski the Mémises slopes, the cable car is just a short walk away.</li>
-            <li><span className="text-foreground font-medium">Summer —</span> alpine hikes, paragliding and Lake Geneva beaches below.</li>
-            <li><span className="text-foreground font-medium">Nearby —</span> Évian-les-Bains, the Swiss Riviera and Geneva.</li>
+            <li><span className="font-medium text-foreground">Winter —</span> ski the Mémises slopes, the cable car is just a short walk away.</li>
+            <li><span className="font-medium text-foreground">Summer —</span> alpine hikes, paragliding and Lake Geneva beaches below.</li>
+            <li><span className="font-medium text-foreground">Nearby —</span> Évian-les-Bains, the Swiss Riviera and Geneva.</li>
           </ul>
         </div>
       </section>
@@ -138,9 +218,9 @@ function Index() {
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-4xl">Check dates & book</h2>
-            <p className="mt-2 opacity-80">See availability and prices on your favourite platform.</p>
+            <p className="mt-2 opacity-80">See availability and prices on Airbnb.</p>
           </div>
-          <BookButtons />
+          <BookButton />
         </div>
       </section>
 
