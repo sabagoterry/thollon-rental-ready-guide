@@ -86,14 +86,12 @@ const photos: Photo[] = [
 
 function BookButton() {
   return (
-    <a
-      href={AIRBNB_URL}
-      target="_blank"
-      rel="noreferrer"
+    <Link
+      to="/book"
       className="inline-block rounded-sm bg-accent px-6 py-3 font-medium text-accent-foreground transition hover:opacity-90"
     >
-      Book on Airbnb
-    </a>
+      Choose dates & book
+    </Link>
   );
 }
 
