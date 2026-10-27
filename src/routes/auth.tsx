@@ -6,7 +6,7 @@ import { lovable } from '@/integrations/lovable';
 import logo from '@/assets/cyclamens-logo.jpg.asset.json';
 
 export const Route = createFileRoute('/auth')({
-  validateSearch: (s: Record<string, unknown>) => ({ redirect: typeof s.redirect === 'string' && s.redirect.startsWith('/') && !s.redirect.startsWith('//') ? s.redirect : '/owner' }),
+  validateSearch: (s: Record<string, unknown>) => ({ redirect: typeof s['redirect'] === 'string' && s['redirect'].startsWith('/') && !s['redirect'].startsWith('//') ? s['redirect'] : '/owner' }),
   head: () => ({
     meta: [
       { title: 'Owner sign in — Les Cyclamens' },
