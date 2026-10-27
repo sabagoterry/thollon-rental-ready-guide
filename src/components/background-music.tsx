@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Music, Pause } from "lucide-react";
-import track from "@/assets/music/chill-ambient.mp3.asset.json";
+import track from "@/assets/music/ski-sunday.mp3.asset.json";
 
 /**
- * Discreet background music player. Chill ambient track, low volume, looping.
- * Starts on the visitor's first interaction (browsers block sound before
+ * Owner-supplied track. Low volume, looping. Starts on the visitor's first
+ * interaction (browsers block sound before that) and can be paused with the
  * that) and can be paused with the floating button.
  */
 export function BackgroundMusic() {
