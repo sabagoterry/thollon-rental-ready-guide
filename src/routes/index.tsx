@@ -23,6 +23,7 @@ import balconyWinter from "@/assets/photos/balcony-winter.jpg.asset.json";
 import balconyDusk from "@/assets/photos/balcony-dusk.jpg.asset.json";
 import snowView from "@/assets/photos/snow-view.jpg.asset.json";
 import ski from "@/assets/photos/ski.jpg.asset.json";
+import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan from "@/assets/photos/floorplan.jpg.asset.json";
 import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
@@ -155,7 +156,16 @@ function Index() {
         </div>
       </header>
       <section className="relative flex min-h-[92vh] items-end">
-        <img src={exterior.url} alt="Les Cyclamens building in Thollon-les-Memises" className="absolute inset-0 h-full w-full object-cover" />
+        <video
+          src={heroVideo.url}
+          poster={exterior.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 text-primary-foreground">
           <p className="mb-4 text-sm uppercase tracking-[0.3em]">Thollon-les-Memises · Haute-Savoie</p>
