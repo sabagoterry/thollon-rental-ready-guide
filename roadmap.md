@@ -33,3 +33,5 @@
 - [x] Keep every logo placement circular
 
 - [x] Add Scoobies to local recommendations
+
+- [ ] Keep Questions section clear outside an active visitor chat
