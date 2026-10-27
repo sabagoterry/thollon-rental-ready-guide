@@ -36,8 +36,8 @@
 
 - [x] Keep Questions section clear outside an active visitor chat
 
-- [ ] Expand guest Q&A using Tripadvisor Thollon listings
+- [x] Expand guest Q&A using Tripadvisor Thollon listings
 
-- [ ] Replace snow forecast with owner-supplied Thollon URL
+- [x] Replace snow forecast with owner-supplied Thollon URL
 
 - [ ] Replace What’s on in Thollon with owner-supplied tourism events calendar
