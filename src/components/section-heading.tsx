@@ -20,16 +20,16 @@ export function SectionHeading({ kicker, children, className = "" }: Props) {
         alt=""
         aria-hidden
         loading="lazy"
-        className="size-20 shrink-0 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm md:size-24"
+        className="size-20 shrink-0 rounded-full border-2 border-accent bg-card p-2 object-contain ring-4 ring-accent/15 md:size-24"
       />
       <div className="min-w-0">
         {kicker && (
-          <p className="mb-1 text-xs font-medium uppercase tracking-[0.35em] text-accent">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.35em] text-rainbow">
             {kicker}
           </p>
         )}
-        <h2 className="text-3xl text-primary md:text-4xl">{children}</h2>
-        <div className="mt-2.5 h-px w-32 bg-gradient-to-r from-accent via-primary/40 to-transparent" />
+        <h2 className="text-3xl text-rainbow md:text-4xl">{children}</h2>
+        <div className="bar-flow mt-3 h-1.5 w-40 rounded-full" />
       </div>
     </div>
   );

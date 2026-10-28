@@ -32,7 +32,6 @@ import balconySunset from "@/assets/photos/balcony-sunset.jpg.asset.json";
 import winterCliffs from "@/assets/photos/winter-cliffs.jpg.asset.json";
 import meadowCliffs from "@/assets/photos/meadow-cliffs.jpg.asset.json";
 import valleyRidge from "@/assets/photos/valley-ridge.jpg.asset.json";
-import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/location")({
   head: () => ({
@@ -101,18 +100,12 @@ function LocationPage() {
   const list = filter === "all" ? shots : shots.filter((s) => s.season === filter);
 
   return (
-    <main>
+    <main className="band-soft">
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
-        <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+        <div className="bar-flow h-1.5" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <Link to="/" className="group flex items-center gap-4" aria-label="Les Cyclamens home">
+          <Link to="/" className="group" aria-label="Les Cyclamens home">
             <LogoMark />
-            <span className="leading-tight">
-              <span className="block font-display text-xl text-primary sm:text-2xl md:text-3xl">Les Cyclamens</span>
-              <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">
-                Thollon-les-Mémises · Lake Geneva
-              </span>
-            </span>
           </Link>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <Link to="/" className="hidden text-muted-foreground transition hover:text-primary md:inline">
@@ -120,7 +113,7 @@ function LocationPage() {
             </Link>
             <Link
               to="/book"
-              className="rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground"
+              className="rounded-full band-lake px-5 py-2 font-medium text-primary-foreground glow-primary transition hover:brightness-110"
             >
               Book
             </Link>
@@ -132,7 +125,7 @@ function LocationPage() {
         <img src={exterior.url} alt="The Les Cyclamens building in the village" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 text-primary-foreground">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em]">Thollon-les-Mémises · Haute-Savoie</p>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">Thollon-les-Mémises · Haute-Savoie</p>
           <h1 className="max-w-3xl text-5xl leading-tight md:text-6xl">Everything you can see from the door</h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
             The apartment is in the village itself, with the cable car, shops and restaurants a short walk away —
@@ -151,7 +144,7 @@ function LocationPage() {
                 onClick={() => setFilter(f)}
                 variant={filter === f ? 'default' : 'outline'}
                 aria-pressed={filter === f}
-                className="capitalize"
+                className={filter === f ? 'capitalize band-sunset text-accent-foreground glow-accent' : 'capitalize'}
               >
                 {f === "all" ? "All" : f}
               </Button>
@@ -166,14 +159,14 @@ function LocationPage() {
           const groupShots = list.filter(shot => group.sources.some(source => source.url === shot.src));
           if (!groupShots.length) return null;
           return <section key={group.title} aria-label={group.title} className="mt-14">
-          <h3 className="border-b border-primary/20 pb-4 text-2xl text-primary">{group.title}</h3>
+          <h3 className="border-b-2 border-accent/40 pb-4 text-2xl text-rainbow">{group.title}</h3>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {groupShots.map((s) => (
             <Button
               key={s.src}
               onClick={() => setOpen(s)}
               variant="ghost"
-              className="group block h-auto w-full overflow-hidden whitespace-normal rounded-sm border bg-card p-0 text-left"
+              className="card-vivid group block h-auto w-full overflow-hidden whitespace-normal rounded-md bg-card p-0 text-left transition hover:-translate-y-1 hover:glow-accent"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
@@ -185,7 +178,7 @@ function LocationPage() {
               </div>
               <div className="flex items-center justify-between gap-3 px-4 py-3">
                 <span className="font-medium">{s.caption}</span>
-                <span className="text-xs uppercase tracking-[0.2em] text-accent">{s.season}</span>
+                <span className="band-sunset rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.2em] text-accent-foreground">{s.season}</span>
               </div>
             </Button>
           ))}
@@ -196,14 +189,14 @@ function LocationPage() {
         <div className="mt-14 flex flex-wrap gap-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-sm border px-5 py-3 font-medium transition hover:bg-secondary"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-5 py-3 font-medium text-primary transition hover:border-accent hover:text-accent"
           >
             <ArrowLeft className="size-4" /> Back to the apartment
           </Link>
           <Link
             to="/"
             hash="local-guide"
-            className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex items-center gap-2 rounded-full band-lake px-5 py-3 font-medium text-primary-foreground glow-primary transition hover:brightness-110"
           >
             Shops, lifts & where to eat
           </Link>
@@ -221,16 +214,8 @@ function LocationPage() {
         </div>
       )}
 
-      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        <img
-          src={logo.url}
-          alt="Les Cyclamens cyclamen flower logo"
-          width={72}
-          height={68}
-          loading="lazy"
-          className="mx-auto mb-4 size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm"
-        />
-        Les Cyclamens · Thollon-les-Mémises, France
+      <footer className="flex justify-center border-t px-6 py-8">
+        <LogoMark />
       </footer>
     </main>
   );
