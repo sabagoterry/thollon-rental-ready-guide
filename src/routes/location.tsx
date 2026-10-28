@@ -32,7 +32,6 @@ import balconySunset from "@/assets/photos/balcony-sunset.jpg.asset.json";
 import winterCliffs from "@/assets/photos/winter-cliffs.jpg.asset.json";
 import meadowCliffs from "@/assets/photos/meadow-cliffs.jpg.asset.json";
 import valleyRidge from "@/assets/photos/valley-ridge.jpg.asset.json";
-import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/location")({
   head: () => ({
