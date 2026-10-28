@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from '@/components/section-heading';
 import { LogoMark } from '@/components/logo-mark';
+import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies } from '@/lib/apartment';
@@ -270,11 +271,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="band-deep px-6 py-10">
-        <div className="flex justify-center">
-          <LogoMark />
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

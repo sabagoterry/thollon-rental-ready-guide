@@ -44,3 +44,5 @@
 
 - [x] Replace What’s on in Thollon with owner-supplied tourism events calendar
 - [x] Point Télécabine (cabin) news at the owner-supplied Facebook page
+- [x] Suitably populate the footer on all public pages
+- [x] Package and deliver a fresh full download of the site
