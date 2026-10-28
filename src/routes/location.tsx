@@ -215,9 +215,7 @@ function LocationPage() {
         </div>
       )}
 
-      <footer className="flex justify-center border-t px-6 py-8">
-        <LogoMark />
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

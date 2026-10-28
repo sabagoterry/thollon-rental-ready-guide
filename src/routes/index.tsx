@@ -270,11 +270,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="band-deep px-6 py-10">
-        <div className="flex justify-center">
-          <LogoMark />
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
