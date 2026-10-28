@@ -4,12 +4,6 @@ import { AIRBNB_URL } from '@/lib/guest-guide';
 import { houseRules } from '@/lib/apartment';
 import { essentials, liveLinks } from '@/lib/local-links';
 
-const siteLinks = [
-  { name: 'Home', to: '/' },
-  { name: 'Location', to: '/location' },
-  { name: 'Check dates & book', to: '/book' },
-] as const;
-
 const aroundLinks = [
   { name: 'Tourist office', url: essentials.find((e) => e.name === 'Tourist office')!.url },
   { name: 'Lift passes', url: essentials.find((e) => e.name === 'Lift passes')!.url },
@@ -25,22 +19,6 @@ const quickFacts = [
   'No pets',
   'No smoking, including balconies',
 ] as const;
-
-function FooterLink({ href, external }: { href: string; external?: boolean }) {
-  const className = 'underline-offset-4 transition hover:text-white hover:underline';
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-        {externalChildren(href)}
-      </a>
-    );
-  }
-  return <Link to={href === '/' ? '/' : href} className={className}>{href.replace('/', '') || 'Home'}</Link>;
-}
-
-function externalChildren(href: string) {
-  return null;
-}
 
 export function SiteFooter() {
   return (
