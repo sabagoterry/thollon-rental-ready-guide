@@ -36,7 +36,8 @@
 
 - [x] Keep Questions section clear outside an active visitor chat
 
-- [x] Expand guest Q&A using Tripadvisor Thollon listings
+- [x] Keep only the logo in the header and footer
+- [ ] Make the site far more vibrant in colour
 
 - [x] Replace snow forecast with owner-supplied Thollon URL
 
