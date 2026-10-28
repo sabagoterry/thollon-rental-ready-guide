@@ -47,7 +47,7 @@ export function LocalGuide() {
         <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {venues.map(venue => (
             <div key={venue.name} className="border-b border-accent/30 pb-5">
-              <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base">
+              <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent">
                 <a href={venue.url} target="_blank" rel="noopener noreferrer">{venue.name}<ArrowUpRight className="size-4 shrink-0" /></a>
               </Button>
               <p className="mt-1 text-sm text-muted-foreground">{venue.type}</p>
@@ -58,7 +58,7 @@ export function LocalGuide() {
         <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2">
           {dayTrips.map(t => (
             <div key={t.name} className="border-b border-accent/30 pb-5">
-              <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base">
+              <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent">
                 <a href={t.url} target="_blank" rel="noopener noreferrer">{t.name}<ArrowUpRight className="size-4 shrink-0" /></a>
               </Button>
               <p className="mt-1 text-sm text-muted-foreground">{t.detail}</p>

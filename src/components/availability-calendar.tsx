@@ -38,7 +38,7 @@ export function AvailabilityCalendar() {
             numberOfMonths={2} weekStartsOn={1} showOutsideDays={false}
             className="availability-calendar max-w-full bg-card p-0 [--cell-size:2.25rem]"
             modifiers={{ blocked: day => isBlocked(format(day, 'yyyy-MM-dd'), data.ranges), past: { before: today } }}
-            modifiersClassNames={{ blocked: 'bg-coral/15 text-muted-foreground line-through', past: 'text-muted-foreground opacity-40' }}
+            modifiersClassNames={{ blocked: 'bg-coral/15 text-muted-foreground line-through', past: 'text-muted-foreground opacity-70' }}
             labels={{ labelDay: day => `${format(day, 'd MMMM yyyy')}: ${day < today ? 'past date' : isBlocked(format(day, 'yyyy-MM-dd'), data.ranges) ? 'unavailable' : ready ? 'not blocked on Airbnb' : 'availability unconfirmed'}` }}
           />
         </div>
