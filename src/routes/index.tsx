@@ -267,7 +267,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="py-8 text-center">
+      <footer className="flex justify-center px-6 py-8">
         <LogoMark />
       </footer>
     </main>
