@@ -111,7 +111,8 @@ function BookPage() {
             <div className="[&_button]:w-full [&_button]:border-transparent [&_button]:bg-accent/15 [&_button]:text-accent-foreground"><WhatsAppEnquiry /></div>
           </div>
         </aside>
-      <SiteFooter />
+      </div>
     </div>
+    <SiteFooter />
   </main>;
 }
