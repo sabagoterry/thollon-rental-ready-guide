@@ -107,7 +107,7 @@ function BookPage() {
           <p className="text-xs text-muted-foreground">Instant booking — price and final availability are confirmed on Airbnb.</p>
           <div className="border-t pt-4 text-sm">
             <p className="mb-2 text-muted-foreground">Have a question first?</p>
-            <div className="[&_button]:w-full [&_button]:border-transparent [&_button]:text-accent-foreground"><WhatsAppEnquiry /></div>
+            <div className="[&_button]:w-full [&_button]:border-transparent [&_button]:bg-accent/15 [&_button]:text-accent-foreground"><WhatsAppEnquiry /></div>
           </div>
         </aside>
       </div>

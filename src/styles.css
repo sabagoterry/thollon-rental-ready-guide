@@ -110,7 +110,7 @@
   --sidebar-accent-foreground: oklch(0.33 0.09 55);
   --sidebar-border: oklch(0.87 0.06 232);
   --sidebar-ring: oklch(0.52 0.21 250);
-  --overlay: linear-gradient(165deg, oklch(0.75 0.2 55 / 0.42) 0%, oklch(0.5 0.19 250 / 0.5) 50%, oklch(0.26 0.13 265 / 0.86) 100%);
+  --overlay: linear-gradient(165deg, oklch(0.78 0.17 55 / 0.32) 0%, oklch(0.5 0.17 250 / 0.4) 45%, oklch(0.26 0.12 265 / 0.8) 100%);
 }
 
 .dark {
@@ -151,7 +151,7 @@
   --sidebar-accent-foreground: oklch(0.95 0.05 92);
   --sidebar-border: oklch(0.85 0.08 240 / 22%);
   --sidebar-ring: oklch(0.72 0.17 230);
-  --overlay: linear-gradient(165deg, oklch(0.7 0.19 55 / 0.45) 0%, oklch(0.45 0.18 250 / 0.55) 50%, oklch(0.2 0.09 265 / 0.9) 100%);
+  --overlay: linear-gradient(165deg, oklch(0.7 0.17 55 / 0.35) 0%, oklch(0.45 0.16 250 / 0.45) 45%, oklch(0.2 0.09 265 / 0.84) 100%);
 }
 
 @layer base {
@@ -162,9 +162,9 @@
   body {
     background-color: var(--color-background);
     background-image:
-      radial-gradient(60rem 42rem at 100% 0%, oklch(0.87 0.19 90 / 0.92), transparent 64%),
-      radial-gradient(55rem 40rem at 0% 22%, oklch(0.83 0.17 205 / 0.85), transparent 68%),
-      radial-gradient(50rem 36rem at 52% 100%, oklch(0.82 0.18 22 / 0.6), transparent 70%);
+      radial-gradient(60rem 42rem at 100% 0%, oklch(0.87 0.19 90 / 0.5), transparent 64%),
+      radial-gradient(55rem 40rem at 0% 22%, oklch(0.83 0.17 205 / 0.45), transparent 68%),
+      radial-gradient(50rem 36rem at 52% 100%, oklch(0.82 0.18 22 / 0.32), transparent 70%);
     background-attachment: fixed;
     color: var(--color-foreground);
   }
@@ -199,11 +199,11 @@
 }
 
 @utility band-ice {
-  background-image: linear-gradient(140deg, oklch(0.955 0.07 205) 0%, oklch(0.85 0.15 210) 100%);
+  background-image: linear-gradient(140deg, oklch(0.968 0.035 205) 0%, oklch(0.905 0.085 210) 100%);
 }
 
 @utility band-soft {
-  background-image: linear-gradient(160deg, oklch(0.955 0.1 90) 0%, oklch(0.94 0.1 215) 55%, oklch(0.935 0.11 30) 100%);
+  background-image: linear-gradient(160deg, oklch(0.968 0.055 90) 0%, oklch(0.958 0.05 215) 55%, oklch(0.952 0.06 30) 100%);
 }
 
 @utility bar-flow {
@@ -233,6 +233,7 @@
 
 .availability-calendar .rdp-month { width: 280px; }
 .availability-calendar .rdp-months { gap: 3rem; }
+.availability-calendar .rdp-weekday { color: var(--foreground); font-weight: 600; opacity: 0.8; }
 @media (max-width: 767px) {
   .availability-calendar .rdp-months { gap: 2rem; }
 }

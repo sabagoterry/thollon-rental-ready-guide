@@ -40,7 +40,7 @@ export function WhatsAppEnquiry() {
     if (next) { setRequestId(crypto.randomUUID()); setResult(null); }
     setOpen(next);
   }}>
-    <DialogTrigger asChild><Button variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"><MessageCircle />Send an enquiry</Button></DialogTrigger>
+    <DialogTrigger asChild><Button variant="outline" className="border-primary-foreground/50 bg-primary-foreground/15 text-primary-foreground hover:bg-primary-foreground/25 hover:text-primary-foreground"><MessageCircle />Send an enquiry</Button></DialogTrigger>
     <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] overflow-y-auto rounded-md">
       <DialogHeader><DialogTitle>Enquire about Les Cyclamens</DialogTitle><DialogDescription>Send your dates and contact details and the owner will get back to you.</DialogDescription></DialogHeader>
       <div className="flex items-start gap-3 rounded-md border-2 border-accent/60 bg-accent/15 p-3 text-sm">

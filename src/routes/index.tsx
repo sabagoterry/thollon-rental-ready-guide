@@ -105,7 +105,7 @@ function Gallery() {
       </p>
       <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
         {photos.map((p) => (
-          <span key={p.src} className="block rounded-md band-sunset p-1 transition hover:-translate-y-1 hover:glow-accent">
+          <span key={p.src} className="block rounded-md bar-flow p-[3px] transition hover:-translate-y-1 hover:glow-accent">
             <button onClick={() => setOpen(p)} className="block aspect-[4/3] w-full overflow-hidden rounded-sm">
               <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
             </button>
