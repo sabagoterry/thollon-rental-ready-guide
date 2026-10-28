@@ -80,7 +80,7 @@ function BookButton() {
   return (
     <Link
       to="/book"
-      className="inline-block rounded-sm bg-accent px-6 py-3 font-medium text-accent-foreground transition hover:opacity-90"
+      className="inline-block rounded-full band-sunset px-7 py-3 font-medium text-accent-foreground glow-accent transition hover:brightness-110"
     >
       Choose dates & book
     </Link>
@@ -105,7 +105,7 @@ function Gallery() {
       </p>
       <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
         {photos.map((p) => (
-          <button key={p.src} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-sm">
+          <button key={p.src} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-md ring-1 ring-primary/15 transition hover:-translate-y-1 hover:ring-2 hover:ring-accent">
             <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
           </button>
         ))}
@@ -123,7 +123,7 @@ function Index() {
   return (
     <main>
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
-        <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+        <div className="bar-flow h-1.5" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
           <Link to="/" aria-label="Les Cyclamens home" className="group">
             <LogoMark />
@@ -133,7 +133,7 @@ function Index() {
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">Local area</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">Ask us</a>
-            <Link to="/book" className="rounded-full bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:bg-accent hover:text-accent-foreground">Book</Link>
+            <Link to="/book" className="rounded-full band-lake px-5 py-2 font-medium text-primary-foreground glow-primary transition hover:brightness-110">Book</Link>
           </nav>
         </div>
       </header>
@@ -150,7 +150,7 @@ function Index() {
         />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 text-primary-foreground">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em]">Thollon-les-Memises · Haute-Savoie</p>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">Thollon-les-Memises · Haute-Savoie</p>
           <h1 className="max-w-3xl text-5xl leading-tight md:text-7xl">Les Cyclamens, your home above Lake Geneva</h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
             A charming apartment close to the cable car, shops and restaurants — open for stays all year round.
@@ -162,11 +162,11 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-b bg-card">
+      <section className="border-b band-soft">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-6 py-10 md:grid-cols-4">
           {facts.map(([n, l]) => (
             <div key={l} className="text-center">
-              <div className="font-display text-3xl text-primary">{n}</div>
+              <div className="font-display text-3xl text-rainbow">{n}</div>
               <div className="text-sm text-muted-foreground">{l}</div>
             </div>
           ))}
@@ -184,17 +184,18 @@ function Index() {
         <img src={living.url} alt="Living and dining room" loading="lazy" className="rounded-sm shadow-xl" />
       </section>
 
-      <section className="bg-secondary">
+      <section className="band-ice">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <SectionHeading kicker="Rooms">Inside the apartment</SectionHeading>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rooms.map((r) => (
-              <div key={r.name} className="overflow-hidden rounded-sm border bg-card">
+              <div key={r.name} className="card-vivid overflow-hidden rounded-md bg-card transition hover:-translate-y-1 hover:glow-accent">
+                <div className="bar-flow h-1.5" />
                 <img src={r.img} alt={r.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
                 <div className="p-6">
                   <div className="flex items-baseline justify-between gap-2">
-                    <h3 className="text-xl">{r.name}</h3>
-                    {r.size && <span className="text-sm text-muted-foreground">{r.size}</span>}
+                    <h3 className="text-xl text-primary">{r.name}</h3>
+                    {r.size && <span className="band-sunset rounded-full px-3 py-1 text-xs font-medium text-accent-foreground">{r.size}</span>}
                   </div>
                   <p className="mt-2 text-muted-foreground">{r.text}</p>
                 </div>
@@ -206,7 +207,7 @@ function Index() {
 
       <Gallery />
 
-      <section className="bg-secondary">
+      <section className="band-soft">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
           <div>
             <SectionHeading kicker="39 m²">Floor plan</SectionHeading>
@@ -228,21 +229,21 @@ function Index() {
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
         <Link
           to="/location"
-          className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-sm border border-primary/10 bg-secondary p-8 transition hover:border-accent"
+          className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-md band-day p-8 glow-primary transition hover:brightness-110"
         >
           <img src={logo.url} alt="" aria-hidden="true" className="absolute bottom-4 right-4 size-28 rounded-full border-2 border-accent bg-card p-3 object-contain transition group-hover:scale-105" />
-          <span className="relative text-xs uppercase tracking-[0.3em] text-accent">Location</span>
-          <span className="relative pr-24 font-display text-3xl leading-snug text-primary">See the views, the lake and the slopes</span>
-          <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary">
+          <span className="relative text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/85">Location</span>
+          <span className="relative pr-24 font-display text-3xl leading-snug text-primary-foreground">See the views, the lake and the slopes</span>
+          <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary-foreground">
             Open the location page <ArrowRight className="size-4 transition group-hover:translate-x-1" />
           </span>
         </Link>
         <div>
           <SectionHeading kicker="Four seasons">Every season in Thollon</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
-            <li><span className="font-medium text-foreground">Winter —</span> ski the Mémises slopes, the cable car is just a short walk away.</li>
-            <li><span className="font-medium text-foreground">Summer —</span> alpine hikes, paragliding and Lake Geneva beaches below.</li>
-            <li><span className="font-medium text-foreground">Nearby —</span> Évian-les-Bains, the Swiss Riviera and Geneva.</li>
+            <li><span className="font-medium text-primary">Winter —</span> ski the Mémises slopes, the cable car is just a short walk away.</li>
+            <li><span className="font-medium text-accent">Summer —</span> alpine hikes, paragliding and Lake Geneva beaches below.</li>
+            <li><span className="font-medium text-lake">Nearby —</span> Évian-les-Bains, the Swiss Riviera and Geneva.</li>
           </ul>
         </div>
       </section>
@@ -251,7 +252,7 @@ function Index() {
       <GuestChat />
       <AvailabilityCalendar />
 
-      <section className="bg-primary text-primary-foreground">
+      <section className="band-lake text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-5">
             <LogoMark />
@@ -267,8 +268,10 @@ function Index() {
         </div>
       </section>
 
-      <footer className="flex justify-center px-6 py-8">
-        <LogoMark />
+      <footer className="band-soft border-t px-6 py-10">
+        <div className="flex justify-center">
+          <LogoMark />
+        </div>
       </footer>
     </main>
   );
