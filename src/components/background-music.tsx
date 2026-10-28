@@ -65,7 +65,7 @@ export function BackgroundMusic() {
       onClick={toggle}
       aria-label={playing ? "Turn background music off" : "Turn background music on"}
       title={playing ? "Pause the music" : "Play the music"}
-      className="fixed bottom-5 right-5 z-40 flex size-12 items-center justify-center rounded-full border bg-card text-primary shadow-lg transition hover:scale-105 md:bottom-6 md:right-6"
+      className="fixed bottom-5 right-5 z-40 flex size-12 items-center justify-center rounded-full border-0 band-sunset text-accent-foreground glow-accent transition hover:scale-105 md:bottom-6 md:right-6"
     >
       {playing && (
         <span

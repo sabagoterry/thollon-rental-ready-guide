@@ -105,9 +105,11 @@ function Gallery() {
       </p>
       <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
         {photos.map((p) => (
-          <button key={p.src} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-md ring-1 ring-primary/15 transition hover:-translate-y-1 hover:ring-2 hover:ring-accent">
-            <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
-          </button>
+          <span key={p.src} className="block rounded-md bar-flow p-[3px] transition hover:-translate-y-1 hover:glow-accent">
+            <button onClick={() => setOpen(p)} className="block aspect-[4/3] w-full overflow-hidden rounded-sm">
+              <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
+            </button>
+          </span>
         ))}
       </div>
       {open && (
@@ -252,7 +254,7 @@ function Index() {
       <GuestChat />
       <AvailabilityCalendar />
 
-      <section className="band-lake text-primary-foreground">
+      <section className="band-deep text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-5">
             <LogoMark />
@@ -268,7 +270,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="band-soft border-t px-6 py-10">
+      <footer className="band-deep px-6 py-10">
         <div className="flex justify-center">
           <LogoMark />
         </div>
