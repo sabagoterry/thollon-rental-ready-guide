@@ -168,6 +168,7 @@ function LocationPage() {
               variant="ghost"
               className="card-vivid group block h-auto w-full overflow-hidden whitespace-normal rounded-md bg-card p-0 text-left transition hover:-translate-y-1 hover:glow-accent"
             >
+              <div className="bar-flow h-1" />
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={s.src}

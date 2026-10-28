@@ -24,11 +24,11 @@ export function SectionHeading({ kicker, children, className = "" }: Props) {
       />
       <div className="min-w-0">
         {kicker && (
-          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.35em] text-rainbow">
+          <p className="mb-1 text-sm font-semibold uppercase tracking-[0.35em] text-rainbow">
             {kicker}
           </p>
         )}
-        <h2 className="text-3xl text-rainbow md:text-4xl">{children}</h2>
+        <h2 className="text-4xl text-rainbow md:text-5xl">{children}</h2>
         <div className="bar-flow mt-3 h-1.5 w-40 rounded-full" />
       </div>
     </div>

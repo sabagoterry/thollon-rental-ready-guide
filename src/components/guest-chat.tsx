@@ -97,11 +97,12 @@ export function GuestChat() {
   function submit(e: FormEvent) { e.preventDefault(); void ask(input); }
 
   return (
-    <section id="ask" className="bg-background">
+    <section id="ask" className="band-soft">
       <div className="mx-auto max-w-3xl px-6 py-20">
         <SectionHeading kicker="Ask us anything">Questions about your stay?</SectionHeading>
         <p className="mt-4 text-muted-foreground">Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.</p>
-        <div className="mt-8 rounded-md border bg-card shadow-sm">
+        <div className="card-vivid mt-8 overflow-hidden rounded-md bg-card">
+          <div className="bar-flow h-1.5" />
           {messages.length > 0 && <div className="flex items-center justify-between border-b px-5 py-2">
             <span className="text-sm text-muted-foreground">{busy ? 'Answering…' : 'Chat in progress'}</span>
             <Button variant="ghost" size="sm" onClick={endChat}><X />End chat</Button>
@@ -109,11 +110,11 @@ export function GuestChat() {
           <div ref={scroller} className="max-h-[28rem] min-h-48 space-y-5 overflow-y-auto p-5" aria-live="polite">
             {messages.length === 0 && (
               <div className="flex flex-wrap gap-2">
-                {suggestions.map(s => <Button key={s} variant="outline" size="sm" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
+                {suggestions.map(s => <Button key={s} variant="outline" size="sm" className="hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
               </div>
             )}
             {messages.map((m, i) => m.role === 'user'
-              ? <div key={i} className="ml-auto w-fit max-w-[85%] rounded-md bg-primary px-4 py-2 text-primary-foreground">{m.content}</div>
+              ? <div key={i} className="ml-auto w-fit max-w-[85%] rounded-md band-lake px-4 py-2 text-primary-foreground">{m.content}</div>
               : <div key={i} className="flex gap-3">
                   <img src={logo.url} alt="" className="size-8 shrink-0 rounded-full border bg-background object-contain p-0.5" />
                   <div className={`prose prose-sm max-w-none pt-1 ${m.error ? 'text-destructive' : 'text-foreground'}`}>
@@ -126,7 +127,7 @@ export function GuestChat() {
             <Textarea value={input} onChange={e => { setInput(e.target.value); if (messages.length) touchChat(conversationId); }} maxLength={1000} rows={1} placeholder="Ask about the apartment or Thollon…" aria-label="Your question"
               className="min-h-10 resize-none border-0 shadow-none focus-visible:ring-0"
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); void ask(input); } }} />
-            <Button type="submit" size="icon" disabled={busy || !input.trim() || !conversationId} aria-label="Send question">
+            <Button type="submit" size="icon" className="band-lake text-primary-foreground" disabled={busy || !input.trim() || !conversationId} aria-label="Send question">
               {busy ? <LoaderCircle className="animate-spin motion-reduce:animate-none" /> : <ArrowUp />}
             </Button>
           </form>
