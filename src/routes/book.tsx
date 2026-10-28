@@ -8,6 +8,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
+import { SiteFooter } from '@/components/site-footer';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
 import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';

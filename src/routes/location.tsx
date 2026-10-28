@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { LogoMark } from '@/components/logo-mark';
+import { SiteFooter } from '@/components/site-footer';
 import { Button } from '@/components/ui/button';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
