@@ -125,12 +125,8 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
         <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <Link to="/" aria-label="Les Cyclamens home" className="group flex items-center gap-4">
+          <Link to="/" aria-label="Les Cyclamens home" className="group">
             <LogoMark />
-            <span className="leading-tight">
-              <span className="block font-display text-xl text-primary sm:text-2xl md:text-3xl">Les Cyclamens</span>
-              <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-accent sm:block">Thollon-les-Mémises · Lake Geneva</span>
-            </span>
           </Link>
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
@@ -271,9 +267,8 @@ function Index() {
         </div>
       </section>
 
-      <footer className="py-8 text-center text-sm text-muted-foreground">
-        <img src={logo.url} alt="Les Cyclamens cyclamen flower logo" width={96} height={96} loading="lazy" className="mx-auto mb-4 size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-sm" />
-        Les Cyclamens · Thollon-les-Memises, France
+      <footer className="py-8 text-center">
+        <LogoMark />
       </footer>
     </main>
   );
