@@ -4,6 +4,10 @@ import { SectionHeading } from '@/components/section-heading';
 import { diningDirectory, venues, essentials as baseEssentials, liveLinks, dayTrips } from '@/lib/local-links';
 
 const liveIcons = { webcam: Video, forecast: CloudSnow, news: Newspaper, events: PartyPopper } as const;
+const tripKinds = {
+  summer: { icon: Sun, label: 'Summer trip', band: 'band-sunset text-accent-foreground' },
+  winter: { icon: MountainSnow, label: 'Ski resort', band: 'band-lake text-primary-foreground' },
+} as const;
 
 const icons = { 'ESF Thollon': MountainSnow, 'Tourist office': MapPin, 'Lift passes': MountainSnow, Sherpa: ShoppingBasket } as const;
 const essentials = baseEssentials.map(e => ({ ...e, icon: icons[e.name as keyof typeof icons] ?? MapPin }));
@@ -56,14 +60,16 @@ export function LocalGuide() {
         </div>
         <h3 className="mt-14 flex items-center gap-3 text-2xl text-rainbow"><Car className="size-5" />Day trips</h3>
         <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2">
-          {dayTrips.map(t => (
-            <div key={t.name} className="border-b border-accent/30 pb-5">
-              <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent">
-                <a href={t.url} target="_blank" rel="noopener noreferrer">{t.name}<ArrowUpRight className="size-4 shrink-0" /></a>
-              </Button>
-              <p className="mt-1 text-sm text-muted-foreground">{t.detail}</p>
-            </div>
-          ))}
+          {dayTrips.map(t => { const kind = tripKinds[t.kind]; return (
+            <div key={t.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
+              <span title={kind.label} aria-label={kind.label} className={`mt-1 grid size-9 shrink-0 place-items-center rounded-full ${kind.band}`}><kind.icon className="size-4" /></span>
+              <div className="min-w-0">
+                <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent">
+                  <a href={t.url} target="_blank" rel="noopener noreferrer">{t.name}<ArrowUpRight className="size-4 shrink-0" /></a>
+                </Button>
+                <p className="mt-1 text-sm text-muted-foreground">{t.detail}</p>
+              </div>
+            </div>); })}
         </div>
       </div>
     </section>
