@@ -77,16 +77,6 @@ const photos: Photo[] = [
   { src: bath.url, alt: "Bathroom" },
 ];
 
-function BookButton() {
-  return (
-    <Link
-      to="/book"
-      className="inline-block rounded-full band-sunset px-7 py-3 font-medium text-accent-foreground glow-accent transition hover:brightness-110"
-    >
-      Choose dates & book
-    </Link>
-  );
-}
 
 function Gallery() {
   const [open, setOpen] = useState<Photo | null>(null);
@@ -158,7 +148,6 @@ function Index() {
             A charming apartment close to the cable car, shops and restaurants — open for stays all year round.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <BookButton />
             <WhatsAppEnquiry />
           </div>
         </div>
