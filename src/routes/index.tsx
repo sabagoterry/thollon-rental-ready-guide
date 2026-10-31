@@ -22,7 +22,6 @@ import shower from "@/assets/photos/shower.jpg.asset.json";
 import bath from "@/assets/photos/bath.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan from "@/assets/photos/floorplan.png.asset.json";
-import logo from "@/assets/cyclamens-logo.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
@@ -118,9 +117,7 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
         <div className="bar-flow h-1.5" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <Link to="/" aria-label="Les Cyclamens home" className="group">
-            <LogoMark />
-          </Link>
+          <LogoMark />
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">Availability</a>
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
@@ -222,9 +219,8 @@ function Index() {
           to="/location"
           className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-md band-day p-8 glow-primary transition hover:brightness-110"
         >
-          <img src={logo.url} alt="" aria-hidden="true" className="absolute bottom-4 right-4 size-28 rounded-full border-2 border-accent bg-card p-3 object-contain transition group-hover:scale-105" />
           <span className="relative text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/85">Location</span>
-          <span className="relative pr-24 font-display text-3xl leading-snug text-primary-foreground">See the views, the lake and the slopes</span>
+          <span className="relative font-display text-3xl leading-snug text-primary-foreground">See the views, the lake and the slopes</span>
           <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary-foreground">
             Open the location page <ArrowRight className="size-4 transition group-hover:translate-x-1" />
           </span>

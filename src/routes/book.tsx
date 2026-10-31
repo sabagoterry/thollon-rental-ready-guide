@@ -64,9 +64,7 @@ function BookPage() {
     <header className="border-b bg-card">
       <div className="bar-flow h-1.5" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-        <Link to="/" className="flex items-center" aria-label="Les Cyclamens home">
-          <LogoMark />
-        </Link>
+        <LogoMark />
         <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" />Back to apartment</Link>
       </div>
     </header>

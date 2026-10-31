@@ -105,9 +105,7 @@ function LocationPage() {
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
         <div className="bar-flow h-1.5" />
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <Link to="/" className="group" aria-label="Les Cyclamens home">
-            <LogoMark />
-          </Link>
+          <LogoMark />
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <Link to="/" className="hidden text-muted-foreground transition hover:text-primary md:inline">
               The apartment

@@ -4,47 +4,30 @@ import { Button } from "@/components/ui/button";
 import track from "@/assets/music/ski-sunday.mp3.asset.json";
 
 /**
- * Owner-supplied track. Low volume, looping. Starts on the visitor's first
- * interaction (browsers block sound before that). Mounted in the root layout
+ * Owner-supplied track. Low volume, looping. Starts only via its own button.
+ * Mounted in the root layout
  * so navigation never replaces the audio instance; the button can pause it.
  */
 export function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const audio = new Audio(track.url);
     audio.loop = true;
     audio.volume = 0.25;
     audio.preload = "auto";
-    const onPlay = () => setPlaying(true);
+    const onPlay = () => { setPlaying(true); setStarted(true); };
     const onPause = () => setPlaying(false);
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audioRef.current = audio;
 
-    const start = (e?: Event) => {
-      const target = e?.target;
-      // Clicks on the music button itself are handled by toggle() instead,
-      // otherwise a single click starts and instantly pauses the track.
-      if (target instanceof Element && target.closest("[data-background-music]")) return;
-      void audio.play().then(stopListening).catch(() => {});
-    };
-    const stopListening = () => {
-      window.removeEventListener("pointerdown", start);
-      window.removeEventListener("keydown", start);
-    };
-    audio.addEventListener("play", stopListening);
-    window.addEventListener("pointerdown", start);
-    window.addEventListener("keydown", start);
-
     return () => {
-      window.removeEventListener("pointerdown", start);
-      window.removeEventListener("keydown", start);
       audio.pause();
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
-      audio.removeEventListener("play", stopListening);
       audioRef.current = null;
     };
   }, []);
@@ -60,12 +43,11 @@ export function BackgroundMusic() {
     <Button
       type="button"
       variant="outline"
-      size="icon"
       data-background-music
       onClick={toggle}
-      aria-label={playing ? "Turn background music off" : "Turn background music on"}
+      aria-pressed={playing}
       title={playing ? "Pause the music" : "Play the music"}
-      className="fixed bottom-5 right-5 z-40 flex size-12 items-center justify-center rounded-full border-0 band-sunset text-accent-foreground glow-accent transition hover:scale-105 md:bottom-6 md:right-6"
+      className="fixed bottom-5 right-5 z-40 flex h-auto min-h-12 max-w-[calc(100vw-2.5rem)] items-center justify-center rounded-full border-0 band-sunset px-5 py-3 text-accent-foreground glow-accent transition hover:scale-105 md:bottom-6 md:right-6"
     >
       {playing && (
         <span
@@ -74,6 +56,7 @@ export function BackgroundMusic() {
         />
       )}
       {playing ? <Pause className="size-5" /> : <Music className="size-5" />}
+      <span className="whitespace-normal text-left">{playing ? "Pause Ski Sunday" : started ? "Resume Ski Sunday" : "click here if you like ski sunday"}</span>
     </Button>
   );
 }
