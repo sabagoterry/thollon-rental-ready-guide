@@ -136,7 +136,6 @@ function Index() {
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">Local area</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">Ask us</a>
-            <Link to="/book" className="rounded-full band-lake px-5 py-2 font-medium text-primary-foreground glow-primary transition hover:brightness-110">Book</Link>
           </nav>
         </div>
       </header>
