@@ -253,7 +253,6 @@ function Index() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <BookButton />
             <WhatsAppEnquiry />
           </div>
         </div>
