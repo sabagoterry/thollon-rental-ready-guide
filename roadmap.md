@@ -1,6 +1,6 @@
 # Roadmap
-- [ ] Explicit Ski Sunday start button with continuous playback until paused
-- [ ] Bright circular cyclamen logo linking home everywhere and matching favicon
+- [x] Explicit Ski Sunday start button with continuous playback until paused
+- [x] Bright circular cyclamen logo linking home everywhere and matching favicon
 - [x] Add and verify a securely synced Airbnb availability calendar
 - [x] Add ESF and tourist office links and clarify that Sherpa is not directly in the village
 - [x] Correct balconies to two: front south-facing, rear north-facing

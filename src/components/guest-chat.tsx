@@ -4,7 +4,7 @@ import { ArrowUp, LoaderCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionHeading } from '@/components/section-heading';
-import logo from '@/assets/cyclamens-logo.jpg.asset.json';
+import { LogoMark } from '@/components/logo-mark';
 import { activeConversation, CHAT_IDLE_MS, CHAT_SESSION_KEY } from '@/lib/guest-chat-session';
 
 type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean };
@@ -116,7 +116,7 @@ export function GuestChat() {
             {messages.map((m, i) => m.role === 'user'
               ? <div key={i} className="ml-auto w-fit max-w-[85%] rounded-md band-lake px-4 py-2 text-primary-foreground">{m.content}</div>
               : <div key={i} className="flex gap-3">
-                  <img src={logo.url} alt="" className="size-8 shrink-0 rounded-full border bg-background object-contain p-0.5" />
+                  <LogoMark compact />
                   <div className={`prose prose-sm max-w-none pt-1 ${m.error ? 'text-destructive' : 'text-foreground'}`}>
                     {m.content ? <ReactMarkdown components={{ a: props => <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary underline" /> }}>{m.content}</ReactMarkdown>
                       : <LoaderCircle className="size-4 animate-spin text-muted-foreground motion-reduce:animate-none" aria-label="Thinking" />}
