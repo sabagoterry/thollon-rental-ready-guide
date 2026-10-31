@@ -46,3 +46,4 @@
 - [x] Point Télécabine (cabin) news at the owner-supplied Facebook page
 - [x] Suitably populate the footer on all public pages
 - [x] Package and deliver a fresh full download of the site
+- [x] Hero copy: changed "shops and restaurants" to "restaurants and all village amenities"

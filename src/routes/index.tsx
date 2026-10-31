@@ -77,16 +77,6 @@ const photos: Photo[] = [
   { src: bath.url, alt: "Bathroom" },
 ];
 
-function BookButton() {
-  return (
-    <Link
-      to="/book"
-      className="inline-block rounded-full band-sunset px-7 py-3 font-medium text-accent-foreground glow-accent transition hover:brightness-110"
-    >
-      Choose dates & book
-    </Link>
-  );
-}
 
 function Gallery() {
   const [open, setOpen] = useState<Photo | null>(null);
@@ -136,7 +126,6 @@ function Index() {
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">Location</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">Local area</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">Ask us</a>
-            <Link to="/book" className="rounded-full band-lake px-5 py-2 font-medium text-primary-foreground glow-primary transition hover:brightness-110">Book</Link>
           </nav>
         </div>
       </header>
@@ -156,10 +145,9 @@ function Index() {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">Thollon-les-Memises · Haute-Savoie</p>
           <h1 className="max-w-3xl text-5xl leading-tight md:text-7xl">Les Cyclamens, your home above Lake Geneva</h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
-            A charming apartment close to the cable car, shops and restaurants — open for stays all year round.
+            A charming apartment close to the cable car, restaurants and all village amenities — open for stays all year round.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <BookButton />
             <WhatsAppEnquiry />
           </div>
         </div>
@@ -265,7 +253,6 @@ function Index() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <BookButton />
             <WhatsAppEnquiry />
           </div>
         </div>

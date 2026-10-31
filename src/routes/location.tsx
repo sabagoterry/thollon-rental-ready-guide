@@ -112,12 +112,6 @@ function LocationPage() {
             <Link to="/" className="hidden text-muted-foreground transition hover:text-primary md:inline">
               The apartment
             </Link>
-            <Link
-              to="/book"
-              className="rounded-full band-lake px-5 py-2 font-medium text-primary-foreground glow-primary transition hover:brightness-110"
-            >
-              Book
-            </Link>
           </nav>
         </div>
       </header>
