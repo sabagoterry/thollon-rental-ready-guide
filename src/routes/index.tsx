@@ -145,7 +145,7 @@ function Index() {
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">Thollon-les-Memises · Haute-Savoie</p>
           <h1 className="max-w-3xl text-5xl leading-tight md:text-7xl">Les Cyclamens, your home above Lake Geneva</h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
-            A charming apartment close to the cable car, shops and restaurants — open for stays all year round.
+            A charming apartment close to the cable car, restaurants and all village amenities — open for stays all year round.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <WhatsAppEnquiry />
