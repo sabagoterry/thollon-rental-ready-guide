@@ -24,12 +24,12 @@ export const liveLinks = [
   { name: 'Thollon.org', detail: 'English-language guide and news for visitors', url: 'https://www.thollon.org/', kind: 'news' },
 ] as const;
 export const dayTrips = [
-  { name: 'Évian-les-Bains', detail: 'Lakeside town, spa and the renovated Buvette Cachat', url: 'https://www.evian-tourisme.com/en/' },
-  { name: 'Bernex', detail: 'Neighbouring resort — official ski lift and lift-pass site', url: 'http://bernexstation.fr/' },
-  { name: 'Châtel', detail: 'Portes du Soleil resort — official lift passes', url: 'http://www.skipass-chatel.com/' },
-  { name: 'Torgon', detail: 'Swiss corner of the Portes du Soleil — tourist office', url: 'http://www.torgon.ch/' },
-  { name: 'Abondance', detail: 'Portes du Soleil village famous for its abbey and cheese', url: 'https://en.portesdusoleil.com/les-portes-du-soleil/the-resorts/abondance/' },
-  { name: 'Leysin–Les Mosses', detail: 'Swiss ski area above the Rhône valley', url: 'https://www.tlml.ch/' },
-  { name: 'Yvoire', detail: 'Medieval lakeside village, one of the most beautiful in France', url: 'https://yvoire-france.com/' },
-  { name: 'Vevey', detail: 'Swiss lakeside town of markets, museums and vineyards', url: 'https://www.myswitzerland.com/en-gb/destinations/vevey/' },
+  { name: 'Évian-les-Bains', detail: 'Lakeside town, spa and the renovated Buvette Cachat', url: 'https://www.evian-tourisme.com/en/', kind: 'summer' },
+  { name: 'Bernex', detail: 'Neighbouring resort — official ski lift and lift-pass site', url: 'http://bernexstation.fr/', kind: 'winter' },
+  { name: 'Châtel', detail: 'Portes du Soleil resort — official lift passes', url: 'http://www.skipass-chatel.com/', kind: 'winter' },
+  { name: 'Torgon', detail: 'Swiss corner of the Portes du Soleil — tourist office', url: 'http://www.torgon.ch/', kind: 'winter' },
+  { name: 'Abondance', detail: 'Portes du Soleil village famous for its abbey and cheese', url: 'https://en.portesdusoleil.com/les-portes-du-soleil/the-resorts/abondance/', kind: 'winter' },
+  { name: 'Leysin–Les Mosses', detail: 'Swiss ski area above the Rhône valley', url: 'https://www.tlml.ch/', kind: 'winter' },
+  { name: 'Yvoire', detail: 'Medieval lakeside village, one of the most beautiful in France', url: 'https://yvoire-france.com/', kind: 'summer' },
+  { name: 'Vevey', detail: 'Swiss lakeside town of markets, museums and vineyards', url: 'https://www.myswitzerland.com/en-gb/destinations/vevey/', kind: 'summer' },
 ] as const;

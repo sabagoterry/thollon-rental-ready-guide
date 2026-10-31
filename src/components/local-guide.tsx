@@ -1,4 +1,4 @@
-import { ArrowUpRight, MountainSnow, MapPin, Utensils, ShoppingBasket, Video, CloudSnow, Newspaper, PartyPopper, Car } from 'lucide-react';
+import { ArrowUpRight, MountainSnow, MapPin, Utensils, ShoppingBasket, Video, CloudSnow, Newspaper, PartyPopper, Car, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
 import { diningDirectory, venues, essentials as baseEssentials, liveLinks, dayTrips } from '@/lib/local-links';
