@@ -21,7 +21,7 @@ describe('Continuous background music', () => {
   it('loops and keeps the same playing audio across parent rerenders', async () => {
     const { audio, constructor } = mockAudio();
     const view = render(<BackgroundMusic />);
-    await act(async () => { fireEvent.pointerDown(window); });
+    await act(async () => { fireEvent.click(view.getByRole('button')); });
     expect(audio.loop).toBe(true);
     expect(audio.paused).toBe(false);
     view.rerender(<BackgroundMusic />);
@@ -32,10 +32,28 @@ describe('Continuous background music', () => {
   it('does not restart visitor-paused music on another page interaction', async () => {
     const { audio } = mockAudio();
     const view = render(<BackgroundMusic />);
-    await act(async () => { fireEvent.pointerDown(window); });
-    fireEvent.click(view.getByRole('button', { name: 'Turn background music off' }));
+    await act(async () => { fireEvent.click(view.getByRole('button')); });
+    fireEvent.click(view.getByRole('button'));
     await act(async () => { fireEvent.pointerDown(window); });
     expect(audio.paused).toBe(true);
     expect(audio.play).toHaveBeenCalledTimes(1);
+  });
+  it('never starts on unrelated pointer or keyboard interactions', () => {
+    const { audio } = mockAudio();
+    render(<BackgroundMusic />);
+    fireEvent.pointerDown(window);
+    fireEvent.keyDown(window, { key: 'Enter' });
+    expect(audio.play).not.toHaveBeenCalled();
+    expect(audio.paused).toBe(true);
+  });
+  it('resumes only when requested after pausing', async () => {
+    const { audio } = mockAudio();
+    const view = render(<BackgroundMusic />);
+    await act(async () => { fireEvent.click(view.getByRole('button')); });
+    fireEvent.click(view.getByRole('button'));
+    await act(async () => { fireEvent.click(view.getByRole('button')); });
+    expect(audio.play).toHaveBeenCalledTimes(2);
+    expect(audio.paused).toBe(false);
+    expect(audio.loop).toBe(true);
   });
 });

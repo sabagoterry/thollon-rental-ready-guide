@@ -3,7 +3,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable';
-import logo from '@/assets/cyclamens-logo.jpg.asset.json';
+import { LogoMark } from '@/components/logo-mark';
 
 export const Route = createFileRoute('/auth')({
   validateSearch: (s: Record<string, unknown>) => ({ redirect: typeof s['redirect'] === 'string' && s['redirect'].startsWith('/') && !s['redirect'].startsWith('//') ? s['redirect'] : '/owner' }),
@@ -38,7 +38,7 @@ function AuthPage() {
   }
   return <main className="flex min-h-screen items-center justify-center bg-background px-6">
     <div className="w-full max-w-sm rounded-md border bg-card p-8 text-center">
-      <img src={logo.url} alt="Les Cyclamens logo" className="mx-auto size-24 rounded-full border-2 border-accent bg-card p-2 object-contain shadow-lg" />
+      <div className="flex justify-center"><LogoMark /></div>
       <h1 className="mt-4 text-3xl">Owner area</h1>
       <p className="mt-2 text-sm text-muted-foreground">Sign in to read guest enquiries and questions.</p>
       <Button className="mt-6 w-full" onClick={() => void signIn()}>Continue with Google</Button>
