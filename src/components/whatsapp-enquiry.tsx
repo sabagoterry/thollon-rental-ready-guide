@@ -25,10 +25,11 @@ export function WhatsAppEnquiry() {
     if (busy || result?.status === 'queued' || result?.status === 'unknown') return;
     const v = new FormData(event.currentTarget);
     const get = (k: string) => String(v.get(k) ?? '');
-    if (get('checkOut') <= get('checkIn')) { setResult({ status: 'invalid', message: 'Check-out must be after check-in.' }); return; }
+    if (get('checkIn') && get('checkOut') && get('checkOut') <= get('checkIn')) { setResult({ status: 'invalid', message: 'Check-out must be after check-in.' }); return; }
     setBusy(true);
     try {
-      const response = await send({ data: { id: requestId, name: get('name'), email: get('email'), phone: get('phone'), checkIn: get('checkIn'), checkOut: get('checkOut'), guests: Number(get('guests')), message: get('message'), website: get('website') } });
+      const guests = get('guests');
+      const response = await send({ data: { id: requestId, name: get('name'), email: get('email'), phone: get('phone'), checkIn: get('checkIn'), checkOut: get('checkOut'), guests: guests ? Number(guests) : undefined, message: get('message'), website: get('website') } });
       setResult(response);
     } catch {
       setResult({ status: 'unknown', message: 'We could not confirm your enquiry was sent. Please contact the owner through Airbnb rather than resending.' });
@@ -50,16 +51,16 @@ export function WhatsAppEnquiry() {
       </div>
       <form onSubmit={submit} className="grid gap-4">
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="grid gap-2"><Label htmlFor={field('in')}>Check-in</Label><Input id={field('in')} name="checkIn" type="date" required min={today()} value={checkIn} onChange={e => setCheckIn(e.target.value)} disabled={locked} /></div>
-          <div className="grid gap-2"><Label htmlFor={field('out')}>Check-out</Label><Input id={field('out')} name="checkOut" type="date" required min={checkIn || today()} disabled={locked} /></div>
+          <div className="grid gap-2"><Label htmlFor={field('in')}>Check-in (optional)</Label><Input id={field('in')} name="checkIn" type="date" min={today()} value={checkIn} onChange={e => setCheckIn(e.target.value)} disabled={locked} /></div>
+          <div className="grid gap-2"><Label htmlFor={field('out')}>Check-out (optional)</Label><Input id={field('out')} name="checkOut" type="date" min={checkIn || today()} disabled={locked} /></div>
         </div>
-        <div className="grid gap-2"><Label htmlFor={field('guests')}>Guests</Label><Input id={field('guests')} name="guests" type="number" min={1} max={6} defaultValue={2} required disabled={locked} /></div>
+        <div className="grid gap-2"><Label htmlFor={field('guests')}>Guests (optional)</Label><Input id={field('guests')} name="guests" type="number" min={1} max={6} disabled={locked} /></div>
         <div className="grid gap-2"><Label htmlFor={field('name')}>Name</Label><Input id={field('name')} name="name" autoComplete="name" required maxLength={80} disabled={locked} /></div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2"><Label htmlFor={field('email')}>Email</Label><Input id={field('email')} name="email" type="email" autoComplete="email" required maxLength={160} disabled={locked} /></div>
           <div className="grid gap-2"><Label htmlFor={field('phone')}>Phone (optional)</Label><Input id={field('phone')} name="phone" type="tel" autoComplete="tel" maxLength={30} pattern="[+\d\s()\-]*" disabled={locked} /></div>
         </div>
-        <div className="grid gap-2"><Label htmlFor={field('message')}>Message (optional)</Label><Textarea id={field('message')} name="message" maxLength={1000} rows={3} disabled={locked} /></div>
+        <div className="grid gap-2"><Label htmlFor={field('message')}>Message</Label><Textarea id={field('message')} name="message" required maxLength={1000} rows={3} disabled={locked} /></div>
         <div className="hidden" aria-hidden="true"><Label htmlFor={field('website')}>Website</Label><Input id={field('website')} name="website" tabIndex={-1} autoComplete="off" /></div>
         {result && <p role="status" className={result.status === 'queued' ? 'text-sm text-primary' : 'text-sm text-destructive'}>{result.message}</p>}
         <Button type="submit" className="band-lake text-primary-foreground" disabled={busy || result?.status === 'queued' || result?.status === 'unknown' || result?.status === 'failed'}>{busy ? <LoaderCircle className="animate-spin motion-reduce:animate-none" /> : <MessageCircle />}{busy ? 'Sending…' : result?.status === 'queued' ? 'Enquiry sent' : 'Send enquiry'}</Button>
