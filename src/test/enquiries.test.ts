@@ -22,3 +22,14 @@ it('rejects more than six guests', () => {
 it('rejects honeypot submissions', () => {
   expect(enquirySchema.safeParse({ ...input, website: 'spam' }).success).toBe(false);
 });
+it('accepts an enquiry with only name, email and message', () => {
+  const minimal = { id: input.id, name: input.name, email: input.email, message: input.message, website: '' };
+  const parsed = enquirySchema.parse(minimal);
+  const text = enquiryMessage(parsed);
+  expect(text).toContain('From: Test guest');
+  expect(text).not.toContain('Dates:');
+  expect(text).not.toContain('Guests:');
+});
+it('requires a message', () => {
+  expect(enquirySchema.safeParse({ ...input, message: '' }).success).toBe(false);
+});
