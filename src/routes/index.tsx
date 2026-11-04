@@ -130,6 +130,7 @@ function Index() {
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Availability", "Disponibilités")}</a>
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Location", "Situation")}</Link>
+            <Link to="/getting-here" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr('Getting here', 'Venir')}</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Local area", "Le coin")}</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Ask us", "Questions")}</a>
             <LanguageToggle />
