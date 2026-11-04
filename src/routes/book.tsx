@@ -15,7 +15,7 @@ import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlock
 import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
 import { useLang } from '@/lib/i18n';
-import { fr as frLocale } from 'date-fns/locale';
+import { enGB, fr as frLocale } from 'date-fns/locale';
 
 export const Route = createFileRoute('/book')({
   loader: ({ context }) => context.queryClient.ensureQueryData(availabilityQuery),
@@ -50,7 +50,7 @@ function Stepper({ label, value, min, max, onChange }: { label: string; value: n
 
 function BookPage() {
   const { lang, tr } = useLang();
-  const locale = lang === 'fr' ? frLocale : undefined;
+  const locale = lang === 'fr' ? frLocale : enGB;
   const { data } = useSuspenseQuery(availabilityQuery);
   const today = parseISO(data.today);
   const [range, setRange] = useState<DateRange | undefined>();

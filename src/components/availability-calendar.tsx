@@ -8,11 +8,11 @@ import { SectionHeading } from '@/components/section-heading';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
 import { useLang } from '@/lib/i18n';
-import { fr as frLocale } from 'date-fns/locale';
+import { enGB, fr as frLocale } from 'date-fns/locale';
 
 export function AvailabilityCalendar() {
   const { lang, tr } = useLang();
-  const locale = lang === 'fr' ? frLocale : undefined;
+  const locale = lang === 'fr' ? frLocale : enGB;
   const { data, refetch, isFetching } = useSuspenseQuery(availabilityQuery);
   const today = parseISO(data.today);
   const [month, setMonth] = useState(today);
