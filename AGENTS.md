@@ -25,3 +25,4 @@
 - Site text is bilingual (EN/FR) via a LanguageProvider in the root layout and inline tr(en, fr) pairs; data modules carry *Fr fields. Choice persists in localStorage, so new copy must supply both languages.
 - Keep the home photo slideshow in a focused browser-safe component with its own cleaned-up timer so navigation and manual browsing never leave orphaned playback timers.
 - Use one shared FindUs component and browser-safe coordinate module for map embeds and directions; only the managed public browser key enters map URLs, never server credentials.
+- Keep Getting here as a separate bilingual public route with official transport links; never reuse another property's directions, travel distances or credentials from reference HTML.
