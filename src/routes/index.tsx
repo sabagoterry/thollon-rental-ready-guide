@@ -11,6 +11,7 @@ import { LocalGuide } from '@/components/local-guide';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { LanguageToggle } from '@/components/language-toggle';
+import { MobileMenu } from '@/components/mobile-menu';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -129,6 +130,7 @@ function Index() {
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Local area", "Le coin")}</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Ask us", "Questions")}</a>
             <LanguageToggle />
+            <MobileMenu />
           </nav>
         </div>
       </header>

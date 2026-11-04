@@ -14,6 +14,7 @@ import { isBlocked } from '@/lib/availability';
 import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
 import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
+import { MobileMenu } from '@/components/mobile-menu';
 import { useLang } from '@/lib/i18n';
 import { enGB, fr as frLocale } from 'date-fns/locale';
 
@@ -72,7 +73,8 @@ function BookPage() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <LogoMark />
         <div className="flex items-center gap-4"><Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" />{tr("Back to apartment", "Retour à l’appartement")}</Link>
-        <LanguageToggle /></div>
+        <LanguageToggle />
+        <MobileMenu /></div>
       </div>
     </header>
     <div className="mx-auto max-w-6xl px-6 py-14">
