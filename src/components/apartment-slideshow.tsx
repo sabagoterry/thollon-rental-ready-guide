@@ -45,13 +45,11 @@ export function ApartmentSlideshow() {
           {slides.map((slide, position) => (
             <img key={slide.src} src={slide.src} alt={tr(slide.en, slide.fr)} aria-hidden={position !== index} loading={position < 2 ? 'eager' : 'lazy'} className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 motion-reduce:transition-none ${position === index ? 'opacity-100' : 'opacity-0'}`} />
           ))}
+          <p aria-live={paused ? 'polite' : 'off'} className="slideshow-caption pointer-events-none absolute inset-x-0 bottom-6 px-6 text-center font-display text-3xl font-semibold leading-tight text-sunshine md:bottom-10 md:px-20 md:text-5xl">{tr(slides[index]?.en ?? '', slides[index]?.fr ?? '')}</p>
           <Button variant="outline" size="icon" onClick={() => move(-1)} aria-label={tr('Previous photo', 'Photo précédente')} title={tr('Previous photo', 'Photo précédente')} className="absolute left-3 top-1/2 size-11 -translate-y-1/2 rounded-full bg-card/95 shadow-md md:left-6"><ChevronLeft /></Button>
           <Button variant="outline" size="icon" onClick={() => move(1)} aria-label={tr('Next photo', 'Photo suivante')} title={tr('Next photo', 'Photo suivante')} className="absolute right-3 top-1/2 size-11 -translate-y-1/2 rounded-full bg-card/95 shadow-md md:right-6"><ChevronRight /></Button>
-        </div>
-        <div className="flex min-h-16 items-center justify-between gap-4 bg-card px-4 py-3 md:px-6">
-          <p aria-live={paused ? 'polite' : 'off'} className="text-sm font-medium">{tr(slides[index]?.en ?? '', slides[index]?.fr ?? '')}</p>
-          <div className="flex shrink-0 items-center gap-3">
-            <span className="text-sm tabular-nums text-muted-foreground">{index + 1} / {slides.length}</span>
+          <div className="absolute right-3 top-3 flex items-center gap-3 md:right-6 md:top-6">
+            <span className="slideshow-caption text-sm font-semibold tabular-nums text-sunshine">{index + 1} / {slides.length}</span>
             <Button variant="outline" size="icon" onClick={() => setPaused(current => !current)} aria-label={paused ? tr('Resume slideshow', 'Reprendre le diaporama') : tr('Pause slideshow', 'Mettre le diaporama en pause')} title={paused ? tr('Resume slideshow', 'Reprendre le diaporama') : tr('Pause slideshow', 'Mettre le diaporama en pause')}>{paused ? <Play /> : <Pause />}</Button>
           </div>
         </div>
