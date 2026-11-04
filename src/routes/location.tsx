@@ -5,6 +5,8 @@ import { SectionHeading } from "@/components/section-heading";
 import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { Button } from '@/components/ui/button';
+import { LanguageToggle } from '@/components/language-toggle';
+import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
 import ski from "@/assets/photos/ski.jpg.asset.json";
@@ -89,13 +91,14 @@ const shots: Shot[] = [
 ];
 
 const photoGroups = [
-  { title: 'Views from the mountains', sources: [lake, ski, twinPeaks, cliffsSummer, mountainForest, lakePanorama, pisteChairlift, skiersLake, pisteLake, widePiste, meadowCliffs, valleyRidge] },
-  { title: 'Views at the lake', sources: [lakeBeach, lakeWater] },
-  { title: 'The surroundings', sources: [exterior, snowView, sunsetMeadow, sunsetLake, cliffsGolden, villageChalets, paragliders, forestPath, winterCliffs] },
-  { title: 'Views from the balconies', sources: [balconyWinter, balconyDusk, balconyForest, balconyTrees, balconySunset] },
+  { title: 'Views from the mountains', titleFr: 'Vues depuis la montagne', sources: [lake, ski, twinPeaks, cliffsSummer, mountainForest, lakePanorama, pisteChairlift, skiersLake, pisteLake, widePiste, meadowCliffs, valleyRidge] },
+  { title: 'Views at the lake', titleFr: 'Vues au bord du lac', sources: [lakeBeach, lakeWater] },
+  { title: 'The surroundings', titleFr: 'Les environs', sources: [exterior, snowView, sunsetMeadow, sunsetLake, cliffsGolden, villageChalets, paragliders, forestPath, winterCliffs] },
+  { title: 'Views from the balconies', titleFr: 'Vues depuis les balcons', sources: [balconyWinter, balconyDusk, balconyForest, balconyTrees, balconySunset] },
 ];
 
 function LocationPage() {
+  const { tr } = useLang();
   const [filter, setFilter] = useState<"all" | "summer" | "winter">("all");
   const [open, setOpen] = useState<Shot | null>(null);
   const list = filter === "all" ? shots : shots.filter((s) => s.season === filter);
@@ -108,8 +111,9 @@ function LocationPage() {
           <LogoMark />
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <Link to="/" className="hidden text-muted-foreground transition hover:text-primary md:inline">
-              The apartment
+              {tr('The apartment', 'L’appartement')}
             </Link>
+            <LanguageToggle />
           </nav>
         </div>
       </header>
@@ -119,17 +123,16 @@ function LocationPage() {
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 text-primary-foreground">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">Thollon-les-Mémises · Haute-Savoie</p>
-          <h1 className="max-w-3xl text-5xl leading-tight md:text-6xl">Everything you can see from the door</h1>
+          <h1 className="max-w-3xl text-5xl leading-tight md:text-6xl">{tr("Everything you can see from the door", "Tout ce que l’on voit depuis la porte")}</h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
-            The apartment is in the village itself, with the cable car, shops and restaurants a short walk away —
-            and the lake spread out below.
+            {tr('The apartment is in the village itself, with the cable car, shops and restaurants a short walk away — and the lake spread out below.', 'L’appartement est au cœur du village, à quelques pas de la télécabine, des commerces et des restaurants — avec le lac en contrebas.')}
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading kicker="Location">Views & surroundings</SectionHeading>
+          <SectionHeading kicker={tr("Location", "Situation")}>{tr("Views & surroundings", "Vues et environs")}</SectionHeading>
           <div className="flex gap-2">
             {(["all", "summer", "winter"] as const).map((f) => (
               <Button
@@ -139,20 +142,20 @@ function LocationPage() {
                 aria-pressed={filter === f}
                 className={filter === f ? 'capitalize band-sunset text-accent-foreground glow-accent' : 'capitalize'}
               >
-                {f === "all" ? "All" : f}
+                {f === "all" ? tr("All", "Tout") : f === "summer" ? tr("summer", "été") : tr("winter", "hiver")}
               </Button>
             ))}
           </div>
         </div>
         <p className="mt-4 max-w-xl text-muted-foreground">
-          Photos of the village, the lake and the mountain — in summer and in winter.
+          {tr('Photos of the village, the lake and the mountain — in summer and in winter.', 'Photos du village, du lac et de la montagne — en été comme en hiver.')}
         </p>
 
         {photoGroups.map(group => {
           const groupShots = list.filter(shot => group.sources.some(source => source.url === shot.src));
           if (!groupShots.length) return null;
-          return <section key={group.title} aria-label={group.title} className="mt-14">
-          <h3 className="border-b-2 border-accent/40 pb-4 text-2xl text-rainbow">{group.title}</h3>
+          return <section key={group.title} aria-label={tr(group.title, group.titleFr)} className="mt-14">
+          <h3 className="border-b-2 border-accent/40 pb-4 text-2xl text-rainbow">{tr(group.title, group.titleFr)}</h3>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {groupShots.map((s) => (
             <Button
@@ -172,7 +175,7 @@ function LocationPage() {
               </div>
               <div className="flex items-center justify-between gap-3 px-4 py-3">
                 <span className="font-medium">{s.caption}</span>
-                <span className="band-sunset rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.2em] text-accent-foreground">{s.season}</span>
+                <span className="band-sunset rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.2em] text-accent-foreground">{s.season === "summer" ? tr("summer", "été") : tr("winter", "hiver")}</span>
               </div>
             </Button>
           ))}
@@ -185,14 +188,14 @@ function LocationPage() {
             to="/"
             className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-5 py-3 font-medium text-primary transition hover:border-accent hover:text-accent"
           >
-            <ArrowLeft className="size-4" /> Back to the apartment
+            <ArrowLeft className="size-4" /> {tr("Back to the apartment", "Retour à l’appartement")}
           </Link>
           <Link
             to="/"
             hash="local-guide"
             className="inline-flex items-center gap-2 rounded-full band-lake px-5 py-3 font-medium text-primary-foreground glow-primary transition hover:brightness-110"
           >
-            Shops, lifts & where to eat
+            {tr('Shops, lifts & where to eat', 'Commerces, remontées et restaurants')}
           </Link>
         </div>
       </section>

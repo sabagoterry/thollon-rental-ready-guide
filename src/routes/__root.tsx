@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { BackgroundMusic } from "@/components/background-music";
 import { FloatingBookButton } from "@/components/floating-book-button";
+import { LanguageProvider } from "@/lib/i18n";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -118,10 +119,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-      <BackgroundMusic />
-      <FloatingBookButton />
+      <LanguageProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <BackgroundMusic />
+        <FloatingBookButton />
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
