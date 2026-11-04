@@ -1,6 +1,6 @@
 # Roadmap
-- [ ] Restyle apartment details with icons like the supplied example
-- [ ] Add Find Us map using owner coordinates 46°23'25.8"N 6°43'15.0"E
+- [x] Restyle apartment details with icons like the supplied example
+- [x] Add Find Us map using owner coordinates 46°23'25.8"N 6°43'15.0"E
 - [x] Add photo slideshow immediately below the video with six-second advancement and manual arrows
 - [x] Explicit Ski Sunday start button with continuous playback until paused
 - [x] Bright circular cyclamen logo linking home everywhere and matching favicon
