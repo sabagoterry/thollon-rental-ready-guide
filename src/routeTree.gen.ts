@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as GettingHereRouteImport } from './routes/getting-here'
 import { Route as LocationRouteImport } from './routes/location'
 import { Route as AuthenticatedOwnerRouteImport } from './routes/_authenticated/owner'
 import { Route as ApiGuestChatRouteImport } from './routes/api/guest-chat'
@@ -36,6 +37,11 @@ const BookRoute = BookRouteImport.update({
   path: '/book',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GettingHereRoute = GettingHereRouteImport.update({
+  id: '/getting-here',
+  path: '/getting-here',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LocationRoute = LocationRouteImport.update({
   id: '/location',
   path: '/location',
@@ -56,6 +62,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/getting-here': typeof GettingHereRoute
   '/location': typeof LocationRoute
   '/owner': typeof AuthenticatedOwnerRoute
   '/api/guest-chat': typeof ApiGuestChatRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/getting-here': typeof GettingHereRoute
   '/location': typeof LocationRoute
   '/owner': typeof AuthenticatedOwnerRoute
   '/api/guest-chat': typeof ApiGuestChatRoute
@@ -74,6 +82,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/getting-here': typeof GettingHereRoute
   '/location': typeof LocationRoute
   '/_authenticated/owner': typeof AuthenticatedOwnerRoute
   '/api/guest-chat': typeof ApiGuestChatRoute
@@ -81,15 +90,29 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/book' | '/location' | '/owner' | '/api/guest-chat'
+    | '/'
+    | '/auth'
+    | '/book'
+    | '/getting-here'
+    | '/location'
+    | '/owner'
+    | '/api/guest-chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/book' | '/location' | '/owner' | '/api/guest-chat'
+  to:
+    | '/'
+    | '/auth'
+    | '/book'
+    | '/getting-here'
+    | '/location'
+    | '/owner'
+    | '/api/guest-chat'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/book'
+    | '/getting-here'
     | '/location'
     | '/_authenticated/owner'
     | '/api/guest-chat'
@@ -100,6 +123,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   BookRoute: typeof BookRoute
+  GettingHereRoute: typeof GettingHereRoute
   LocationRoute: typeof LocationRoute
   ApiGuestChatRoute: typeof ApiGuestChatRoute
 }
@@ -132,6 +156,13 @@ declare module '@tanstack/react-router' {
       path: '/book'
       fullPath: '/book'
       preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/getting-here': {
+      id: '/getting-here'
+      path: '/getting-here'
+      fullPath: '/getting-here'
+      preLoaderRoute: typeof GettingHereRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/location': {
@@ -174,6 +205,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   BookRoute: BookRoute,
+  GettingHereRoute: GettingHereRoute,
   LocationRoute: LocationRoute,
   ApiGuestChatRoute: ApiGuestChatRoute,
 }
