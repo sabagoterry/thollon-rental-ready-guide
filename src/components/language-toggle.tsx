@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import { useLang, type Lang } from '@/lib/i18n';
 
 // Flag colours are fixed national colours, not theme tokens.
@@ -27,7 +28,7 @@ function Tricolore() {
   );
 }
 
-const options: { lang: Lang; label: string; Flag: () => JSX.Element }[] = [
+const options: { lang: Lang; label: string; Flag: () => ReactElement }[] = [
   { lang: 'en', label: 'English', Flag: UnionJack },
   { lang: 'fr', label: 'Français', Flag: Tricolore },
 ];

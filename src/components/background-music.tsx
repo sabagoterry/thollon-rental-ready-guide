@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Music, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import track from "@/assets/music/ski-sunday.mp3.asset.json";
+import { useLang } from "@/lib/i18n";
 
 /**
  * Owner-supplied track. Low volume, looping. Starts only via its own button.
@@ -9,6 +10,7 @@ import track from "@/assets/music/ski-sunday.mp3.asset.json";
  * so navigation never replaces the audio instance; the button can pause it.
  */
 export function BackgroundMusic() {
+  const { tr } = useLang();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [started, setStarted] = useState(false);
@@ -46,7 +48,7 @@ export function BackgroundMusic() {
       data-background-music
       onClick={toggle}
       aria-pressed={playing}
-      title={playing ? "Pause the music" : "Play the music"}
+      title={playing ? tr("Pause the music", "Mettre la musique en pause") : tr("Play the music", "Lancer la musique")}
       className="fixed bottom-5 right-5 z-40 flex h-auto min-h-12 max-w-[calc(100vw-2.5rem)] items-center justify-center rounded-full border-0 band-sunset px-5 py-3 text-accent-foreground glow-accent transition hover:scale-105 md:bottom-6 md:right-6"
     >
       {playing && (
@@ -56,7 +58,7 @@ export function BackgroundMusic() {
         />
       )}
       {playing ? <Pause className="size-5" /> : <Music className="size-5" />}
-      <span className="whitespace-normal text-left">{playing ? "Pause Ski Sunday" : started ? "Resume Ski Sunday" : "click here if you like ski sunday"}</span>
+      <span className="whitespace-normal text-left">{playing ? tr("Pause Ski Sunday", "Pause Ski Sunday") : started ? tr("Resume Ski Sunday", "Reprendre Ski Sunday") : tr("click here if you like ski sunday", "cliquez ici si vous aimez Ski Sunday")}</span>
     </Button>
   );
 }
