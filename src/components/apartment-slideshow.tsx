@@ -49,7 +49,7 @@ export function ApartmentSlideshow() {
           <Button variant="outline" size="icon" onClick={() => move(1)} aria-label={tr('Next photo', 'Photo suivante')} title={tr('Next photo', 'Photo suivante')} className="absolute right-3 top-1/2 size-11 -translate-y-1/2 rounded-full bg-card/95 shadow-md md:right-6"><ChevronRight /></Button>
         </div>
         <div className="flex min-h-16 items-center justify-between gap-4 bg-card px-4 py-3 md:px-6">
-          <p aria-live={paused ? 'polite' : 'off'} className="text-sm font-medium">{tr(slides[index].en, slides[index].fr)}</p>
+          <p aria-live={paused ? 'polite' : 'off'} className="text-sm font-medium">{tr(slides[index]?.en ?? '', slides[index]?.fr ?? '')}</p>
           <div className="flex shrink-0 items-center gap-3">
             <span className="text-sm tabular-nums text-muted-foreground">{index + 1} / {slides.length}</span>
             <Button variant="outline" size="icon" onClick={() => setPaused(current => !current)} aria-label={paused ? tr('Resume slideshow', 'Reprendre le diaporama') : tr('Pause slideshow', 'Mettre le diaporama en pause')} title={paused ? tr('Resume slideshow', 'Reprendre le diaporama') : tr('Pause slideshow', 'Mettre le diaporama en pause')}>{paused ? <Play /> : <Pause />}</Button>
