@@ -177,6 +177,10 @@
 
 .bg-overlay { background: var(--overlay); }
 
+@utility slideshow-caption {
+  text-shadow: 0 2px 4px var(--foreground), 0 0 18px var(--foreground);
+}
+
 @keyframes bar-flow {
   to { background-position: 300% 0; }
 }
