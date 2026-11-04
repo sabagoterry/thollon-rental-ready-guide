@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BedDouble, Bath, Users, Ruler, Fence } from "lucide-react";
 import { SectionHeading } from '@/components/section-heading';
 import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
@@ -13,6 +13,7 @@ import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
 import { ApartmentSlideshow } from '@/components/apartment-slideshow';
+import { FindUs } from '@/components/find-us';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -61,10 +62,11 @@ const rooms = [
 ];
 
 const facts = [
-  ["39 m²", "Living space", "39 m²", "Surface"],
-  ["Up to 6", "Guests", "Jusqu’à 6", "Voyageurs"],
-  ["2", "Bathrooms", "2", "Salles d’eau"],
-  [String(balconies.length), "Balconies", String(balconies.length), "Balcons"],
+  { icon: BedDouble, en: '2 Bedrooms', fr: '2 Chambres' },
+  { icon: Bath, en: '2 Bathrooms', fr: '2 Salles de bains' },
+  { icon: Users, en: 'Up to 6 Guests', fr: 'Jusqu’à 6 voyageurs' },
+  { icon: Fence, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
+  { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
 ];
 
 type Photo = { src: string; alt: string };
@@ -128,6 +130,7 @@ function Index() {
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Availability", "Disponibilités")}</a>
             <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Location", "Situation")}</Link>
+            <Link to="/getting-here" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr('Getting here', 'Venir')}</Link>
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Local area", "Le coin")}</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Ask us", "Questions")}</a>
             <LanguageToggle />
@@ -162,13 +165,16 @@ function Index() {
       <ApartmentSlideshow />
 
       <section className="border-b band-soft">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-6 py-10 md:grid-cols-4">
-          {facts.map(([n, l, nFr, lFr]) => (
-            <div key={l} className="text-center">
-              <div className="font-display text-3xl text-rainbow">{fr ? nFr : n}</div>
-              <div className="text-sm text-muted-foreground">{fr ? lFr : l}</div>
-            </div>
-          ))}
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <h2 className="text-center text-4xl text-rainbow">{tr('Accommodation', 'Hébergement')}</h2>
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-5">
+            {facts.map(({ icon: Icon, en, fr: french }) => (
+              <div key={en} className="flex flex-col items-center gap-3 text-center">
+                <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
+                <span className="text-sm text-foreground">{tr(en, french)}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -248,6 +254,7 @@ function Index() {
       <LocalGuide />
       <GuestChat />
       <AvailabilityCalendar />
+      <FindUs />
 
       <section className="band-deep text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">

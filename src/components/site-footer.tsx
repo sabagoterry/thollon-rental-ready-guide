@@ -42,6 +42,7 @@ export function SiteFooter() {
           <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-sunshine">{tr('The apartment', 'L’appartement')}</h3>
           <Link to="/" className="underline-offset-4 transition hover:text-white hover:underline">{tr('Home', 'Accueil')}</Link>
           <Link to="/location" className="underline-offset-4 transition hover:text-white hover:underline">{tr('Location & views', 'Situation et vues')}</Link>
+          <Link to="/getting-here" className="underline-offset-4 transition hover:text-primary-foreground hover:underline">{tr('Getting here', 'Venir aux Cyclamens')}</Link>
           <Link to="/book" className="underline-offset-4 transition hover:text-white hover:underline">{tr('Check dates & book', 'Dates et réservation')}</Link>
         </nav>
 

@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { Button } from '@/components/ui/button';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
+import { FindUs } from '@/components/find-us';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
@@ -115,6 +116,7 @@ function LocationPage() {
               {tr('The apartment', 'L’appartement')}
             </Link>
             <LanguageToggle />
+            <Link to="/getting-here" className="hidden text-muted-foreground hover:text-primary md:inline">{tr('Getting here', 'Venir')}</Link>
             <MobileMenu />
           </nav>
         </div>
@@ -213,6 +215,7 @@ function LocationPage() {
         </div>
       )}
 
+      <FindUs />
       <SiteFooter />
     </main>
   );
