@@ -6,7 +6,7 @@ export const venues = [
   { name: 'Bon Séjour', type: 'Hotel restaurant', typeFr: 'Restaurant d’hôtel', url: 'https://www.bon-sejour.com/' },
   { name: 'Les Balcons du Lac', type: 'Mountain restaurant', typeFr: 'Restaurant d’altitude', url: 'https://www.leman-mountains-explore.com/en/offers/restaurant-les-balcons-du-lac-thollon-les-memises-en-4978466/' },
   { name: 'Le XV', type: 'Restaurant & bar', typeFr: 'Restaurant et bar', url: 'https://www.leman-mountains-explore.com/en/offers/restaurant-bar-le-xv-thollon-les-memises-en-4977425/' },
-  { name: 'Le Carnotzet', type: 'Restaurant & bar', url: 'https://www.haute-savoie-tourisme.org/6021457-restaurant-bar-le-carnotzet' },
+  { name: 'Le Carnotzet', type: 'Restaurant & bar', typeFr: 'Restaurant et bar', url: 'https://www.haute-savoie-tourisme.org/6021457-restaurant-bar-le-carnotzet' },
 ];
 export const essentials = [
   { name: 'ESF Thollon', detail: 'Ski school & lessons', detailFr: 'École de ski et cours', url: 'https://www.esfthollon.com/fr/' },
