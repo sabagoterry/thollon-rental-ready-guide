@@ -12,6 +12,7 @@ import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
+import { ApartmentSlideshow } from '@/components/apartment-slideshow';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
@@ -157,6 +158,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <ApartmentSlideshow />
 
       <section className="border-b band-soft">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-6 py-10 md:grid-cols-4">

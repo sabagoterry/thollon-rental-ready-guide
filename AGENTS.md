@@ -23,3 +23,4 @@
 - Guest chat restores only a recent tab-scoped conversation; old persistent browser IDs must not repopulate the public Questions section.
 - Keep source-backed local Q&A in a browser-safe knowledge module used by the assistant; separate review opinions from official facts and never present research as live availability.
 - Site text is bilingual (EN/FR) via a LanguageProvider in the root layout and inline tr(en, fr) pairs; data modules carry *Fr fields. Choice persists in localStorage, so new copy must supply both languages.
+- Keep the home photo slideshow in a focused browser-safe component with its own cleaned-up timer so navigation and manual browsing never leave orphaned playback timers.
