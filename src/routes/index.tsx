@@ -11,6 +11,7 @@ import { LocalGuide } from '@/components/local-guide';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { LanguageToggle } from '@/components/language-toggle';
+import { MobileMenu } from '@/components/mobile-menu';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";

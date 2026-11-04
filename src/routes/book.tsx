@@ -14,6 +14,7 @@ import { isBlocked } from '@/lib/availability';
 import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
 import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
+import { MobileMenu } from '@/components/mobile-menu';
 import { useLang } from '@/lib/i18n';
 import { enGB, fr as frLocale } from 'date-fns/locale';
 

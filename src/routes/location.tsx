@@ -6,6 +6,7 @@ import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { Button } from '@/components/ui/button';
 import { LanguageToggle } from '@/components/language-toggle';
+import { MobileMenu } from '@/components/mobile-menu';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import lake from "@/assets/photos/lake.jpg.asset.json";
