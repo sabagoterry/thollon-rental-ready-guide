@@ -1,32 +1,36 @@
 import { ArrowUpRight, MountainSnow, MapPin, Utensils, ShoppingBasket, Video, CloudSnow, Newspaper, PartyPopper, Car, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
+import { useLang } from '@/lib/i18n';
 import { diningDirectory, venues, essentials as baseEssentials, liveLinks, dayTrips } from '@/lib/local-links';
 
 const liveIcons = { webcam: Video, forecast: CloudSnow, news: Newspaper, events: PartyPopper } as const;
 const tripKinds = {
-  summer: { icon: Sun, label: 'Summer trip', band: 'band-sunset text-accent-foreground' },
-  winter: { icon: MountainSnow, label: 'Ski resort', band: 'band-lake text-primary-foreground' },
+  summer: { icon: Sun, label: 'Summer trip', labelFr: 'Sortie estivale', band: 'band-sunset text-accent-foreground' },
+  winter: { icon: MountainSnow, label: 'Ski resort', labelFr: 'Station de ski', band: 'band-lake text-primary-foreground' },
 } as const;
 
 const icons = { 'ESF Thollon': MountainSnow, 'Tourist office': MapPin, 'Lift passes': MountainSnow, Sherpa: ShoppingBasket } as const;
 const essentials = baseEssentials.map(e => ({ ...e, icon: icons[e.name as keyof typeof icons] ?? MapPin }));
 
 export function LocalGuide() {
+  const { tr } = useLang();
+  const nameFr: Record<string, string> = { 'Tourist office': 'Office de tourisme', 'Lift passes': 'Forfaits de ski', 'Snow forecast': 'Prévisions neige', 'Télécabine news': 'Actualités Télécabine', 'What’s on in Thollon': 'Agenda de Thollon', 'Telecabine webcam': 'Webcam télécabine', 'Parchet summit webcam': 'Webcam du sommet du Parchet' };
+  const n = (name: string) => tr(name, nameFr[name] ?? name);
   return (
     <section id="local-guide" className="band-ice">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <SectionHeading kicker="Local area">Around Thollon</SectionHeading>
+        <SectionHeading kicker={tr("Local area", "Le coin")}>{tr("Around Thollon", "Autour de Thollon")}</SectionHeading>
         <div className="card-vivid mt-10 rounded-lg bg-card p-6">
           <h3 className="flex items-center gap-3 text-2xl text-rainbow">
             <span className="relative flex size-2.5"><span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75 motion-reduce:animate-none" /><span className="relative inline-flex size-2.5 rounded-full bg-accent" /></span>
-            Live from the mountain
+            {tr('Live from the mountain', 'En direct de la montagne')}
           </h3>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {liveLinks.map(item => { const Icon = liveIcons[item.kind]; return (
               <a key={item.name} href={item.url} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-3 rounded-md border border-primary/15 bg-background p-4 transition hover:-translate-y-0.5 hover:border-accent hover:glow-accent">
                 <span className="band-sunset mt-0.5 grid size-9 shrink-0 place-items-center rounded-full text-accent-foreground"><Icon className="size-4" /></span>
-                <span className="min-w-0"><span className="flex items-center gap-1 font-medium text-primary">{item.name}<ArrowUpRight className="size-3.5 opacity-60 transition group-hover:opacity-100" /></span><span className="mt-1 block text-sm text-muted-foreground">{item.detail}</span></span>
+                <span className="min-w-0"><span className="flex items-center gap-1 font-medium text-primary">{n(item.name)}<ArrowUpRight className="size-3.5 opacity-60 transition group-hover:opacity-100" /></span><span className="mt-1 block text-sm text-muted-foreground">{tr(item.detail, item.detailFr)}</span></span>
               </a>); })}
           </div>
         </div>
@@ -36,38 +40,38 @@ export function LocalGuide() {
               <span className="band-lake mt-1 grid size-9 shrink-0 place-items-center rounded-full text-primary-foreground"><item.icon className="size-4" /></span>
               <div className="min-w-0">
                 <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base">
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}<ArrowUpRight className="size-4 shrink-0" /></a>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">{n(item.name)}<ArrowUpRight className="size-4 shrink-0" /></a>
                 </Button>
-                <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{tr(item.detail, item.detailFr)}</p>
               </div>
             </div>
           ))}
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4">
-          <h3 className="flex items-center gap-3 text-2xl text-rainbow"><Utensils className="size-5" />Bars & restaurants</h3>
-          <Button asChild variant="outline"><a href={diningDirectory} target="_blank" rel="noopener noreferrer">Tourist office dining directory<ArrowUpRight /></a></Button>
+          <h3 className="flex items-center gap-3 text-2xl text-rainbow"><Utensils className="size-5" />{tr('Bars & restaurants', 'Bars et restaurants')}</h3>
+          <Button asChild variant="outline"><a href={diningDirectory} target="_blank" rel="noopener noreferrer">{tr('Tourist office dining directory', 'Guide des restaurants de l’office de tourisme')}<ArrowUpRight /></a></Button>
         </div>
-        <p className="mt-3 text-sm text-muted-foreground">Opening days and seasonal service vary; check with each venue.</p>
+        <p className="mt-3 text-sm text-muted-foreground">{tr('Opening days and seasonal service vary; check with each venue.', 'Les jours d’ouverture varient selon la saison ; renseignez-vous auprès de chaque établissement.')}</p>
         <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {venues.map(venue => (
             <div key={venue.name} className="border-b border-accent/30 pb-5">
               <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent">
                 <a href={venue.url} target="_blank" rel="noopener noreferrer">{venue.name}<ArrowUpRight className="size-4 shrink-0" /></a>
               </Button>
-              <p className="mt-1 text-sm text-muted-foreground">{venue.type}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{tr(venue.type, venue.typeFr)}</p>
             </div>
           ))}
         </div>
-        <h3 className="mt-14 flex items-center gap-3 text-2xl text-rainbow"><Car className="size-5" />Day trips</h3>
+        <h3 className="mt-14 flex items-center gap-3 text-2xl text-rainbow"><Car className="size-5" />{tr('Day trips', 'Excursions')}</h3>
         <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2">
           {dayTrips.map(t => { const kind = tripKinds[t.kind]; return (
             <div key={t.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
-              <span title={kind.label} aria-label={kind.label} className={`mt-1 grid size-9 shrink-0 place-items-center rounded-full ${kind.band}`}><kind.icon className="size-4" /></span>
+              <span title={tr(kind.label, kind.labelFr)} aria-label={tr(kind.label, kind.labelFr)} className={`mt-1 grid size-9 shrink-0 place-items-center rounded-full ${kind.band}`}><kind.icon className="size-4" /></span>
               <div className="min-w-0">
                 <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent">
                   <a href={t.url} target="_blank" rel="noopener noreferrer">{t.name}<ArrowUpRight className="size-4 shrink-0" /></a>
                 </Button>
-                <p className="mt-1 text-sm text-muted-foreground">{t.detail}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{tr(t.detail, t.detailFr)}</p>
               </div>
             </div>); })}
         </div>

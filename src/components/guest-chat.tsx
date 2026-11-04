@@ -5,12 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionHeading } from '@/components/section-heading';
 import { LogoMark } from '@/components/logo-mark';
+import { useLang } from '@/lib/i18n';
 import { activeConversation, CHAT_IDLE_MS, CHAT_SESSION_KEY } from '@/lib/guest-chat-session';
 
 type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean };
-const suggestions = ['How many people can stay?', 'What’s in the kitchen?', 'Where can we eat nearby?', 'Is there skiing close by?'];
+const suggestions = { en: ['How many people can stay?', 'What’s in the kitchen?', 'Where can we eat nearby?', 'Is there skiing close by?'], fr: ['Combien de personnes peuvent séjourner ?', 'Qu’y a-t-il dans la cuisine ?', 'Où manger à proximité ?', 'Peut-on skier près d’ici ?'] };
 
 export function GuestChat() {
+  const { lang, tr } = useLang();
   const [conversationId, setConversationId] = useState('');
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
@@ -76,7 +78,7 @@ export function GuestChat() {
       const res = await fetch('/api/guest-chat', { signal: controller.signal, method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversationId, message: question }) });
       if (!res.ok || !res.body) {
         const err = await res.json().catch(() => ({}));
-        update(l => ({ ...l, content: err.error ?? 'Sorry, the assistant could not answer.', error: true }));
+        update(l => ({ ...l, content: err.error ?? tr('Sorry, the assistant could not answer.', 'Désolé, l’assistant n’a pas pu répondre.'), error: true }));
         return;
       }
       const reader = res.body.getReader();
@@ -90,7 +92,7 @@ export function GuestChat() {
         update(l => failure !== undefined ? { ...l, content: answer || failure, error: !answer } : { ...l, content: answer ?? '' });
       }
     } catch {
-      update(l => ({ ...l, content: l.content || 'Connection lost. Please try again.', error: !l.content }));
+      update(l => ({ ...l, content: l.content || tr('Connection lost. Please try again.', 'Connexion perdue. Veuillez réessayer.'), error: !l.content }));
     } finally { if (!controller.signal.aborted) { setBusy(false); touchChat(conversationId); } }
   }
 
@@ -99,18 +101,18 @@ export function GuestChat() {
   return (
     <section id="ask" className="band-soft">
       <div className="mx-auto max-w-3xl px-6 py-20">
-        <SectionHeading kicker="Ask us anything">Questions about your stay?</SectionHeading>
-        <p className="mt-4 text-muted-foreground">Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.</p>
+        <SectionHeading kicker={tr("Ask us anything", "Posez-nous vos questions")}>{tr("Questions about your stay?", "Des questions sur votre séjour ?")}</SectionHeading>
+        <p className="mt-4 text-muted-foreground">{tr('Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.', 'Notre assistant IA répond à partir des informations sur l’appartement et de nos recommandations locales. Pour tout le reste, envoyez-nous une demande.')}</p>
         <div className="card-vivid mt-8 overflow-hidden rounded-md bg-card">
           <div className="bar-flow h-1.5" />
           {messages.length > 0 && <div className="flex items-center justify-between border-b px-5 py-2">
-            <span className="text-sm text-muted-foreground">{busy ? 'Answering…' : 'Chat in progress'}</span>
-            <Button variant="ghost" size="sm" onClick={endChat}><X />End chat</Button>
+            <span className="text-sm text-muted-foreground">{busy ? tr('Answering…', 'Réponse en cours…') : tr('Chat in progress', 'Discussion en cours')}</span>
+            <Button variant="ghost" size="sm" onClick={endChat}><X />{tr('End chat', 'Terminer')}</Button>
           </div>}
           <div ref={scroller} className="max-h-[28rem] min-h-48 space-y-5 overflow-y-auto p-5" aria-live="polite">
             {messages.length === 0 && (
               <div className="flex flex-wrap gap-2">
-                {suggestions.map(s => <Button key={s} variant="outline" size="sm" className="hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
+                {suggestions[lang].map(s => <Button key={s} variant="outline" size="sm" className="hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
               </div>
             )}
             {messages.map((m, i) => m.role === 'user'
@@ -119,20 +121,20 @@ export function GuestChat() {
                   <LogoMark compact />
                   <div className={`prose prose-sm max-w-none pt-1 ${m.error ? 'text-destructive' : 'text-foreground'}`}>
                     {m.content ? <ReactMarkdown components={{ a: props => <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary underline" /> }}>{m.content}</ReactMarkdown>
-                      : <LoaderCircle className="size-4 animate-spin text-muted-foreground motion-reduce:animate-none" aria-label="Thinking" />}
+                      : <LoaderCircle className="size-4 animate-spin text-muted-foreground motion-reduce:animate-none" aria-label={tr('Thinking', 'Réflexion')} />}
                   </div>
                 </div>)}
           </div>
           <form onSubmit={submit} className="flex items-end gap-2 border-t p-3">
-            <Textarea value={input} onChange={e => { setInput(e.target.value); if (messages.length) touchChat(conversationId); }} maxLength={1000} rows={1} placeholder="Ask about the apartment or Thollon…" aria-label="Your question"
+            <Textarea value={input} onChange={e => { setInput(e.target.value); if (messages.length) touchChat(conversationId); }} maxLength={1000} rows={1} placeholder={tr('Ask about the apartment or Thollon…', 'Une question sur l’appartement ou Thollon…')} aria-label={tr('Your question', 'Votre question')}
               className="min-h-10 resize-none border-0 shadow-none focus-visible:ring-0"
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); void ask(input); } }} />
-            <Button type="submit" size="icon" className="band-lake text-primary-foreground" disabled={busy || !input.trim() || !conversationId} aria-label="Send question">
+            <Button type="submit" size="icon" className="band-lake text-primary-foreground" disabled={busy || !input.trim() || !conversationId} aria-label={tr('Send question', 'Envoyer la question')}>
               {busy ? <LoaderCircle className="animate-spin motion-reduce:animate-none" /> : <ArrowUp />}
             </Button>
           </form>
         </div>
-        <p className="mt-3 text-xs text-muted-foreground">Answers may be imperfect — please confirm important details with the owner. Questions are saved so the owner can read them.</p>
+        <p className="mt-3 text-xs text-muted-foreground">{tr('Answers may be imperfect — please confirm important details with the owner. Questions are saved so the owner can read them.', 'Les réponses peuvent être imparfaites — confirmez les détails importants avec le propriétaire. Les questions sont enregistrées pour que le propriétaire puisse les lire.')}</p>
       </div>
     </section>
   );

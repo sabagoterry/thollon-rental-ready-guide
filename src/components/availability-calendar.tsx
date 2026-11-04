@@ -7,8 +7,12 @@ import { RefreshCw } from 'lucide-react';
 import { SectionHeading } from '@/components/section-heading';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
+import { useLang } from '@/lib/i18n';
+import { fr as frLocale } from 'date-fns/locale';
 
 export function AvailabilityCalendar() {
+  const { lang, tr } = useLang();
+  const locale = lang === 'fr' ? frLocale : undefined;
   const { data, refetch, isFetching } = useSuspenseQuery(availabilityQuery);
   const today = parseISO(data.today);
   const [month, setMonth] = useState(today);
@@ -17,29 +21,30 @@ export function AvailabilityCalendar() {
     <section id="availability" className="border-t band-soft">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <SectionHeading kicker="Before you book">Availability</SectionHeading>
-          <Button variant="outline" size="icon" title="Refresh availability" aria-label="Refresh availability" disabled={isFetching} onClick={() => void refetch()}>
+          <SectionHeading kicker={tr("Before you book", "Avant de réserver")}>{tr("Availability", "Disponibilités")}</SectionHeading>
+          <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
             <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
           </Button>
         </div>
-        <p className="mt-4 text-muted-foreground">Final availability and prices are confirmed on Airbnb.</p>
-        <div className="mt-8 flex flex-wrap gap-6 text-sm" aria-label="Calendar legend">
-          <span className="flex items-center gap-2"><span className="size-3 rounded-sm border-2 border-primary bg-background" />{ready ? 'Not blocked on Airbnb' : 'Availability unconfirmed'}</span>
-          <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-coral/70" />Unavailable</span>
+        <p className="mt-4 text-muted-foreground">{tr('Final availability and prices are confirmed on Airbnb.', 'Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
+        <div className="mt-8 flex flex-wrap gap-6 text-sm" aria-label={tr('Calendar legend', 'Légende')}>
+          <span className="flex items-center gap-2"><span className="size-3 rounded-sm border-2 border-primary bg-background" />{ready ? tr('Not blocked on Airbnb', 'Libre sur Airbnb') : tr('Availability unconfirmed', 'Disponibilité non confirmée')}</span>
+          <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-coral/70" />{tr('Unavailable', 'Indisponible')}</span>
         </div>
         <div className="mt-6" role="status">
-          {!ready && <p className="mb-4 text-sm text-destructive">Availability could not be updated. Please check dates on Airbnb.</p>}
-          <p className="text-sm text-muted-foreground">{data.syncedAt ? `Last synced ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm')}` : 'No confirmed calendar update yet.'}</p>
+          {!ready && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
+          <p className="text-sm text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
         </div>
         <div className="card-vivid mt-6 overflow-hidden rounded-lg bg-card p-4">
           <Calendar
-            aria-label="Apartment availability calendar"
+            aria-label={tr('Apartment availability calendar', 'Calendrier des disponibilités')}
+            locale={locale}
             month={month} onMonthChange={setMonth} startMonth={today} endMonth={addMonths(today, 23)}
             numberOfMonths={2} weekStartsOn={1} showOutsideDays={false}
             className="availability-calendar max-w-full bg-card p-0 [--cell-size:2.25rem]"
             modifiers={{ blocked: day => isBlocked(format(day, 'yyyy-MM-dd'), data.ranges), past: { before: today } }}
             modifiersClassNames={{ blocked: 'bg-coral/15 text-muted-foreground line-through', past: 'text-muted-foreground opacity-70' }}
-            labels={{ labelDay: day => `${format(day, 'd MMMM yyyy')}: ${day < today ? 'past date' : isBlocked(format(day, 'yyyy-MM-dd'), data.ranges) ? 'unavailable' : ready ? 'not blocked on Airbnb' : 'availability unconfirmed'}` }}
+            labels={{ labelDay: day => `${format(day, 'd MMMM yyyy', { locale })}: ${day < today ? tr('past date', 'date passée') : isBlocked(format(day, 'yyyy-MM-dd'), data.ranges) ? tr('unavailable', 'indisponible') : ready ? tr('not blocked on Airbnb', 'libre sur Airbnb') : tr('availability unconfirmed', 'disponibilité non confirmée')}` }}
           />
         </div>
       </div>
