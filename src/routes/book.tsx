@@ -71,8 +71,8 @@ function BookPage() {
       <div className="bar-flow h-1.5" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <LogoMark />
-        <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" />{tr("Back to apartment", "Retour à l’appartement")}</Link>
-        <LanguageToggle />
+        <div className="flex items-center gap-4"><Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" />{tr("Back to apartment", "Retour à l’appartement")}</Link>
+        <LanguageToggle /></div>
       </div>
     </header>
     <div className="mx-auto max-w-6xl px-6 py-14">
