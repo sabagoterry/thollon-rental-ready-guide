@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Add photo slideshow immediately below the video with six-second advancement and manual arrows
 - [x] Explicit Ski Sunday start button with continuous playback until paused
 - [x] Bright circular cyclamen logo linking home everywhere and matching favicon
 - [x] Add and verify a securely synced Airbnb availability calendar
