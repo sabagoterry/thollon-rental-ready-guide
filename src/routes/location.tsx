@@ -114,6 +114,7 @@ function LocationPage() {
               {tr('The apartment', 'L’appartement')}
             </Link>
             <LanguageToggle />
+            <MobileMenu />
           </nav>
         </div>
       </header>

@@ -129,6 +129,7 @@ function Index() {
             <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Local area", "Le coin")}</a>
             <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Ask us", "Questions")}</a>
             <LanguageToggle />
+            <MobileMenu />
           </nav>
         </div>
       </header>
