@@ -11,10 +11,9 @@
  * classes (e.g. --color-primary -> bg-primary, text-primary).
  *
  * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
+ * Colours use semantic theme tokens.
  *
- * The palette is deliberately loud and weighted equally between summer
- * (sunshine, sunset orange, coral) and winter (ice, lake, alpine blue).
+ * The owner-selected palette pairs sampled teal with white.
  *
  * To add a new semantic color:
  * 1. Add the variable to :root (light value) and .dark (dark value)
@@ -49,9 +48,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Figtree", system-ui, sans-serif;
-  --font-gallery: "Playfair Display", Georgia, serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-gallery: "Poppins", system-ui, sans-serif;
   --color-gallery-caption: var(--gallery-caption);
   --color-sunshine: var(--sunshine);
   --color-ice: var(--ice);
@@ -74,88 +73,89 @@
 }
 
 :root {
-  --gallery-caption: oklch(1 0 0);
+  --gallery-caption: #FFFFFF;
   --radius: 0.5rem;
-  --background: #F9F8F6;
-  --foreground: #2C3238;
+  --background: #FFFFFF;
+  --foreground: #24484D;
   --card: #FFFFFF;
-  --card-foreground: #2C3238;
+  --card-foreground: #24484D;
   --popover: #FFFFFF;
-  --popover-foreground: #2C3238;
-  --primary: #2C3238;
-  --primary-foreground: #F9F8F6;
-  --secondary: #D9C3B0;
-  --secondary-foreground: #2C3238;
-  --muted: #EFEBE6;
-  --muted-foreground: #5E656C;
-  --accent: #C85A32;
+  --popover-foreground: #24484D;
+  --primary: #6FA0A5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8F1F2;
+  --secondary-foreground: #24484D;
+  --muted: #F1F6F6;
+  --muted-foreground: #49696D;
+  --accent: #32666D;
   --accent-foreground: #FFFFFF;
-  --destructive: oklch(0.55 0.2 27);
+  --destructive: #32666D;
   --destructive-foreground: #FFFFFF;
-  --border: #E2DAD1;
-  --input: #E2DAD1;
-  --ring: #C85A32;
-  --sunshine: #D9C3B0;
-  --ice: #EFEBE6;
-  --coral: #C85A32;
-  --lake: #4A5560;
-  --meadow: #B89A7F;
-  --chart-1: #C85A32;
-  --chart-2: #2C3238;
-  --chart-3: #D9C3B0;
-  --chart-4: #8A939B;
-  --chart-5: #A6452A;
-  --sidebar: #F9F8F6;
-  --sidebar-foreground: #2C3238;
-  --sidebar-primary: #2C3238;
-  --sidebar-primary-foreground: #F9F8F6;
-  --sidebar-accent: #D9C3B0;
-  --sidebar-accent-foreground: #2C3238;
-  --sidebar-border: #E2DAD1;
-  --sidebar-ring: #C85A32;
-  --overlay: linear-gradient(165deg, rgb(44 50 56 / 0.15) 0%, rgb(44 50 56 / 0.45) 55%, rgb(44 50 56 / 0.85) 100%);
+  --border: #C7DCDD;
+  --input: #A3C3C6;
+  --ring: #32666D;
+  --sunshine: #E8F1F2;
+  --ice: #F1F6F6;
+  --coral: #32666D;
+  --lake: #32666D;
+  --meadow: #6FA0A5;
+  --chart-1: #32666D;
+  --chart-2: #6FA0A5;
+  --chart-3: #A3C3C6;
+  --chart-4: #24484D;
+  --chart-5: #C7DCDD;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #24484D;
+  --sidebar-primary: #6FA0A5;
+  --sidebar-primary-foreground: #16363B;
+  --sidebar-accent: #E8F1F2;
+  --sidebar-accent-foreground: #24484D;
+  --sidebar-border: #C7DCDD;
+  --sidebar-ring: #32666D;
+  --overlay: linear-gradient(165deg, color-mix(in oklab, var(--foreground) 15%, transparent) 0%, color-mix(in oklab, var(--foreground) 45%, transparent) 55%, color-mix(in oklab, var(--foreground) 85%, transparent) 100%);
 }
 
 .dark {
-  --gallery-caption: oklch(1 0 0);
-  --background: oklch(0.19 0.06 265);
-  --foreground: oklch(0.96 0.02 235);
-  --card: oklch(0.26 0.07 265);
-  --card-foreground: oklch(0.96 0.02 235);
-  --popover: oklch(0.26 0.07 265);
-  --popover-foreground: oklch(0.96 0.02 235);
-  --primary: oklch(0.72 0.17 230);
-  --primary-foreground: oklch(0.18 0.06 265);
-  --secondary: oklch(0.32 0.09 88);
-  --secondary-foreground: oklch(0.95 0.05 92);
-  --muted: oklch(0.31 0.06 262);
-  --muted-foreground: oklch(0.8 0.06 240);
-  --accent: oklch(0.74 0.2 45);
-  --accent-foreground: oklch(0.18 0.05 45);
-  --destructive: oklch(0.7 0.2 22);
-  --destructive-foreground: oklch(0.18 0.05 22);
-  --border: oklch(0.85 0.08 240 / 22%);
-  --input: oklch(0.85 0.08 240 / 28%);
-  --ring: oklch(0.72 0.17 230);
-  --sunshine: oklch(0.8 0.16 92);
-  --ice: oklch(0.75 0.12 208);
-  --coral: oklch(0.68 0.2 18);
-  --lake: oklch(0.65 0.15 196);
-  --meadow: oklch(0.7 0.16 145);
-  --chart-1: oklch(0.74 0.2 45);
-  --chart-2: oklch(0.65 0.15 196);
-  --chart-3: oklch(0.72 0.17 230);
-  --chart-4: oklch(0.8 0.16 92);
-  --chart-5: oklch(0.68 0.2 18);
-  --sidebar: oklch(0.26 0.07 265);
-  --sidebar-foreground: oklch(0.96 0.02 235);
-  --sidebar-primary: oklch(0.72 0.17 230);
-  --sidebar-primary-foreground: oklch(0.18 0.06 265);
-  --sidebar-accent: oklch(0.32 0.09 88);
-  --sidebar-accent-foreground: oklch(0.95 0.05 92);
-  --sidebar-border: oklch(0.85 0.08 240 / 22%);
-  --sidebar-ring: oklch(0.72 0.17 230);
-  --overlay: linear-gradient(165deg, oklch(0.7 0.17 55 / 0.35) 0%, oklch(0.45 0.16 250 / 0.45) 45%, oklch(0.2 0.09 265 / 0.84) 100%);
+  --gallery-caption: #FFFFFF;
+  --radius: 0.5rem;
+  --background: #16363B;
+  --foreground: #FFFFFF;
+  --card: #24484D;
+  --card-foreground: #FFFFFF;
+  --popover: #24484D;
+  --popover-foreground: #FFFFFF;
+  --primary: #6FA0A5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #32666D;
+  --secondary-foreground: #FFFFFF;
+  --muted: #24484D;
+  --muted-foreground: #C7DCDD;
+  --accent: #A3C3C6;
+  --accent-foreground: #16363B;
+  --destructive: #32666D;
+  --destructive-foreground: #FFFFFF;
+  --border: #49696D;
+  --input: #49696D;
+  --ring: #A3C3C6;
+  --sunshine: #E8F1F2;
+  --ice: #F1F6F6;
+  --coral: #32666D;
+  --lake: #32666D;
+  --meadow: #6FA0A5;
+  --chart-1: #32666D;
+  --chart-2: #6FA0A5;
+  --chart-3: #A3C3C6;
+  --chart-4: #24484D;
+  --chart-5: #C7DCDD;
+  --sidebar: #16363B;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #6FA0A5;
+  --sidebar-primary-foreground: #16363B;
+  --sidebar-accent: #32666D;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #49696D;
+  --sidebar-ring: #32666D;
+  --overlay: linear-gradient(165deg, color-mix(in oklab, var(--foreground) 15%, transparent) 0%, color-mix(in oklab, var(--foreground) 45%, transparent) 55%, color-mix(in oklab, var(--foreground) 85%, transparent) 100%);
 }
 
 @layer base {
@@ -165,17 +165,12 @@
 
   body {
     background-color: var(--color-background);
-    background-image:
-      radial-gradient(60rem 42rem at 100% 0%, rgb(217 195 176 / 0.35), transparent 64%),
-      radial-gradient(55rem 40rem at 0% 22%, rgb(239 235 230 / 0.6), transparent 68%),
-      radial-gradient(50rem 36rem at 52% 100%, rgb(200 90 50 / 0.08), transparent 70%);
-    background-attachment: fixed;
     color: var(--color-foreground);
   }
 }
 
 @layer base {
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 600; letter-spacing: 0; }
   body { font-family: var(--font-sans); }
 }
 
@@ -189,7 +184,7 @@
   to { background-position: 300% 0; }
 }
 
-/* Summer-to-winter colour bands used behind sections. */
+/* Teal-and-white colour bands used behind sections. */
 @utility band-day {
   background-image: linear-gradient(115deg, var(--primary) 0%, var(--accent) 100%);
 }
@@ -199,19 +194,19 @@
 }
 
 @utility band-lake {
-  background-image: linear-gradient(135deg, #4A5560 0%, var(--primary) 100%);
+  background-image: linear-gradient(135deg, var(--lake) 0%, var(--primary) 100%);
 }
 
 @utility band-deep {
-  background-image: linear-gradient(135deg, #22272C 0%, #2C3238 55%, #3A424A 100%);
+  background-image: linear-gradient(135deg, var(--foreground) 0%, var(--lake) 100%);
 }
 
 @utility band-ice {
-  background-image: linear-gradient(140deg, #F9F8F6 0%, #EFE6DC 100%);
+  background-image: linear-gradient(140deg, var(--background) 0%, var(--secondary) 100%);
 }
 
 @utility band-soft {
-  background-image: linear-gradient(160deg, #F9F8F6 0%, #F2EBE3 55%, #EDE0D3 100%);
+  background-image: linear-gradient(160deg, var(--background) 0%, var(--muted) 55%, var(--secondary) 100%);
 }
 
 @utility bar-flow {
