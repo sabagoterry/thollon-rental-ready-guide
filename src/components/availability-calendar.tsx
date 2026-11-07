@@ -28,7 +28,7 @@ export function AvailabilityCalendar() {
         </div>
         <p className="mt-4 text-muted-foreground">{tr('Final availability and prices are confirmed on Airbnb.', 'Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
         <div className="mt-8 flex flex-wrap gap-6 text-sm" aria-label={tr('Calendar legend', 'Légende')}>
-          <span className="flex items-center gap-2"><span className="size-3 rounded-sm border-2 border-primary bg-background" />{ready ? tr('Not blocked on Airbnb', 'Libre sur Airbnb') : tr('Availability unconfirmed', 'Disponibilité non confirmée')}</span>
+          <span className="flex items-center gap-2"><span className="size-3 rounded-sm border-2 border-primary bg-background" />{ready ? tr('Available', 'Disponible') : tr('Availability unconfirmed', 'Disponibilité non confirmée')}</span>
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-coral/70" />{tr('Unavailable', 'Indisponible')}</span>
         </div>
         <div className="mt-6" role="status">

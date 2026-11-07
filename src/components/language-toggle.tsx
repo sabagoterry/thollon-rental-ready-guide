@@ -46,7 +46,7 @@ export function LanguageToggle() {
           aria-pressed={lang === l}
           aria-label={label}
           title={label}
-          className={`language-flag h-9 w-12 shrink-0 overflow-hidden rounded-sm border p-0 [&_svg]:h-full [&_svg]:w-full ${lang === l ? 'border-sunshine ring-2 ring-sunshine' : 'border-border hover:ring-2 hover:ring-accent'}`}
+          className={`language-flag h-9 w-12 shrink-0 overflow-hidden rounded-sm p-0 [&_svg]:h-full [&_svg]:w-full ${lang === l ? 'opacity-100' : 'opacity-70 hover:opacity-100'}`}
         >
           <Flag />
         </Button>
