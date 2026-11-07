@@ -5,24 +5,24 @@ import { ApartmentSlideshow } from '@/components/apartment-slideshow';
 afterEach(() => { cleanup(); vi.useRealTimers(); });
 
 describe('Apartment slideshow', () => {
-  it('changes photo after exactly six seconds', () => {
+  it('changes photo after exactly four seconds', () => {
     vi.useFakeTimers();
     const view = render(<ApartmentSlideshow />);
     const first = view.getByAltText('Living and dining room');
-    act(() => vi.advanceTimersByTime(5999));
+    act(() => vi.advanceTimersByTime(3999));
     expect(first.getAttribute('aria-hidden')).toBe('false');
     act(() => vi.advanceTimersByTime(1));
     expect(first.getAttribute('aria-hidden')).toBe('true');
     expect(view.getByAltText('Armchairs and dresser').getAttribute('aria-hidden')).toBe('false');
   });
 
-  it('arrows change immediately, wrap, and give the new photo six seconds', () => {
+  it('arrows change immediately, wrap, and give the new photo four seconds', () => {
     vi.useFakeTimers();
     const view = render(<ApartmentSlideshow />);
-    act(() => vi.advanceTimersByTime(5000));
+    act(() => vi.advanceTimersByTime(3000));
     fireEvent.click(view.getByRole('button', { name: 'Previous photo' }));
     expect(view.getByAltText('Bathroom').getAttribute('aria-hidden')).toBe('false');
-    act(() => vi.advanceTimersByTime(5999));
+    act(() => vi.advanceTimersByTime(3999));
     expect(view.getByAltText('Bathroom').getAttribute('aria-hidden')).toBe('false');
     fireEvent.click(view.getByRole('button', { name: 'Next photo' }));
     expect(view.getByAltText('Living and dining room').getAttribute('aria-hidden')).toBe('false');
@@ -35,7 +35,7 @@ describe('Apartment slideshow', () => {
     act(() => vi.advanceTimersByTime(12000));
     expect(view.getByAltText('Living and dining room').getAttribute('aria-hidden')).toBe('false');
     fireEvent.click(view.getByRole('button', { name: 'Resume slideshow' }));
-    act(() => vi.advanceTimersByTime(6000));
+    act(() => vi.advanceTimersByTime(4000));
     expect(view.getByAltText('Armchairs and dresser').getAttribute('aria-hidden')).toBe('false');
   });
 });
