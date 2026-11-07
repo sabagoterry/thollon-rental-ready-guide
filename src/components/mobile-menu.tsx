@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { Menu, X } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
+import { Button } from '@/components/ui/button';
 
-export function MobileMenu() {
+export function MobileMenu({ includeSections = false }: { includeSections?: boolean }) {
   const { tr } = useLang();
   const [open, setOpen] = useState(false);
 
@@ -16,7 +17,7 @@ export function MobileMenu() {
 
   return (
     <div className="relative md:hidden">
-      <button
+      <Button variant="ghost" size="icon"
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
@@ -24,7 +25,7 @@ export function MobileMenu() {
         className="inline-flex items-center justify-center rounded-md border border-primary/20 bg-background/60 p-2 text-primary transition hover:border-accent hover:text-accent"
       >
         {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
-      </button>
+      </Button>
 
       {open && (
         <nav
@@ -42,6 +43,11 @@ export function MobileMenu() {
               {l.label}
             </Link>
           ))}
+          {includeSections && [
+            { href: '#availability', label: tr('Availability', 'Disponibilités') },
+            { href: '#local-guide', label: tr('Local area', 'Le coin') },
+            { href: '#ask', label: tr('Ask us', 'Questions') },
+          ].map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block rounded-sm px-3 py-2.5 text-sm font-medium text-foreground transition hover:bg-accent/15">{l.label}</a>)}
         </nav>
       )}
     </div>

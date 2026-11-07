@@ -12,8 +12,7 @@ import { balconies, washingFacilities } from '@/lib/apartment';
 import { LocalGuide } from '@/components/local-guide';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
-import { LanguageToggle } from '@/components/language-toggle';
-import { MobileMenu } from '@/components/mobile-menu';
+import { HomeHeader } from '@/components/home-header';
 import { ApartmentSlideshow } from '@/components/apartment-slideshow';
 import { FindUs } from '@/components/find-us';
 import { useLang } from '@/lib/i18n';
@@ -120,20 +119,7 @@ function Index() {
   const fr = lang === 'fr';
   return (
     <main>
-      <header className="home-integrated-header absolute inset-x-0 top-0 z-40 text-gallery-caption">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
-          <LogoMark />
-          <nav aria-label="Main" className="flex items-center gap-6 text-sm">
-            <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Availability", "Disponibilités")}</a>
-            <Link to="/location" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Location", "Situation")}</Link>
-            <Link to="/getting-here" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr('Getting here', 'Venir')}</Link>
-            <a href="#local-guide" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Local area", "Le coin")}</a>
-            <a href="#ask" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Ask us", "Questions")}</a>
-            <LanguageToggle />
-            <MobileMenu />
-          </nav>
-        </div>
-      </header>
+      <HomeHeader />
       <section className="relative flex min-h-[92vh] items-end pt-44">
         <video
           src={heroVideo.url}
@@ -195,9 +181,7 @@ function Index() {
                   <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="relative aspect-[4/3] w-full rounded-sm object-cover transition duration-700 motion-safe:group-hover:scale-[1.02]" />
                 </div>
                 <div className="md:col-span-5">
-                  <span aria-hidden="true" className="font-gallery text-6xl text-primary/25">0{index + 1}</span>
                   <h3 className="mt-2 text-3xl text-rainbow md:text-4xl">{fr ? r.nameFr : r.name}</h3>
-                  {r.size && <p className="mt-3 font-semibold text-primary">{r.size}</p>}
                   <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{fr ? r.textFr : r.text}</p>
                 </div>
               </article>
