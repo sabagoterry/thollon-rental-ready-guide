@@ -29,7 +29,7 @@ export function ApartmentSlideshow() {
 
   useEffect(() => {
     if (paused) return;
-    const timer = window.setTimeout(() => setIndex(current => (current + 1) % slides.length), 6000);
+    const timer = window.setTimeout(() => setIndex(current => (current + 1) % slides.length), 4000);
     return () => window.clearTimeout(timer);
   }, [index, paused]);
 
