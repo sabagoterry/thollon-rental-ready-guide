@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Update floor-plan balcony edge and aligned rear walls from colored guides; bathroom wall moved slightly but still stepped (further correction needs owner approval)
 - [x] Move ensuite wall closer and extend bathroom wall to marked X; place bunk pillow at marked head (extra pillow remains at opposite end; owner retry approval pending)
 - [x] Address new comments: remove room numbers/sizes and keep unobtrusive navigation available while scrolling
 - [x] Retry 3D illustration with site room configuration and two balconies; owner to confirm illustrative geometry
