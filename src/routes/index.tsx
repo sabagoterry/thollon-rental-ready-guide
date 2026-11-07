@@ -27,7 +27,7 @@ import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower.jpg.asset.json";
 import bath from "@/assets/photos/bath.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
-import floorplan3d from "@/assets/photos/floorplan-3d-v9.jpg";
+import floorplan3d from "@/assets/photos/floorplan-3d-v10.jpg";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
