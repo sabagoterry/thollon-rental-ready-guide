@@ -28,7 +28,7 @@ import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower.jpg.asset.json";
 import bath from "@/assets/photos/bath.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
-import floorplan from "@/assets/photos/floorplan.png.asset.json";
+import floorplan3d from "@/assets/photos/floorplan-3d-corrected.jpg";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
@@ -223,7 +223,10 @@ function Index() {
               <li>{tr("Hall", "Entrée")} — 4 m² · {tr("Shower ensuite", "Salle d’eau attenante")} — 2.75 m²</li>
             </ul>
           </div>
-          <img src={floorplan.url} alt={tr("Apartment floor plan", "Plan de l’appartement")} loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />
+          <figure>
+            <img src={floorplan3d} alt={tr("3D illustration of the apartment floor plan with two balconies", "Illustration 3D du plan de l’appartement avec deux balcons")} loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground">{tr('Illustrative 3D view — not a measured architectural drawing.', 'Vue 3D illustrative — ce n’est pas un plan architectural coté.')}</figcaption>
+          </figure>
         </div>
       </section>
 

@@ -28,3 +28,4 @@
 - Keep Getting here as a separate bilingual public route with official transport links; never reuse another property's directions, travel distances or credentials from reference HTML.
 - Share owner-confirmed washing facilities between page facts and guest knowledge to prevent contradictory bathroom descriptions.
 - Keep the gallery lightbox timer in its mounted component with cleanup, so closing it stops automatic advancement.
+- Treat generated 3D floor-plan views as illustrations, not measured architectural drawings; retain the original source plan for future corrections.
