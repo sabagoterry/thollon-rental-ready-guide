@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Widen bunks to purple; move bathroom top wall to blue and right wall to dark red; shorten lower wall to green
 - [x] Update floor-plan balcony edge and aligned rear walls from colored guides; bathroom wall moved slightly but still stepped (further correction needs owner approval)
 - [x] Move ensuite wall closer and extend bathroom wall to marked X; place bunk pillow at marked head (extra pillow remains at opposite end; owner retry approval pending)
 - [x] Address new comments: remove room numbers/sizes and keep unobtrusive navigation available while scrolling
