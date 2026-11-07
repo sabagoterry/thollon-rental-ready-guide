@@ -2,6 +2,12 @@ export const balconies = [
   { position: 'front', facing: 'south' },
   { position: 'rear', facing: 'north' },
 ] as const;
+export const washingFacilities = {
+  fullSizeBathrooms: 1,
+  showerEnsuites: 1,
+  description: '1 full-size bathroom and 1 shower ensuite',
+  descriptionFr: '1 salle de bains complète et 1 salle d’eau attenante',
+} as const;
 /** Owner-confirmed house rules; price is not yet confirmed. */
 export const houseRules = {
   checkIn: '4pm',

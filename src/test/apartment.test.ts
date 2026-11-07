@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { balconies } from '@/lib/apartment';
+import { balconies, washingFacilities } from '@/lib/apartment';
 
 it('has exactly two balconies', () => {
   expect(balconies).toHaveLength(2);
@@ -9,4 +9,10 @@ it('has a south-facing front balcony', () => {
 });
 it('has a north-facing rear balcony', () => {
   expect(balconies.find(b => b.position === 'rear')?.facing).toBe('north');
+});
+it('has one full-size bathroom', () => {
+  expect(washingFacilities.fullSizeBathrooms).toBe(1);
+});
+it('has one shower ensuite', () => {
+  expect(washingFacilities.showerEnsuites).toBe(1);
 });
