@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { balconies, houseRules } from './apartment';
+import { balconies, houseRules, washingFacilities } from './apartment';
 import { liveLinks, dayTrips, diningDirectory, essentials, venues } from './local-links';
 import { localQuestions } from './local-questions';
 
@@ -17,12 +17,12 @@ Answer prospective guests' questions about the apartment and local area, using O
 
 APARTMENT
 - About 39 m², second floor of the Les Cyclamens building. Open all year. Sleeps up to 6.
-- 2 bedrooms, 2 bathrooms. Exactly two balconies: ${balconyText}.
+- 2 bedrooms, ${washingFacilities.description}. Exactly two balconies: ${balconyText}.
 - Living & dining room (10.9 m²): big picture window onto the balcony, dining table for four, armchairs, TV, sofa bed for two.
 - Kitchen: microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine, kettle.
 - Double bedroom (8.9 m²): double bed, built-in wardrobes, next to the shower room.
 - Bunk room (5.6 m²): wood-panelled, bunk beds.
-- Shower room (2.75 m²): walk-in shower, washbasin, toilet, lit mirror. Also a bathroom with a bathtub. Hall 4 m².
+- Shower ensuite (2.75 m²): walk-in shower, washbasin, toilet, lit mirror. Also a full-size bathroom with a bathtub. Hall 4 m².
 - Check-in from ${houseRules.checkIn}, check-out by ${houseRules.checkOut}.
 - ${houseRules.pets} ${houseRules.smoking}
 - ${houseRules.cleaning} ${houseRules.linen}

@@ -240,6 +240,17 @@
 }
 
 .availability-calendar .rdp-month { width: 280px; }
+.home-integrated-header {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 85%, transparent), transparent);
+}
+.home-integrated-header nav > a { color: var(--gallery-caption); text-shadow: 0 2px 8px var(--foreground); }
+.home-integrated-header nav > a:hover { color: var(--sunshine); }
+.rooms-showcase { background: linear-gradient(150deg, var(--background), color-mix(in oklab, var(--ice) 24%, var(--background)), color-mix(in oklab, var(--sunshine) 18%, var(--background))); }
+.language-flag { transform-origin: left center; animation: flag-wave 3s ease-in-out infinite; filter: saturate(1.35); box-shadow: 0 3px 10px color-mix(in oklab, var(--foreground) 25%, transparent); }
+.language-flag:nth-child(2) { animation-delay: -1.5s; }
+@keyframes flag-wave { 0%, 100% { transform: perspective(180px) rotateY(-12deg) rotate(-2deg); } 50% { transform: perspective(180px) rotateY(12deg) rotate(2deg); } }
+.gallery-lightbox > button { color: var(--gallery-caption); }
+@media (prefers-reduced-motion: reduce) { .language-flag { animation: none; } .room-story * { transition: none; } }
 .availability-calendar .rdp-months { gap: 3rem; }
 .availability-calendar .rdp-weekday { color: var(--foreground); font-weight: 600; opacity: 0.8; }
 @media (max-width: 767px) {

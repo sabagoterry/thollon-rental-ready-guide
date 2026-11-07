@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BedDouble, Bath, Users, Ruler, Fence } from "lucide-react";
+import { ArrowRight, BedDouble, Bath, Users, Ruler, Mountain } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { GalleryLightbox, type GalleryPhoto } from '@/components/gallery-lightbox';
 import { SectionHeading } from '@/components/section-heading';
 import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
-import { balconies } from '@/lib/apartment';
+import { balconies, washingFacilities } from '@/lib/apartment';
 import { LocalGuide } from '@/components/local-guide';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
@@ -43,7 +45,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Les Cyclamens — Thollon-les-Memises apartment" },
       {
         property: "og:description",
-        content: "2 bedrooms, 2 bathrooms, two balconies: south-facing front and north-facing rear. Open all year.",
+        content: "2 bedrooms, 1 full-size bathroom and 1 shower ensuite, two balconies: south-facing front and north-facing rear. Open all year.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -57,35 +59,34 @@ const rooms = [
   { name: "Kitchen", nameFr: "Cuisine", size: "", img: kitchen.url, text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle.", textFr: "Four micro-ondes, 2 plaques, 2 réfrigérateurs-congélateurs, mijoteuse, friteuse à air, grille-pain, cafetière et bouilloire." },
   { name: "Double bedroom", nameFr: "Chambre double", size: "8.9 m²", img: master.url, text: "Double bed and built-in wardrobes, next to the shower room.", textFr: "Lit double et placards intégrés, à côté de la salle d’eau." },
   { name: "Bunk room", nameFr: "Chambre à lits superposés", size: "5.6 m²", img: bunks.url, text: "Cosy wood-panelled room with bunk beds — kids love it.", textFr: "Chambre douillette lambrissée avec lits superposés — les enfants adorent." },
-  { name: "Shower room", nameFr: "Salle d’eau", size: "2.75 m²", img: shower.url, text: "Walk-in shower, washbasin, toilet and lit mirror.", textFr: "Douche à l’italienne, lavabo, WC et miroir éclairé." },
-  { name: "Bathroom", nameFr: "Salle de bains", size: "", img: bath.url, text: "Bathtub with shower, washbasin and toilet.", textFr: "Baignoire avec douche, lavabo et WC." },
+  { name: "Shower ensuite", nameFr: "Salle d’eau attenante", size: "2.75 m²", img: shower.url, text: "Walk-in shower, washbasin, toilet and lit mirror.", textFr: "Douche à l’italienne, lavabo, WC et miroir éclairé." },
+  { name: "Full-size bathroom", nameFr: "Salle de bains complète", size: "", img: bath.url, text: "Bathtub with shower, washbasin and toilet.", textFr: "Baignoire avec douche, lavabo et WC." },
 ];
 
 const facts = [
   { icon: BedDouble, en: '2 Bedrooms', fr: '2 Chambres' },
-  { icon: Bath, en: '2 Bathrooms', fr: '2 Salles de bains' },
+  { icon: Bath, en: washingFacilities.description, fr: washingFacilities.descriptionFr },
   { icon: Users, en: 'Up to 6 Guests', fr: 'Jusqu’à 6 voyageurs' },
-  { icon: Fence, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
+  { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
   { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
 ];
 
-type Photo = { src: string; alt: string };
 // Only photos taken inside the apartment. Outdoor views live on the /location page.
-const photos: Photo[] = [
-  { src: living.url, alt: "Living and dining room" },
-  { src: lounge.url, alt: "Armchairs and dresser" },
-  { src: sofabed.url, alt: "Sofa bed made up" },
-  { src: kitchen.url, alt: "Kitchen" },
-  { src: master.url, alt: "Double bedroom" },
-  { src: bunks2.url, alt: "Bunk beds" },
-  { src: shower.url, alt: "Shower room" },
-  { src: bath.url, alt: "Bathroom" },
+const photos: GalleryPhoto[] = [
+  { src: living.url, alt: "Living and dining room", altFr: 'Séjour et salle à manger' },
+  { src: lounge.url, alt: "Armchairs and dresser", altFr: 'Fauteuils et commode' },
+  { src: sofabed.url, alt: "Sofa bed made up", altFr: 'Canapé-lit déplié' },
+  { src: kitchen.url, alt: "Kitchen", altFr: 'Cuisine' },
+  { src: master.url, alt: "Double bedroom", altFr: 'Chambre double' },
+  { src: bunks2.url, alt: "Bunk beds", altFr: 'Lits superposés' },
+  { src: shower.url, alt: "Shower ensuite", altFr: 'Salle d’eau attenante' },
+  { src: bath.url, alt: "Full-size bathroom", altFr: 'Salle de bains complète' },
 ];
 
 
 function Gallery() {
   const { tr } = useLang();
-  const [open, setOpen] = useState<Photo | null>(null);
+  const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -101,19 +102,15 @@ function Gallery() {
         {tr('Every photo below is taken inside the apartment. The views, the lake and the slopes have their own page.', 'Toutes ces photos sont prises dans l’appartement. Les vues, le lac et les pistes ont leur propre page.')}
       </p>
       <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {photos.map((p) => (
+        {photos.map((p, index) => (
           <span key={p.src} className="block rounded-md bar-flow p-[3px] transition hover:-translate-y-1 hover:glow-accent">
-            <button onClick={() => setOpen(p)} className="block aspect-[4/3] w-full overflow-hidden rounded-sm">
-              <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
-            </button>
+            <Button variant="ghost" onClick={() => setOpen(index)} aria-label={tr(p.alt, p.altFr)} className="block aspect-[4/3] h-auto w-full overflow-hidden rounded-sm p-0">
+              <img src={p.src} alt={tr(p.alt, p.altFr)} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
+            </Button>
           </span>
         ))}
       </div>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/85 p-6" onClick={() => setOpen(null)}>
-          <img src={open.src} alt={open.alt} className="max-h-full max-w-full rounded-sm" />
-        </div>
-      )}
+      {open !== null && <GalleryLightbox photos={photos} startIndex={open} onClose={() => setOpen(null)} />}
     </section>
   );
 }
@@ -123,9 +120,8 @@ function Index() {
   const fr = lang === 'fr';
   return (
     <main>
-      <header className="sticky top-0 z-40 border-b border-primary/10 bg-card/90 backdrop-blur">
-        <div className="bar-flow h-1.5" />
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+      <header className="home-integrated-header absolute inset-x-0 top-0 z-40 text-gallery-caption">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
           <LogoMark />
           <nav aria-label="Main" className="flex items-center gap-6 text-sm">
             <a href="#availability" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr("Availability", "Disponibilités")}</a>
@@ -138,7 +134,7 @@ function Index() {
           </nav>
         </div>
       </header>
-      <section className="relative flex min-h-[92vh] items-end">
+      <section className="relative flex min-h-[92vh] items-end pt-44">
         <video
           src={heroVideo.url}
           poster={exterior.url}
@@ -188,22 +184,23 @@ function Index() {
         <img src={living.url} alt="Living and dining room" loading="lazy" className="rounded-sm shadow-xl" />
       </section>
 
-      <section className="band-ice">
+      <section className="rooms-showcase overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <SectionHeading kicker={tr("Rooms", "Pièces")}>{tr("Inside the apartment", "À l’intérieur")}</SectionHeading>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {rooms.map((r) => (
-              <div key={r.name} className="card-vivid overflow-hidden rounded-md bg-card transition hover:-translate-y-1 hover:glow-accent">
-                <div className="bar-flow h-1.5" />
-                <img src={r.img} alt={r.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <h3 className="text-xl text-primary">{fr ? r.nameFr : r.name}</h3>
-                    {r.size && <span className="band-sunset rounded-full px-3 py-1 text-xs font-medium text-accent-foreground">{r.size}</span>}
-                  </div>
-                  <p className="mt-2 text-muted-foreground">{fr ? r.textFr : r.text}</p>
+          <div className="mt-16 space-y-16 md:space-y-24">
+            {rooms.map((r, index) => (
+              <article key={r.name} className="room-story group grid items-center gap-6 md:grid-cols-12 md:gap-12">
+                <div className={`relative md:col-span-7 ${index % 2 ? 'md:order-2' : ''}`}>
+                  <div className="bar-flow absolute -inset-2 rounded-md opacity-80 transition duration-500 group-hover:-rotate-1" />
+                  <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="relative aspect-[4/3] w-full rounded-sm object-cover transition duration-700 motion-safe:group-hover:scale-[1.02]" />
                 </div>
-              </div>
+                <div className="md:col-span-5">
+                  <span aria-hidden="true" className="font-gallery text-6xl text-primary/25">0{index + 1}</span>
+                  <h3 className="mt-2 text-3xl text-rainbow md:text-4xl">{fr ? r.nameFr : r.name}</h3>
+                  {r.size && <p className="mt-3 font-semibold text-primary">{r.size}</p>}
+                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{fr ? r.textFr : r.text}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -223,7 +220,7 @@ function Index() {
               <li>{tr("Living room", "Séjour")} — 10.9 m²</li>
               <li>{tr("Double bedroom", "Chambre double")} — 8.9 m²</li>
               <li>{tr("Bunk room", "Chambre à lits superposés")} — 5.6 m²</li>
-              <li>{tr("Hall", "Entrée")} — 4 m² · {tr("Shower room", "Salle d’eau")} — 2.75 m²</li>
+              <li>{tr("Hall", "Entrée")} — 4 m² · {tr("Shower ensuite", "Salle d’eau attenante")} — 2.75 m²</li>
             </ul>
           </div>
           <img src={floorplan.url} alt={tr("Apartment floor plan", "Plan de l’appartement")} loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />

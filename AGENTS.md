@@ -26,3 +26,5 @@
 - Keep the home photo slideshow in a focused browser-safe component with its own cleaned-up timer so navigation and manual browsing never leave orphaned playback timers.
 - Use one shared FindUs component and browser-safe coordinate module for map embeds and directions; only the managed public browser key enters map URLs, never server credentials.
 - Keep Getting here as a separate bilingual public route with official transport links; never reuse another property's directions, travel distances or credentials from reference HTML.
+- Share owner-confirmed washing facilities between page facts and guest knowledge to prevent contradictory bathroom descriptions.
+- Keep the gallery lightbox timer in its mounted component with cleanup, so closing it stops automatic advancement.

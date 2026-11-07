@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { useLang, type Lang } from '@/lib/i18n';
+import { Button } from '@/components/ui/button';
 
 // Flag colours are fixed national colours, not theme tokens.
 function UnionJack() {
@@ -38,17 +39,17 @@ export function LanguageToggle() {
   return (
     <div role="group" aria-label="Language / Langue" className="flex items-center gap-2">
       {options.map(({ lang: l, label, Flag }) => (
-        <button
+        <Button variant="ghost"
           key={l}
           type="button"
           onClick={() => setLang(l)}
           aria-pressed={lang === l}
           aria-label={label}
           title={label}
-          className={`h-6 w-9 overflow-hidden rounded-sm border transition ${lang === l ? 'border-accent ring-2 ring-accent scale-110' : 'border-border opacity-60 hover:opacity-100'}`}
+          className={`language-flag h-9 w-12 shrink-0 overflow-hidden rounded-sm border p-0 [&_svg]:h-full [&_svg]:w-full ${lang === l ? 'border-sunshine ring-2 ring-sunshine' : 'border-border hover:ring-2 hover:ring-accent'}`}
         >
           <Flag />
-        </button>
+        </Button>
       ))}
     </div>
   );
