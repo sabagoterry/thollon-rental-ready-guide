@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Address four new November 7 comments: remove Local area kicker, split unboxed mountain links into Live and Latest, join floor-plan balcony corner, create 3D-style floor-plan image
+- [x] Confirm ability to create 3D images for the owner
 - [x] Address six November 7 comments: integrated home header, animated flags, bathroom/ensuite facts, view icon, unboxed room presentation, looping gallery dialog
 - [x] Add bilingual Getting here page with map, transport links and directions based on the supplied reference
 - [x] Restyle apartment details with icons like the supplied example
