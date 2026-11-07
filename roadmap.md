@@ -1,6 +1,6 @@
 # Roadmap
-- [ ] Address new comments: remove room numbers/sizes and keep unobtrusive navigation available while scrolling
-- [ ] Retry 3D illustration with site room configuration and correct balconies
+- [x] Address new comments: remove room numbers/sizes and keep unobtrusive navigation available while scrolling
+- [x] Retry 3D illustration with site room configuration and two balconies; owner to confirm illustrative geometry
 - [x] Address four new November 7 comments: remove Local area kicker, split unboxed mountain links into Live and Latest, join floor-plan balcony corner, create 3D-style floor-plan image
 - [x] Confirm ability to create 3D images for the owner
 - [x] Address six November 7 comments: integrated home header, animated flags, bathroom/ensuite facts, view icon, unboxed room presentation, looping gallery dialog
