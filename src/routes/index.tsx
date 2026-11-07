@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BedDouble, Bath, Users, Ruler, Mountain } from "lucide-react";
+import { ArrowRight, BedDouble, BedSingle, Bath, Users, Ruler, Mountain } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { GalleryLightbox, type GalleryPhoto } from '@/components/gallery-lightbox';
 import { SectionHeading } from '@/components/section-heading';
@@ -63,7 +63,8 @@ const rooms = [
 ];
 
 const facts = [
-  { icon: BedDouble, en: '2 Bedrooms', fr: '2 Chambres' },
+  { icon: BedDouble, en: '1 Double bedroom', fr: '1 Chambre double' },
+  { icon: BedSingle, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
   { icon: Bath, en: washingFacilities.description, fr: washingFacilities.descriptionFr },
   { icon: Users, en: 'Up to 6 Guests', fr: 'Jusqu’à 6 voyageurs' },
   { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
@@ -149,7 +150,7 @@ function Index() {
       <section className="border-b band-soft">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <h2 className="text-center text-4xl text-rainbow">{tr('Accommodation', 'Hébergement')}</h2>
-          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-6">
             {facts.map(({ icon: Icon, en, fr: french }) => (
               <div key={en} className="flex flex-col items-center gap-3 text-center">
                 <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
@@ -195,16 +196,10 @@ function Index() {
       <section className="band-soft">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
           <div>
-            <SectionHeading kicker="39 m²">{tr("Floor plan", "Plan")}</SectionHeading>
-            <p className="mt-5 text-lg text-muted-foreground">{tr("39 m² in total, with two balconies.", "39 m² au total, avec deux balcons.")}</p>
+            <SectionHeading>{tr("Floor plan", "Plan")}</SectionHeading>
+            <p className="mt-5 text-lg text-muted-foreground">{tr("Two balconies.", "Deux balcons.")}</p>
             <ul className="mt-4 space-y-2 text-muted-foreground">
               {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{fr ? `Balcon ${b.position === 'front' ? 'avant' : 'arrière'} — exposé ${b.facing === 'south' ? 'sud' : 'nord'}` : `${b.position} balcony — ${b.facing}-facing`}</li>)}
-            </ul>
-            <ul className="mt-6 space-y-2 text-muted-foreground">
-              <li>{tr("Living room", "Séjour")} — 10.9 m²</li>
-              <li>{tr("Double bedroom", "Chambre double")} — 8.9 m²</li>
-              <li>{tr("Bunk room", "Chambre à lits superposés")} — 5.6 m²</li>
-              <li>{tr("Hall", "Entrée")} — 4 m² · {tr("Shower ensuite", "Salle d’eau attenante")} — 2.75 m²</li>
             </ul>
           </div>
           <figure>

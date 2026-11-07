@@ -26,7 +26,7 @@ export function LocalGuide() {
           { en: 'Latest', fr: 'Actualités', links: liveLinks.slice(3) },
         ].map(group => (
           <div key={group.en} className="mt-10">
-            <h3 className="flex items-center gap-3 text-2xl text-rainbow">{tr(group.en, group.fr)}</h3>
+            <h3 className="flex items-center gap-3 text-4xl text-rainbow md:text-5xl">{tr(group.en, group.fr)}</h3>
             <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
               {group.links.map(item => { const Icon = liveIcons[item.kind]; return (
                 <div key={item.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
@@ -41,7 +41,8 @@ export function LocalGuide() {
             </div>
           </div>
         ))}
-        <div className="mt-10 grid gap-x-12 gap-y-6 md:grid-cols-2">
+        <h3 className="mt-14 text-4xl text-rainbow md:text-5xl">{tr('Key Info', 'Infos clés')}</h3>
+        <div className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-2">
           {essentials.map(item => (
             <div key={item.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
               <span className="band-lake mt-1 grid size-9 shrink-0 place-items-center rounded-full text-primary-foreground"><item.icon className="size-4" /></span>
@@ -55,7 +56,7 @@ export function LocalGuide() {
           ))}
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4">
-          <h3 className="flex items-center gap-3 text-2xl text-rainbow"><Utensils className="size-5" />{tr('Bars & restaurants', 'Bars et restaurants')}</h3>
+          <h3 className="flex items-center gap-3 text-4xl text-rainbow md:text-5xl"><Utensils className="size-5" />{tr('Bars & restaurants', 'Bars et restaurants')}</h3>
           <Button asChild variant="outline"><a href={diningDirectory} target="_blank" rel="noopener noreferrer">{tr('Tourist office dining directory', 'Guide des restaurants de l’office de tourisme')}<ArrowUpRight /></a></Button>
         </div>
         <p className="mt-3 text-sm text-muted-foreground">{tr('Opening days and seasonal service vary; check with each venue.', 'Les jours d’ouverture varient selon la saison ; renseignez-vous auprès de chaque établissement.')}</p>
@@ -69,7 +70,7 @@ export function LocalGuide() {
             </div>
           ))}
         </div>
-        <h3 className="mt-14 flex items-center gap-3 text-2xl text-rainbow"><Car className="size-5" />{tr('Day trips', 'Excursions')}</h3>
+        <h3 className="mt-14 flex items-center gap-3 text-4xl text-rainbow md:text-5xl"><Car className="size-5" />{tr('Day trips', 'Excursions')}</h3>
         <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2">
           {dayTrips.map(t => { const kind = tripKinds[t.kind]; return (
             <div key={t.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
