@@ -51,7 +51,8 @@
   --color-ring-offset-background: var(--background);
   --font-display: "Fraunces", Georgia, serif;
   --font-sans: "Figtree", system-ui, sans-serif;
-  --font-gallery: "Source Serif 4", Georgia, serif;
+  --font-gallery: "Playfair Display", Georgia, serif;
+  --color-gallery-caption: var(--gallery-caption);
   --color-sunshine: var(--sunshine);
   --color-ice: var(--ice);
   --color-coral: var(--coral);
@@ -73,6 +74,7 @@
 }
 
 :root {
+  --gallery-caption: oklch(1 0 0);
   --radius: 0.5rem;
   --background: oklch(0.985 0.018 232);
   --foreground: oklch(0.26 0.06 258);
@@ -115,6 +117,7 @@
 }
 
 .dark {
+  --gallery-caption: oklch(1 0 0);
   --background: oklch(0.19 0.06 265);
   --foreground: oklch(0.96 0.02 235);
   --card: oklch(0.26 0.07 265);

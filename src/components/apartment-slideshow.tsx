@@ -45,7 +45,7 @@ export function ApartmentSlideshow() {
           {slides.map((slide, position) => (
             <img key={slide.src} src={slide.src} alt={tr(slide.en, slide.fr)} aria-hidden={position !== index} loading={position < 2 ? 'eager' : 'lazy'} className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 motion-reduce:transition-none ${position === index ? 'opacity-100' : 'opacity-0'}`} />
           ))}
-          <p aria-live={paused ? 'polite' : 'off'} className="slideshow-caption pointer-events-none absolute inset-x-0 bottom-6 px-14 text-center font-gallery text-2xl font-semibold leading-tight text-sunshine md:bottom-10 md:px-20 md:text-5xl">{tr(slides[index]?.en ?? '', slides[index]?.fr ?? '')}</p>
+          <p aria-live={paused ? 'polite' : 'off'} className="slideshow-caption pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 px-16 text-center font-gallery text-2xl font-semibold leading-tight text-gallery-caption md:px-24 md:text-5xl">{tr(slides[index]?.en ?? '', slides[index]?.fr ?? '')}</p>
           <Button variant="outline" size="icon" onClick={() => move(-1)} aria-label={tr('Previous photo', 'Photo précédente')} title={tr('Previous photo', 'Photo précédente')} className="absolute left-3 top-1/2 size-11 -translate-y-1/2 rounded-full bg-card/95 shadow-md md:left-6"><ChevronLeft /></Button>
           <Button variant="outline" size="icon" onClick={() => move(1)} aria-label={tr('Next photo', 'Photo suivante')} title={tr('Next photo', 'Photo suivante')} className="absolute right-3 top-1/2 size-11 -translate-y-1/2 rounded-full bg-card/95 shadow-md md:right-6"><ChevronRight /></Button>
           <div className="absolute right-3 top-3 flex items-center gap-3 md:right-6 md:top-6">
