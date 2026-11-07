@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Address six November 7 comments: integrated home header, animated flags, bathroom/ensuite facts, view icon, unboxed room presentation, looping gallery dialog
+- [x] Address six November 7 comments: integrated home header, animated flags, bathroom/ensuite facts, view icon, unboxed room presentation, looping gallery dialog
 - [x] Add bilingual Getting here page with map, transport links and directions based on the supplied reference
 - [x] Restyle apartment details with icons like the supplied example
 - [x] Add Find Us map using owner coordinates 46°23'25.8"N 6°43'15.0"E
