@@ -8,7 +8,7 @@ import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
-import { balconies } from '@/lib/apartment';
+import { balconies, apartmentAmenities } from '@/lib/apartment';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { HomeHeader } from '@/components/home-header';
@@ -25,8 +25,8 @@ import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
 import parkingIcon from '@/assets/icons/apartment-parking.png.asset.json';
-import towelsIcon from '@/assets/icons/apartment-towels.png.asset.json';
-import skiingIcon from '@/assets/icons/apartment-skiing.png.asset.json';
+import towelsIcon from '@/assets/icons/apartment-towels-clean.png.asset.json';
+import skiingIcon from '@/assets/icons/apartment-skiing-clean.png.asset.json';
 import hikingIcon from '@/assets/icons/apartment-hiking.png.asset.json';
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Charming 39 m² 2-bedroom apartment in Thollon-les-Memises, above Lake Geneva. Sleeps 6, two balconies: south-facing front and north-facing rear.",
+          "Charming 39 m² 2-bedroom apartment in Thollon-les-Memises, above Lake Geneva. Comfortably sleeps 4, with a sofa bed; two balconies: south-facing front and north-facing rear.",
       },
       { property: "og:title", content: "Les Cyclamens — Thollon-les-Memises apartment" },
       {
@@ -166,7 +166,7 @@ function Index() {
             {[
               { icon: parkingIcon.url, title: tr('Parking', 'Stationnement'), detail: tr('Free', 'Gratuit') },
               { icon: towelsIcon.url, title: tr('Towels', 'Serviettes'), detail: tr('Available on request', 'Sur demande') },
-              { icon: skiingIcon.url, title: tr('Skiing', 'Ski'), detail: tr('5 minutes', '5 minutes') },
+              { icon: skiingIcon.url, title: tr('Skiing', 'Ski'), detail: `${apartmentAmenities.skiingMinutes} minutes` },
               { icon: hikingIcon.url, title: tr('Hiking', 'Randonnée'), detail: tr('Right outside', 'Juste à la porte') },
             ].map(item => <div key={item.title} className="flex flex-col items-center gap-2 text-center slideshow-caption">
               <img src={item.icon} alt="" aria-hidden="true" className="h-20 w-28 object-contain" />
