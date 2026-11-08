@@ -78,9 +78,18 @@ const facts = [
 
 
 const localIcons = [
-  { icon: ShoppingCart, en: 'Supermarket', fr: 'Supermarché', modes: [Car, Footprints, Bike] },
-  { icon: Martini, en: 'Bars', fr: 'Bars', modes: [Footprints] },
-  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [Footprints] },
+  {
+    icon: ShoppingCart,
+    en: 'Supermarket',
+    fr: 'Supermarché',
+    modes: [
+      { icon: Car },
+      { icon: Footprints, minutes: 15 },
+      { icon: Bike, minutes: 8 },
+    ],
+  },
+  { icon: Martini, en: 'Bars', fr: 'Bars', modes: [{ icon: Footprints, minutes: 5 }] },
+  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [{ icon: Footprints, minutes: 5 }] },
 ];
 
 const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
