@@ -300,6 +300,10 @@ function Index() {
             <ul className="mt-4 space-y-2 text-muted-foreground">
               {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{fr ? `Balcon ${b.position === 'front' ? 'avant' : 'arrière'} — exposé ${b.facing === 'south' ? 'sud' : 'nord'}` : `${b.position} balcony — ${b.facing}-facing`}</li>)}
             </ul>
+            <h3 className="mt-10 text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Amenities', 'Équipements')}</h3>
+            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-muted-foreground">
+              {amenityList.map(a => <li key={a.en}>{fr ? a.fr : a.en}</li>)}
+            </ul>
           </div>
            <figure>
              <div className="relative mx-auto aspect-[3/4] w-full max-w-[480px]">

@@ -4,7 +4,7 @@ import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
 import { Button } from '@/components/ui/button';
-import { MessageCircle } from 'lucide-react';
+import { House, MessageCircle } from 'lucide-react';
 import directionsIcon from '@/assets/navigation-directions.png.asset.json';
 import localIcon from '@/assets/navigation-local-area.png.asset.json';
 import calendarIcon from '@/assets/navigation-availability.png.asset.json';
