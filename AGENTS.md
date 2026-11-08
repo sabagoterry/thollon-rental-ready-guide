@@ -31,3 +31,4 @@
 - Keep the gallery lightbox timer in its mounted component with cleanup, so closing it stops automatic advancement.
 - Treat generated 3D floor-plan views as illustrations, not measured architectural drawings; retain the original source plan for future corrections.
 - Keep the home navigation in a focused component that compacts on scroll and retains section links in its mobile menu so navigation stays available without covering photos.
+- Share the date picker and stay summary between booking and the Direct Booking placeholder, carrying validated date/guest search parameters through confirmation so the two pages cannot drift.

@@ -231,12 +231,11 @@ function Index() {
 
        <section id="local-guide" className="band-ice">
          <div className="mx-auto max-w-6xl px-6 py-20">
-           <SectionHeading>{tr('Hiking, Skiing and boarding on offer', 'Randonnée, ski et snowboard proposés')}</SectionHeading>
+           <SectionHeading>{tr('The Hiking, Skiing, boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</SectionHeading>
            <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
              {[
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
-               { label: tr('Skiing', 'Ski'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
-               { label: tr('Boarding', 'Snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
+               { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
              ].map(activity => (
                  <Button key={activity.label} asChild variant="link" className="h-auto min-h-11 max-w-full whitespace-normal px-0 text-base">
                    <a href={activity.url} target="_blank" rel="noopener noreferrer">{activity.label}<ArrowUpRight className="shrink-0" /></a>

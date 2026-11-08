@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as DirectBookingRouteImport } from './routes/direct-booking'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as GettingHereRouteImport } from './routes/getting-here'
 import { Route as LocalAreaRouteImport } from './routes/local-area'
@@ -37,6 +38,11 @@ const AuthRoute = AuthRouteImport.update({
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectBookingRoute = DirectBookingRouteImport.update({
+  id: '/direct-booking',
+  path: '/direct-booking',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/direct-booking': typeof DirectBookingRoute
   '/gallery': typeof GalleryRoute
   '/getting-here': typeof GettingHereRoute
   '/local-area': typeof LocalAreaRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/direct-booking': typeof DirectBookingRoute
   '/gallery': typeof GalleryRoute
   '/getting-here': typeof GettingHereRoute
   '/local-area': typeof LocalAreaRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/direct-booking': typeof DirectBookingRoute
   '/gallery': typeof GalleryRoute
   '/getting-here': typeof GettingHereRoute
   '/local-area': typeof LocalAreaRoute
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/book'
+    | '/direct-booking'
     | '/gallery'
     | '/getting-here'
     | '/local-area'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/book'
+    | '/direct-booking'
     | '/gallery'
     | '/getting-here'
     | '/local-area'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/book'
+    | '/direct-booking'
     | '/gallery'
     | '/getting-here'
     | '/local-area'
@@ -147,6 +159,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   BookRoute: typeof BookRoute
+  DirectBookingRoute: typeof DirectBookingRoute
   GalleryRoute: typeof GalleryRoute
   GettingHereRoute: typeof GettingHereRoute
   LocalAreaRoute: typeof LocalAreaRoute
@@ -182,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/book'
       fullPath: '/book'
       preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/direct-booking': {
+      id: '/direct-booking'
+      path: '/direct-booking'
+      fullPath: '/direct-booking'
+      preLoaderRoute: typeof DirectBookingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   BookRoute: BookRoute,
+  DirectBookingRoute: DirectBookingRoute,
   GalleryRoute: GalleryRoute,
   GettingHereRoute: GettingHereRoute,
   LocalAreaRoute: LocalAreaRoute,
