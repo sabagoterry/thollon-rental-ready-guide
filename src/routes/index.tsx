@@ -70,31 +70,33 @@ const facts = [
 
 function Gallery() {
   const { tr } = useLang();
-  const [open, setOpen] = useState<number | null>(null);
+  const rows = [
+    {
+      kicker: tr('Gallery', 'Galerie'),
+      title: tr('Inside the apartment', 'À l’intérieur'),
+      text: tr('Every photo is taken inside the apartment — browse the slideshow at your own pace.', 'Toutes les photos sont prises dans l’appartement — parcourez le diaporama à votre rythme.'),
+      to: '/gallery',
+    },
+    {
+      kicker: tr('Location', 'Situation'),
+      title: tr('Location and views', 'Situation et vues'),
+      text: tr('The views, the lake and the slopes have their own page.', 'Les vues, le lac et les pistes ont leur propre page.'),
+      to: '/location',
+    },
+  ] as const;
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <SectionHeading kicker={tr("Gallery", "Galerie")}>{tr("Inside the apartment", "À l’intérieur")}</SectionHeading>
-        <Link
-          to="/location"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary underline-offset-4 transition hover:underline"
-        >
-          {tr('See the location & views', 'Voir la situation et les vues')} <ArrowRight className="size-4" />
-        </Link>
-      </div>
-      <p className="mt-4 max-w-xl text-muted-foreground">
-        {tr('Every photo below is taken inside the apartment. The views, the lake and the slopes have their own page.', 'Toutes ces photos sont prises dans l’appartement. Les vues, le lac et les pistes ont leur propre page.')}
-      </p>
-      <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {photos.map((p, index) => (
-          <span key={p.src} className="block rounded-md bar-flow p-[3px] transition hover:-translate-y-1 hover:glow-accent">
-            <Button variant="ghost" onClick={() => setOpen(index)} aria-label={tr(p.alt, p.altFr)} className="block aspect-[4/3] h-auto w-full overflow-hidden rounded-sm p-0">
-              <img src={p.src} alt={tr(p.alt, p.altFr)} loading="lazy" className="h-full w-full object-cover transition hover:scale-105" />
-            </Button>
-          </span>
-        ))}
-      </div>
-      {open !== null && <GalleryLightbox photos={photos} startIndex={open} onClose={() => setOpen(null)} />}
+      {rows.map((row) => (
+        <div key={row.to} className="flex flex-wrap items-center justify-between gap-6 border-b border-primary/10 py-12 first:pt-0 last:border-b-0 last:pb-0">
+          <div>
+            <SectionHeading kicker={row.kicker}>{row.title}</SectionHeading>
+            <p className="mt-4 max-w-xl text-muted-foreground">{row.text}</p>
+          </div>
+          <Button asChild size="lg" className="gap-2">
+            <Link to={row.to}>{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></Link>
+          </Button>
+        </div>
+      ))}
     </section>
   );
 }
