@@ -23,7 +23,7 @@ export function AvailabilityCalendar() {
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-wrap items-start gap-x-8 gap-y-6">
           <SectionHeading kicker={tr("Before you book", "Avant de réserver")}>{tr("Current Availability", "Disponibilités actuelles")}</SectionHeading>
-          <div className="flex flex-col items-start gap-3 md:ml-8" role="status">
+          <div className="flex flex-wrap items-center gap-3 md:ml-8" role="status">
             <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
             <div className="flex items-center gap-3">
               <Button asChild size="lg" className="h-auto flex-col gap-1 py-3">
@@ -35,7 +35,7 @@ export function AvailabilityCalendar() {
             </div>
           </div>
         </div>
-        <p className="mt-4 text-muted-foreground">{tr('Final availability and prices are confirmed on Airbnb.', 'Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
+        <p className="mt-4 text-muted-foreground">{tr('Check the calendar below for up-to-date availability.', 'Consultez le calendrier ci-dessous pour connaître les disponibilités à jour.')}</p>
         <div className="mt-8 flex flex-wrap gap-6 text-base md:text-lg" aria-label={tr('Calendar legend', 'Légende')}>
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm border-2 border-primary bg-background" />{ready ? tr('Available', 'Disponible') : tr('Availability unconfirmed', 'Disponibilité non confirmée')}</span>
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-coral/70" />{tr('Unavailable', 'Indisponible')}</span>

@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Apply eleven 17:15 comments: centre local/town rows, align headings, activity choice boxes, centred question suggestions, inline availability controls and wording, raise Find Us items; verify and clear preview pins.
 - [x] Apply five 17:04 comments: widen Local and pair Bars/Restaurants, alternate town names/icons, match activity band to Questions width with three stacked links, shift availability controls right; desktop/mobile EN/FR verified and preview pins cleared.
 - [x] Apply eight 16:57 comments: availability controls, seamless chat background, activity links alignment, cot/request-only amenities, town groups between local icons and map; desktop/mobile and bilingual checks, booking link, and 14 amenity tests passed; replies added and pins cleared.
 - [x] Add apartment photo amenity icons, apply outstanding comments, and clear preview comment markers; verified icons, booking link, guest capacity answer and 24 tests.
