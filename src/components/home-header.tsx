@@ -25,9 +25,9 @@ export function HomeHeader() {
   const sections = [
     { href: '#availability', en: 'Availability', fr: 'Disponibilités', image: calendarIcon.url },
     { to: '/gallery', en: 'Gallery', fr: 'Galerie', image: galleryIcon.url },
-    { to: '/location', en: 'Location', fr: 'Situation', image: locationIcon.url },
+    { to: '/location', en: 'Location', fr: 'Situation', image: localIcon.url },
     { to: '/getting-here', en: 'Getting here', fr: 'Venir', image: directionsIcon.url },
-    { to: '/local-area', en: 'Local area', fr: 'Le coin', image: localIcon.url },
+    { to: '/local-area', en: 'Local area', fr: 'Le coin', image: locationIcon.url },
     { href: '#ask', en: 'Ask us', fr: 'Questions', image: null },
   ] as const;
 
@@ -37,13 +37,15 @@ export function HomeHeader() {
         <div className={`pointer-events-auto mx-auto flex items-center justify-between gap-4 ${scrolled ? 'w-fit max-w-full rounded-full border bg-background/95 px-4 py-2 shadow-lg backdrop-blur' : 'max-w-6xl px-3'}`}>
           <LogoMark compact={scrolled} />
           <nav aria-label={tr('Main', 'Navigation principale')} className="flex items-center gap-4 text-sm">
-            {!scrolled && sections.map((s) =>
-              'to' in s ? (
-                <Link key={s.en} to={s.to} className="hidden transition hover:text-accent md:inline">{tr(s.en, s.fr)}</Link>
-              ) : (
-                <a key={s.en} href={s.href} className="hidden transition hover:text-accent md:inline">{tr(s.en, s.fr)}</a>
-              ),
-            )}
+            {!scrolled && sections.map((s) => {
+              const label = tr(s.en, s.fr);
+              const content = <><span>{label}</span><span className="flex size-9 items-center justify-center rounded-full bg-background text-primary">{s.image ? <img src={s.image} alt="" className="size-8 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-6!" />}</span></>;
+              return (
+                <Button key={s.en} asChild variant="ghost" className="hidden h-auto flex-col gap-2 px-1 py-2 md:inline-flex">
+                  {'to' in s ? <Link to={s.to}>{content}</Link> : <a href={s.href}>{content}</a>}
+                </Button>
+              );
+            })}
             <LanguageToggle />
             <MobileMenu includeSections />
           </nav>
