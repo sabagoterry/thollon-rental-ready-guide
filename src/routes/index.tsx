@@ -156,7 +156,7 @@ function Gallery() {
       </Button>
       <div className="mt-14">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
-        <div className="mt-6 grid gap-10 md:grid-cols-2 md:items-start">
+        <div className="mt-6 grid gap-10 md:grid-cols-2 xl:grid-cols-[0.65fr_1.5fr_1.1fr] xl:items-start">
           <div className="flex flex-col gap-8">
             {localIcons.map(({ icon: Icon, en, fr, modes }) => (
               <div key={en} className="flex items-center gap-5">
@@ -175,7 +175,11 @@ function Gallery() {
               </div>
             ))}
           </div>
-          <figure>
+          <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:col-span-2 md:row-start-2 xl:col-span-1 xl:row-start-1 xl:col-start-2">
+            <TownGroup title={tr('Days out', 'Excursions')} names={dayOutTowns} />
+            <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} />
+          </div>
+          <figure className="xl:col-start-3">
             <figcaption className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               {tr('Five minutes to the Télécabine', 'Cinq minutes jusqu’à la télécabine')}
             </figcaption>
@@ -187,10 +191,6 @@ function Gallery() {
             />
           </figure>
         </div>
-      </div>
-      <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
-        <TownGroup title={tr('Days out', 'Excursions')} names={dayOutTowns} />
-        <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} />
       </div>
     </section>
   );
@@ -335,9 +335,9 @@ function Index() {
       </section>
 
        <section id="local-guide" className="band-ice">
-         <div className="mx-auto max-w-6xl px-6 py-20">
-           <SectionHeading><span className="lg:whitespace-nowrap lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
-           <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
+         <div className="mx-auto grid max-w-[1440px] gap-8 px-6 py-20 xl:grid-cols-[1.4fr_1fr] xl:items-center">
+           <SectionHeading><span className="lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
+           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 xl:justify-end">
              {[
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
                { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
