@@ -25,6 +25,9 @@ export const liveLinks = [
 ] as const;
 export const dayTrips = [
   { name: 'Évian-les-Bains', detail: 'Lakeside town, spa and the renovated Buvette Cachat', detailFr: 'Ville au bord du lac, thermes et la Buvette Cachat rénovée', url: 'https://www.evian-tourisme.com/en/', kind: 'summer' },
+  { name: 'Morzine', detail: 'Portes du Soleil resort — official tourist office', detailFr: 'Station des Portes du Soleil — office de tourisme officiel', url: 'https://www.morzine-avoriaz.com/', kind: 'winter' },
+  { name: 'Montreux', detail: 'Swiss Riviera town of the lakeside promenade and Chillon Castle', detailFr: 'Ville de la Riviera suisse : promenade au bord du lac et château de Chillon', url: 'https://www.montreuxriviera.com/', kind: 'summer' },
+  { name: 'Geneva', detail: 'International city at the far end of the lake', detailFr: 'Ville internationale à l’extrémité du lac', url: 'https://www.geneve.com/en/', kind: 'summer' },
   { name: 'Bernex', detail: 'Neighbouring resort — official ski lift and lift-pass site', detailFr: 'Station voisine — site officiel des remontées et forfaits', url: 'http://bernexstation.fr/', kind: 'winter' },
   { name: 'Châtel', detail: 'Portes du Soleil resort — official lift passes', detailFr: 'Station des Portes du Soleil — forfaits officiels', url: 'http://www.skipass-chatel.com/', kind: 'winter' },
   { name: 'Torgon', detail: 'Swiss corner of the Portes du Soleil — tourist office', detailFr: 'Côté suisse des Portes du Soleil — office de tourisme', url: 'http://www.torgon.ch/', kind: 'winter' },
