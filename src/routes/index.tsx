@@ -161,14 +161,22 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <div>
-          <SectionHeading kicker={tr("The apartment", "L’appartement")}>{tr("Furnished to a high standard", "Aménagé avec soin")}</SectionHeading>
-          <p className="mt-5 text-lg text-muted-foreground">
-            {tr('On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.', 'Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.')}
-          </p>
+      <section className="relative flex min-h-[70vh] items-center overflow-hidden">
+        <img src={living.url} alt="Living and dining room" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="bg-overlay absolute inset-0" />
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-4 md:gap-5">
+              <LogoMark />
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">{tr("The apartment", "L’appartement")}</p>
+            </div>
+            <h2 className="mt-4 text-4xl md:text-5xl">{tr("Furnished to a high standard", "Aménagé avec soin")}</h2>
+            <div className="mt-4 h-1.5 w-40 rounded-full bg-sunshine" />
+            <p className="mt-6 text-lg leading-relaxed opacity-95">
+              {tr('On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.', 'Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.')}
+            </p>
+          </div>
         </div>
-        <img src={living.url} alt="Living and dining room" loading="lazy" className="rounded-sm shadow-xl" />
       </section>
 
       <section className="rooms-showcase overflow-hidden">
