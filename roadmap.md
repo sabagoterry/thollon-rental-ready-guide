@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Apply November 8 comments: bunk/bath icons (68ec44c7, 3888e188), kitchen caption (b32da26e), gallery row alignment (004ea189, 7b059395), compass (4fb63000), region/season copy (f2d54abc, 261165f9, 7d9fe8d3), hiking/skiing (2993b90d), separate Local Area page (9cc61217, e9717c3b).
 - [x] Apply the supplied sans-serif lettering throughout the site (Poppins visual match)
 - [x] Replace the previous palette with the supplied teal and white throughout
 - [x] Widen bunks, straighten bathroom right wall and shorten lower wall; top wall moved up but misses blue endpoint, and small guide marks remain (retry needs owner approval)

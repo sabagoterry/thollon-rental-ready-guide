@@ -13,14 +13,14 @@ const tripKinds = {
 const icons = { 'ESF Thollon': MountainSnow, 'Tourist office': MapPin, 'Lift passes': MountainSnow, Sherpa: ShoppingBasket } as const;
 const essentials = baseEssentials.map(e => ({ ...e, icon: icons[e.name as keyof typeof icons] ?? MapPin }));
 
-export function LocalGuide() {
+export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
   const { tr } = useLang();
   const nameFr: Record<string, string> = { 'Tourist office': 'Office de tourisme', 'Lift passes': 'Forfaits de ski', 'Snow forecast': 'Prévisions neige', 'Télécabine news': 'Actualités Télécabine', 'What’s on in Thollon': 'Agenda de Thollon', 'Telecabine webcam': 'Webcam télécabine', 'Parchet summit webcam': 'Webcam du sommet du Parchet' };
   const n = (name: string) => tr(name, nameFr[name] ?? name);
   return (
     <section id="local-guide" className="band-ice">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <SectionHeading>{tr("Around Thollon", "Autour de Thollon")}</SectionHeading>
+        {standalone ? <h1 className="text-4xl text-primary md:text-5xl">{tr('Local Area', 'Le coin')}</h1> : <SectionHeading>{tr('Local Area', 'Le coin')}</SectionHeading>}
         {[
           { en: 'Live from the mountain', fr: 'En direct de la montagne', links: liveLinks.slice(0, 3) },
           { en: 'Latest', fr: 'Actualités', links: liveLinks.slice(3) },
@@ -41,7 +41,8 @@ export function LocalGuide() {
             </div>
           </div>
         ))}
-        <h3 className="mt-14 text-4xl text-rainbow md:text-5xl">{tr('Key Info', 'Infos clés')}</h3>
+        <h3 className="mt-14 text-4xl text-rainbow md:text-5xl">{tr('Local Area', 'Le coin')}</h3>
+        <h4 className="mt-8 text-2xl text-primary">{tr('Key Info', 'Infos clés')}</h4>
         <div className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-2">
           {essentials.map(item => (
             <div key={item.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">

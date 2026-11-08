@@ -14,6 +14,7 @@
 - Parse iCalendar with ical.js and preserve exclusive checkout dates; failed or stale syncs must not imply dates are available.
 - Owner-confirmed balcony data lives in a shared apartment module used by the facts and layout descriptions so count and orientation stay consistent.
 - Local visitor links live in a focused guide component, using official venue or tourism pages and a directory link rather than claiming an exhaustive business list.
+- Render the detailed local guide on its own public route and link to it from home and shared navigation so local information has one maintained presentation.
 - Enquiries are validated public server calls to a fixed CallMeBot recipient with server-only credentials; store private enquiry rows and idempotent request IDs before sending, and distinguish provider queue acceptance from unconfirmed delivery.
 - All visible logos use the shared home-link LogoMark and one image import; the favicon is a square derivative of that image to keep branding and navigation consistent.
 - The guest Q&A assistant streams from a server route that loads history server-side by an unguessable browser conversation ID and stores messages in a private table; its knowledge comes from shared apartment and local-links modules so the page and the assistant stay consistent.

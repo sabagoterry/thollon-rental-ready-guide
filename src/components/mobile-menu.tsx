@@ -13,6 +13,7 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
     { to: '/gallery', label: tr('Photo gallery', 'Galerie photos') },
     { to: '/location', label: tr('Location & views', 'Situation et vues') },
     { to: '/getting-here', label: tr('Getting here', 'Venir aux Cyclamens') },
+    { to: '/local-area', label: tr('Local area', 'Le coin') },
     { to: '/book', label: tr('Check dates & book', 'Dates et réservation') },
   ] as const;
 
@@ -46,7 +47,6 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
           ))}
           {includeSections && [
             { href: '#availability', label: tr('Availability', 'Disponibilités') },
-            { href: '#local-guide', label: tr('Local area', 'Le coin') },
             { href: '#ask', label: tr('Ask us', 'Questions') },
           ].map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block rounded-sm px-3 py-2.5 text-sm font-medium text-foreground transition hover:bg-accent/15">{l.label}</a>)}
         </nav>
