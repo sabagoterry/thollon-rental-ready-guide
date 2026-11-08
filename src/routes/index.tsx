@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, ShoppingBasket, Wine, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, Car, Footprints, Bike, Bus } from "lucide-react";
 import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
 import { FloorplanCompass } from '@/components/floorplan-compass';
 import { Button } from '@/components/ui/button';
@@ -77,9 +77,9 @@ const facts = [
 
 
 const localIcons = [
-  { icon: ShoppingBasket, en: 'Supermarket', fr: 'Supermarché' },
-  { icon: Wine, en: 'Bars', fr: 'Bars' },
-  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants' },
+  { icon: Car, en: 'By car', fr: 'En voiture' },
+  { icon: Footprints, en: 'On foot', fr: 'À pied' },
+  { icon: Bike, en: 'By bike', fr: 'À vélo' },
 ];
 
 const townButtons = ['Évian-les-Bains', 'Châtel', 'Morzine', 'Montreux', 'Geneva', 'Vevey', 'Yvoire', 'Leysin–Les Mosses'];
@@ -102,20 +102,26 @@ function Gallery() {
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
         <div className="mt-6 grid grid-cols-3 gap-6">
           {localIcons.map(({ icon: Icon, en, fr }) => (
-            <Link key={en} to="/local-area" className="flex flex-col items-center gap-3 text-center transition hover:text-accent">
+            <div key={en} className="flex flex-col items-center gap-3 text-center">
               <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
               <span className="text-sm text-foreground">{tr(en, fr)}</span>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
       <div className="mt-14">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Days out', 'Excursions')}</p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
           {towns.map(town => (
-            <Button key={town.name} asChild variant="outline" className="h-auto whitespace-normal px-5 py-3 text-base">
-              <a href={town.url} target="_blank" rel="noopener noreferrer">{town.name}<ArrowUpRight className="size-4 shrink-0" /></a>
-            </Button>
+            <div key={town.name} className="flex flex-col items-center gap-3 text-center">
+              <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
+                {town.name}
+              </a>
+              <span className="flex items-center gap-4 text-primary">
+                <Car aria-hidden="true" className="size-7" strokeWidth={1.8} />
+                <Bus aria-hidden="true" className="size-7" strokeWidth={1.8} />
+              </span>
+            </div>
           ))}
         </div>
       </div>
