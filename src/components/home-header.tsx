@@ -3,6 +3,13 @@ import { Link } from '@tanstack/react-router';
 import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
+import { Button } from '@/components/ui/button';
+import { MessageCircle } from 'lucide-react';
+import directionsIcon from '@/assets/navigation-directions.png.asset.json';
+import localIcon from '@/assets/navigation-local-area.png.asset.json';
+import calendarIcon from '@/assets/navigation-availability.png.asset.json';
+import galleryIcon from '@/assets/navigation-gallery.png.asset.json';
+import locationIcon from '@/assets/navigation-location.png.asset.json';
 import { useLang } from '@/lib/i18n';
 
 export function HomeHeader() {
@@ -16,12 +23,12 @@ export function HomeHeader() {
   }, []);
 
   const sections = [
-    { href: '#availability', en: 'Availability', fr: 'Disponibilités' },
-    { to: '/gallery', en: 'Gallery', fr: 'Galerie' },
-    { to: '/location', en: 'Location', fr: 'Situation' },
-    { to: '/getting-here', en: 'Getting here', fr: 'Venir' },
-    { to: '/local-area', en: 'Local area', fr: 'Le coin' },
-    { href: '#ask', en: 'Ask us', fr: 'Questions' },
+    { href: '#availability', en: 'Availability', fr: 'Disponibilités', image: calendarIcon.url },
+    { to: '/gallery', en: 'Gallery', fr: 'Galerie', image: galleryIcon.url },
+    { to: '/location', en: 'Location', fr: 'Situation', image: locationIcon.url },
+    { to: '/getting-here', en: 'Getting here', fr: 'Venir', image: directionsIcon.url },
+    { to: '/local-area', en: 'Local area', fr: 'Le coin', image: localIcon.url },
+    { href: '#ask', en: 'Ask us', fr: 'Questions', image: null },
   ] as const;
 
   return (
@@ -46,15 +53,19 @@ export function HomeHeader() {
       {scrolled && (
         <nav
           aria-label={tr('Sections', 'Sections')}
-          className="fixed right-0 top-24 z-40 hidden flex-col items-end gap-2 md:flex"
+          className="fixed right-3 top-24 z-40 hidden flex-col items-end gap-2 md:flex"
         >
           {sections.map((s) => {
-            const className =
-              'rounded-l-full bg-primary py-2 pl-4 pr-3 text-xs font-semibold uppercase tracking-widest text-primary-foreground shadow-lg transition hover:pr-5 hover:brightness-110';
-            return 'to' in s ? (
-              <Link key={s.en} to={s.to} className={className}>{tr(s.en, s.fr)}</Link>
-            ) : (
-              <a key={s.en} href={s.href} className={className}>{tr(s.en, s.fr)}</a>
+            const label = tr(s.en, s.fr);
+            const icon = s.image ? <img src={s.image} alt="" className="size-11 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-7!" />;
+            return (
+              <Button key={s.en} asChild variant="outline" size="icon" className="size-12 rounded-full shadow-lg">
+                {'to' in s ? (
+                  <Link to={s.to} aria-label={label} title={label}>{icon}</Link>
+                ) : (
+                  <a href={s.href} aria-label={label} title={label}>{icon}</a>
+                )}
+              </Button>
             );
           })}
         </nav>
