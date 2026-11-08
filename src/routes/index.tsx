@@ -182,20 +182,21 @@ function Index() {
       <section className="rooms-showcase overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <SectionHeading kicker={tr("Rooms", "Pièces")}>{tr("Inside the apartment", "À l’intérieur")}</SectionHeading>
-          <div className="mt-16 space-y-16 md:space-y-24">
-            {rooms.map((r, index) => (
-              <article key={r.name} className="room-story group grid items-center gap-6 md:grid-cols-12 md:gap-12">
-                <div className={`relative md:col-span-7 ${index % 2 ? 'md:order-2' : ''}`}>
-                  <div className="bar-flow absolute -inset-2 rounded-md opacity-80 transition duration-500 group-hover:-rotate-1" />
-                  <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="relative aspect-[4/3] w-full rounded-sm object-cover transition duration-700 motion-safe:group-hover:scale-[1.02]" />
+        </div>
+        <div>
+          {rooms.map((r, index) => (
+            <article key={r.name} className="relative flex min-h-[60vh] items-center overflow-hidden">
+              <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+              <div className="bg-overlay absolute inset-0" />
+              <div className={`relative mx-auto flex w-full max-w-6xl px-6 py-20 text-primary-foreground ${index % 2 ? 'md:justify-end' : ''}`}>
+                <div className="max-w-xl">
+                  <h3 className="text-3xl md:text-5xl">{fr ? r.nameFr : r.name}</h3>
+                  <div className="mt-4 h-1.5 w-32 rounded-full bg-sunshine" />
+                  <p className="mt-5 text-lg leading-relaxed opacity-95">{fr ? r.textFr : r.text}</p>
                 </div>
-                <div className="md:col-span-5">
-                  <h3 className="mt-2 text-3xl text-rainbow md:text-4xl">{fr ? r.nameFr : r.name}</h3>
-                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{fr ? r.textFr : r.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
