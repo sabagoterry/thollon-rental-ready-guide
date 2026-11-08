@@ -23,14 +23,9 @@ export function AvailabilityCalendar() {
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <SectionHeading kicker={tr("Before you book", "Avant de réserver")}>{tr("Current Availability", "Disponibilités actuelles")}</SectionHeading>
-          <div className="flex items-center gap-3">
-            <Button asChild size="lg" className="h-auto flex-col gap-1 py-3">
-              <Link to="/book"><span className="text-xs uppercase tracking-wide">{tr('Interested?', 'Intéressé ?')}</span><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link>
-            </Button>
-            <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
-              <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
-            </Button>
-          </div>
+          <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
+            <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
+          </Button>
         </div>
         <p className="mt-4 text-muted-foreground">{tr('Final availability and prices are confirmed on Airbnb.', 'Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
         <div className="mt-8 flex flex-wrap gap-6 text-base md:text-lg" aria-label={tr('Calendar legend', 'Légende')}>
