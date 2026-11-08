@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Replace scrolling navigation wording with supplied pictograms and an Ask speech bubble.
+- [ ] Complete outstanding November 8 comments from the live threads.
 - [x] Apply seven November 8 booking/activity comments and verify date confirmation → Direct Booking placeholder.
 - [x] Deliver a page-and-link wire diagram highlighting duplication and redundancy.
 - [x] Apply latest comments: Your Alpine Escape (710499e5), subtle hiking/skiing/boarding and local-area links without illustrations (060621c1); clear preview comment pins after verification.
