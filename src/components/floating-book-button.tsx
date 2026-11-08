@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 export function FloatingBookButton() {
   const { tr } = useLang();
   return (
-    <Button asChild size="icon" className="fixed bottom-6 right-3 z-50 size-12 rounded-full shadow-lg">
+    <Button asChild size="icon" className="fixed right-3 top-1/2 z-50 size-12 -translate-y-1/2 rounded-full shadow-lg md:bottom-6 md:top-auto md:translate-y-0">
     <Link
       to="/book"
       aria-label={tr('Check dates and book', 'Voir les dates et réserver')}
