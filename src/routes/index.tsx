@@ -151,7 +151,7 @@ function Index() {
         <img src={living.url} alt="Living and dining room" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
-                 <div className={`max-w-xl ${r.name === 'Kitchen' ? 'translate-y-12' : ''}`}>
+          <div className="max-w-xl">
             <div className="flex items-center gap-4 md:gap-5">
               <LogoMark />
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">{tr("The apartment", "L’appartement")}</p>
@@ -175,7 +175,7 @@ function Index() {
               <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               <div className="bg-overlay absolute inset-0" />
               <div className={`relative mx-auto flex w-full max-w-6xl px-6 py-20 text-primary-foreground ${index % 2 ? 'md:justify-end' : ''}`}>
-                <div className="max-w-xl">
+                <div className={`max-w-xl ${r.name === 'Kitchen' ? 'translate-y-12' : ''}`}>
                   <h3 className="text-3xl md:text-5xl">{fr ? r.nameFr : r.name}</h3>
                   <div className="mt-4 h-1.5 w-32 rounded-full bg-sunshine" />
                   <p className="mt-5 text-lg leading-relaxed opacity-95">{fr ? r.textFr : r.text}</p>
