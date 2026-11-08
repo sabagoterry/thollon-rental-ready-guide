@@ -34,7 +34,12 @@ export function AvailabilityCalendar() {
         </div>
         <div className="mt-6" role="status">
           {!ready && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
-          <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
+            <Button asChild size="lg" className="h-auto flex-col gap-1 py-3">
+              <Link to="/book"><span className="text-xs uppercase tracking-wide">{tr('Interested?', 'Intéressé ?')}</span><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link>
+            </Button>
+          </div>
         </div>
          <div className="card-vivid mt-6 overflow-hidden rounded-lg bg-card p-4">
           <Calendar
