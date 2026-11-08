@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Finish Direct Booking: validated name/dates/guests request, private owner inbox, notification and end-to-end verification.
 - [x] Replace scrolling navigation wording with supplied pictograms and an Ask speech bubble.
 - [x] Review outstanding November 8 comments: all seven are already implemented; rechecked page links and booking/availability tests without removing threads.
 - [x] Apply seven November 8 booking/activity comments and verify date confirmation → Direct Booking placeholder.
