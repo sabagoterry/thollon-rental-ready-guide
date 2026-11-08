@@ -3,7 +3,8 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { format, parseISO, addMonths } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
-import { RefreshCw } from 'lucide-react';
+import { ArrowRight, RefreshCw } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
 import { SectionHeading } from '@/components/section-heading';
 import { availabilityQuery } from '@/lib/availability.query';
 import { isBlocked } from '@/lib/availability';
@@ -21,7 +22,7 @@ export function AvailabilityCalendar() {
     <section id="availability" className="border-t band-soft">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <SectionHeading kicker={tr("Before you book", "Avant de réserver")}>{tr("Availability", "Disponibilités")}</SectionHeading>
+          <SectionHeading kicker={tr("Before you book", "Avant de réserver")}>{tr("Current Availability", "Disponibilités actuelles")}</SectionHeading>
           <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
             <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
           </Button>
@@ -40,13 +41,14 @@ export function AvailabilityCalendar() {
             aria-label={tr('Apartment availability calendar', 'Calendrier des disponibilités')}
             locale={locale}
             month={month} onMonthChange={setMonth} startMonth={today} endMonth={addMonths(today, 23)}
-            numberOfMonths={2} weekStartsOn={1} showOutsideDays={false}
+            numberOfMonths={3} weekStartsOn={1} showOutsideDays={false}
             className="availability-calendar max-w-full bg-card p-0 [--cell-size:2.25rem]"
             modifiers={{ blocked: day => isBlocked(format(day, 'yyyy-MM-dd'), data.ranges), past: { before: today } }}
             modifiersClassNames={{ blocked: 'bg-coral/15 text-muted-foreground line-through', past: 'text-muted-foreground opacity-70' }}
             labels={{ labelDay: day => `${format(day, 'd MMMM yyyy', { locale })}: ${day < today ? tr('past date', 'date passée') : isBlocked(format(day, 'yyyy-MM-dd'), data.ranges) ? tr('unavailable', 'indisponible') : ready ? tr('not blocked on Airbnb', 'libre sur Airbnb') : tr('availability unconfirmed', 'disponibilité non confirmée')}` }}
           />
         </div>
+        <Button asChild size="lg" className="mt-6"><Link to="/book">{tr('Book', 'Réserver')}<ArrowRight /></Link></Button>
       </div>
     </section>
   );
