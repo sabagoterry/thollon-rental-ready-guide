@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Add apartment photo amenity icons, apply outstanding comments, and clear preview comment markers.
+- [x] Add apartment photo amenity icons, apply outstanding comments, and clear preview comment markers; verified icons, booking link, guest capacity answer and 24 tests.
 - [x] Email each Direct Booking request receipt to Terry and Lesley alongside WhatsApp (sending verified Nov 8).
 - [x] Finish Direct Booking: validated name/email/dates/guests request stored in private enquiries inbox; test submissions verified with WhatsApp queue acceptance, desktop/mobile checks and validation tests.
 - [x] Replace scrolling navigation wording with supplied pictograms and an Ask speech bubble.
