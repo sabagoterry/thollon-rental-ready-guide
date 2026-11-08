@@ -196,8 +196,7 @@ function LocationPage() {
             <ArrowLeft className="size-4" /> {tr("Back to the apartment", "Retour à l’appartement")}
           </Link>
           <Link
-            to="/"
-            hash="local-guide"
+            to="/local-area"
             className="inline-flex items-center gap-2 rounded-full band-lake px-5 py-3 font-medium text-primary-foreground glow-primary transition hover:brightness-110"
           >
             {tr('Shops, lifts & where to eat', 'Commerces, remontées et restaurants')}

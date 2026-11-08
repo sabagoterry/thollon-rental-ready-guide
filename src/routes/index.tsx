@@ -136,7 +136,7 @@ function Index() {
       <section className="border-b band-soft">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <h2 className="text-center text-4xl text-rainbow">{tr('Accommodation', 'Hébergement')}</h2>
-          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
             {facts.map(({ icon: Icon, en, fr: french }) => (
               <div key={en} className="flex flex-col items-center gap-3 text-center">
                 <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
@@ -197,9 +197,11 @@ function Index() {
               {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{fr ? `Balcon ${b.position === 'front' ? 'avant' : 'arrière'} — exposé ${b.facing === 'south' ? 'sud' : 'nord'}` : `${b.position} balcony — ${b.facing}-facing`}</li>)}
             </ul>
           </div>
-           <figure className="relative">
-            <img src={floorplan3d} alt={tr("3D illustration of the apartment floor plan with two balconies", "Illustration 3D du plan de l’appartement avec deux balcons")} loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />
-             <FloorplanCompass />
+           <figure>
+             <div className="relative mx-auto aspect-[3/4] w-full max-w-[480px]">
+               <img src={floorplan3d} alt={tr("3D illustration of the apartment floor plan with two balconies", "Illustration 3D du plan de l’appartement avec deux balcons")} loading="lazy" className="h-full w-full object-contain" />
+               <FloorplanCompass />
+             </div>
             <figcaption className="mt-3 text-center text-sm text-muted-foreground">{tr('Illustrative 3D view — not a measured architectural drawing.', 'Vue 3D illustrative — ce n’est pas un plan architectural coté.')}</figcaption>
           </figure>
         </div>
