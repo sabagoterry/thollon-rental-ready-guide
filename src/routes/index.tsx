@@ -23,8 +23,6 @@ import shower from "@/assets/photos/shower-sharp.jpg.asset.json";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
-import hikingArt from '@/assets/activities/thollon-hiking.png.asset.json';
-import skiingArt from '@/assets/activities/thollon-skiing.png.asset.json';
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
@@ -221,7 +219,7 @@ function Index() {
           </span>
         </Link>
         <div>
-           <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>{tr("Every season in Thollon", "Thollon en toute saison")}</SectionHeading>
+           <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>{tr("Your Alpine Escape", "Votre escapade alpine")}</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
              <li><span className="font-medium text-primary">{tr("Winter:", "Hiver :")}</span> {tr("Ski the pristine Mémises slopes with the main cable car just a short walk away.", "Skiez sur les pistes immaculées des Mémises, avec la télécabine principale à quelques pas.")}</li>
              <li><span className="font-medium text-primary">{tr("Spring:", "Printemps :")}</span> {tr("Catch early mountain hikes as the snow melts.", "Profitez des premières randonnées en montagne à la fonte des neiges.")}</li>
@@ -233,24 +231,18 @@ function Index() {
 
        <section id="local-guide" className="band-ice">
          <div className="mx-auto max-w-6xl px-6 py-20">
-           <div className="flex flex-wrap items-center justify-between gap-6">
-           <SectionHeading>{tr('Local Area', 'Le coin')}</SectionHeading>
-           <Button asChild size="lg"><Link to="/local-area">{tr('Take a look', 'Jeter un œil')}<ArrowRight /></Link></Button>
-           </div>
-           <div className="mt-12 grid gap-12 md:grid-cols-2">
+           <SectionHeading>{tr('Hiking, Skiing and boarding on offer', 'Randonnée, ski et snowboard proposés')}</SectionHeading>
+           <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
              {[
-               { image: hikingArt.url, alt: tr('Hikers on a mountain trail', 'Randonneurs sur un sentier de montagne'), label: tr('Take a look at the Hiking on offer', 'Découvrez les randonnées proposées'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
-               { image: skiingArt.url, alt: tr('Skiing and snowboarding in the mountains', 'Ski et snowboard en montagne'), label: tr('Skiing on offer', 'Découvrez le ski proposé'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
+               { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
+               { label: tr('Skiing', 'Ski'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
+               { label: tr('Boarding', 'Snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
              ].map(activity => (
-               <div key={activity.url} className="flex min-w-0 flex-col items-center gap-6">
-                 <a href={activity.url} target="_blank" rel="noopener noreferrer" aria-label={activity.label} className="block w-full max-w-sm rounded-sm focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-4">
-                   <img src={activity.image} alt={activity.alt} loading="lazy" className="aspect-square w-full object-contain" />
-                 </a>
-                 <Button asChild size="lg" variant="outline" className="h-auto min-h-11 max-w-full whitespace-normal py-3 text-center">
+                 <Button key={activity.label} asChild variant="link" className="h-auto min-h-11 max-w-full whitespace-normal px-0 text-base">
                    <a href={activity.url} target="_blank" rel="noopener noreferrer">{activity.label}<ArrowUpRight className="shrink-0" /></a>
                  </Button>
-               </div>
              ))}
+             <Button asChild variant="link" className="h-auto min-h-11 max-w-full whitespace-normal px-0 text-left text-base"><Link to="/local-area">{tr('Take a look at the local area', 'Découvrez les environs')}<ArrowRight className="shrink-0" /></Link></Button>
            </div>
          </div>
        </section>

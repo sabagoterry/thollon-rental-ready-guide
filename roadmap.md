@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Apply latest comments: Your Alpine Escape (710499e5), subtle hiking/skiing/boarding and local-area links without illustrations (060621c1); clear preview comment pins after verification.
 - [x] Apply seven new November 8 comments: footer update (c35bb9de), remove bottom booking band (2d626456), chat text left/box right (1c629af5), wider seasons (f6dba06f), compass in blank area (75a4f3b2), move gallery buttons left (faeb35e2), bathroom label (b1c55f39).
 - [x] Apply November 8 comments: bunk/bath icons (68ec44c7, 3888e188), kitchen caption (b32da26e), gallery row alignment (004ea189, 7b059395), compass (4fb63000), region/season copy (f2d54abc, 261165f9, 7d9fe8d3), hiking/skiing (2993b90d), separate Local Area page (9cc61217, e9717c3b).
 - [x] Apply the supplied sans-serif lettering throughout the site (Poppins visual match)
