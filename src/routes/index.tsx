@@ -65,17 +65,7 @@ const facts = [
   { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
 ];
 
-// Only photos taken inside the apartment. Outdoor views live on the /location page.
-const photos: GalleryPhoto[] = [
-  { src: living.url, alt: "Living and dining room", altFr: 'Séjour et salle à manger' },
-  { src: lounge.url, alt: "Armchairs and dresser", altFr: 'Fauteuils et commode' },
-  { src: sofabed.url, alt: "Sofa bed made up", altFr: 'Canapé-lit déplié' },
-  { src: kitchen.url, alt: "Kitchen", altFr: 'Cuisine' },
-  { src: master.url, alt: "Double bedroom", altFr: 'Chambre double' },
-  { src: bunks2.url, alt: "Bunk beds", altFr: 'Lits superposés' },
-  { src: shower.url, alt: "Shower ensuite", altFr: 'Salle d’eau attenante' },
-  { src: bath.url, alt: "Full-size bathroom", altFr: 'Salle de bains complète' },
-];
+
 
 
 function Gallery() {
