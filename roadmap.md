@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Email each Direct Booking request receipt to Terry@thekavanaghs.co.uk and lesley@thekavanaghs.co.uk alongside WhatsApp (implemented; live sending verification blocked by pending DNS verification of notify.thekavanaghs.co.uk).
+- [x] Email each Direct Booking request receipt to Terry and Lesley alongside WhatsApp (sending verified Nov 8).
 - [x] Finish Direct Booking: validated name/email/dates/guests request stored in private enquiries inbox; test submissions verified with WhatsApp queue acceptance, desktop/mobile checks and validation tests.
 - [x] Replace scrolling navigation wording with supplied pictograms and an Ask speech bubble.
 - [x] Review outstanding November 8 comments: all seven are already implemented; rechecked page links and booking/availability tests without removing threads.
@@ -75,4 +75,4 @@
 - [x] Scrolled header: section links become right-edge buttons like the floating Book button
 - [x] Restyle "Furnished to a high standard" section per owner choice; keep wording clear
 - [x] Rooms section: each room is now a full-width photo band with overlaid white text
-- [ ] Apply outstanding comments (Nov 8 13:41)
+- [x] Apply outstanding comments (Nov 8 13:41)
