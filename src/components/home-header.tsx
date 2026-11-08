@@ -20,7 +20,7 @@ export function HomeHeader() {
     { to: '/gallery', en: 'Gallery', fr: 'Galerie' },
     { to: '/location', en: 'Location', fr: 'Situation' },
     { to: '/getting-here', en: 'Getting here', fr: 'Venir' },
-    { href: '#local-guide', en: 'Local area', fr: 'Le coin' },
+    { to: '/local-area', en: 'Local area', fr: 'Le coin' },
     { href: '#ask', en: 'Ask us', fr: 'Questions' },
   ] as const;
 
