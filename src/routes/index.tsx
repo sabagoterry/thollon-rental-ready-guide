@@ -115,19 +115,19 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
   return (
     <div className="text-center">
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
-      <div className="mt-6 mx-auto flex w-fit flex-col gap-5">
-        {towns.map(town => {
+      <div className="mt-6 mx-auto flex w-full flex-col gap-5">
+        {towns.map((town, index) => {
           const times = townTimes[town.name] ?? {};
           const modes = [
             { icon: Car, time: times.car },
             ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
           ];
           return (
-            <div key={town.name} className="flex items-center justify-between gap-6">
-              <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
+            <div key={town.name} className={`flex items-center justify-between gap-3 ${index % 2 ? 'flex-row-reverse' : ''}`}>
+              <a href={town.url} target="_blank" rel="noopener noreferrer" className={`min-w-0 text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline ${index % 2 ? 'text-right' : 'text-left'}`}>
                 {town.name}
               </a>
-              <span className="flex items-start gap-4 text-primary">
+              <span className="flex shrink-0 items-start gap-3 text-primary">
                 {modes.map(({ icon: Mode, time }) => (
                   <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
                     <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
@@ -156,10 +156,10 @@ function Gallery() {
       </Button>
       <div className="mt-14">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
-        <div className="mt-6 grid gap-10 md:grid-cols-2 xl:grid-cols-[0.65fr_1.5fr_1.1fr] xl:items-start">
-          <div className="flex flex-col gap-8">
+        <div className="mt-6 grid gap-10 md:grid-cols-2 xl:grid-cols-[0.9fr_1.5fr_1.1fr] xl:items-start">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-8">
             {localIcons.map(({ icon: Icon, en, fr, modes }) => (
-              <div key={en} className="flex items-center gap-5">
+              <div key={en} className={`flex min-w-0 items-center gap-3 ${en === 'Supermarket' ? 'col-span-2' : ''}`}>
                 <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-medium text-foreground">{tr(en, fr)}</span>
@@ -335,9 +335,9 @@ function Index() {
       </section>
 
        <section id="local-guide" className="band-ice">
-         <div className="mx-auto grid max-w-[1440px] gap-8 px-6 py-20 xl:grid-cols-[1.4fr_1fr] xl:items-center">
+         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 lg:grid-cols-[1.4fr_1fr] lg:items-center">
            <SectionHeading><span className="lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
-           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 xl:justify-end">
+           <div className="flex flex-col items-start gap-2 lg:justify-self-end">
              {[
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
                { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
