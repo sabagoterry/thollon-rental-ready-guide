@@ -75,4 +75,4 @@
 - [x] Scrolled header: section links become right-edge buttons like the floating Book button
 - [x] Restyle "Furnished to a high standard" section per owner choice; keep wording clear
 - [x] Rooms section: each room is now a full-width photo band with overlaid white text
-- [ ] Apply outstanding comments (Nov 8 13:41)
+- [x] Apply outstanding comments (Nov 8 13:41)
