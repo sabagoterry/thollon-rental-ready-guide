@@ -4,7 +4,7 @@ import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
 import { Button } from '@/components/ui/button';
-import { MessageCircle } from 'lucide-react';
+import { House, MessageCircle } from 'lucide-react';
 import directionsIcon from '@/assets/navigation-directions.png.asset.json';
 import localIcon from '@/assets/navigation-local-area.png.asset.json';
 import calendarIcon from '@/assets/navigation-availability.png.asset.json';
@@ -33,11 +33,11 @@ export function HomeHeader() {
 
   return (
     <>
-      <header className={`home-navigation pointer-events-none fixed inset-x-0 top-0 z-40 px-3 ${scrolled ? 'py-3' : 'home-integrated-header py-5'}`}>
-        <div className={`pointer-events-auto mx-auto flex items-center justify-between gap-4 ${scrolled ? 'w-fit max-w-full rounded-full border bg-background/95 px-4 py-2 shadow-lg backdrop-blur' : 'max-w-6xl px-3'}`}>
-          <LogoMark compact={scrolled} />
+      <header className="home-navigation pointer-events-none absolute inset-x-0 top-0 z-40 px-3 py-5">
+        <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-4 px-3">
+          <LogoMark />
           <nav aria-label={tr('Main', 'Navigation principale')} className="flex items-center gap-4 text-sm">
-            {!scrolled && sections.map((s) => {
+            {sections.map((s) => {
               const label = tr(s.en, s.fr);
               const content = <><span>{label}</span><span className="flex size-9 items-center justify-center rounded-full bg-background text-primary">{s.image ? <img src={s.image} alt="" className="size-8 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-6!" />}</span></>;
               return (
@@ -57,6 +57,11 @@ export function HomeHeader() {
           aria-label={tr('Sections', 'Sections')}
           className="fixed right-3 top-24 z-40 hidden flex-col items-end gap-2 md:flex"
         >
+          <Button asChild variant="outline" size="icon" className="size-12 rounded-full shadow-lg">
+            <Link to="/" aria-label={tr('Home', 'Accueil')} title={tr('Home', 'Accueil')}>
+              <House aria-hidden="true" className="size-7!" />
+            </Link>
+          </Button>
           {sections.map((s) => {
             const label = tr(s.en, s.fr);
             const icon = s.image ? <img src={s.image} alt="" className="size-11 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-7!" />;

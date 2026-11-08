@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { balconies, houseRules, washingFacilities, apartmentAmenities, sleepingCapacity } from './apartment';
+import { balconies, houseRules, washingFacilities, apartmentAmenities, amenityList, sleepingCapacity } from './apartment';
 import { liveLinks, dayTrips, diningDirectory, essentials, venues } from './local-links';
 import { localQuestions } from './local-questions';
 
@@ -20,6 +20,7 @@ APARTMENT
 - When asked how many people can stay, use the owner's answer: "${sleepingCapacity.answer}" In French: "${sleepingCapacity.answerFr}" Do not simply promise capacity for 6.
 - Parking: ${apartmentAmenities.parkingFree ? 'free' : 'ask the owner'}. Towels: ${apartmentAmenities.towelsOnRequest ? 'available on request' : 'ask the owner'}.
 - Skiing is ${apartmentAmenities.skiingMinutes} minutes away (travel mode not specified). Hiking is right outside.
+- Amenities: ${amenityList.map(a => a.en).join(', ')}.
 - 2 bedrooms, ${washingFacilities.description}. Exactly two balconies: ${balconyText}.
 - Living & dining room (10.9 m²): big picture window onto the balcony, dining table for four, armchairs, TV, sofa bed for two.
 - Kitchen: microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine, kettle.

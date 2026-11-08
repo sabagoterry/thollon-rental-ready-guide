@@ -8,7 +8,7 @@ import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
-import { balconies, apartmentAmenities } from '@/lib/apartment';
+import { balconies, apartmentAmenities, amenityList } from '@/lib/apartment';
 import { dayTrips } from '@/lib/local-links';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
@@ -99,7 +99,7 @@ const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
 const townTimes: Record<string, { car?: string; bus?: string }> = {
   'Évian-les-Bains': { car: '15 min', bus: '25 min' },
   Montreux: { car: '45 min' },
-  Geneva: {},
+  Geneva: { car: '1h 10', bus: '1h 40 (x2)' },
   Vevey: { car: '50 min' },
   Yvoire: { car: '38 min', bus: '1h 15 (x2)' },
   Bernex: { car: '10 min', bus: '35 min' },
@@ -113,9 +113,9 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
     .map(name => dayTrips.find(t => t.name === name))
     .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
   return (
-    <div>
+    <div className="text-center">
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
-      <div className="mt-6 flex flex-col gap-5">
+      <div className="mt-6 mx-auto flex w-fit flex-col gap-5">
         {towns.map(town => {
           const times = townTimes[town.name] ?? {};
           const modes = [
@@ -123,7 +123,7 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
             ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
           ];
           return (
-            <div key={town.name} className="flex items-center gap-6">
+            <div key={town.name} className="flex items-center justify-between gap-6">
               <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
                 {town.name}
               </a>
@@ -240,10 +240,10 @@ function Index() {
         </div>
       </section>
 
-      <section className="relative flex min-h-[70vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[70vh] overflow-hidden">
         <img src={building.url} alt={tr('Les Cyclamens apartment building', 'La résidence Les Cyclamens')} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-24 text-primary-foreground">
           <div className="max-w-xl">
             <div className="flex items-center gap-4 md:gap-5">
               <LogoMark />
@@ -255,16 +255,15 @@ function Index() {
               {tr('On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.', 'Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.')}
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-primary-foreground/40 pt-8 sm:grid-cols-4">
+          <div className="mt-12 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
-              { icon: parkingIcon.url, title: '', detail: tr('Free', 'Gratuit') },
-              { icon: towelsIcon.url, title: tr('Towels', 'Serviettes'), detail: tr('Available on request', 'Sur demande') },
-              { icon: skiingIcon.url, title: tr('Skiing', 'Ski'), detail: `${apartmentAmenities.skiingMinutes} minutes` },
-              { icon: hikingIcon.url, title: '', detail: tr('Right outside', 'Juste à la porte') },
-            ].map(item => <div key={item.detail} className="flex flex-col items-center gap-2 text-center slideshow-caption">
-              <img src={item.icon} alt="" aria-hidden="true" className="h-20 w-28 object-contain" />
-              {item.title && <span className="text-lg font-semibold">{item.title}</span>}
-              <span className="text-base">{item.detail}</span>
+              { icon: parkingIcon.url, detail: tr('Free', 'Gratuit') },
+              { icon: towelsIcon.url, detail: tr('Towels on request', 'Serviettes sur demande') },
+              { icon: skiingIcon.url, detail: `${apartmentAmenities.skiingMinutes} minutes` },
+              { icon: hikingIcon.url, detail: tr('Right outside', 'Juste à la porte') },
+            ].map(item => <div key={item.detail} className="flex flex-col items-center gap-1.5 text-center slideshow-caption">
+              <img src={item.icon} alt="" aria-hidden="true" className="h-14 w-20 object-contain" />
+              <span className="text-sm">{item.detail}</span>
             </div>)}
           </div>
         </div>
@@ -300,6 +299,10 @@ function Index() {
             <p className="mt-5 text-lg text-muted-foreground">{tr("Two balconies.", "Deux balcons.")}</p>
             <ul className="mt-4 space-y-2 text-muted-foreground">
               {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{fr ? `Balcon ${b.position === 'front' ? 'avant' : 'arrière'} — exposé ${b.facing === 'south' ? 'sud' : 'nord'}` : `${b.position} balcony — ${b.facing}-facing`}</li>)}
+            </ul>
+            <h3 className="mt-10 text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Amenities', 'Équipements')}</h3>
+            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-muted-foreground">
+              {amenityList.map(a => <li key={a.en}>{fr ? a.fr : a.en}</li>)}
             </ul>
           </div>
            <figure>
