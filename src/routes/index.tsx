@@ -16,6 +16,7 @@ import { FindUs } from '@/components/find-us';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
+import building from "@/assets/photos/cyclamens-building.png.asset.json";
 import master from "@/assets/photos/master.jpg.asset.json";
 import bunks from "@/assets/photos/bunks-sharp.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
@@ -148,7 +149,7 @@ function Index() {
       </section>
 
       <section className="relative flex min-h-[70vh] items-center overflow-hidden">
-        <img src={living.url} alt="Living and dining room" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={building.url} alt={tr('Les Cyclamens apartment building', 'La résidence Les Cyclamens')} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
           <div className="max-w-xl">
