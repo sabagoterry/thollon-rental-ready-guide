@@ -219,13 +219,13 @@ function Index() {
           </div>
           <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-primary-foreground/40 pt-8 sm:grid-cols-4">
             {[
-              { icon: parkingIcon.url, title: tr('Parking', 'Stationnement'), detail: tr('Free', 'Gratuit') },
+              { icon: parkingIcon.url, title: '', detail: tr('Free', 'Gratuit') },
               { icon: towelsIcon.url, title: tr('Towels', 'Serviettes'), detail: tr('Available on request', 'Sur demande') },
               { icon: skiingIcon.url, title: tr('Skiing', 'Ski'), detail: `${apartmentAmenities.skiingMinutes} minutes` },
-              { icon: hikingIcon.url, title: tr('Hiking', 'Randonnée'), detail: tr('Right outside', 'Juste à la porte') },
-            ].map(item => <div key={item.title} className="flex flex-col items-center gap-2 text-center slideshow-caption">
+              { icon: hikingIcon.url, title: '', detail: tr('Right outside', 'Juste à la porte') },
+            ].map(item => <div key={item.detail} className="flex flex-col items-center gap-2 text-center slideshow-caption">
               <img src={item.icon} alt="" aria-hidden="true" className="h-20 w-28 object-contain" />
-              <span className="text-lg font-semibold">{item.title}</span>
+              {item.title && <span className="text-lg font-semibold">{item.title}</span>}
               <span className="text-base">{item.detail}</span>
             </div>)}
           </div>
