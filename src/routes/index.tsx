@@ -78,12 +78,13 @@ const facts = [
 
 
 const localIcons = [
-  { icon: Car, en: 'By car', fr: 'En voiture' },
-  { icon: Footprints, en: 'On foot', fr: 'À pied' },
-  { icon: Bike, en: 'By bike', fr: 'À vélo' },
+  { icon: ShoppingCart, en: 'Supermarket', fr: 'Supermarché', modes: [Car, Footprints, Bike] },
+  { icon: Martini, en: 'Bars', fr: 'Bars', modes: [Footprints] },
+  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [Footprints] },
 ];
 
-const townButtons = ['Évian-les-Bains', 'Châtel', 'Morzine', 'Montreux', 'Geneva', 'Vevey', 'Yvoire', 'Leysin–Les Mosses'];
+const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
+const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
 
 function Gallery() {
   const { tr } = useLang();
