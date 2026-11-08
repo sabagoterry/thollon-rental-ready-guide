@@ -1,17 +1,19 @@
 import { Link } from '@tanstack/react-router';
 import { CalendarCheck } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
+import { Button } from '@/components/ui/button';
 
 export function FloatingBookButton() {
   const { tr } = useLang();
   return (
+    <Button asChild size="icon" className="fixed right-3 top-1/2 z-50 size-12 -translate-y-1/2 rounded-full shadow-lg md:bottom-6 md:top-auto md:translate-y-0">
     <Link
       to="/book"
       aria-label={tr('Check dates and book', 'Voir les dates et réserver')}
-      className="band-sunset glow-accent fixed right-0 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-1 rounded-l-full py-4 pl-3 pr-2 text-accent-foreground shadow-lg transition hover:pr-4 hover:brightness-110"
+      title={tr('Check dates and book', 'Voir les dates et réserver')}
     >
-      <CalendarCheck className="size-5" aria-hidden="true" />
-      <span className="text-xs font-semibold uppercase tracking-widest [writing-mode:vertical-rl]">{tr('Book', 'Réserver')}</span>
+      <CalendarCheck className="size-6!" aria-hidden="true" />
     </Link>
+    </Button>
   );
 }
