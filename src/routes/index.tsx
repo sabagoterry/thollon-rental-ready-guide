@@ -21,11 +21,11 @@ import living from "@/assets/photos/living.jpg.asset.json";
 import sofabed from "@/assets/photos/sofabed.jpg.asset.json";
 import lounge from "@/assets/photos/lounge.jpg.asset.json";
 import master from "@/assets/photos/master.jpg.asset.json";
-import bunks from "@/assets/photos/bunks.jpg.asset.json";
+import bunks from "@/assets/photos/bunks-sharp.jpg.asset.json";
 import bunks2 from "@/assets/photos/bunks2.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
-import shower from "@/assets/photos/shower.jpg.asset.json";
-import bath from "@/assets/photos/bath.jpg.asset.json";
+import shower from "@/assets/photos/shower-sharp.jpg.asset.json";
+import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
 
@@ -185,7 +185,7 @@ function Index() {
         </div>
         <div>
           {rooms.map((r, index) => (
-            <article key={r.name} className={`relative flex items-center overflow-hidden ${'tall' in r && r.tall ? 'min-h-[85vh]' : 'min-h-[60vh]'}`}>
+            <article key={r.name} className={`relative flex items-center overflow-hidden ${'tall' in r && r.tall ? 'min-h-[92vh]' : 'min-h-[60vh]'}`}>
               <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               <div className="bg-overlay absolute inset-0" />
               <div className={`relative mx-auto flex w-full max-w-6xl px-6 py-20 text-primary-foreground ${index % 2 ? 'md:justify-end' : ''}`}>
