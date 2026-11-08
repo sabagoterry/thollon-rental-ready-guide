@@ -28,6 +28,7 @@
 - Use one shared FindUs component and browser-safe coordinate module for map embeds and directions; only the managed public browser key enters map URLs, never server credentials.
 - Keep Getting here as a separate bilingual public route with official transport links; never reuse another property's directions, travel distances or credentials from reference HTML.
 - Share owner-confirmed washing facilities between page facts and guest knowledge to prevent contradictory bathroom descriptions.
+- Keep owner-confirmed amenities and sleeping capacity in the browser-safe apartment module so guest answers use the same maintained facts.
 - Keep the gallery lightbox timer in its mounted component with cleanup, so closing it stops automatic advancement.
 - Treat generated 3D floor-plan views as illustrations, not measured architectural drawings; retain the original source plan for future corrections.
 - Keep the home navigation in a focused component that compacts on scroll and retains section links in its mobile menu so navigation stays available without covering photos.

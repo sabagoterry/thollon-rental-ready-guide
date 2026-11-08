@@ -18,3 +18,16 @@ export const houseRules = {
   linen: 'Bed linen can be provided at an extra cost.',
   cancellation: 'Free cancellation up to 45 days before arrival; after that a scaled cancellation charge applies.',
 } as const;
+
+export const apartmentAmenities = {
+  parkingFree: true,
+  towelsOnRequest: true,
+  skiingMinutes: 5,
+  hikingAtDoorstep: true,
+} as const;
+export const sleepingCapacity = {
+  comfortableGuests: 4,
+  sofaBed: true,
+  answer: 'The apartment comfortably sleeps 4, but we also have a sofa bed, so it depends on the size of the party, please just ask.',
+  answerFr: 'L’appartement accueille confortablement 4 personnes, mais nous avons aussi un canapé-lit ; cela dépend donc de la taille du groupe, n’hésitez pas à nous demander.',
+} as const;
