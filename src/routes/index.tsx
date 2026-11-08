@@ -86,11 +86,32 @@ const localIcons = [
 const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
 const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
 
-function Gallery() {
-  const { tr } = useLang();
-  const towns = townButtons
+function TownGroup({ title, names }: { title: string; names: string[] }) {
+  const towns = names
     .map(name => dayTrips.find(t => t.name === name))
     .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
+  return (
+    <div>
+      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
+      <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
+        {towns.map(town => (
+          <div key={town.name} className="flex flex-col items-center gap-3 text-center">
+            <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
+              {town.name}
+            </a>
+            <span className="flex items-center gap-4 text-primary">
+              <Car aria-hidden="true" className="size-7" strokeWidth={1.8} />
+              <Bus aria-hidden="true" className="size-7" strokeWidth={1.8} />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Gallery() {
+  const { tr } = useLang();
   return (
     <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
       <Button asChild className="h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
@@ -102,30 +123,36 @@ function Gallery() {
       </Button>
       <div className="mt-14">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
-        <div className="mt-6 grid grid-cols-3 gap-6">
-          {localIcons.map(({ icon: Icon, en, fr }) => (
-            <div key={en} className="flex flex-col items-center gap-3 text-center">
-              <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
-              <span className="text-sm text-foreground">{tr(en, fr)}</span>
-            </div>
-          ))}
+        <div className="mt-6 grid gap-10 md:grid-cols-2 md:items-start">
+          <div className="grid grid-cols-3 gap-6">
+            {localIcons.map(({ icon: Icon, en, fr, modes }) => (
+              <div key={en} className="flex flex-col items-center gap-3 text-center">
+                <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
+                <span className="text-sm text-foreground">{tr(en, fr)}</span>
+                <span className="flex items-center gap-3 text-primary">
+                  {modes.map(Mode => (
+                    <Mode key={Mode.displayName ?? Mode.name} aria-hidden="true" className="size-6" strokeWidth={1.8} />
+                  ))}
+                </span>
+              </div>
+            ))}
+          </div>
+          <figure>
+            <figcaption className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+              {tr('Five minutes to the Télécabine', 'Cinq minutes jusqu’à la télécabine')}
+            </figcaption>
+            <img
+              src={telecabineWalkMap.url}
+              alt={tr('Map showing the five-minute walk from Les Cyclamens to the Télécabine station', 'Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine')}
+              loading="lazy"
+              className="card-vivid mt-4 w-full rounded-lg"
+            />
+          </figure>
         </div>
       </div>
-      <div className="mt-14">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Days out', 'Excursions')}</p>
-        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
-          {towns.map(town => (
-            <div key={town.name} className="flex flex-col items-center gap-3 text-center">
-              <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
-                {town.name}
-              </a>
-              <span className="flex items-center gap-4 text-primary">
-                <Car aria-hidden="true" className="size-7" strokeWidth={1.8} />
-                <Bus aria-hidden="true" className="size-7" strokeWidth={1.8} />
-              </span>
-            </div>
-          ))}
-        </div>
+      <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
+        <TownGroup title={tr('Days out', 'Excursions')} names={dayOutTowns} />
+        <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} />
       </div>
     </section>
   );
