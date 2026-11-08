@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Email each Direct Booking request receipt to Terry@thekavanaghs.co.uk and lesley@thekavanaghs.co.uk alongside WhatsApp (blocked: no sender domain configured).
+- [ ] Email each Direct Booking request receipt to Terry@thekavanaghs.co.uk and lesley@thekavanaghs.co.uk alongside WhatsApp (implemented; live sending verification blocked by pending DNS verification of notify.thekavanaghs.co.uk).
 - [x] Finish Direct Booking: validated name/email/dates/guests request stored in private enquiries inbox; test submissions verified with WhatsApp queue acceptance, desktop/mobile checks and validation tests.
 - [x] Replace scrolling navigation wording with supplied pictograms and an Ask speech bubble.
 - [x] Review outstanding November 8 comments: all seven are already implemented; rechecked page links and booking/availability tests without removing threads.

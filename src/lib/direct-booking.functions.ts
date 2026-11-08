@@ -27,9 +27,18 @@ export const submitDirectBooking = createServerFn({ method: 'POST' })
       if (error || !cache?.sync_ok || age < 0 || age >= 15 * 60_000 || stayOverlapsBlocked(data.checkIn, data.checkOut, cache.blocked_ranges as BlockedRange[])) return { status: 'unavailable' };
       // A fixed, validated public submission; private reads remain owner-only.
       const { supabaseAdmin } = await import('@/integrations/supabase/client.server');
+      const { count, error: rateError } = await supabaseAdmin.from('enquiries').select('id', { count: 'exact', head: true }).eq('email', data.email).gte('created_at', new Date(Date.now() - 60 * 60_000).toISOString());
+      if (rateError || (count ?? 0) >= 5) return { status: 'failed' };
       const message = directBookingMessage(data);
       const { error: insertError } = await supabaseAdmin.from('enquiries').insert({ id: data.id, name: data.name, email: data.email, message });
       if (insertError) return { status: insertError.code === '23505' ? 'saved' : 'failed' };
+      // Two fixed owner notifications, independently idempotent; never a browser-selected recipient.
+      const { sendTemplateEmail } = await import('./email-templates/send-email');
+      const emailOptions = { templateData: { name: data.name, email: data.email, checkIn: data.checkIn, checkOut: data.checkOut, guests: data.guests }, replyTo: data.email };
+      await Promise.allSettled([
+        sendTemplateEmail('direct-booking-terry', 'Terry@thekavanaghs.co.uk', { ...emailOptions, idempotencyKey: `direct-booking-terry-${data.id}` }),
+        sendTemplateEmail('direct-booking-lesley', 'lesley@thekavanaghs.co.uk', { ...emailOptions, idempotencyKey: `direct-booking-lesley-${data.id}` }),
+      ]);
       const notificationKey = process.env['CALLMEBOT_API_KEY'];
       let status: 'queued' | 'failed' | 'unknown' = 'failed';
       if (notificationKey) {
