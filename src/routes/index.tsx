@@ -1,13 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BedDouble, BedSingle, Bath, Users, Ruler, Mountain } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Users, Ruler, Mountain, Footprints, MountainSnow } from "lucide-react";
+import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
+import { FloorplanCompass } from '@/components/floorplan-compass';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
 import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
-import { balconies, washingFacilities } from '@/lib/apartment';
-import { LocalGuide } from '@/components/local-guide';
+import { balconies } from '@/lib/apartment';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { HomeHeader } from '@/components/home-header';
@@ -58,8 +59,9 @@ const rooms = [
 
 const facts = [
   { icon: BedDouble, en: '1 Double bedroom', fr: '1 Chambre double' },
-  { icon: BedSingle, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
-  { icon: Bath, en: washingFacilities.description, fr: washingFacilities.descriptionFr },
+  { icon: BunkBeds, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
+  { icon: ShowerHead, en: '1 Shower ensuite', fr: '1 Salle d’eau attenante' },
+  { icon: BathWithShower, en: '1 Bath with overhead shower', fr: '1 Baignoire avec douche' },
   { icon: Users, en: 'Up to 6 Guests', fr: 'Jusqu’à 6 voyageurs' },
   { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
   { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
@@ -85,7 +87,7 @@ function Gallery() {
     },
   ] as const;
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section className="mx-auto w-full max-w-[calc(50%+36rem)] px-6 py-24">
       {rows.map((row) => (
         <div key={row.to} className="flex flex-wrap items-center justify-between gap-6 border-b border-primary/10 py-12 first:pt-0 last:border-b-0 last:pb-0">
           <div>
@@ -149,7 +151,7 @@ function Index() {
         <img src={living.url} alt="Living and dining room" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
-          <div className="max-w-xl">
+                 <div className={`max-w-xl ${r.name === 'Kitchen' ? 'translate-y-12' : ''}`}>
             <div className="flex items-center gap-4 md:gap-5">
               <LogoMark />
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">{tr("The apartment", "L’appartement")}</p>
@@ -195,8 +197,9 @@ function Index() {
               {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{fr ? `Balcon ${b.position === 'front' ? 'avant' : 'arrière'} — exposé ${b.facing === 'south' ? 'sud' : 'nord'}` : `${b.position} balcony — ${b.facing}-facing`}</li>)}
             </ul>
           </div>
-          <figure>
+           <figure className="relative">
             <img src={floorplan3d} alt={tr("3D illustration of the apartment floor plan with two balconies", "Illustration 3D du plan de l’appartement avec deux balcons")} loading="lazy" className="mx-auto max-h-[640px] w-full object-contain" />
+             <FloorplanCompass />
             <figcaption className="mt-3 text-center text-sm text-muted-foreground">{tr('Illustrative 3D view — not a measured architectural drawing.', 'Vue 3D illustrative — ce n’est pas un plan architectural coté.')}</figcaption>
           </figure>
         </div>
@@ -210,20 +213,35 @@ function Index() {
           <span className="relative text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/85">{tr("Location", "Situation")}</span>
           <span className="relative font-display text-3xl leading-snug text-primary-foreground">{tr("See the views, the lake and the slopes", "Découvrez les vues, le lac et les pistes")}</span>
           <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary-foreground">
-            {tr('Open the location page', 'Ouvrir la page situation')} <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+             {tr('Explore the Region', 'Explorez la région')} <ArrowRight className="size-4 transition group-hover:translate-x-1" />
           </span>
         </Link>
         <div>
-          <SectionHeading kicker={tr("Four seasons", "Quatre saisons")}>{tr("Every season in Thollon", "Thollon en toute saison")}</SectionHeading>
+           <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>{tr("Every season in Thollon", "Thollon en toute saison")}</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
-            <li><span className="font-medium text-primary">{tr("Winter —", "Hiver —")}</span> {tr("ski the Mémises slopes, the cable car is just a short walk away.", "skiez sur les pistes des Mémises, la télécabine est à deux pas.")}</li>
-            <li><span className="font-medium text-accent">{tr("Summer —", "Été —")}</span> {tr("alpine hikes, paragliding and Lake Geneva beaches below.", "randonnées alpines, parapente et plages du Léman en contrebas.")}</li>
-            <li><span className="font-medium text-lake">{tr("Nearby —", "À proximité —")}</span> {tr("Évian-les-Bains, the Swiss Riviera and Geneva.", "Évian-les-Bains, la Riviera suisse et Genève.")}</li>
+             <li><span className="font-medium text-primary">{tr("Winter:", "Hiver :")}</span> {tr("Ski the pristine Mémises slopes with the main cable car just a short walk away.", "Skiez sur les pistes immaculées des Mémises, avec la télécabine principale à quelques pas.")}</li>
+             <li><span className="font-medium text-primary">{tr("Spring:", "Printemps :")}</span> {tr("Catch early mountain hikes as the snow melts.", "Profitez des premières randonnées en montagne à la fonte des neiges.")}</li>
+             <li><span className="font-medium text-accent">{tr("Summer:", "Été :")}</span> {tr("Discover alpine ridges, panoramic paragliding, and Lake Geneva's beaches below.", "Découvrez les crêtes alpines, le parapente panoramique et les plages du Léman en contrebas.")}</li>
+             <li><span className="font-medium text-lake">{tr("Nearby:", "À proximité :")}</span> {tr("Unwind anytime with quick trips to Évian-les-Bains, the Swiss Riviera, and Geneva.", "Détendez-vous en toute saison avec des escapades à Évian-les-Bains, sur la Riviera suisse et à Genève.")}</li>
           </ul>
         </div>
       </section>
 
-      <LocalGuide />
+       <section className="band-soft">
+         <div className="mx-auto max-w-6xl px-6 py-16">
+           <SectionHeading>{tr('Hiking and skiing', 'Randonnée et ski')}</SectionHeading>
+           <div className="mt-8 flex flex-wrap gap-4">
+             <Button asChild size="lg" variant="outline"><a href="https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises" target="_blank" rel="noopener noreferrer"><Footprints />{tr('Hiking', 'Randonnée')}<ArrowUpRight /></a></Button>
+             <Button asChild size="lg" variant="outline"><a href="https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/" target="_blank" rel="noopener noreferrer"><MountainSnow />{tr('Skiing', 'Ski')}<ArrowUpRight /></a></Button>
+           </div>
+         </div>
+       </section>
+       <section id="local-guide" className="band-ice">
+         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-6 py-20">
+           <SectionHeading>{tr('Local Area', 'Le coin')}</SectionHeading>
+           <Button asChild size="lg"><Link to="/local-area">{tr('Take a look', 'Jeter un œil')}<ArrowRight /></Link></Button>
+         </div>
+       </section>
       <GuestChat />
       <AvailabilityCalendar />
       <FindUs />
