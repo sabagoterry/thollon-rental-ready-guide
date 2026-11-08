@@ -37,7 +37,6 @@ import balconySunset from "@/assets/photos/balcony-sunset.jpg.asset.json";
 import winterCliffs from "@/assets/photos/winter-cliffs.jpg.asset.json";
 import meadowCliffs from "@/assets/photos/meadow-cliffs.jpg.asset.json";
 import valleyRidge from "@/assets/photos/valley-ridge.jpg.asset.json";
-import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
 
 export const Route = createFileRoute("/location")({
   head: () => ({
@@ -215,19 +214,6 @@ function LocationPage() {
           <img src={open.src} alt={open.alt} className="max-h-full max-w-full rounded-sm" />
         </div>
       )}
-
-      <section className="mx-auto max-w-6xl px-6 pb-20">
-        <SectionHeading kicker={tr("On foot", "À pied")}>{tr("Five minutes to the Télécabine", "Cinq minutes jusqu’à la télécabine")}</SectionHeading>
-        <p className="mt-4 max-w-xl text-muted-foreground">
-          {tr('The walk from the apartment door to the cable car station — no car needed on ski days.', 'Le chemin à pied de la porte de l’appartement à la télécabine — pas besoin de voiture les jours de ski.')}
-        </p>
-        <img
-          src={telecabineWalkMap.url}
-          alt={tr('Map showing the five-minute walk from Les Cyclamens to the Télécabine station', 'Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine')}
-          loading="lazy"
-          className="card-vivid mt-8 w-full rounded-lg"
-        />
-      </section>
 
       <FindUs />
       <SiteFooter />
