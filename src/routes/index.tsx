@@ -13,7 +13,6 @@ import { LocalGuide } from '@/components/local-guide';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { HomeHeader } from '@/components/home-header';
-import { ApartmentSlideshow } from '@/components/apartment-slideshow';
 import { FindUs } from '@/components/find-us';
 import { useLang } from '@/lib/i18n';
 import exterior from "@/assets/photos/exterior.jpg.asset.json";

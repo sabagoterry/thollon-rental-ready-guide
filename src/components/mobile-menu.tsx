@@ -10,6 +10,7 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
 
   const links = [
     { to: '/', label: tr('Home', 'Accueil') },
+    { to: '/gallery', label: tr('Photo gallery', 'Galerie photos') },
     { to: '/location', label: tr('Location & views', 'Situation et vues') },
     { to: '/getting-here', label: tr('Getting here', 'Venir aux Cyclamens') },
     { to: '/book', label: tr('Check dates & book', 'Dates et réservation') },

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as GettingHereRouteImport } from './routes/getting-here'
 import { Route as LocationRouteImport } from './routes/location'
 import { Route as AuthenticatedOwnerRouteImport } from './routes/_authenticated/owner'
@@ -35,6 +36,11 @@ const AuthRoute = AuthRouteImport.update({
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GettingHereRoute = GettingHereRouteImport.update({
@@ -62,6 +68,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/gallery': typeof GalleryRoute
   '/getting-here': typeof GettingHereRoute
   '/location': typeof LocationRoute
   '/owner': typeof AuthenticatedOwnerRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/gallery': typeof GalleryRoute
   '/getting-here': typeof GettingHereRoute
   '/location': typeof LocationRoute
   '/owner': typeof AuthenticatedOwnerRoute
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/book': typeof BookRoute
+  '/gallery': typeof GalleryRoute
   '/getting-here': typeof GettingHereRoute
   '/location': typeof LocationRoute
   '/_authenticated/owner': typeof AuthenticatedOwnerRoute
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/book'
+    | '/gallery'
     | '/getting-here'
     | '/location'
     | '/owner'
@@ -102,6 +112,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/book'
+    | '/gallery'
     | '/getting-here'
     | '/location'
     | '/owner'
@@ -112,6 +123,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/book'
+    | '/gallery'
     | '/getting-here'
     | '/location'
     | '/_authenticated/owner'
@@ -123,6 +135,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   BookRoute: typeof BookRoute
+  GalleryRoute: typeof GalleryRoute
   GettingHereRoute: typeof GettingHereRoute
   LocationRoute: typeof LocationRoute
   ApiGuestChatRoute: typeof ApiGuestChatRoute
@@ -156,6 +169,13 @@ declare module '@tanstack/react-router' {
       path: '/book'
       fullPath: '/book'
       preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/getting-here': {
@@ -205,6 +225,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   BookRoute: BookRoute,
+  GalleryRoute: GalleryRoute,
   GettingHereRoute: GettingHereRoute,
   LocationRoute: LocationRoute,
   ApiGuestChatRoute: ApiGuestChatRoute,

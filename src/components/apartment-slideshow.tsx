@@ -8,8 +8,8 @@ import sofabed from '@/assets/photos/sofabed.jpg.asset.json';
 import kitchen from '@/assets/photos/kitchen.jpg.asset.json';
 import master from '@/assets/photos/master.jpg.asset.json';
 import bunks from '@/assets/photos/bunks2.jpg.asset.json';
-import shower from '@/assets/photos/shower.jpg.asset.json';
-import bath from '@/assets/photos/bath.jpg.asset.json';
+import shower from '@/assets/photos/shower-sharp.jpg.asset.json';
+import bath from '@/assets/photos/bath-sharp.jpg.asset.json';
 
 const slides = [
   { src: living.url, en: 'Living and dining room', fr: 'Séjour et salle à manger' },
