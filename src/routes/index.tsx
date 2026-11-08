@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, ShoppingBasket, Wine, UtensilsCrossed } from "lucide-react";
 import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
 import { FloorplanCompass } from '@/components/floorplan-compass';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
 import { balconies, apartmentAmenities } from '@/lib/apartment';
+import { dayTrips } from '@/lib/local-links';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { HomeHeader } from '@/components/home-header';
@@ -75,30 +76,49 @@ const facts = [
 
 
 
+const localIcons = [
+  { icon: ShoppingBasket, en: 'Supermarket', fr: 'Supermarché' },
+  { icon: Wine, en: 'Bars', fr: 'Bars' },
+  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants' },
+];
+
+const townButtons = ['Évian-les-Bains', 'Châtel', 'Morzine', 'Montreux', 'Geneva', 'Vevey', 'Yvoire', 'Leysin–Les Mosses'];
+
 function Gallery() {
   const { tr } = useLang();
-  const rows = [
-    {
-      kicker: tr('Location', 'Situation'),
-      title: tr('Location and views', 'Situation et vues'),
-      text: tr('The views, the lake and the slopes have their own page.', 'Les vues, le lac et les pistes ont leur propre page.'),
-      to: '/location',
-    },
-  ] as const;
+  const towns = townButtons
+    .map(name => dayTrips.find(t => t.name === name))
+    .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
   return (
-    <section className="mx-auto w-full max-w-[calc(50%+36rem)] px-6 py-24">
-      {rows.map((row) => (
-        <div key={row.to} className="grid items-center gap-6 border-b border-primary/10 py-12 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[2fr_1fr]">
-          <Button asChild className="h-auto min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
-            <Link to={row.to}>
-              <span className="text-sm uppercase">{row.kicker}</span>
-              <span className="text-3xl md:text-4xl">{row.title}</span>
-              <span className="flex items-center gap-2">{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></span>
+    <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
+      <Button asChild className="h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
+        <Link to="/location">
+          <span className="text-sm uppercase">{tr('Location', 'Situation')}</span>
+          <span className="text-3xl md:text-4xl">{tr('Location and views', 'Situation et vues')}</span>
+          <span className="flex items-center gap-2">{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></span>
+        </Link>
+      </Button>
+      <div className="mt-14">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
+        <div className="mt-6 grid grid-cols-3 gap-6">
+          {localIcons.map(({ icon: Icon, en, fr }) => (
+            <Link key={en} to="/local-area" className="flex flex-col items-center gap-3 text-center transition hover:text-accent">
+              <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
+              <span className="text-sm text-foreground">{tr(en, fr)}</span>
             </Link>
-          </Button>
-          <p className="max-w-xl text-muted-foreground">{row.text}</p>
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="mt-14">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Days out', 'Excursions')}</p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {towns.map(town => (
+            <Button key={town.name} asChild variant="outline" className="h-auto whitespace-normal px-5 py-3 text-base">
+              <a href={town.url} target="_blank" rel="noopener noreferrer">{town.name}<ArrowUpRight className="size-4 shrink-0" /></a>
+            </Button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -233,7 +253,7 @@ function Index() {
           <Link to="/local-area">
             <span className="text-xs uppercase">{tr('Local Area', 'Les environs')}</span>
             <span className="font-display text-3xl leading-snug">{tr('Your Alpine Escape', 'Votre escapade alpine')}</span>
-            <span className="inline-flex items-center gap-2">{tr('Explore the Region', 'Explorez la région')} <ArrowRight /></span>
+            <span className="inline-flex items-center gap-2">{tr('Explore the local area', 'Explorez les environs')} <ArrowRight /></span>
           </Link>
         </Button>
       </section>
