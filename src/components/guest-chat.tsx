@@ -106,7 +106,7 @@ export function GuestChat() {
         <p className="mt-4 text-muted-foreground">{tr('Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.', 'Notre assistant IA répond à partir des informations sur l’appartement et de nos recommandations locales. Pour tout le reste, envoyez-nous une demande.')}</p>
         </div>
         <div className="min-w-0">
-        <div className="card-vivid overflow-hidden rounded-md bg-card">
+        <div className="overflow-hidden rounded-md border bg-transparent">
           {messages.length > 0 && <div className="flex items-center justify-between border-b px-5 py-2">
             <span className="text-sm text-muted-foreground">{busy ? tr('Answering…', 'Réponse en cours…') : tr('Chat in progress', 'Discussion en cours')}</span>
             <Button variant="ghost" size="sm" onClick={endChat}><X />{tr('End chat', 'Terminer')}</Button>
@@ -129,7 +129,7 @@ export function GuestChat() {
           </div>
           <form onSubmit={submit} className="flex items-end gap-2 border-t p-3">
             <Textarea value={input} onChange={e => { setInput(e.target.value); if (messages.length) touchChat(conversationId); }} maxLength={1000} rows={1} placeholder={tr('Ask about the apartment or Thollon…', 'Une question sur l’appartement ou Thollon…')} aria-label={tr('Your question', 'Votre question')}
-              className="min-h-10 resize-none border-0 shadow-none focus-visible:ring-0"
+              className="min-h-10 resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent"
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); void ask(input); } }} />
             <Button type="submit" size="icon" className="band-lake text-primary-foreground" disabled={busy || !input.trim() || !conversationId} aria-label={tr('Send question', 'Envoyer la question')}>
               {busy ? <LoaderCircle className="animate-spin motion-reduce:animate-none" /> : <ArrowUp />}

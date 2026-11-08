@@ -21,11 +21,19 @@ export function AvailabilityCalendar() {
   return (
     <section id="availability" className="border-t band-soft">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-start gap-x-8 gap-y-6">
           <SectionHeading kicker={tr("Before you book", "Avant de réserver")}>{tr("Current Availability", "Disponibilités actuelles")}</SectionHeading>
-          <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
-            <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
-          </Button>
+          <div className="flex flex-col items-start gap-3" role="status">
+            <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
+            <div className="flex items-center gap-3">
+              <Button asChild size="lg" className="h-auto flex-col gap-1 py-3">
+                <Link to="/book"><span className="text-xs uppercase tracking-wide">{tr('Interested?', 'Intéressé ?')}</span><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link>
+              </Button>
+              <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
+                <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />
+              </Button>
+            </div>
+          </div>
         </div>
         <p className="mt-4 text-muted-foreground">{tr('Final availability and prices are confirmed on Airbnb.', 'Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
         <div className="mt-8 flex flex-wrap gap-6 text-base md:text-lg" aria-label={tr('Calendar legend', 'Légende')}>
@@ -34,12 +42,6 @@ export function AvailabilityCalendar() {
         </div>
         <div className="mt-6" role="status">
           {!ready && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
-          <div className="flex flex-wrap items-center gap-4">
-            <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
-            <Button asChild size="lg" className="h-auto flex-col gap-1 py-3">
-              <Link to="/book"><span className="text-xs uppercase tracking-wide">{tr('Interested?', 'Intéressé ?')}</span><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link>
-            </Button>
-          </div>
         </div>
          <div className="card-vivid mt-6 overflow-hidden rounded-lg bg-card p-4">
           <Calendar

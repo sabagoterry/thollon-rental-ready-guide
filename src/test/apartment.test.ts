@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { balconies, washingFacilities, apartmentAmenities, sleepingCapacity } from '@/lib/apartment';
+import { balconies, washingFacilities, apartmentAmenities, amenityList, sleepingCapacity } from '@/lib/apartment';
 
 it('has exactly two balconies', () => {
   expect(balconies).toHaveLength(2);
@@ -22,3 +22,14 @@ it('has skiing five minutes away', () => { expect(apartmentAmenities.skiingMinut
 it('has hiking right outside', () => { expect(apartmentAmenities.hikingAtDoorstep).toBe(true); });
 it('comfortably sleeps four', () => { expect(sleepingCapacity.comfortableGuests).toBe(4); });
 it('also has a sofa bed', () => { expect(sleepingCapacity.sofaBed).toBe(true); });
+it('does not offer a separate cot', () => {
+  expect(amenityList.some(a => String(a.en) === 'Cot')).toBe(false);
+});
+it('provides the travel cot only on request', () => {
+  const item = amenityList.find(a => a.en.startsWith('Travel cot'));
+  expect(item && 'onRequest' in item ? item.onRequest : false).toBe(true);
+});
+it('provides the high chair only on request', () => {
+  const item = amenityList.find(a => a.en.startsWith('High chair'));
+  expect(item && 'onRequest' in item ? item.onRequest : false).toBe(true);
+});
