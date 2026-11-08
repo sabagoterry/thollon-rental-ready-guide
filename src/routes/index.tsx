@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, Car, Footprints, Bike, Bus } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, Car, Footprints, Bike, Bus, ShoppingCart, Martini, UtensilsCrossed } from "lucide-react";
 import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
 import { FloorplanCompass } from '@/components/floorplan-compass';
 import { Button } from '@/components/ui/button';
@@ -29,6 +29,7 @@ import parkingIcon from '@/assets/icons/apartment-parking.png.asset.json';
 import towelsIcon from '@/assets/icons/apartment-towels-clean.png.asset.json';
 import skiingIcon from '@/assets/icons/apartment-skiing-clean.png.asset.json';
 import hikingIcon from '@/assets/icons/apartment-hiking.png.asset.json';
+import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
