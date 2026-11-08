@@ -49,7 +49,6 @@ export function SiteFooter() {
           <Link to="/getting-here" className="underline-offset-4 transition hover:text-primary-foreground hover:underline">{tr('Getting here', 'Venir aux Cyclamens')}</Link>
           <Link to="/book" className="underline-offset-4 transition hover:text-white hover:underline">{tr('Check dates & book', 'Dates et réservation')}</Link>
           <Link to="/" hash="ask" className="underline-offset-4 transition hover:text-primary-foreground hover:underline">{tr('Ask us', 'Posez vos questions')}</Link>
-          <Link to="/" hash="find-us" className="underline-offset-4 transition hover:text-primary-foreground hover:underline">{tr('Find us', 'Nous trouver')}</Link>
         </nav>
 
         <nav aria-label={tr('Around Thollon', 'Autour de Thollon')} className="grid content-start gap-2 text-center md:text-left">
