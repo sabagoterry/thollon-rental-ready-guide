@@ -8,9 +8,9 @@ export const Route = createFileRoute('/direct-booking')({
   loader: ({ context }) => context.queryClient.ensureQueryData(availabilityQuery),
   head: () => ({ meta: [
     { title: 'Direct Booking — Les Cyclamens' },
-    { name: 'description', content: 'Review your selected dates and guests for Les Cyclamens. Direct booking is not yet open.' },
+    { name: 'description', content: 'Request a direct stay at Les Cyclamens with your name, dates and guest count, for owner confirmation.' },
     { property: 'og:title', content: 'Direct Booking — Les Cyclamens' },
-    { property: 'og:description', content: 'Your selected stay at Les Cyclamens, Thollon-les-Mémises. Direct booking coming later.' },
+    { property: 'og:description', content: 'Send your selected dates and guests to the owner of Les Cyclamens for confirmation.' },
     { property: 'og:type', content: 'website' },
     { name: 'twitter:card', content: 'summary' },
   ] }),
