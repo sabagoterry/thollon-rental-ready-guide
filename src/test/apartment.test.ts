@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { balconies, washingFacilities } from '@/lib/apartment';
+import { balconies, washingFacilities, apartmentAmenities, sleepingCapacity } from '@/lib/apartment';
 
 it('has exactly two balconies', () => {
   expect(balconies).toHaveLength(2);
@@ -16,3 +16,9 @@ it('has one full-size bathroom', () => {
 it('has one shower ensuite', () => {
   expect(washingFacilities.showerEnsuites).toBe(1);
 });
+it('offers free parking', () => { expect(apartmentAmenities.parkingFree).toBe(true); });
+it('offers towels on request', () => { expect(apartmentAmenities.towelsOnRequest).toBe(true); });
+it('has skiing five minutes away', () => { expect(apartmentAmenities.skiingMinutes).toBe(5); });
+it('has hiking right outside', () => { expect(apartmentAmenities.hikingAtDoorstep).toBe(true); });
+it('comfortably sleeps four', () => { expect(sleepingCapacity.comfortableGuests).toBe(4); });
+it('also has a sofa bed', () => { expect(sleepingCapacity.sofaBed).toBe(true); });
