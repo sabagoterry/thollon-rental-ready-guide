@@ -65,3 +65,4 @@
 - [x] Hero copy: changed "shops and restaurants" to "restaurants and all village amenities"
 - [x] Scrolled header: section links become right-edge buttons like the floating Book button
 - [x] Restyle "Furnished to a high standard" section per owner choice; keep wording clear
+- [x] Rooms section: each room is now a full-width photo band with overlaid white text
