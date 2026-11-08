@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Users, Ruler, Mountain } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain } from "lucide-react";
 import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
 import { FloorplanCompass } from '@/components/floorplan-compass';
 import { Button } from '@/components/ui/button';
@@ -63,7 +63,7 @@ const facts = [
   { icon: BunkBeds, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
   { icon: ShowerHead, en: '1 Shower ensuite', fr: '1 Salle d’eau attenante' },
   { icon: BathWithShower, en: '1 Bathroom with overhead shower', fr: '1 Salle de bains avec douche' },
-  { icon: Users, en: 'Up to 6 Guests', fr: 'Jusqu’à 6 voyageurs' },
+  { icon: Sofa, en: '4 Beds and Sofa Bed', fr: '4 lits et canapé-lit' },
   { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
   { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
 ];
@@ -232,7 +232,7 @@ function Index() {
 
        <section id="local-guide" className="band-ice">
          <div className="mx-auto max-w-6xl px-6 py-20">
-           <SectionHeading>{tr('The Hiking, Skiing, boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</SectionHeading>
+           <SectionHeading><span className="lg:whitespace-nowrap lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
            <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
              {[
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
