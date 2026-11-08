@@ -63,7 +63,7 @@ const facts = [
   { icon: BedDouble, en: '1 Double bedroom', fr: '1 Chambre double' },
   { icon: BunkBeds, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
   { icon: ShowerHead, en: '1 Shower ensuite', fr: '1 Salle d’eau attenante' },
-  { icon: BathWithShower, en: '1 Bath with overhead shower', fr: '1 Baignoire avec douche' },
+  { icon: BathWithShower, en: '1 Bathroom with overhead shower', fr: '1 Salle de bains avec douche' },
   { icon: Users, en: 'Up to 6 Guests', fr: 'Jusqu’à 6 voyageurs' },
   { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
   { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
@@ -91,12 +91,12 @@ function Gallery() {
   return (
     <section className="mx-auto w-full max-w-[calc(50%+36rem)] px-6 py-24">
       {rows.map((row) => (
-        <div key={row.to} className="flex flex-wrap items-center justify-between gap-6 border-b border-primary/10 py-12 first:pt-0 last:border-b-0 last:pb-0">
-          <div>
+        <div key={row.to} className="grid items-center gap-6 border-b border-primary/10 py-12 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[2fr_1fr]">
+          <div className="min-w-0">
             <SectionHeading kicker={row.kicker}>{row.title}</SectionHeading>
             <p className="mt-4 max-w-xl text-muted-foreground">{row.text}</p>
           </div>
-          <Button asChild size="lg" className="gap-2">
+          <Button asChild size="lg" className="justify-self-start gap-2">
             <Link to={row.to}>{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></Link>
           </Button>
         </div>
@@ -209,7 +209,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
+      <section className="mx-auto grid w-full max-w-[1440px] gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
         <Link
           to="/location"
           className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-md band-day p-8 glow-primary transition hover:brightness-110"
@@ -257,21 +257,6 @@ function Index() {
       <GuestChat />
       <AvailabilityCalendar />
       <FindUs />
-
-      <section className="band-deep text-primary-foreground">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-5">
-            <LogoMark />
-            <div>
-            <h2 className="text-4xl">{tr("Check dates & book", "Dates et réservation")}</h2>
-            <p className="mt-2 opacity-80">{tr("See availability and prices on Airbnb.", "Disponibilités et tarifs sur Airbnb.")}</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <WhatsAppEnquiry />
-          </div>
-        </div>
-      </section>
 
       <SiteFooter />
     </main>

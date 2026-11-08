@@ -100,10 +100,13 @@ export function GuestChat() {
 
   return (
     <section id="ask" className="band-soft">
-      <div className="mx-auto max-w-3xl px-6 py-20">
+      <div className="mx-auto grid max-w-6xl items-start gap-x-12 gap-y-8 px-6 py-20 lg:grid-cols-2">
+        <div className="min-w-0">
         <SectionHeading kicker={tr("Ask us anything", "Posez-nous vos questions")}>{tr("Questions about your stay?", "Des questions sur votre séjour ?")}</SectionHeading>
         <p className="mt-4 text-muted-foreground">{tr('Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.', 'Notre assistant IA répond à partir des informations sur l’appartement et de nos recommandations locales. Pour tout le reste, envoyez-nous une demande.')}</p>
-        <div className="card-vivid mt-8 overflow-hidden rounded-md bg-card">
+        </div>
+        <div className="min-w-0">
+        <div className="card-vivid overflow-hidden rounded-md bg-card">
           <div className="bar-flow h-1.5" />
           {messages.length > 0 && <div className="flex items-center justify-between border-b px-5 py-2">
             <span className="text-sm text-muted-foreground">{busy ? tr('Answering…', 'Réponse en cours…') : tr('Chat in progress', 'Discussion en cours')}</span>
@@ -112,7 +115,7 @@ export function GuestChat() {
           <div ref={scroller} className="max-h-[28rem] min-h-48 space-y-5 overflow-y-auto p-5" aria-live="polite">
             {messages.length === 0 && (
               <div className="flex flex-wrap gap-2">
-                {suggestions[lang].map(s => <Button key={s} variant="outline" size="sm" className="hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
+                {suggestions[lang].map(s => <Button key={s} variant="outline" size="sm" className="h-auto min-h-8 max-w-full whitespace-normal text-left hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
               </div>
             )}
             {messages.map((m, i) => m.role === 'user'
@@ -135,6 +138,7 @@ export function GuestChat() {
           </form>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">{tr('Answers may be imperfect — please confirm important details with the owner. Questions are saved so the owner can read them.', 'Les réponses peuvent être imparfaites — confirmez les détails importants avec le propriétaire. Les questions sont enregistrées pour que le propriétaire puisse les lire.')}</p>
+        </div>
       </div>
     </section>
   );
