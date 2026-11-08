@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Apply eight 16:57 comments: availability controls, seamless chat background, activity links alignment, cot/request-only amenities, town groups between local icons and map; verify and clear pins.
+- [x] Apply eight 16:57 comments: availability controls, seamless chat background, activity links alignment, cot/request-only amenities, town groups between local icons and map; desktop/mobile and bilingual checks, booking link, and 14 amenity tests passed; replies added and pins cleared.
 - [x] Add apartment photo amenity icons, apply outstanding comments, and clear preview comment markers; verified icons, booking link, guest capacity answer and 24 tests.
 - [x] Email each Direct Booking request receipt to Terry and Lesley alongside WhatsApp (sending verified Nov 8).
 - [x] Finish Direct Booking: validated name/email/dates/guests request stored in private enquiries inbox; test submissions verified with WhatsApp queue acceptance, desktop/mobile checks and validation tests.
