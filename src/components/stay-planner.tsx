@@ -19,6 +19,7 @@ import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
 import { useLang } from '@/lib/i18n';
 import { enGB, fr as frLocale } from 'date-fns/locale';
+import { DirectBookingForm } from '@/components/direct-booking-form';
 
 const iso = (d: Date) => format(d, 'yyyy-MM-dd');
 
@@ -65,7 +66,7 @@ export function StayPlanner({ selection, direct = false }: { selection: BookingS
     </header>
     <div className="mx-auto max-w-6xl px-6 py-14">
       <SectionHeading kicker={tr("Plan your stay", "Préparez votre séjour")}>{direct ? tr("Direct Booking", "Réservation directe") : tr("Book Les Cyclamens", "Réserver Les Cyclamens")}</SectionHeading>
-      <p className="mt-4 max-w-2xl text-muted-foreground">{tr('Choose your arrival and departure days and guests. Final availability and prices are confirmed on Airbnb.', 'Choisissez vos dates d’arrivée et de départ et le nombre de voyageurs. Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
+      <p className="mt-4 max-w-2xl text-muted-foreground">{direct ? tr('Choose your dates and guests, then send your request to the owner for confirmation.', 'Choisissez vos dates et le nombre de voyageurs, puis envoyez votre demande au propriétaire pour confirmation.') : tr('Choose your arrival and departure days and guests. Final availability and prices are confirmed on Airbnb.', 'Choisissez vos dates d’arrivée et de départ et le nombre de voyageurs. Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
       <Button asChild size="lg" className="mt-6 band-lake text-primary-foreground"><a href={airbnbBookingUrl(checkIn, checkOut, guests)} target="_blank" rel="noopener noreferrer"><Zap />{tr('Book Instantly on Airbnb', 'Réserver instantanément sur Airbnb')}<ArrowUpRight /></a></Button>
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div className="card-vivid overflow-hidden rounded-md bg-card p-4">
@@ -95,7 +96,7 @@ export function StayPlanner({ selection, direct = false }: { selection: BookingS
           {clash && <p role="alert" className="text-sm text-destructive">{tr('Some of those nights are already booked. Please pick different dates.', 'Certaines de ces nuits sont déjà réservées. Choisissez d’autres dates.')}</p>}
           {direct ? (
             <>
-              <p role="status" className="text-sm text-muted-foreground">{tr('Direct booking is not open yet. Your selection is shown here, but no reservation has been made.', 'La réservation directe n’est pas encore ouverte. Votre sélection est affichée ici, mais aucune réservation n’a été effectuée.')}</p>
+              <DirectBookingForm checkIn={checkIn} checkOut={checkOut} guests={guests} disabled={!ready || !checkIn || !checkOut || clash || checkIn < data.today} />
               <Button asChild variant="outline" className="w-full"><Link to="/book" search={{ checkIn, checkOut, guests }}>{tr('Change', 'Modifier')}<ArrowLeft /></Link></Button>
             </>
           ) : (
