@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { balconies, houseRules, washingFacilities, apartmentAmenities, sleepingCapacity } from './apartment';
+import { balconies, houseRules, washingFacilities, apartmentAmenities, amenityList, sleepingCapacity } from './apartment';
 import { liveLinks, dayTrips, diningDirectory, essentials, venues } from './local-links';
 import { localQuestions } from './local-questions';
 
