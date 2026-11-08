@@ -144,8 +144,6 @@ function Index() {
         </div>
       </section>
 
-      <ApartmentSlideshow />
-
       <section className="border-b band-soft">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <h2 className="text-center text-4xl text-rainbow">{tr('Accommodation', 'Hébergement')}</h2>
