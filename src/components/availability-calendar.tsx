@@ -36,7 +36,8 @@ export function AvailabilityCalendar() {
           {!ready && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
           <p className="text-sm text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
         </div>
-        <div className="card-vivid mt-6 overflow-hidden rounded-lg bg-card p-4">
+        <div className="mt-6 flex justify-end"><Button asChild size="lg"><Link to="/book">{tr('Book', 'Réserver')}<ArrowRight /></Link></Button></div>
+        <div className="card-vivid mt-4 overflow-hidden rounded-lg bg-card p-4">
           <Calendar
             aria-label={tr('Apartment availability calendar', 'Calendrier des disponibilités')}
             locale={locale}
@@ -48,7 +49,6 @@ export function AvailabilityCalendar() {
             labels={{ labelDay: day => `${format(day, 'd MMMM yyyy', { locale })}: ${day < today ? tr('past date', 'date passée') : isBlocked(format(day, 'yyyy-MM-dd'), data.ranges) ? tr('unavailable', 'indisponible') : ready ? tr('not blocked on Airbnb', 'libre sur Airbnb') : tr('availability unconfirmed', 'disponibilité non confirmée')}` }}
           />
         </div>
-        <Button asChild size="lg" className="mt-6"><Link to="/book">{tr('Book', 'Réserver')}<ArrowRight /></Link></Button>
       </div>
     </section>
   );

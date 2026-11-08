@@ -29,7 +29,7 @@ export function SiteFooter() {
   return (
     <footer className="band-deep px-6 py-12 text-primary-foreground/90">
       <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[auto_1fr_1fr]">
-        <div className="flex flex-col items-center gap-4 md:items-start">
+        <div className="flex flex-col items-center gap-4">
           <LogoMark />
           <Button asChild className="band-sunset text-accent-foreground"><a
             href={AIRBNB_URL}

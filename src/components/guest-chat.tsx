@@ -107,7 +107,6 @@ export function GuestChat() {
         </div>
         <div className="min-w-0">
         <div className="card-vivid overflow-hidden rounded-md bg-card">
-          <div className="bar-flow h-1.5" />
           {messages.length > 0 && <div className="flex items-center justify-between border-b px-5 py-2">
             <span className="text-sm text-muted-foreground">{busy ? tr('Answering…', 'Réponse en cours…') : tr('Chat in progress', 'Discussion en cours')}</span>
             <Button variant="ghost" size="sm" onClick={endChat}><X />{tr('End chat', 'Terminer')}</Button>

@@ -66,8 +66,17 @@ export function StayPlanner({ selection, direct = false }: { selection: BookingS
     </header>
     <div className="mx-auto max-w-6xl px-6 py-14">
       <SectionHeading kicker={tr("Plan your stay", "Préparez votre séjour")}>{direct ? tr("Direct Booking", "Réservation directe") : tr("Book Les Cyclamens", "Réserver Les Cyclamens")}</SectionHeading>
-      <p className="mt-4 max-w-2xl text-muted-foreground">{direct ? tr('Choose your dates and guests, then send your request to the owner for confirmation.', 'Choisissez vos dates et le nombre de voyageurs, puis envoyez votre demande au propriétaire pour confirmation.') : tr('Choose your arrival and departure days and guests. Final availability and prices are confirmed on Airbnb.', 'Choisissez vos dates d’arrivée et de départ et le nombre de voyageurs. Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
-      <Button asChild size="lg" className="mt-6 band-lake text-primary-foreground"><a href={airbnbBookingUrl(checkIn, checkOut, guests)} target="_blank" rel="noopener noreferrer"><Zap />{tr('Book Instantly on Airbnb', 'Réserver instantanément sur Airbnb')}<ArrowUpRight /></a></Button>
+      <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+      <p className="max-w-2xl text-muted-foreground">{direct ? tr('Choose your dates and guests, then send your request to the owner for confirmation.', 'Choisissez vos dates et le nombre de voyageurs, puis envoyez votre demande au propriétaire pour confirmation.') : tr('Choose your arrival and departure days and guests. Final availability and prices are confirmed on Airbnb.', 'Choisissez vos dates d’arrivée et de départ et le nombre de voyageurs. Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
+      <div className="flex shrink-0 flex-col gap-3">
+        <Button asChild size="lg" className="band-lake text-primary-foreground"><a href={airbnbBookingUrl(checkIn, checkOut, guests)} target="_blank" rel="noopener noreferrer"><Zap />{tr('Book Instantly on Airbnb', 'Réserver instantanément sur Airbnb')}<ArrowUpRight /></a></Button>
+        {!direct && (
+          <Button size="lg" variant="outline" disabled={!ready || !checkIn || !checkOut || clash} onClick={() => setConfirmOpen(true)}>
+            {clash ? tr('Dates unavailable', 'Dates indisponibles') : tr('Book', 'Réserver')}
+          </Button>
+        )}
+      </div>
+      </div>
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div className="card-vivid overflow-hidden rounded-md bg-card p-4">
           {!ready && <p className="mb-3 text-sm text-destructive">{tr("Availability couldn't be updated just now. Airbnb will confirm your dates.", 'Les disponibilités n’ont pas pu être actualisées. Airbnb confirmera vos dates.')}</p>}
@@ -94,15 +103,11 @@ export function StayPlanner({ selection, direct = false }: { selection: BookingS
           <Stepper label={tr("Guests", "Voyageurs")} value={guests} min={1} max={MAX_GUESTS} onChange={setGuests} />
           <p className="text-xs text-muted-foreground">{tr('Sleeps up to', 'Jusqu’à')} {MAX_GUESTS}{tr('.', ' couchages.')}</p>
           {clash && <p role="alert" className="text-sm text-destructive">{tr('Some of those nights are already booked. Please pick different dates.', 'Certaines de ces nuits sont déjà réservées. Choisissez d’autres dates.')}</p>}
-          {direct ? (
+          {direct && (
             <>
               <DirectBookingForm checkIn={checkIn} checkOut={checkOut} guests={guests} disabled={!ready || !checkIn || !checkOut || clash || checkIn < data.today} />
               <Button asChild variant="outline" className="w-full"><Link to="/book" search={{ checkIn, checkOut, guests }}>{tr('Change', 'Modifier')}<ArrowLeft /></Link></Button>
             </>
-          ) : (
-            <Button size="lg" className="w-full" disabled={!ready || !checkIn || !checkOut || clash} onClick={() => setConfirmOpen(true)}>
-              {clash ? tr('Dates unavailable', 'Dates indisponibles') : tr('Book', 'Réserver')}
-            </Button>
           )}
           <div className="border-t pt-4 text-sm">
             <p className="mb-2 text-muted-foreground">{tr('Have a question first?', 'Une question avant de réserver ?')}</p>
