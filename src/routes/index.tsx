@@ -78,9 +78,18 @@ const facts = [
 
 
 const localIcons = [
-  { icon: ShoppingCart, en: 'Supermarket', fr: 'Supermarché', modes: [Car, Footprints, Bike] },
-  { icon: Martini, en: 'Bars', fr: 'Bars', modes: [Footprints] },
-  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [Footprints] },
+  {
+    icon: ShoppingCart,
+    en: 'Supermarket',
+    fr: 'Supermarché',
+    modes: [
+      { icon: Car },
+      { icon: Footprints, minutes: 15 },
+      { icon: Bike, minutes: 8 },
+    ],
+  },
+  { icon: Martini, en: 'Bars', fr: 'Bars', modes: [{ icon: Footprints, minutes: 5 }] },
+  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [{ icon: Footprints, minutes: 5 }] },
 ];
 
 const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
@@ -129,9 +138,12 @@ function Gallery() {
               <div key={en} className="flex flex-col items-center gap-3 text-center">
                 <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
                 <span className="text-sm text-foreground">{tr(en, fr)}</span>
-                <span className="flex items-center gap-3 text-primary">
-                  {modes.map(Mode => (
-                    <Mode key={Mode.displayName ?? Mode.name} aria-hidden="true" className="size-6" strokeWidth={1.8} />
+                <span className="flex items-start gap-3 text-primary">
+                  {modes.map(({ icon: Mode, minutes }) => (
+                    <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
+                      <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
+                      {minutes != null && <span className="text-xs text-foreground">{minutes} min</span>}
+                    </span>
                   ))}
                 </span>
               </div>
