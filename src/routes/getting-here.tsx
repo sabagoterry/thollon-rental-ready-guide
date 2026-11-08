@@ -33,6 +33,7 @@ function GettingHerePage() {
         <nav aria-label={tr('Main', 'Navigation principale')} className="flex items-center gap-6 text-sm">
           <Link to="/" className="hidden text-muted-foreground hover:text-primary md:inline">{tr('The apartment', 'L’appartement')}</Link>
           <Link to="/location" className="hidden text-muted-foreground hover:text-primary md:inline">{tr('Location & views', 'Situation et vues')}</Link>
+          <Link to="/gallery" className="hidden text-muted-foreground hover:text-primary md:inline">{tr('Gallery', 'Galerie')}</Link>
           <LanguageToggle /><MobileMenu />
         </nav>
       </div>

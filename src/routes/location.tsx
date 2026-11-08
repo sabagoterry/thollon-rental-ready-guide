@@ -116,6 +116,7 @@ function LocationPage() {
               {tr('The apartment', 'L’appartement')}
             </Link>
             <LanguageToggle />
+            <Link to="/gallery" className="hidden text-muted-foreground transition hover:text-primary md:inline">{tr('Gallery', 'Galerie')}</Link>
             <Link to="/getting-here" className="hidden text-muted-foreground hover:text-primary md:inline">{tr('Getting here', 'Venir')}</Link>
             <MobileMenu />
           </nav>

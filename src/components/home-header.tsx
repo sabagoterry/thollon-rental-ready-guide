@@ -17,6 +17,7 @@ export function HomeHeader() {
 
   const sections = [
     { href: '#availability', en: 'Availability', fr: 'Disponibilités' },
+    { to: '/gallery', en: 'Gallery', fr: 'Galerie' },
     { to: '/location', en: 'Location', fr: 'Situation' },
     { to: '/getting-here', en: 'Getting here', fr: 'Venir' },
     { href: '#local-guide', en: 'Local area', fr: 'Le coin' },
