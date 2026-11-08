@@ -69,7 +69,9 @@ export function StayPlanner({ selection, direct = false }: { selection: BookingS
       <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
       <p className="max-w-2xl text-muted-foreground">{direct ? tr('Choose your dates and guests, then send your request to the owner for confirmation.', 'Choisissez vos dates et le nombre de voyageurs, puis envoyez votre demande au propriétaire pour confirmation.') : tr('Choose your arrival and departure days and guests. Final availability and prices are confirmed on Airbnb.', 'Choisissez vos dates d’arrivée et de départ et le nombre de voyageurs. Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
       <div className="flex shrink-0 flex-col gap-3">
-        <Button asChild size="lg" className="band-lake text-primary-foreground"><a href={airbnbBookingUrl(checkIn, checkOut, guests)} target="_blank" rel="noopener noreferrer"><Zap />{tr('Book Instantly on Airbnb', 'Réserver instantanément sur Airbnb')}<ArrowUpRight /></a></Button>
+        {!direct && (
+          <Button asChild size="lg" className="band-lake text-primary-foreground"><a href={airbnbBookingUrl(checkIn, checkOut, guests)} target="_blank" rel="noopener noreferrer"><Zap />{tr('Book Instantly on Airbnb', 'Réserver instantanément sur Airbnb')}<ArrowUpRight /></a></Button>
+        )}
         {!direct && (
           <Button size="lg" variant="outline" disabled={!ready || !checkIn || !checkOut || clash} onClick={() => setConfirmOpen(true)}>
             {clash ? tr('Dates unavailable', 'Dates indisponibles') : tr('Book', 'Réserver')}

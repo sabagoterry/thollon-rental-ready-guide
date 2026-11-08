@@ -36,18 +36,18 @@ export function HomeHeader() {
       <header className="home-navigation pointer-events-none absolute inset-x-0 top-0 z-40 px-3 py-5">
         <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-4 px-3">
           <LogoMark />
-          <nav aria-label={tr('Main', 'Navigation principale')} className="flex items-center gap-4 text-sm">
+          <nav aria-label={tr('Main', 'Navigation principale')} className="flex items-center gap-4 text-sm text-primary-foreground">
             {sections.map((s) => {
               const label = tr(s.en, s.fr);
               const content = <><span>{label}</span><span className="flex size-9 items-center justify-center rounded-full bg-background text-primary">{s.image ? <img src={s.image} alt="" className="size-8 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-6!" />}</span></>;
               return (
-                <Button key={s.en} asChild variant="ghost" className="hidden h-auto flex-col gap-2 px-1 py-2 md:inline-flex">
+                <Button key={s.en} asChild variant="ghost" className="hidden h-auto flex-col gap-2 px-1 py-2 text-inherit hover:text-inherit md:inline-flex">
                   {'to' in s ? <Link to={s.to}>{content}</Link> : <a href={s.href}>{content}</a>}
                 </Button>
               );
             })}
-            <LanguageToggle />
             <MobileMenu includeSections />
+            <LanguageToggle />
           </nav>
         </div>
       </header>
