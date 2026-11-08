@@ -12,6 +12,9 @@ export default defineConfig({
   vite: {
     plugins: [{ name: 'server-email-env', config: (_config, { mode }) => { Object.assign(process.env, loadEnv(mode, process.cwd(), '')); } }],
     resolve: { alias: {
+      // htmlparser2 v10 needs entities v7's "decode"/"escape" subpaths; the hoisted copy is v4.
+      'entities/decode': path.resolve('node_modules/htmlparser2/node_modules/entities/dist/esm/decode.js'),
+      'entities/escape': path.resolve('node_modules/htmlparser2/node_modules/entities/dist/esm/escape.js'),
       'entities/lib/decode.js': path.resolve('node_modules/entities/lib/decode.js'),
       'entities/lib/encode.js': path.resolve('node_modules/entities/lib/encode.js'),
     } },
