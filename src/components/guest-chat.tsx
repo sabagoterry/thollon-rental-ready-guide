@@ -113,8 +113,8 @@ export function GuestChat() {
           </div>}
           <div ref={scroller} className="max-h-[28rem] min-h-48 space-y-5 overflow-y-auto p-5" aria-live="polite">
             {messages.length === 0 && (
-              <div className="flex flex-wrap gap-2">
-                {suggestions[lang].map(s => <Button key={s} variant="outline" size="sm" className="h-auto min-h-8 max-w-full whitespace-normal text-left hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
+              <div className="flex flex-wrap justify-center gap-2">
+                {suggestions[lang].map(s => <Button key={s} variant="outline" size="sm" className="h-auto min-h-8 max-w-full whitespace-normal text-center hover:border-accent hover:text-accent" onClick={() => ask(s)} disabled={busy || !conversationId}>{s}</Button>)}
               </div>
             )}
             {messages.map((m, i) => m.role === 'user'

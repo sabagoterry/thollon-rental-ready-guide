@@ -116,15 +116,15 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
     <div className="text-center">
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
       <div className="mt-6 mx-auto flex w-full flex-col gap-5">
-        {towns.map((town, index) => {
+        {towns.map((town) => {
           const times = townTimes[town.name] ?? {};
           const modes = [
             { icon: Car, time: times.car },
             ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
           ];
           return (
-            <div key={town.name} className={`flex items-center justify-between gap-3 ${index % 2 ? 'flex-row-reverse' : ''}`}>
-              <a href={town.url} target="_blank" rel="noopener noreferrer" className={`min-w-0 text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline ${index % 2 ? 'text-right' : 'text-left'}`}>
+            <div key={town.name} className="flex items-center justify-center gap-4">
+              <a href={town.url} target="_blank" rel="noopener noreferrer" className="min-w-0 text-right text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
                 {town.name}
               </a>
               <span className="flex shrink-0 items-start gap-3 text-primary">
@@ -155,11 +155,12 @@ function Gallery() {
         </Link>
       </Button>
       <div className="mt-14">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
-        <div className="mt-6 grid gap-10 md:grid-cols-2 xl:grid-cols-[0.9fr_1.5fr_1.1fr] xl:items-start">
-          <div className="grid grid-cols-2 gap-x-5 gap-y-8">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[0.9fr_1.5fr_1.1fr] xl:items-start">
+          <div>
+            <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
+            <div className="mt-6 flex flex-col gap-6">
             {localIcons.map(({ icon: Icon, en, fr, modes }) => (
-              <div key={en} className={`flex min-w-0 items-center gap-3 ${en === 'Supermarket' ? 'col-span-2' : ''}`}>
+              <div key={en} className="flex min-w-0 items-center justify-center gap-3">
                 <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-medium text-foreground">{tr(en, fr)}</span>
@@ -174,13 +175,14 @@ function Gallery() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
           <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:col-span-2 md:row-start-2 xl:col-span-1 xl:row-start-1 xl:col-start-2">
             <TownGroup title={tr('Days out', 'Excursions')} names={dayOutTowns} />
             <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} />
           </div>
           <figure className="xl:col-start-3">
-            <figcaption className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+            <figcaption className="min-h-5 text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               {tr('Five minutes to the Télécabine', 'Cinq minutes jusqu’à la télécabine')}
             </figcaption>
             <img
@@ -337,16 +339,16 @@ function Index() {
        <section id="local-guide" className="band-ice">
          <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 lg:grid-cols-[1.4fr_1fr] lg:items-center">
            <SectionHeading><span className="lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
-           <div className="flex flex-col items-start gap-2 lg:justify-self-end">
+           <div className="grid min-w-0 gap-4">
              {[
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
                { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
              ].map(activity => (
-                 <Button key={activity.label} asChild variant="link" className="h-auto min-h-11 max-w-full whitespace-normal px-0 text-base">
-                   <a href={activity.url} target="_blank" rel="noopener noreferrer">{activity.label}<ArrowUpRight className="shrink-0" /></a>
+                 <Button key={activity.label} asChild className="group h-auto min-h-36 w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left">
+                   <a href={activity.url} target="_blank" rel="noopener noreferrer"><span className="font-display text-2xl leading-snug">{activity.label}</span><span className="inline-flex items-center gap-2">{tr('Take a look', 'Jeter un œil')}<ArrowUpRight className="shrink-0" /></span></a>
                  </Button>
              ))}
-             <Button asChild variant="link" className="h-auto min-h-11 max-w-full whitespace-normal px-0 text-left text-base"><Link to="/local-area">{tr('Take a look at the local area', 'Découvrez les environs')}<ArrowRight className="shrink-0" /></Link></Button>
+             <Button asChild className="group h-auto min-h-36 w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left"><Link to="/local-area"><span className="font-display text-2xl leading-snug">{tr('Local Area', 'Les environs')}</span><span className="inline-flex items-center gap-2">{tr('Take a look at the local area', 'Découvrez les environs')}<ArrowRight className="shrink-0" /></span></Link></Button>
            </div>
          </div>
        </section>
