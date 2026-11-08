@@ -64,3 +64,4 @@
 - [x] Package and deliver a fresh full download of the site
 - [x] Hero copy: changed "shops and restaurants" to "restaurants and all village amenities"
 - [x] Scrolled header: section links become right-edge buttons like the floating Book button
+- [ ] Restyle "Furnished to a high standard" section per owner choice; keep wording clear
