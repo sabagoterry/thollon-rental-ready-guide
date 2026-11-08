@@ -95,6 +95,19 @@ const localIcons = [
 const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
 const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
 
+// Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
+const townTimes: Record<string, { car?: string; bus?: string }> = {
+  'Évian-les-Bains': { car: '15 min', bus: '25 min' },
+  Montreux: { car: '45 min' },
+  Geneva: {},
+  Vevey: { car: '50 min' },
+  Yvoire: { car: '38 min', bus: '1h 15 (x2)' },
+  Bernex: { car: '10 min', bus: '35 min' },
+  'Leysin–Les Mosses': { car: '1h 15' },
+  Châtel: { car: '45–50 min', bus: '1h 45 (x2)' },
+  Morzine: { car: '55 min', bus: '2h 15' },
+};
+
 function TownGroup({ title, names }: { title: string; names: string[] }) {
   const towns = names
     .map(name => dayTrips.find(t => t.name === name))
@@ -103,17 +116,28 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
     <div>
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
       <div className="mt-6 flex flex-col gap-5">
-        {towns.map(town => (
-          <div key={town.name} className="flex items-center justify-between gap-6">
-            <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
-              {town.name}
-            </a>
-            <span className="flex items-center gap-4 text-primary">
-              <Car aria-hidden="true" className="size-6" strokeWidth={1.8} />
-              <Bus aria-hidden="true" className="size-6" strokeWidth={1.8} />
-            </span>
-          </div>
-        ))}
+        {towns.map(town => {
+          const times = townTimes[town.name] ?? {};
+          const modes = [
+            { icon: Car, time: times.car },
+            ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
+          ];
+          return (
+            <div key={town.name} className="flex items-center gap-6">
+              <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
+                {town.name}
+              </a>
+              <span className="flex items-start gap-4 text-primary">
+                {modes.map(({ icon: Mode, time }) => (
+                  <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
+                    <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
+                    {time && <span className="text-xs text-foreground">{time}</span>}
+                  </span>
+                ))}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
