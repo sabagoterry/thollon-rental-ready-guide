@@ -24,6 +24,10 @@ import shower from "@/assets/photos/shower-sharp.jpg.asset.json";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
+import parkingIcon from '@/assets/icons/apartment-parking.png.asset.json';
+import towelsIcon from '@/assets/icons/apartment-towels.png.asset.json';
+import skiingIcon from '@/assets/icons/apartment-skiing.png.asset.json';
+import hikingIcon from '@/assets/icons/apartment-hiking.png.asset.json';
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
@@ -75,12 +79,6 @@ function Gallery() {
   const { tr } = useLang();
   const rows = [
     {
-      kicker: tr('Gallery', 'Galerie'),
-      title: tr('Inside the apartment', 'À l’intérieur'),
-      text: tr('Every photo is taken inside the apartment — browse the slideshow at your own pace.', 'Toutes les photos sont prises dans l’appartement — parcourez le diaporama à votre rythme.'),
-      to: '/gallery',
-    },
-    {
       kicker: tr('Location', 'Situation'),
       title: tr('Location and views', 'Situation et vues'),
       text: tr('The views, the lake and the slopes have their own page.', 'Les vues, le lac et les pistes ont leur propre page.'),
@@ -91,13 +89,14 @@ function Gallery() {
     <section className="mx-auto w-full max-w-[calc(50%+36rem)] px-6 py-24">
       {rows.map((row) => (
         <div key={row.to} className="grid items-center gap-6 border-b border-primary/10 py-12 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[2fr_1fr]">
-          <div className="min-w-0">
-            <SectionHeading kicker={row.kicker}>{row.title}</SectionHeading>
-            <p className="mt-4 max-w-xl text-muted-foreground">{row.text}</p>
-          </div>
-          <Button asChild size="lg" className="justify-self-start gap-2">
-            <Link to={row.to}>{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></Link>
+          <Button asChild className="h-auto min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
+            <Link to={row.to}>
+              <span className="text-sm uppercase">{row.kicker}</span>
+              <span className="text-3xl md:text-4xl">{row.title}</span>
+              <span className="flex items-center gap-2">{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></span>
+            </Link>
           </Button>
+          <p className="max-w-xl text-muted-foreground">{row.text}</p>
         </div>
       ))}
     </section>
@@ -163,6 +162,18 @@ function Index() {
               {tr('On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.', 'Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.')}
             </p>
           </div>
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-primary-foreground/40 pt-8 sm:grid-cols-4">
+            {[
+              { icon: parkingIcon.url, title: tr('Parking', 'Stationnement'), detail: tr('Free', 'Gratuit') },
+              { icon: towelsIcon.url, title: tr('Towels', 'Serviettes'), detail: tr('Available on request', 'Sur demande') },
+              { icon: skiingIcon.url, title: tr('Skiing', 'Ski'), detail: tr('5 minutes', '5 minutes') },
+              { icon: hikingIcon.url, title: tr('Hiking', 'Randonnée'), detail: tr('Right outside', 'Juste à la porte') },
+            ].map(item => <div key={item.title} className="flex flex-col items-center gap-2 text-center slideshow-caption">
+              <img src={item.icon} alt="" aria-hidden="true" className="h-20 w-28 object-contain" />
+              <span className="text-lg font-semibold">{item.title}</span>
+              <span className="text-base">{item.detail}</span>
+            </div>)}
+          </div>
         </div>
       </section>
 
@@ -209,16 +220,6 @@ function Index() {
       </section>
 
       <section className="mx-auto grid w-full max-w-[1440px] gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <Link
-          to="/location"
-          className="group relative flex min-h-64 flex-col justify-between gap-6 overflow-hidden rounded-md band-day p-8 glow-primary transition hover:brightness-110"
-        >
-          <span className="relative text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground/85">{tr("Location", "Situation")}</span>
-          <span className="relative font-display text-3xl leading-snug text-primary-foreground">{tr("See the views, the lake and the slopes", "Découvrez les vues, le lac et les pistes")}</span>
-          <span className="relative inline-flex items-center gap-2 text-sm font-medium text-primary-foreground">
-             {tr('Explore the Region', 'Explorez la région')} <ArrowRight className="size-4 transition group-hover:translate-x-1" />
-          </span>
-        </Link>
         <div>
            <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>{tr("Your Alpine Escape", "Votre escapade alpine")}</SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
@@ -228,6 +229,13 @@ function Index() {
              <li><span className="font-medium text-lake">{tr("Nearby:", "À proximité :")}</span> {tr("Unwind anytime with quick trips to Évian-les-Bains, the Swiss Riviera, and Geneva.", "Détendez-vous en toute saison avec des escapades à Évian-les-Bains, sur la Riviera suisse et à Genève.")}</li>
           </ul>
         </div>
+        <Button asChild className="group h-auto min-h-64 flex-col items-start justify-between gap-6 whitespace-normal p-8 text-left">
+          <Link to="/local-area">
+            <span className="text-xs uppercase">{tr('Local Area', 'Les environs')}</span>
+            <span className="font-display text-3xl leading-snug">{tr('Your Alpine Escape', 'Votre escapade alpine')}</span>
+            <span className="inline-flex items-center gap-2">{tr('Explore the Region', 'Explorez la région')} <ArrowRight /></span>
+          </Link>
+        </Button>
       </section>
 
        <section id="local-guide" className="band-ice">

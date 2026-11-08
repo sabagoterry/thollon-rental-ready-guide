@@ -28,15 +28,15 @@ export function AvailabilityCalendar() {
           </Button>
         </div>
         <p className="mt-4 text-muted-foreground">{tr('Final availability and prices are confirmed on Airbnb.', 'Les disponibilités et tarifs définitifs sont confirmés sur Airbnb.')}</p>
-        <div className="mt-8 flex flex-wrap gap-6 text-sm" aria-label={tr('Calendar legend', 'Légende')}>
+        <div className="mt-8 flex flex-wrap gap-6 text-base md:text-lg" aria-label={tr('Calendar legend', 'Légende')}>
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm border-2 border-primary bg-background" />{ready ? tr('Available', 'Disponible') : tr('Availability unconfirmed', 'Disponibilité non confirmée')}</span>
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-coral/70" />{tr('Unavailable', 'Indisponible')}</span>
         </div>
         <div className="mt-6" role="status">
           {!ready && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
-          <p className="text-sm text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
+          <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
         </div>
-        <div className="mt-6 flex justify-end"><Button asChild size="lg"><Link to="/book">{tr('Book', 'Réserver')}<ArrowRight /></Link></Button></div>
+        <div className="mt-6 flex justify-end"><Button asChild size="lg" className="h-auto flex-col gap-6 py-4"><Link to="/book"><span>{tr('Interested?', 'Intéressé ?')}</span><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link></Button></div>
         <div className="card-vivid mt-4 overflow-hidden rounded-lg bg-card p-4">
           <Calendar
             aria-label={tr('Apartment availability calendar', 'Calendrier des disponibilités')}
