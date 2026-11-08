@@ -83,7 +83,7 @@ const localIcons = [
     en: 'Supermarket',
     fr: 'Supermarché',
     modes: [
-      { icon: Car },
+      { icon: Car, minutes: 5 },
       { icon: Footprints, minutes: 15 },
       { icon: Bike, minutes: 8 },
     ],
