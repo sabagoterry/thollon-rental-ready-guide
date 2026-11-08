@@ -8,7 +8,7 @@ import { LogoMark } from '@/components/logo-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { AvailabilityCalendar } from '@/components/availability-calendar';
 import { availabilityQuery } from '@/lib/availability.query';
-import { balconies, apartmentAmenities } from '@/lib/apartment';
+import { balconies, apartmentAmenities, amenityList } from '@/lib/apartment';
 import { dayTrips } from '@/lib/local-links';
 import { GuestChat } from '@/components/guest-chat';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';

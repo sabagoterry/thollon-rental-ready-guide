@@ -25,6 +25,32 @@ export const apartmentAmenities = {
   skiingMinutes: 5,
   hikingAtDoorstep: true,
 } as const;
+/** Owner-confirmed amenities, bilingual; shared by the page and the guest assistant. */
+export const amenityList = [
+  { en: 'Fibre Wifi', fr: 'Wifi fibre' },
+  { en: 'Smart TV', fr: 'Smart TV' },
+  { en: 'Fire TV', fr: 'Fire TV' },
+  { en: 'Coffee machine', fr: 'Machine à café' },
+  { en: 'Coffee maker', fr: 'Cafetière' },
+  { en: 'Kettle', fr: 'Bouilloire' },
+  { en: 'Toaster', fr: 'Grille-pain' },
+  { en: 'Microwave', fr: 'Micro-ondes' },
+  { en: '2 x Fridge Freezer', fr: '2 réfrigérateurs-congélateurs' },
+  { en: 'Slow cooker', fr: 'Mijoteuse' },
+  { en: 'Fondue', fr: 'Fondue' },
+  { en: 'Hairdryer', fr: 'Sèche-cheveux' },
+  { en: 'Iron', fr: 'Fer à repasser' },
+  { en: 'Cot', fr: 'Lit bébé' },
+  { en: 'Travel cot', fr: 'Lit parapluie' },
+  { en: 'High chair', fr: 'Chaise haute' },
+  { en: 'Outdoor furniture', fr: 'Mobilier d’extérieur' },
+  { en: 'Launderette nearby', fr: 'Laverie à proximité' },
+  { en: 'Smoke alarm', fr: 'Détecteur de fumée' },
+  { en: 'Carbon monoxide alarm', fr: 'Détecteur de monoxyde de carbone' },
+  { en: 'Fire extinguisher', fr: 'Extincteur' },
+  { en: 'First aid kit', fr: 'Trousse de premiers secours' },
+] as const;
+
 export const sleepingCapacity = {
   comfortableGuests: 4,
   sofaBed: true,
