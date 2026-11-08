@@ -92,7 +92,7 @@ const localIcons = [
   { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [{ icon: Footprints, minutes: 5 }] },
 ];
 
-const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
+const dayOutTowns = ['Évian-les-Bains', 'Vevey', 'Geneva', 'Montreux', 'Yvoire'];
 const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
 
 // Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
@@ -108,14 +108,14 @@ const townTimes: Record<string, { car?: string; bus?: string }> = {
   Morzine: { car: '55 min', bus: '2h 15' },
 };
 
-function TownGroup({ title, names }: { title: string; names: string[] }) {
+function TownGroup({ title, names, left = false }: { title: string; names: string[]; left?: boolean }) {
   const towns = names
     .map(name => dayTrips.find(t => t.name === name))
     .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
   return (
-    <div className="text-center">
+    <div className={left ? 'text-left' : 'text-center'}>
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
-      <div className="mt-6 mx-auto flex w-full flex-col gap-5">
+      <div className={`mt-6 flex w-full flex-col gap-5 ${left ? '' : 'mx-auto'}`}>
         {towns.map((town) => {
           const times = townTimes[town.name] ?? {};
           const modes = [
@@ -123,8 +123,8 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
             ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
           ];
           return (
-            <div key={town.name} className="flex items-center justify-center gap-4">
-              <a href={town.url} target="_blank" rel="noopener noreferrer" className="min-w-0 text-right text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
+            <div key={town.name} className={`flex items-center gap-4 ${left ? 'justify-start' : 'justify-center'}`}>
+              <a href={town.url} target="_blank" rel="noopener noreferrer" className={`min-w-0 text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline ${left ? 'text-left' : 'text-right'}`}>
                 {town.name}
               </a>
               <span className="flex shrink-0 items-start gap-3 text-primary">
@@ -159,11 +159,10 @@ function Gallery() {
           <div>
             <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
             <div className="mt-6 flex flex-col gap-6">
-            {localIcons.map(({ icon: Icon, en, fr, modes }) => (
+            {localIcons.map(({ icon: Icon, en, modes }) => (
               <div key={en} className="flex min-w-0 items-center justify-center gap-3">
                 <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
                 <div className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-foreground">{tr(en, fr)}</span>
                   <span className="flex items-start gap-4 text-primary">
                     {modes.map(({ icon: Mode, minutes }) => (
                       <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
@@ -179,7 +178,7 @@ function Gallery() {
           </div>
           <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:col-span-2 md:row-start-2 xl:col-span-1 xl:row-start-1 xl:col-start-2">
             <TownGroup title={tr('Days out', 'Excursions')} names={dayOutTowns} />
-            <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} />
+            <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} left />
           </div>
           <figure className="xl:col-start-3">
             <figcaption className="min-h-5 text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
@@ -344,11 +343,11 @@ function Index() {
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
                { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
              ].map(activity => (
-                 <Button key={activity.label} asChild className="group h-auto min-h-36 w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left">
+                 <Button key={activity.label} asChild className="group h-auto w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left">
                    <a href={activity.url} target="_blank" rel="noopener noreferrer"><span className="font-display text-2xl leading-snug">{activity.label}</span><span className="inline-flex items-center gap-2">{tr('Take a look', 'Jeter un œil')}<ArrowUpRight className="shrink-0" /></span></a>
                  </Button>
              ))}
-             <Button asChild className="group h-auto min-h-36 w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left"><Link to="/local-area"><span className="font-display text-2xl leading-snug">{tr('Local Area', 'Les environs')}</span><span className="inline-flex items-center gap-2">{tr('Take a look at the local area', 'Découvrez les environs')}<ArrowRight className="shrink-0" /></span></Link></Button>
+             <Button asChild className="group h-auto w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left"><Link to="/local-area"><span className="font-display text-2xl leading-snug">{tr('Local Area', 'Les environs')}</span><span className="inline-flex items-center gap-2">{tr('Take a look at the local area', 'Découvrez les environs')}<ArrowRight className="shrink-0" /></span></Link></Button>
            </div>
          </div>
        </section>
