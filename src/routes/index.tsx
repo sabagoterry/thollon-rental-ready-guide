@@ -232,7 +232,7 @@ function Index() {
 
        <section id="local-guide" className="band-ice">
          <div className="mx-auto max-w-6xl px-6 py-20">
-           <SectionHeading><span className="lg:whitespace-nowrap">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
+           <SectionHeading><span className="lg:whitespace-nowrap lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
            <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
              {[
                { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
