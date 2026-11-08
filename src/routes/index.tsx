@@ -95,6 +95,19 @@ const localIcons = [
 const dayOutTowns = ['Évian-les-Bains', 'Montreux', 'Geneva', 'Vevey', 'Yvoire'];
 const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
 
+// Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
+const townTimes: Record<string, { car?: string; bus?: string }> = {
+  'Évian-les-Bains': { car: '15 min', bus: '25 min' },
+  Montreux: { car: '45 min' },
+  Geneva: { car: '1h 10' },
+  Vevey: { car: '50 min' },
+  Yvoire: { car: '38 min', bus: '1h 15 (x2)' },
+  Bernex: { car: '10 min', bus: '35 min' },
+  'Leysin–Les Mosses': { car: '1h 15' },
+  Châtel: { car: '45–50 min', bus: '1h 45 (x2)' },
+  Morzine: { car: '55 min', bus: '2h 15' },
+};
+
 function TownGroup({ title, names }: { title: string; names: string[] }) {
   const towns = names
     .map(name => dayTrips.find(t => t.name === name))
