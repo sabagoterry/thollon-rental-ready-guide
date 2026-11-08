@@ -102,15 +102,15 @@ function TownGroup({ title, names }: { title: string; names: string[] }) {
   return (
     <div>
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
-      <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
+      <div className="mt-6 flex flex-col gap-5">
         {towns.map(town => (
-          <div key={town.name} className="flex flex-col items-center gap-3 text-center">
+          <div key={town.name} className="flex items-center justify-between gap-6">
             <a href={town.url} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline">
               {town.name}
             </a>
             <span className="flex items-center gap-4 text-primary">
-              <Car aria-hidden="true" className="size-7" strokeWidth={1.8} />
-              <Bus aria-hidden="true" className="size-7" strokeWidth={1.8} />
+              <Car aria-hidden="true" className="size-6" strokeWidth={1.8} />
+              <Bus aria-hidden="true" className="size-6" strokeWidth={1.8} />
             </span>
           </div>
         ))}
@@ -133,19 +133,21 @@ function Gallery() {
       <div className="mt-14">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
         <div className="mt-6 grid gap-10 md:grid-cols-2 md:items-start">
-          <div className="grid grid-cols-3 gap-6">
+          <div className="flex flex-col gap-8">
             {localIcons.map(({ icon: Icon, en, fr, modes }) => (
-              <div key={en} className="flex flex-col items-center gap-3 text-center">
-                <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
-                <span className="text-sm text-foreground">{tr(en, fr)}</span>
-                <span className="flex items-start gap-3 text-primary">
-                  {modes.map(({ icon: Mode, minutes }) => (
-                    <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
-                      <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
-                      {minutes != null && <span className="text-xs text-foreground">{minutes} min</span>}
-                    </span>
-                  ))}
-                </span>
+              <div key={en} className="flex items-center gap-5">
+                <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm font-medium text-foreground">{tr(en, fr)}</span>
+                  <span className="flex items-start gap-4 text-primary">
+                    {modes.map(({ icon: Mode, minutes }) => (
+                      <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
+                        <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
+                        {minutes != null && <span className="text-xs text-foreground">{minutes} min</span>}
+                      </span>
+                    ))}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
@@ -157,7 +159,7 @@ function Gallery() {
               src={telecabineWalkMap.url}
               alt={tr('Map showing the five-minute walk from Les Cyclamens to the Télécabine station', 'Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine')}
               loading="lazy"
-              className="card-vivid mt-4 w-full rounded-lg"
+              className="mt-4 w-full rounded-lg"
             />
           </figure>
         </div>
