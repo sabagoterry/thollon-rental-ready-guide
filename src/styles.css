@@ -242,7 +242,7 @@
 .home-navigation.is-scrolled nav > a { color: var(--foreground); }
 section[id] { scroll-margin-top: 100px; }
 .rooms-showcase { background: linear-gradient(150deg, var(--background), color-mix(in oklab, var(--ice) 24%, var(--background)), color-mix(in oklab, var(--sunshine) 18%, var(--background))); }
-.language-flag { filter: saturate(1.35); box-shadow: 0 3px 10px color-mix(in oklab, var(--foreground) 25%, transparent); }
+.language-flag { filter: saturate(1.35); }
 .language-flag svg { transform-origin: left center; animation: flag-wave 3s ease-in-out infinite; }
 .language-flag:nth-child(2) svg { animation-delay: -1.5s; }
 @keyframes flag-wave { 0%, 100% { transform: perspective(180px) rotateY(-12deg) rotate(-2deg); } 50% { transform: perspective(180px) rotateY(12deg) rotate(2deg); } }
