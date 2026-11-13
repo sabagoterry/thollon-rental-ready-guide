@@ -473,10 +473,7 @@ function Index() {
           className="group h-auto min-h-64 flex-col items-start justify-between gap-6 whitespace-normal p-8 text-left"
         >
           <Link to="/local-area">
-            <span className="text-xs uppercase">{tr("Local Area", "Les environs")}</span>
-            <span className="font-display text-3xl leading-snug">
-              {tr("Your Alpine Escape", "Votre escapade alpine")}
-            </span>
+            <span className="font-display text-3xl leading-snug">{tr("Local Area", "Les environs")}</span>
             <span className="inline-flex items-center gap-2">
               {tr("Take a look", "jetez un oeil")} <ArrowRight />
             </span>
