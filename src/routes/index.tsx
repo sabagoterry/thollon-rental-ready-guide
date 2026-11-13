@@ -21,7 +21,7 @@ import building from "@/assets/photos/cyclamens-building.png.asset.json";
 import master from "@/assets/photos/master.jpg.asset.json";
 import bunks from "@/assets/photos/bunks-sharp.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
-import shower from "@/assets/photos/shower-sharp.jpg.asset.json";
+import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
@@ -60,7 +60,7 @@ const rooms = [
   { name: "Kitchen", nameFr: "Cuisine", size: "", img: kitchen.url, text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle.", textFr: "Four micro-ondes, 2 plaques, 2 réfrigérateurs-congélateurs, mijoteuse, friteuse à air, grille-pain, cafetière et bouilloire." },
   { name: "Double bedroom", nameFr: "Chambre double", size: "8.9 m²", img: master.url, text: "Double bed and built-in wardrobes, next to the shower room.", textFr: "Lit double et placards intégrés, à côté de la salle d’eau." },
   { name: "Bunk room", nameFr: "Chambre à lits superposés", size: "5.6 m²", img: bunks.url, tall: true, text: "Cosy wood-panelled room with bunk beds — kids love it.", textFr: "Chambre douillette lambrissée avec lits superposés — les enfants adorent." },
-  { name: "Shower ensuite", nameFr: "Salle d’eau attenante", size: "2.75 m²", img: shower.url, tall: true, text: "Walk-in shower, washbasin, toilet and lit mirror.", textFr: "Douche à l’italienne, lavabo, WC et miroir éclairé." },
+  { name: "Shower ensuite", nameFr: "Salle d’eau attenante", size: "2.75 m²", img: shower, tall: true, text: "Walk-in shower, washbasin, toilet and lit mirror.", textFr: "Douche à l’italienne, lavabo, WC et miroir éclairé." },
   { name: "Full-size bathroom", nameFr: "Salle de bains complète", size: "", img: bath.url, tall: true, text: "Bathtub with shower, washbasin and toilet.", textFr: "Baignoire avec douche, lavabo et WC." },
 ];
 

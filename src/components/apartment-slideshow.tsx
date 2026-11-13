@@ -8,7 +8,7 @@ import sofabed from '@/assets/photos/sofabed.jpg.asset.json';
 import kitchen from '@/assets/photos/kitchen.jpg.asset.json';
 import master from '@/assets/photos/master.jpg.asset.json';
 import bunks from '@/assets/photos/bunks2.jpg.asset.json';
-import shower from '@/assets/photos/shower-sharp.jpg.asset.json';
+import shower from '@/assets/photos/shower-without-air-freshener.jpg';
 import bath from '@/assets/photos/bath-sharp.jpg.asset.json';
 
 const slides = [
@@ -18,7 +18,7 @@ const slides = [
   { src: kitchen.url, en: 'Kitchen', fr: 'Cuisine' },
   { src: master.url, en: 'Double bedroom', fr: 'Chambre double' },
   { src: bunks.url, en: 'Bunk beds', fr: 'Lits superposés' },
-  { src: shower.url, en: 'Shower room', fr: 'Salle d’eau' },
+  { src: shower, en: 'Shower room', fr: 'Salle d’eau' },
   { src: bath.url, en: 'Bathroom', fr: 'Salle de bains' },
 ];
 
