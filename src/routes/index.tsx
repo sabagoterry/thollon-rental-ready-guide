@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, Car, Footprints, Bike, Bus, ShoppingCart, Martini, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, Car, Footprints, Bike, Bus, ShoppingCart, Martini, UtensilsCrossed, Wifi } from "lucide-react";
 import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
 import { FloorplanCompass } from '@/components/floorplan-compass';
 import { Button } from '@/components/ui/button';
@@ -69,9 +69,10 @@ const facts = [
   { icon: BunkBeds, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
   { icon: ShowerHead, en: '1 Shower ensuite', fr: '1 Salle d’eau attenante' },
   { icon: BathWithShower, en: '1 Bathroom with overhead shower', fr: '1 Salle de bains avec douche' },
-  { icon: Sofa, en: '4 Beds and Sofa Bed', fr: '4 lits et canapé-lit' },
+  { icon: Sofa, en: 'Living Room with Sofa Bed', fr: 'Séjour avec canapé-lit' },
   { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
   { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
+  { icon: Wifi, en: 'Fibre Optic', fr: 'Fibre optique' },
 ];
 
 
@@ -93,7 +94,7 @@ const localIcons = [
 ];
 
 const dayOutTowns = ['Évian-les-Bains', 'Vevey', 'Geneva', 'Montreux', 'Yvoire'];
-const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine'];
+const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine', 'Portes du Soleil'];
 
 // Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
 const townTimes: Record<string, { car?: string; bus?: string }> = {
@@ -117,7 +118,7 @@ function TownGroup({ title, names, left = false }: { title: string; names: strin
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
       <div className={`mt-6 flex w-full flex-col gap-5 ${left ? '' : 'mx-auto'}`}>
         {towns.map((town) => {
-          const times = townTimes[town.name] ?? {};
+          const times = 'carMinutes' in town ? { car: `${town.carMinutes} min` } : townTimes[town.name] ?? {};
           const modes = [
             { icon: Car, time: times.car },
             ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
@@ -227,20 +228,6 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-b band-soft">
-        <div className="mx-auto max-w-6xl px-6 py-12">
-          <h2 className="text-center text-4xl text-rainbow">{tr('Accommodation', 'Hébergement')}</h2>
-          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
-            {facts.map(({ icon: Icon, en, fr: french }) => (
-              <div key={en} className="flex flex-col items-center gap-3 text-center">
-                <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
-                <span className="text-sm text-foreground">{tr(en, french)}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="relative flex min-h-[70vh] overflow-hidden">
         <img src={building.url} alt={tr('Les Cyclamens apartment building', 'La résidence Les Cyclamens')} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-overlay absolute inset-0" />
@@ -273,6 +260,14 @@ function Index() {
       <section className="rooms-showcase overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <SectionHeading kicker={tr("Rooms", "Pièces")}>{tr("Inside the apartment", "À l’intérieur")}</SectionHeading>
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
+            {facts.map(({ icon: Icon, en, fr: french }) => (
+              <div key={en} className="flex flex-col items-center gap-3 text-center">
+                <Icon aria-hidden="true" className="size-9 text-primary" strokeWidth={1.8} />
+                <span className="text-sm text-foreground">{tr(en, french)}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <div>
           {rooms.map((r, index) => (
@@ -335,22 +330,6 @@ function Index() {
         </Button>
       </section>
 
-       <section id="local-guide" className="band-ice">
-         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-           <SectionHeading><span className="lg:text-[0.75em]">{tr('Hiking, Skiing, Boarding and More on offer', 'Randonnée, ski, snowboard et bien plus encore')}</span></SectionHeading>
-           <div className="grid min-w-0 gap-4">
-             {[
-               { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
-               { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
-             ].map(activity => (
-                 <Button key={activity.label} asChild className="group h-auto w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left">
-                   <a href={activity.url} target="_blank" rel="noopener noreferrer"><span className="font-display text-2xl leading-snug">{activity.label}</span><span className="inline-flex items-center gap-2">{tr('Take a look', 'Jeter un œil')}<ArrowUpRight className="shrink-0" /></span></a>
-                 </Button>
-             ))}
-             <Button asChild className="group h-auto w-full flex-col items-start justify-between gap-6 whitespace-normal p-6 text-left"><Link to="/local-area"><span className="font-display text-2xl leading-snug">{tr('Local Area', 'Les environs')}</span><span className="inline-flex items-center gap-2">{tr('Take a look at the local area', 'Découvrez les environs')}<ArrowRight className="shrink-0" /></span></Link></Button>
-           </div>
-         </div>
-       </section>
       <GuestChat />
       <AvailabilityCalendar />
       <FindUs />

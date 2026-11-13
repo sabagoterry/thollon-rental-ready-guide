@@ -27,7 +27,7 @@ export function AvailabilityCalendar() {
             <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
             <div className="flex items-center justify-center gap-3">
               <Button asChild size="lg" className="h-auto flex-col gap-1 py-3">
-                <Link to="/book"><span className="text-xs uppercase tracking-wide">{tr('Interested?', 'Intéressé ?')}</span><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link>
+                <Link to="/book"><span className="inline-flex items-center gap-2">{tr('Book', 'Réserver')}<ArrowRight /></span></Link>
               </Button>
               <Button variant="outline" size="icon" title={tr('Refresh availability', 'Actualiser')} aria-label={tr('Refresh availability', 'Actualiser')} disabled={isFetching} onClick={() => void refetch()}>
                 <RefreshCw className={isFetching ? 'animate-spin motion-reduce:animate-none' : ''} />

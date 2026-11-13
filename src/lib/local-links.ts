@@ -35,4 +35,5 @@ export const dayTrips = [
   { name: 'Leysin–Les Mosses', detail: 'Swiss ski area above the Rhône valley', detailFr: 'Domaine skiable suisse au-dessus de la vallée du Rhône', url: 'https://www.tlml.ch/', kind: 'winter' },
   { name: 'Yvoire', detail: 'Medieval lakeside village, one of the most beautiful in France', detailFr: 'Village médiéval au bord du lac, l’un des plus beaux de France', url: 'https://yvoire-france.com/', kind: 'summer' },
   { name: 'Vevey', detail: 'Swiss lakeside town of markets, museums and vineyards', detailFr: 'Ville suisse au bord du lac : marchés, musées et vignobles', url: 'https://www.myswitzerland.com/en-gb/destinations/vevey/', kind: 'summer' },
+  { name: 'Portes du Soleil', detail: 'Cross-border ski area — 50 minutes by car from the apartment', detailFr: 'Domaine skiable transfrontalier — 50 minutes en voiture depuis l’appartement', url: 'https://www.portesdusoleil.com/', kind: 'winter', carMinutes: 50 },
 ] as const;
