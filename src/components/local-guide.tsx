@@ -21,6 +21,30 @@ export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
     <section id="local-guide" className="band-ice">
       <div className="mx-auto max-w-6xl px-6 py-20">
         {standalone ? <h1 className="text-4xl text-primary md:text-5xl">{tr('Local Area', 'Le coin')}</h1> : <SectionHeading>{tr('Local Area', 'Le coin')}</SectionHeading>}
+        <h4 className="mt-8 text-2xl text-primary">{tr('Key Info', 'Infos clés')}</h4>
+        <div className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-2">
+          {essentials.map(item => (
+            <div key={item.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
+              <span className="band-lake mt-1 grid size-9 shrink-0 place-items-center rounded-full text-primary-foreground"><item.icon className="size-4" /></span>
+              <div className="min-w-0">
+                <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base">
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">{n(item.name)}<ArrowUpRight className="size-4 shrink-0" /></a>
+                </Button>
+                <p className="mt-1 text-sm text-muted-foreground">{tr(item.detail, item.detailFr)}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {[
+            { label: tr('Hiking', 'Randonnée'), url: 'https://www.komoot.com/guide/1459249/hiking-around-thollon-les-memises' },
+            { label: tr('Skiing and Boarding', 'Ski et snowboard'), url: 'https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/' },
+          ].map(activity => (
+            <Button key={activity.label} asChild className="group h-auto flex-col items-start gap-6 whitespace-normal p-6 text-left">
+              <a href={activity.url} target="_blank" rel="noopener noreferrer"><span className="font-display text-2xl leading-snug">{activity.label}</span><span className="inline-flex items-center gap-2">{tr('Take a look', 'Jeter un œil')}<ArrowUpRight className="shrink-0" /></span></a>
+            </Button>
+          ))}
+        </div>
         {[
           { en: 'Live from the mountain', fr: 'En direct de la montagne', links: liveLinks.slice(0, 3) },
           { en: 'Latest', fr: 'Actualités', links: liveLinks.slice(3) },
@@ -41,21 +65,6 @@ export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
             </div>
           </div>
         ))}
-        <h3 className="mt-14 text-4xl text-rainbow md:text-5xl">{tr('Local Area', 'Le coin')}</h3>
-        <h4 className="mt-8 text-2xl text-primary">{tr('Key Info', 'Infos clés')}</h4>
-        <div className="mt-6 grid gap-x-12 gap-y-6 md:grid-cols-2">
-          {essentials.map(item => (
-            <div key={item.name} className="flex items-start gap-4 border-b border-accent/30 pb-5">
-              <span className="band-lake mt-1 grid size-9 shrink-0 place-items-center rounded-full text-primary-foreground"><item.icon className="size-4" /></span>
-              <div className="min-w-0">
-                <Button asChild variant="link" className="h-auto max-w-full justify-start whitespace-normal p-0 text-base">
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">{n(item.name)}<ArrowUpRight className="size-4 shrink-0" /></a>
-                </Button>
-                <p className="mt-1 text-sm text-muted-foreground">{tr(item.detail, item.detailFr)}</p>
-              </div>
-            </div>
-          ))}
-        </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4">
           <h3 className="flex items-center gap-3 text-4xl text-rainbow md:text-5xl"><Utensils className="size-5" />{tr('Bars & restaurants', 'Bars et restaurants')}</h3>
           <Button asChild variant="outline"><a href={diningDirectory} target="_blank" rel="noopener noreferrer">{tr('Tourist office dining directory', 'Guide des restaurants de l’office de tourisme')}<ArrowUpRight /></a></Button>
