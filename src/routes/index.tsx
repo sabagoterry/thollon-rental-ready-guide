@@ -1,20 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BedDouble, ShowerHead, Sofa, Ruler, Mountain, Car, Footprints, Bike, Bus, ShoppingCart, Martini, UtensilsCrossed, Wifi } from "lucide-react";
-import { BunkBeds, BathWithShower } from '@/components/accommodation-icons';
-import { FloorplanCompass } from '@/components/floorplan-compass';
-import { Button } from '@/components/ui/button';
-import { SectionHeading } from '@/components/section-heading';
-import { LogoMark } from '@/components/logo-mark';
-import { SiteFooter } from '@/components/site-footer';
-import { AvailabilityCalendar } from '@/components/availability-calendar';
-import { availabilityQuery } from '@/lib/availability.query';
-import { balconies, apartmentAmenities, amenityList } from '@/lib/apartment';
-import { dayTrips } from '@/lib/local-links';
-import { GuestChat } from '@/components/guest-chat';
-import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
-import { HomeHeader } from '@/components/home-header';
-import { FindUs } from '@/components/find-us';
-import { useLang } from '@/lib/i18n';
+import {
+  ArrowRight,
+  BedDouble,
+  ShowerHead,
+  Sofa,
+  Ruler,
+  Mountain,
+  Car,
+  Footprints,
+  Bike,
+  Bus,
+  ShoppingCart,
+  Martini,
+  UtensilsCrossed,
+  Wifi,
+} from "lucide-react";
+import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
+import { FloorplanCompass } from "@/components/floorplan-compass";
+import { Button } from "@/components/ui/button";
+import { SectionHeading } from "@/components/section-heading";
+import { LogoMark } from "@/components/logo-mark";
+import { SiteFooter } from "@/components/site-footer";
+import { AvailabilityCalendar } from "@/components/availability-calendar";
+import { availabilityQuery } from "@/lib/availability.query";
+import { balconies, apartmentAmenities, amenityList } from "@/lib/apartment";
+import { dayTrips } from "@/lib/local-links";
+import { GuestChat } from "@/components/guest-chat";
+import { WhatsAppEnquiry } from "@/components/whatsapp-enquiry";
+import { HomeHeader } from "@/components/home-header";
+import { FindUs } from "@/components/find-us";
+import { useLang } from "@/lib/i18n";
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
 import building from "@/assets/photos/cyclamens-building.png.asset.json";
@@ -25,10 +40,10 @@ import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
-import parkingIcon from '@/assets/icons/apartment-parking.png.asset.json';
-import towelsIcon from '@/assets/icons/apartment-towels-clean.png.asset.json';
-import skiingIcon from '@/assets/icons/apartment-skiing-clean.png.asset.json';
-import hikingIcon from '@/assets/icons/apartment-hiking.png.asset.json';
+import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
+import towelsIcon from "@/assets/icons/apartment-towels-clean.png.asset.json";
+import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
+import hikingIcon from "@/assets/icons/apartment-hiking.png.asset.json";
 import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
@@ -46,7 +61,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Les Cyclamens — Thollon-les-Memises apartment" },
       {
         property: "og:description",
-        content: "2 bedrooms, 1 full-size bathroom and 1 shower ensuite, two balconies: south-facing front and north-facing rear. Open all year.",
+        content:
+          "2 bedrooms, 1 full-size bathroom and 1 shower ensuite, two balconies: south-facing front and north-facing rear. Open all year.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -56,76 +72,122 @@ export const Route = createFileRoute("/")({
 });
 
 const rooms = [
-  { name: "Living & dining room", nameFr: "Séjour et salle à manger", size: "10.9 m²", img: living.url, text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed for two extra guests.", textFr: "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit pour deux personnes supplémentaires." },
-  { name: "Kitchen", nameFr: "Cuisine", size: "", img: kitchen.url, text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle.", textFr: "Four micro-ondes, 2 plaques, 2 réfrigérateurs-congélateurs, mijoteuse, friteuse à air, grille-pain, cafetière et bouilloire." },
-  { name: "Double bedroom", nameFr: "Chambre double", size: "8.9 m²", img: master.url, text: "Double bed and built-in wardrobes, next to the shower room.", textFr: "Lit double et placards intégrés, à côté de la salle d’eau." },
-  { name: "Bunk room", nameFr: "Chambre à lits superposés", size: "5.6 m²", img: bunks.url, tall: true, text: "Cosy wood-panelled room with bunk beds — kids love it.", textFr: "Chambre douillette lambrissée avec lits superposés — les enfants adorent." },
-  { name: "Shower ensuite", nameFr: "Salle d’eau attenante", size: "2.75 m²", img: shower, tall: true, text: "Walk-in shower, washbasin, toilet and lit mirror.", textFr: "Douche à l’italienne, lavabo, WC et miroir éclairé." },
-  { name: "Full-size bathroom", nameFr: "Salle de bains complète", size: "", img: bath.url, tall: true, text: "Bathtub with shower, washbasin and toilet.", textFr: "Baignoire avec douche, lavabo et WC." },
+  {
+    name: "Living & dining room",
+    nameFr: "Séjour et salle à manger",
+    size: "10.9 m²",
+    img: living.url,
+    text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed for two extra guests.",
+    textFr:
+      "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit pour deux personnes supplémentaires.",
+  },
+  {
+    name: "Kitchen",
+    nameFr: "Cuisine",
+    size: "",
+    img: kitchen.url,
+    text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle.",
+    textFr:
+      "Four micro-ondes, 2 plaques, 2 réfrigérateurs-congélateurs, mijoteuse, friteuse à air, grille-pain, cafetière et bouilloire.",
+  },
+  {
+    name: "Double bedroom",
+    nameFr: "Chambre double",
+    size: "8.9 m²",
+    img: master.url,
+    text: "Double bed and built-in wardrobes, next to the shower room.",
+    textFr: "Lit double et placards intégrés, à côté de la salle d’eau.",
+  },
+  {
+    name: "Bunk room",
+    nameFr: "Chambre à lits superposés",
+    size: "5.6 m²",
+    img: bunks.url,
+    tall: true,
+    text: "Cosy wood-panelled room with bunk beds — kids love it.",
+    textFr: "Chambre douillette lambrissée avec lits superposés — les enfants adorent.",
+  },
+  {
+    name: "Shower ensuite",
+    nameFr: "Salle d’eau attenante",
+    size: "2.75 m²",
+    img: shower,
+    tall: true,
+    text: "Walk-in shower, washbasin, toilet and lit mirror.",
+    textFr: "Douche à l’italienne, lavabo, WC et miroir éclairé.",
+  },
+  {
+    name: "Full-size bathroom",
+    nameFr: "Salle de bains complète",
+    size: "",
+    img: bath.url,
+    tall: true,
+    text: "Bathtub with shower, washbasin and toilet.",
+    textFr: "Baignoire avec douche, lavabo et WC.",
+  },
 ];
 
 const facts = [
-  { icon: BedDouble, en: '1 Double bedroom', fr: '1 Chambre double' },
-  { icon: BunkBeds, en: '1 Bunk room', fr: '1 Chambre à lits superposés' },
-  { icon: ShowerHead, en: '1 Shower ensuite', fr: '1 Salle d’eau attenante' },
-  { icon: BathWithShower, en: '1 Bathroom with overhead shower', fr: '1 Salle de bains avec douche' },
-  { icon: Sofa, en: 'Living Room with Sofa Bed', fr: 'Séjour avec canapé-lit' },
+  { icon: BedDouble, en: "1 Double bedroom", fr: "1 Chambre double" },
+  { icon: BunkBeds, en: "1 Bunk room", fr: "1 Chambre à lits superposés" },
+  { icon: ShowerHead, en: "1 Shower ensuite", fr: "1 Salle d’eau attenante" },
+  { icon: BathWithShower, en: "1 Bathroom with overhead shower", fr: "1 Salle de bains avec douche" },
+  { icon: Sofa, en: "Living Room with Sofa Bed", fr: "Séjour avec canapé-lit" },
   { icon: Mountain, en: `${balconies.length} Balconies`, fr: `${balconies.length} Balcons` },
-  { icon: Ruler, en: '39 m² Living space', fr: '39 m² de surface' },
-  { icon: Wifi, en: 'Fibre Optic', fr: 'Fibre optique' },
+  { icon: Ruler, en: "39 m² Living space", fr: "39 m² de surface" },
+  { icon: Wifi, en: "Fibre Optic", fr: "Fibre optique" },
 ];
-
-
-
 
 const localIcons = [
   {
     icon: ShoppingCart,
-    en: 'Supermarket',
-    fr: 'Supermarché',
+    en: "Supermarket",
+    fr: "Supermarché",
     modes: [
       { icon: Car, minutes: 5 },
       { icon: Footprints, minutes: 15 },
       { icon: Bike, minutes: 8 },
     ],
   },
-  { icon: Martini, en: 'Bars', fr: 'Bars', modes: [{ icon: Footprints, minutes: 5 }] },
-  { icon: UtensilsCrossed, en: 'Restaurants', fr: 'Restaurants', modes: [{ icon: Footprints, minutes: 5 }] },
+  { icon: Martini, en: "Bars", fr: "Bars", modes: [{ icon: Footprints, minutes: 5 }] },
+  { icon: UtensilsCrossed, en: "Restaurants", fr: "Restaurants", modes: [{ icon: Footprints, minutes: 5 }] },
 ];
 
-const dayOutTowns = ['Évian-les-Bains', 'Vevey', 'Geneva', 'Montreux', 'Yvoire'];
-const skiingTowns = ['Bernex', 'Leysin–Les Mosses', 'Châtel', 'Morzine', 'Portes du Soleil'];
+const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
+const skiingTowns = ["Bernex", "Leysin–Les Mosses", "Châtel", "Morzine", "Portes du Soleil"];
 
 // Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
 const townTimes: Record<string, { car?: string; bus?: string }> = {
-  'Évian-les-Bains': { car: '15 min', bus: '25 min' },
-  Montreux: { car: '45 min' },
-  Geneva: { car: '1h 10', bus: '1h 40 (x2)' },
-  Vevey: { car: '50 min' },
-  Yvoire: { car: '38 min', bus: '1h 15 (x2)' },
-  Bernex: { car: '10 min', bus: '35 min' },
-  'Leysin–Les Mosses': { car: '1h 15' },
-  Châtel: { car: '45–50 min', bus: '1h 45 (x2)' },
-  Morzine: { car: '55 min', bus: '2h 15' },
+  "Évian-les-Bains": { car: "15 min", bus: "25 min" },
+  Montreux: { car: "45 min" },
+  Geneva: { car: "1h 10", bus: "1h 40 (x2)" },
+  Vevey: { car: "50 min" },
+  Yvoire: { car: "38 min", bus: "1h 15 (x2)" },
+  Bernex: { car: "10 min", bus: "35 min" },
+  "Leysin–Les Mosses": { car: "1h 15" },
+  Châtel: { car: "45–50 min", bus: "1h 45 (x2)" },
+  Morzine: { car: "55 min", bus: "2h 15" },
 };
 
 function TownGroup({ title, names, left = false }: { title: string; names: string[]; left?: boolean }) {
   const towns = names
-    .map(name => dayTrips.find(t => t.name === name))
+    .map((name) => dayTrips.find((t) => t.name === name))
     .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
   return (
-    <div className={left ? 'text-left' : 'text-center'}>
+    <div className={left ? "text-left" : "text-center"}>
       <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
-      <div className={`mt-6 flex w-full flex-col gap-5 ${left ? '' : 'mx-auto'}`}>
+      <div className={`mt-6 flex w-full flex-col gap-5 ${left ? "" : "mx-auto"}`}>
         {towns.map((town) => {
-          const times = 'carMinutes' in town ? { car: `${town.carMinutes} min` } : townTimes[town.name] ?? {};
-          const modes = [
-            { icon: Car, time: times.car },
-            ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
-          ];
+          const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
+          const modes = [{ icon: Car, time: times.car }, ...(times.bus ? [{ icon: Bus, time: times.bus }] : [])];
           return (
-            <div key={town.name} className={`flex items-center gap-4 ${left ? 'justify-start' : 'justify-center'}`}>
-              <a href={town.url} target="_blank" rel="noopener noreferrer" className={`min-w-0 text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline ${left ? 'text-left' : 'text-right'}`}>
+            <div key={town.name} className={`flex items-center gap-4 ${left ? "justify-start" : "justify-center"}`}>
+              <a
+                href={town.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`min-w-0 text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline ${left ? "text-left" : "text-right"}`}
+              >
                 {town.name}
               </a>
               <span className="flex shrink-0 items-start gap-3 text-primary">
@@ -150,44 +212,51 @@ function Gallery() {
     <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
       <Button asChild className="h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
         <Link to="/location">
-          <span className="text-sm uppercase">{tr('Location', 'Situation')}</span>
-          <span className="text-3xl md:text-4xl">{tr('Location and views', 'Situation et vues')}</span>
-          <span className="flex items-center gap-2">{tr('Take a look', 'Jeter un œil')} <ArrowRight className="size-4" /></span>
+          <span className="text-sm uppercase">{tr("Location", "Situation")}</span>
+          <span className="text-3xl md:text-4xl">{tr("Location and views", "Situation et vues")}</span>
+          <span className="flex items-center gap-2">
+            {tr("Take a look", "Jeter un œil")} <ArrowRight className="size-4" />
+          </span>
         </Link>
       </Button>
       <div className="mt-14">
         <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[0.9fr_1.5fr_1.1fr] xl:items-start">
           <div>
-            <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Local', 'Sur place')}</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+              {tr("Local", "Sur place")}
+            </p>
             <div className="mt-6 flex flex-col gap-6">
-            {localIcons.map(({ icon: Icon, en, modes }) => (
-              <div key={en} className="flex min-w-0 items-center justify-center gap-3">
-                <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
-                <div className="flex flex-col gap-2">
-                  <span className="flex items-start gap-4 text-primary">
-                    {modes.map(({ icon: Mode, minutes }) => (
-                      <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
-                        <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
-                        {minutes != null && <span className="text-xs text-foreground">{minutes} min</span>}
-                      </span>
-                    ))}
-                  </span>
+              {localIcons.map(({ icon: Icon, en, modes }) => (
+                <div key={en} className="flex min-w-0 items-center justify-center gap-3">
+                  <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
+                  <div className="flex flex-col gap-2">
+                    <span className="flex items-start gap-4 text-primary">
+                      {modes.map(({ icon: Mode, minutes }) => (
+                        <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
+                          <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
+                          {minutes != null && <span className="text-xs text-foreground">{minutes} min</span>}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
           </div>
           <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:col-span-2 md:row-start-2 xl:col-span-1 xl:row-start-1 xl:col-start-2">
-            <TownGroup title={tr('Days out', 'Excursions')} names={dayOutTowns} />
-            <TownGroup title={tr('Skiing close by', 'Ski à proximité')} names={skiingTowns} left />
+            <TownGroup title={tr("Days out", "Excursions")} names={dayOutTowns} />
+            <TownGroup title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} left />
           </div>
           <figure className="xl:col-start-3">
             <figcaption className="min-h-5 text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              {tr('Five minutes to the Télécabine', 'Cinq minutes jusqu’à la télécabine')}
+              {tr("Five minutes to the Télécabine", "Cinq minutes jusqu’à la télécabine")}
             </figcaption>
             <img
               src={telecabineWalkMap.url}
-              alt={tr('Map showing the five-minute walk from Les Cyclamens to the Télécabine station', 'Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine')}
+              alt={tr(
+                "Map showing the five-minute walk from Les Cyclamens to the Télécabine station",
+                "Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine",
+              )}
               loading="lazy"
               className="mt-4 w-full rounded-lg"
             />
@@ -200,7 +269,7 @@ function Gallery() {
 
 function Index() {
   const { lang, tr } = useLang();
-  const fr = lang === 'fr';
+  const fr = lang === "fr";
   return (
     <main>
       <HomeHeader />
@@ -217,10 +286,17 @@ function Index() {
         />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 text-primary-foreground">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">Thollon-les-Memises · Haute-Savoie</p>
-          <h1 className="max-w-3xl text-5xl leading-tight md:text-7xl">{tr("Les Cyclamens, your home above Lake Geneva", "Les Cyclamens, votre chez-vous au-dessus du Léman")}</h1>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sunshine">
+            Thollon-les-Memises · Haute-Savoie
+          </p>
+          <h1 className="max-w-3xl text-5xl leading-tight md:text-7xl">
+            {tr("Les Cyclamens, your home above Lake Geneva", "Les Cyclamens, votre chez-vous au-dessus du Léman")}
+          </h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
-            {tr('A charming apartment close to the cable car, restaurants and all village amenities — open for stays all year round.', 'Un charmant appartement près de la télécabine, des restaurants et de tous les commerces du village — ouvert toute l’année.')}
+            {tr(
+              "A charming apartment close to the cable car, restaurants and all village amenities — open for stays all year round.",
+              "Un charmant appartement près de la télécabine, des restaurants et de tous les commerces du village — ouvert toute l’année.",
+            )}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <WhatsAppEnquiry />
@@ -229,30 +305,42 @@ function Index() {
       </section>
 
       <section className="relative flex min-h-[70vh] overflow-hidden">
-        <img src={building.url} alt={tr('Les Cyclamens apartment building', 'La résidence Les Cyclamens')} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={building.url}
+          alt={tr("Les Cyclamens apartment building", "La résidence Les Cyclamens")}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-24 text-primary-foreground">
           <div className="max-w-xl">
             <div className="flex items-center gap-4 md:gap-5">
               <LogoMark />
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">{tr("The apartment", "L’appartement")}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">
+                {tr("The apartment", "L’appartement")}
+              </p>
             </div>
             <h2 className="mt-4 text-4xl md:text-5xl">{tr("Furnished to a high standard", "Aménagé avec soin")}</h2>
             <div className="mt-4 h-1.5 w-40 rounded-full bg-sunshine" />
             <p className="mt-6 text-lg leading-relaxed opacity-95">
-              {tr('On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.', 'Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.')}
+              {tr(
+                "On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.",
+                "Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.",
+              )}
             </p>
           </div>
           <div className="mt-12 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
-              { icon: parkingIcon.url, detail: tr('Free', 'Gratuit') },
-              { icon: towelsIcon.url, detail: tr('Towels on request', 'Serviettes sur demande') },
+              { icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
+              { icon: towelsIcon.url, detail: tr("Towels on request", "Serviettes sur demande") },
               { icon: skiingIcon.url, detail: `${apartmentAmenities.skiingMinutes} minutes` },
-              { icon: hikingIcon.url, detail: tr('Right outside', 'Juste à la porte') },
-            ].map(item => <div key={item.detail} className="flex flex-col items-center gap-1.5 text-center slideshow-caption">
-              <img src={item.icon} alt="" aria-hidden="true" className="h-14 w-20 object-contain" />
-              <span className="text-sm">{item.detail}</span>
-            </div>)}
+              { icon: hikingIcon.url, detail: tr("Right outside", "Juste à la porte") },
+            ].map((item) => (
+              <div key={item.detail} className="flex flex-col items-center gap-1.5 text-center slideshow-caption">
+                <img src={item.icon} alt="" aria-hidden="true" className="h-14 w-20 object-contain" />
+                <span className="text-sm">{item.detail}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -271,11 +359,21 @@ function Index() {
         </div>
         <div>
           {rooms.map((r, index) => (
-            <article key={r.name} className={`relative flex items-center overflow-hidden ${'tall' in r && r.tall ? 'min-h-[92vh]' : 'min-h-[60vh]'}`}>
-              <img src={r.img} alt={fr ? r.nameFr : r.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <article
+              key={r.name}
+              className={`relative flex items-center overflow-hidden ${"tall" in r && r.tall ? "min-h-[92vh]" : "min-h-[60vh]"}`}
+            >
+              <img
+                src={r.img}
+                alt={fr ? r.nameFr : r.name}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
               <div className="bg-overlay absolute inset-0" />
-              <div className={`relative mx-auto flex w-full max-w-6xl px-6 py-20 text-primary-foreground ${index % 2 ? 'md:justify-end' : ''}`}>
-                <div className={`max-w-xl ${r.name === 'Kitchen' ? 'translate-y-12' : ''}`}>
+              <div
+                className={`relative mx-auto flex w-full max-w-6xl px-6 py-20 text-primary-foreground ${index % 2 ? "md:justify-end" : ""}`}
+              >
+                <div className={`max-w-xl ${r.name === "Kitchen" ? "translate-y-12" : ""}`}>
                   <h3 className="text-3xl md:text-5xl">{fr ? r.nameFr : r.name}</h3>
                   <div className="mt-4 h-1.5 w-32 rounded-full bg-sunshine" />
                   <p className="mt-5 text-lg leading-relaxed opacity-95">{fr ? r.textFr : r.text}</p>
@@ -294,38 +392,94 @@ function Index() {
             <SectionHeading>{tr("Floor plan", "Plan")}</SectionHeading>
             <p className="mt-5 text-lg text-muted-foreground">{tr("Two balconies.", "Deux balcons.")}</p>
             <ul className="mt-4 space-y-2 text-muted-foreground">
-              {balconies.map(b => <li key={b.position} className="first-letter:uppercase">{fr ? `Balcon ${b.position === 'front' ? 'avant' : 'arrière'} — exposé ${b.facing === 'south' ? 'sud' : 'nord'}` : `${b.position} balcony — ${b.facing}-facing`}</li>)}
+              {balconies.map((b) => (
+                <li key={b.position} className="first-letter:uppercase">
+                  {fr
+                    ? `Balcon ${b.position === "front" ? "avant" : "arrière"} — exposé ${b.facing === "south" ? "sud" : "nord"}`
+                    : `${b.position} balcony — ${b.facing}-facing`}
+                </li>
+              ))}
             </ul>
-            <h3 className="mt-10 text-sm font-semibold uppercase tracking-[0.3em] text-primary">{tr('Amenities', 'Équipements')}</h3>
+            <h3 className="mt-10 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+              {tr("Amenities", "Équipements")}
+            </h3>
             <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-muted-foreground">
-              {amenityList.map(a => <li key={a.en}>{fr ? a.fr : a.en}</li>)}
+              {amenityList.map((a) => (
+                <li key={a.en}>{fr ? a.fr : a.en}</li>
+              ))}
             </ul>
           </div>
-           <figure>
-             <div className="relative mx-auto aspect-[3/4] w-full max-w-[480px]">
-               <img src={floorplan3d} alt={tr("3D illustration of the apartment floor plan with two balconies", "Illustration 3D du plan de l’appartement avec deux balcons")} loading="lazy" className="h-full w-full object-contain" />
-               <FloorplanCompass />
-             </div>
-            <figcaption className="mt-3 text-center text-sm text-muted-foreground">{tr('Illustrative 3D view — not a measured architectural drawing.', 'Vue 3D illustrative — ce n’est pas un plan architectural coté.')}</figcaption>
+          <figure>
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-[480px]">
+              <img
+                src={floorplan3d}
+                alt={tr(
+                  "3D illustration of the apartment floor plan with two balconies",
+                  "Illustration 3D du plan de l’appartement avec deux balcons",
+                )}
+                loading="lazy"
+                className="h-full w-full object-contain"
+              />
+              <FloorplanCompass />
+            </div>
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+              {tr(
+                "Illustrative 3D view — not a measured architectural drawing.",
+                "Vue 3D illustrative — ce n’est pas un plan architectural coté.",
+              )}
+            </figcaption>
           </figure>
         </div>
       </section>
 
       <section className="mx-auto grid w-full max-w-[1440px] gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
         <div>
-           <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>{tr("Your Alpine Escape", "Votre escapade alpine")}</SectionHeading>
+          <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>
+            {tr("Your Alpine Escape", "Votre escapade alpine")}
+          </SectionHeading>
           <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
-             <li><span className="font-medium text-primary">{tr("Winter:", "Hiver :")}</span> {tr("Ski the pristine Mémises slopes with the main cable car just a short walk away.", "Skiez sur les pistes immaculées des Mémises, avec la télécabine principale à quelques pas.")}</li>
-             <li><span className="font-medium text-primary">{tr("Spring:", "Printemps :")}</span> {tr("Catch early mountain hikes as the snow melts.", "Profitez des premières randonnées en montagne à la fonte des neiges.")}</li>
-             <li><span className="font-medium text-accent">{tr("Summer:", "Été :")}</span> {tr("Discover alpine ridges, panoramic paragliding, and Lake Geneva's beaches below.", "Découvrez les crêtes alpines, le parapente panoramique et les plages du Léman en contrebas.")}</li>
-             <li><span className="font-medium text-lake">{tr("Nearby:", "À proximité :")}</span> {tr("Unwind anytime with quick trips to Évian-les-Bains, the Swiss Riviera, and Geneva.", "Détendez-vous en toute saison avec des escapades à Évian-les-Bains, sur la Riviera suisse et à Genève.")}</li>
+            <li>
+              <span className="font-medium text-primary">{tr("Winter:", "Hiver :")}</span>{" "}
+              {tr(
+                "Ski the pristine Mémises slopes with the main cable car just a short walk away.",
+                "Skiez sur les pistes immaculées des Mémises, avec la télécabine principale à quelques pas.",
+              )}
+            </li>
+            <li>
+              <span className="font-medium text-primary">{tr("Spring:", "Printemps :")}</span>{" "}
+              {tr(
+                "Catch early mountain hikes as the snow melts.",
+                "Profitez des premières randonnées en montagne à la fonte des neiges.",
+              )}
+            </li>
+            <li>
+              <span className="font-medium text-accent">{tr("Summer:", "Été :")}</span>{" "}
+              {tr(
+                "Discover alpine ridges, panoramic paragliding, and Lake Geneva's beaches below.",
+                "Découvrez les crêtes alpines, le parapente panoramique et les plages du Léman en contrebas.",
+              )}
+            </li>
+            <li>
+              <span className="font-medium text-lake">{tr("Nearby:", "À proximité :")}</span>{" "}
+              {tr(
+                "Unwind anytime with quick trips to Évian-les-Bains, the Swiss Riviera, and Geneva.",
+                "Détendez-vous en toute saison avec des escapades à Évian-les-Bains, sur la Riviera suisse et à Genève.",
+              )}
+            </li>
           </ul>
         </div>
-        <Button asChild className="group h-auto min-h-64 flex-col items-start justify-between gap-6 whitespace-normal p-8 text-left">
+        <Button
+          asChild
+          className="group h-auto min-h-64 flex-col items-start justify-between gap-6 whitespace-normal p-8 text-left"
+        >
           <Link to="/local-area">
-            <span className="text-xs uppercase">{tr('Local Area', 'Les environs')}</span>
-            <span className="font-display text-3xl leading-snug">{tr('Your Alpine Escape', 'Votre escapade alpine')}</span>
-            <span className="inline-flex items-center gap-2">{tr('Explore the local area', 'Explorez les environs')} <ArrowRight /></span>
+            <span className="text-xs uppercase">{tr("Local Area", "Les environs")}</span>
+            <span className="font-display text-3xl leading-snug">
+              {tr("Your Alpine Escape", "Votre escapade alpine")}
+            </span>
+            <span className="inline-flex items-center gap-2">
+              {tr("Take a look", "jetez un oeil")} <ArrowRight />
+            </span>
           </Link>
         </Button>
       </section>
