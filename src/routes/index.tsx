@@ -14,6 +14,9 @@ import {
   Martini,
   UtensilsCrossed,
   Wifi,
+  Heart,
+  Award,
+  Star,
 } from "lucide-react";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 import { FloorplanCompass } from "@/components/floorplan-compass";
@@ -26,6 +29,8 @@ import { availabilityQuery } from "@/lib/availability.query";
 import { balconies, apartmentAmenities, amenityList } from "@/lib/apartment";
 import { dayTrips } from "@/lib/local-links";
 import { GuestChat } from "@/components/guest-chat";
+import { GalleryLink } from "@/components/gallery-link";
+import { airbnbReviews } from "@/lib/airbnb-reviews";
 import { WhatsAppEnquiry } from "@/components/whatsapp-enquiry";
 import { HomeHeader } from "@/components/home-header";
 import { FindUs } from "@/components/find-us";
@@ -41,7 +46,6 @@ import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
 import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
 import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
-import towelsIcon from "@/assets/icons/apartment-towels-clean.png.asset.json";
 import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
 import hikingIcon from "@/assets/icons/apartment-hiking.png.asset.json";
 import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
@@ -365,6 +369,7 @@ function Index() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <WhatsAppEnquiry />
+            <GalleryLink />
           </div>
         </div>
       </section>
@@ -386,6 +391,11 @@ function Index() {
               </p>
             </div>
             <h2 className="mt-4 text-4xl md:text-5xl">{tr("Furnished to a high standard", "Aménagé avec soin")}</h2>
+            <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-semibold">
+              <span className="inline-flex items-center gap-2"><Heart className="size-5" aria-hidden="true" />Airbnb {tr('Guest Favourite', 'Coup de cœur voyageurs')}</span>
+              <span className="inline-flex items-center gap-2"><Award className="size-5" aria-hidden="true" />Airbnb Superhost</span>
+              <span className="inline-flex items-center gap-2"><Star className="size-5 fill-current" aria-hidden="true" />{airbnbReviews.rating.toLocaleString(lang, { minimumFractionDigits: 2 })}/5</span>
+            </div>
             <div className="mt-4 h-1.5 w-40 rounded-full bg-sunshine" />
             <p className="mt-6 text-lg leading-relaxed opacity-95">
               {tr(
@@ -393,11 +403,11 @@ function Index() {
                 "Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.",
               )}
             </p>
+            <GalleryLink className="mt-6" />
           </div>
           <div className="mt-12 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
               { icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
-              { icon: towelsIcon.url, detail: tr("Towels on request", "Serviettes sur demande") },
               { icon: skiingIcon.url, detail: `${apartmentAmenities.skiingMinutes} minutes` },
               { icon: hikingIcon.url, detail: tr("Right outside", "Juste à la porte") },
             ].map((item) => (
@@ -412,7 +422,10 @@ function Index() {
 
       <section className="rooms-showcase overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-24">
-          <SectionHeading>{tr("Inside the apartment", "À l’intérieur")} </SectionHeading>
+          <div className="flex items-center justify-between gap-4">
+            <SectionHeading>{tr("Inside the apartment", "À l’intérieur")} </SectionHeading>
+            <GalleryLink />
+          </div>
           <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
             {facts.map(({ icon: Icon, en, fr: french }) => (
               <div key={en} className="flex flex-col items-center gap-3 text-center">
@@ -442,6 +455,7 @@ function Index() {
                   <h3 className="text-3xl md:text-5xl">{fr ? r.nameFr : r.name}</h3>
                   <div className="mt-4 h-1.5 w-32 rounded-full bg-sunshine" />
                   <p className="mt-5 text-lg leading-relaxed opacity-95">{fr ? r.textFr : r.text}</p>
+                  <GalleryLink className="mt-6" />
                 </div>
               </div>
             </article>
