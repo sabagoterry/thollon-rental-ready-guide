@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Add photo-section gallery icons, verified Airbnb reviews and host recognition; remove the apartment-photo towels label.
+- [x] Add nine photo-section gallery icons, verified Airbnb review excerpts and Guest Favourite/Superhost recognition with the actual 4.81/5 rating; remove the apartment-photo towels label. Desktop/mobile and gallery browsing checked; 22 tests passed.
 - [x] Apply November 14 comments: swapped availability and Questions, added Airbnb Book navigation, updated availability booking label and Refresh position (ff3dcbbe, f2ee0dbc, 83990691); desktop/mobile links and Refresh verified, eight tests passed.
 - [x] Apply November 13 comments: relocated apartment facts, added fibre Wi-Fi, updated sofa label, moved activities and key information to Local Area, simplified Book, added Portes du Soleil travel time, removed photo air freshener, and confirmed floor-plan download; desktop/mobile checks and 24 tests passed.
 - [x] Apply eleven 17:15 comments: centre local/town rows, align headings, activity choice boxes, centred question suggestions, inline availability controls and wording, raise Find Us items; desktop/mobile EN/FR and booking link verified, nine tests passed, preview pins cleared.
