@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionHeading } from '@/components/section-heading';
 import { LogoMark } from '@/components/logo-mark';
+import { AirbnbReviews } from '@/components/airbnb-reviews';
 import { useLang } from '@/lib/i18n';
 import { activeConversation, CHAT_IDLE_MS, CHAT_SESSION_KEY } from '@/lib/guest-chat-session';
 
@@ -104,6 +105,7 @@ export function GuestChat() {
         <div className="min-w-0">
         <SectionHeading kicker={tr("Ask us anything", "Posez-nous vos questions")}>{tr("Questions about your stay?", "Des questions sur votre séjour ?")}</SectionHeading>
         <p className="mt-4 text-muted-foreground">{tr('Our AI-powered assistant answers from the apartment details and our local recommendations. For anything it can’t answer, send an enquiry.', 'Notre assistant IA répond à partir des informations sur l’appartement et de nos recommandations locales. Pour tout le reste, envoyez-nous une demande.')}</p>
+        <AirbnbReviews />
         </div>
         <div className="min-w-0">
         <div className="overflow-hidden rounded-md border bg-transparent">
