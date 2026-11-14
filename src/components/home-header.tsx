@@ -4,7 +4,8 @@ import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
 import { Button } from '@/components/ui/button';
-import { House, MessageCircle } from 'lucide-react';
+import { House, MessageCircle, Ticket } from 'lucide-react';
+import { DEFAULT_AIRBNB_BOOKING_URL } from '@/lib/booking';
 import directionsIcon from '@/assets/navigation-directions.png.asset.json';
 import localIcon from '@/assets/navigation-local-area.png.asset.json';
 import calendarIcon from '@/assets/navigation-availability.png.asset.json';
@@ -46,6 +47,11 @@ export function HomeHeader() {
                 </Button>
               );
             })}
+            <Button asChild className="hidden h-auto flex-col gap-2 px-3 py-2 md:inline-flex">
+              <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <span>{tr('Book', 'Réserver')}</span><Ticket aria-hidden="true" className="size-7!" />
+              </a>
+            </Button>
             <MobileMenu includeSections />
             <LanguageToggle />
           </nav>
@@ -75,6 +81,11 @@ export function HomeHeader() {
               </Button>
             );
           })}
+          <Button asChild size="icon" className="size-12 rounded-full shadow-lg">
+            <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer" aria-label={tr('Book', 'Réserver')} title={tr('Book', 'Réserver')}>
+              <Ticket aria-hidden="true" className="size-7!" />
+            </a>
+          </Button>
         </nav>
       )}
     </>

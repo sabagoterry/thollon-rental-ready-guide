@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { Menu, X } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
+import { DEFAULT_AIRBNB_BOOKING_URL } from '@/lib/booking';
 
 export function MobileMenu({ includeSections = false }: { includeSections?: boolean }) {
   const { tr } = useLang();
@@ -45,6 +46,9 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
               {l.label}
             </Link>
           ))}
+          {includeSections && <Button asChild className="mt-2 w-full">
+            <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{tr('Book', 'Réserver')}</a>
+          </Button>}
           {includeSections && [
             { href: '#availability', label: tr('Availability', 'Disponibilités') },
             { href: '#ask', label: tr('Ask us', 'Questions') },

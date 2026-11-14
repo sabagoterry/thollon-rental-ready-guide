@@ -481,8 +481,8 @@ function Index() {
         </Button>
       </section>
 
-      <GuestChat />
       <AvailabilityCalendar />
+      <GuestChat />
       <FindUs />
 
       <SiteFooter />

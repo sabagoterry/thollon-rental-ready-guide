@@ -34,5 +34,6 @@
 - Treat generated 3D floor-plan views as illustrations, not measured architectural drawings; retain the original source plan for future corrections.
 - Keep the home navigation in a focused component that compacts on scroll and retains section links in its mobile menu so navigation stays available without covering photos.
 - Share the date picker and stay summary between booking and Direct Booking, carrying validated date/guest search parameters through confirmation so the two pages cannot drift.
+- Share the default Airbnb booking destination through the booking module so public navigation and availability buttons use the same listing and guest parameters.
 - Direct booking requests use validated public server calls, recheck the fresh read-only availability cache, and store name, email, dates and guests in the private enquiries inbox before fixed-recipient WhatsApp notification; requests never imply a confirmed reservation.
 - Owner booking receipt emails use fixed-recipient React Email templates and the managed send helper with per-request idempotency keys; email failures never discard saved requests and no local email queue is created.
