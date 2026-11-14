@@ -1,5 +1,9 @@
 import { expect, it } from 'vitest';
-import { addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
+import { addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked, DEFAULT_AIRBNB_BOOKING_URL } from '@/lib/booking';
+
+it('uses the owner-requested Airbnb destination for default booking', () => {
+  expect(DEFAULT_AIRBNB_BOOKING_URL).toBe('https://www.airbnb.co.uk/rooms/1300151240294300447?check_in=&check_out=&adults=2');
+});
 
 it('builds the Airbnb listing link with dates and guests', () => {
   const url = new URL(airbnbBookingUrl('2026-12-20', '2026-12-27', 4));

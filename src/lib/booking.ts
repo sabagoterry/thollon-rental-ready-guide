@@ -2,6 +2,7 @@ import { AIRBNB_URL } from './guest-guide';
 import { isBlocked, type BlockedRange } from './availability';
 
 export const MAX_GUESTS = 6;
+export const DEFAULT_AIRBNB_BOOKING_URL = airbnbBookingUrl('', '', 2);
 
 function addDay(day: string): string {
   const d = new Date(`${day}T00:00:00Z`);
