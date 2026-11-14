@@ -220,7 +220,6 @@ function Gallery() {
         </Link>
       </Button>
       <div className="mt-14">
-       <div className="mt-14">
         <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_1.1fr] xl:items-start">
           <div>
             <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
@@ -257,22 +256,6 @@ function Gallery() {
               alt={tr(
                 "Map showing the five-minute walk from Les Cyclamens to the Télécabine station",
                 "Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine"
-              )}
-              loading="lazy"
-              className="mt-4 w-full rounded-lg"
-            />
-          </figure>
-        </div>
-      </div>
-          <figure className="xl:col-start-3">
-            <figcaption className="min-h-5 text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              {tr("Five minutes to the Télécabine", "Cinq minutes jusqu’à la télécabine")}
-            </figcaption>
-            <img
-              src={telecabineWalkMap.url}
-              alt={tr(
-                "Map showing the five-minute walk from Les Cyclamens to the Télécabine station",
-                "Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine",
               )}
               loading="lazy"
               className="mt-4 w-full rounded-lg"
