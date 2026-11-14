@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Apply November 14 comments: swap availability and Questions, add Airbnb Book navigation, update availability booking label and Refresh position (ff3dcbbe, f2ee0dbc, 83990691).
+- [x] Apply November 14 comments: swapped availability and Questions, added Airbnb Book navigation, updated availability booking label and Refresh position (ff3dcbbe, f2ee0dbc, 83990691); desktop/mobile links and Refresh verified, eight tests passed.
 - [x] Apply November 13 comments: relocated apartment facts, added fibre Wi-Fi, updated sofa label, moved activities and key information to Local Area, simplified Book, added Portes du Soleil travel time, removed photo air freshener, and confirmed floor-plan download; desktop/mobile checks and 24 tests passed.
 - [x] Apply eleven 17:15 comments: centre local/town rows, align headings, activity choice boxes, centred question suggestions, inline availability controls and wording, raise Find Us items; desktop/mobile EN/FR and booking link verified, nine tests passed, preview pins cleared.
 - [x] Apply five 17:04 comments: widen Local and pair Bars/Restaurants, alternate town names/icons, match activity band to Questions width with three stacked links, shift availability controls right; desktop/mobile EN/FR verified and preview pins cleared.
