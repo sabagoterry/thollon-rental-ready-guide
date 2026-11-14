@@ -206,7 +206,7 @@ function TownGroup({ title, names, left = false }: { title: string; names: strin
   );
 }
 
-function Gallery() {
+ffunction Gallery() {
   const { tr } = useLang();
   return (
     <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
@@ -219,48 +219,113 @@ function Gallery() {
           </span>
         </Link>
       </Button>
+
       <div className="mt-14">
-        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_1.1fr] xl:items-start">
-          <div>
-            <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+        {/* RESPONSIVE THREE-COLUMN / GRID CONTAINER */}
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          
+          {/* COLUMN 1: LOCAL */}
+          <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
+            <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
               {tr("Local", "Sur place")}
-            </p>
-            <div className="mt-6 flex flex-col gap-6">
+            </h2>
+            <div className="flex flex-col gap-1">
               {localIcons.map(({ icon: Icon, en, modes }) => (
-                <div key={en} className="flex min-w-0 items-center justify-center gap-3">
-                  <Icon aria-hidden="true" className="size-9 shrink-0 text-primary" strokeWidth={1.8} />
-                  <div className="flex flex-col gap-2">
-                    <span className="flex items-start gap-4 text-primary">
-                      {modes.map(({ icon: Mode, minutes }) => (
-                        <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
-                          <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
-                          {minutes != null && <span className="text-xs text-foreground">{minutes} min</span>}
-                        </span>
-                      ))}
-                    </span>
+                <div key={en} className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]">
+                  <Icon aria-hidden="true" className="size-[18px] text-[#78999e]" strokeWidth={2} />
+                  <div className="flex items-center gap-4">
+                    {modes.map(({ icon: Mode, minutes }) => (
+                      <span key={Mode.displayName ?? Mode.name} className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                        <Mode aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                        {minutes != null && <span>{minutes} min</span>}
+                      </span>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <TownGroup title={tr("Days out", "Excursions")} names={dayOutTowns} />
-          <TownGroup title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} />
+          {/* COLUMN 2: DAYS OUT */}
+          <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
+            <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+              {tr("Days out", "Excursions")}
+            </h2>
+            <div className="flex flex-col gap-1">
+              {dayOutTowns.map((name) => {
+                const town = dayTrips.find((t) => t.name === name);
+                if (!town) return null;
+                const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
+                return (
+                  <div key={town.name} className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between">
+                    <a
+                      href={town.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
+                    >
+                      {town.name}
+                    </a>
+                    <div className="flex items-center gap-4">
+                      {times.car && (
+                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                          <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                          {times.car}
+                        </span>
+                      )}
+                      {times.bus && (
+                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                          <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                          {times.bus}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
-          <figure className="xl:col-start-4">
-            <figcaption className="min-h-5 text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              {tr("Five minutes to the Télécabine", "Cinq minutes jusqu’à la télécabine")}
-            </figcaption>
-            <img
-              src={telecabineWalkMap.url}
-              alt={tr(
-                "Map showing the five-minute walk from Les Cyclamens to the Télécabine station",
-                "Carte montrant les cinq minutes à pied entre Les Cyclamens et la télécabine"
-              )}
-              loading="lazy"
-              className="mt-4 w-full rounded-lg"
-            />
-          </figure>
+          {/* COLUMN 3: SKIING CLOSE BY */}
+          <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
+            <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+              {tr("Skiing close by", "Ski à proximité")}
+            </h2>
+            <div className="flex flex-col gap-1">
+              {skiingTowns.map((name) => {
+                const town = dayTrips.find((t) => t.name === name);
+                if (!town) return null;
+                const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
+                return (
+                  <div key={town.name} className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between">
+                    <a
+                      href={town.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
+                    >
+                      {town.name}
+                    </a>
+                    <div className="flex items-center gap-4">
+                      {times.car && (
+                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                          <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                          {times.car}
+                        </span>
+                      )}
+                      {times.bus && (
+                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                          <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                          {times.bus}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
