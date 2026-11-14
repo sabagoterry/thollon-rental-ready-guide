@@ -220,7 +220,7 @@ function Gallery() {
         </Link>
       </Button>
       <div className="mt-14">
-        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[0.9fr_1.5fr_1.1fr] xl:items-start">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_2fr_1.1fr] xl:items-start">
           <div>
             <p className="text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               {tr("Local", "Sur place")}
@@ -245,7 +245,7 @@ function Gallery() {
           </div>
           <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 md:col-span-2 md:row-start-2 xl:col-span-1 xl:row-start-1 xl:col-start-2">
             <TownGroup title={tr("Days out", "Excursions")} names={dayOutTowns} />
-            <TownGroup title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} left />
+            <TownGroup title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} />
           </div>
           <figure className="xl:col-start-3">
             <figcaption className="min-h-5 text-center text-sm font-semibold uppercase tracking-[0.3em] text-primary">
