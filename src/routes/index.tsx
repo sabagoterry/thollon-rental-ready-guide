@@ -206,7 +206,7 @@ function TownGroup({ title, names, left = false }: { title: string; names: strin
   );
 }
 
-ffunction Gallery() {
+function Gallery() {
   const { tr } = useLang();
   return (
     <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
