@@ -401,7 +401,7 @@ function Index() {
                 {tr("The apartment", "L’appartement")}
               </p>
             </div>
-            <h2 className="mt-4 text-4xl md:text-5xl">{tr("Furnished to a high standard", "Aménagé avec soin")}</h2>
+            <h2 className="mt-4 text-4xl md:text-5xl">{tr("Overview", "aperçu")}</h2>
             <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-semibold">
               <span className="inline-flex items-center gap-2">
                 <Heart className="size-5" aria-hidden="true" />
