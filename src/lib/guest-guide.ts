@@ -31,7 +31,7 @@ APARTMENT
 - 2 bedrooms, ${washingFacilities.description}. Exactly two balconies: ${balconyText}.
 - Living & dining room (10.9 m²): big picture window onto the balcony, dining table for four, armchairs, TV, sofa bed.
 - Kitchen: microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine, kettle.
-- Double bedroom (8.9 m²): double bed, built-in wardrobes, next to the shower room.
+- Double bedroom (8.9 m²): double bed, built-in wardrobes, with ensuite shower room.
 - Bunk room (5.6 m²): wood-panelled, bunk beds.
 - Shower ensuite (2.75 m²): walk-in shower, washbasin, toilet, lit mirror. Also a full-size bathroom with a bathtub. Hall 4 m².
 - Check-in from ${houseRules.checkIn}, check-out by ${houseRules.checkOut}.

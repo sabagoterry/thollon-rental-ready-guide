@@ -82,8 +82,7 @@ const rooms = [
     size: "10.9 m²",
     img: living.url,
     text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed.",
-    textFr:
-      "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit pour deux personnes supplémentaires.",
+    textFr: "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit.",
   },
   {
     name: "Kitchen",
@@ -99,8 +98,8 @@ const rooms = [
     nameFr: "Chambre double",
     size: "8.9 m²",
     img: master.url,
-    text: "Double bed and built-in wardrobes, next to the shower room.",
-    textFr: "Lit double et placards intégrés, à côté de la salle d’eau.",
+    text: "Double bed and built-in wardrobes, with ensuite shower room.",
+    textFr: "Lit double et placards intégrés, à côté de la salle de douche.",
   },
   {
     name: "Bunk room",
