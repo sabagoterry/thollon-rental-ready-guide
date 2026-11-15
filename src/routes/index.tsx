@@ -156,7 +156,7 @@ const facts = [
   { icon: Wifi, en: "Fibre Optic", fr: "Fibre optique" },
 ];
 
-const LocalIcons
+const LocalIcons = [
   {
     icon: ShoppingCart,
     en: "Supermarket",
@@ -172,7 +172,7 @@ const LocalIcons
   
 ];
 
-const OtherActivitiesIcons
+const OtherActivitiesIcons = [
   { icon: bowlingIcon.url, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
   { icon: cinemaIcon.url, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
