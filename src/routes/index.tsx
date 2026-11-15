@@ -169,6 +169,14 @@ const localIcons = [
   },
   { icon: Martini, en: "Bars", fr: "Bars", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: UtensilsCrossed, en: "Restaurants", fr: "Restaurants", modes: [{ icon: Footprints, minutes: 5 }] },
+
+  { icon: bowlingIcon, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
+  { icon: cinemaIcon, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] }, 
+  { icon: golfIcon, en: "Golf", fr: "Golf", modes: [{ { icon: Car, minutes: 15 } }] }
+  { icon: lidoIcon, en: "Lido", fr: "Piscine", modes: [{ { icon: Car, minutes: 15 } }] }
+  { icon: waterparkIcon, en: "Waterpark", fr: "Parc Aquatique", modes: [{ { icon: Car, minutes: 15 } }] }
+  
+  
 ];
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
