@@ -25,7 +25,7 @@ Answer prospective guests' questions about the apartment and local area, using O
 APARTMENT
 - About 39 m², second floor of the Les Cyclamens building. Open all year.
 - When asked how many people can stay, use the owner's answer: "${sleepingCapacity.answer}" In French: "${sleepingCapacity.answerFr}" Do not simply promise capacity for 6.
-- Parking: ${apartmentAmenities.parkingFree ? "free" : "ask the owner"}. Towels: ${apartmentAmenities.towelsOnRequest ? "available on request" : "ask the owner"}.
+- Parking: ${apartmentAmenities.parkingFree ? "free" : "ask the owner"}. Towels: ${apartmentAmenities.towelsOnRequest ? "available on request" : "ask the owner"}. Bed linen: ${apartmentAmenities.linenOnRequest ? "available on request" : "ask the owner"}.
 - Skiing is ${apartmentAmenities.skiingMinutes} minutes away (travel mode not specified). Hiking is right outside.
 - Amenities: ${amenityList.map((a) => a.en).join(", ")}.
 - 2 bedrooms, ${washingFacilities.description}. Exactly two balconies: ${balconyText}.

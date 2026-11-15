@@ -21,6 +21,8 @@ export const houseRules = {
 
 export const apartmentAmenities = {
   parkingFree: true,
+  towelsOnRequest: true,
+  linenOnRequest: true,
   skiingMinutes: 5,
   hikingAtDoorstep: true,
 } as const;
@@ -47,6 +49,8 @@ export const amenityList = [
   { en: "Carbon monoxide alarm", fr: "Détecteur de monoxyde de carbone" },
   { en: "Fire extinguisher", fr: "Extincteur" },
   { en: "First aid kit", fr: "Trousse de premiers secours" },
+  { en: 'Towels (Available on Request)', fr: 'Serviettes (sur demande)', onRequest: true }
+  { en: 'Bed linen (Available on Request)', fr: 'Linge de lit (sur demande)', onRequest: true }
 ] as const;
 
 export const sleepingCapacity = {
