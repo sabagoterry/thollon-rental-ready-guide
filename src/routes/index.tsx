@@ -373,7 +373,7 @@ function Index() {
           </h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
             {tr(
-              "A charming apartment close to the cable car, restaurants and all village amenities — open for stays all year round.",
+              "A charming two bedroom, two bathroom apartment close to the cable car, restaurants and all village amenities — open for stays all year round.",
               "Un charmant appartement près de la télécabine, des restaurants et de tous les commerces du village — ouvert toute l’année.",
             )}
           </p>
