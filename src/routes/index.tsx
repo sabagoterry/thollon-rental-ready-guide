@@ -241,10 +241,10 @@ function Gallery() {
       <div className="mt-14">
         {/* RESPONSIVE THREE-COLUMN / GRID CONTAINER */}
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {/* COLUMN 1: LOCAL */}
+          {/* COLUMN 1: OTHER ACTIVITIES */}
           <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
             <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-              {tr("Local", "Sur place")}
+              {tr("Local", "Autres Activites")}
             </h2>
             <div className="flex flex-col gap-1">
               {localIcons.map(({ icon: Icon, en, modes }) => (
