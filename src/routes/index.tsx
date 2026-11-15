@@ -25,11 +25,11 @@ import {
   Kayak,
 } from "lucide-react";
 
-import bowlingIcon from "@/assets/icons/bowling.png";
-import cinemaIcon from "@/assets/icons/cinema.png";
-import golfIcon from "@/assets/icons/golf.png";
-import lidoIcon from "@/assets/icons/lido.png";
-import waterparkIcon from "@/assets/icons/waterpark.png";
+import bowlingIcon from "@/assets/icons/bowling.png.asset.json";
+import cinemaIcon from "@/assets/icons/cinema.png.asset.json";
+import golfIcon from "@/assets/icons/golf.png.asset.json";
+import lidoIcon from "@/assets/icons/lido.png.asset.json";
+import waterparkIcon from "@/assets/icons/waterpark.png.asset.json";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
@@ -170,11 +170,11 @@ const localIcons = [
   { icon: Martini, en: "Bars", fr: "Bars", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: UtensilsCrossed, en: "Restaurants", fr: "Restaurants", modes: [{ icon: Footprints, minutes: 5 }] },
 
-  { icon: bowlingIcon, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
-  { icon: cinemaIcon, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] }, 
-  { icon: golfIcon, en: "Golf", fr: "Golf", modes: [{ { icon: Car, minutes: 15 } }] }
-  { icon: lidoIcon, en: "Lido", fr: "Piscine", modes: [{ { icon: Car, minutes: 15 } }] }
-  { icon: waterparkIcon, en: "Waterpark", fr: "Parc Aquatique", modes: [{ { icon: Car, minutes: 15 } }] }
+  { icon: bowlingIcon.url, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
+  { icon: cinemaIcon.url, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
+  { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: lidoIcon.url, en: "Lido", fr: "Piscine", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
   
   
 ];
@@ -255,12 +255,16 @@ function Gallery() {
               {tr("Local", "Autres Activites")}
             </h2>
             <div className="flex flex-col gap-1">
-              {localIcons.map(({ icon: Icon, en, modes }) => (
+              {localIcons.map(({ icon: Icon, en, fr, modes }) => (
                 <div
                   key={en}
                   className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]"
                 >
-                  <Icon aria-hidden="true" className="size-[18px] text-[#78999e]" strokeWidth={2} />
+                  {typeof Icon === "string" ? (
+                    <img src={Icon} alt={tr(en, fr)} className="size-[18px] object-contain" />
+                  ) : (
+                    <Icon aria-label={tr(en, fr)} className="size-[18px] text-primary" strokeWidth={2} />
+                  )}
                   <div className="flex items-center gap-4">
                     {modes.map(({ icon: Mode, minutes }) => (
                       <span
