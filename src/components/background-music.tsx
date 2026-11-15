@@ -20,7 +20,10 @@ export function BackgroundMusic() {
     audio.loop = true;
     audio.volume = 0.25;
     audio.preload = "auto";
-    const onPlay = () => { setPlaying(true); setStarted(true); };
+    const onPlay = () => {
+      setPlaying(true);
+      setStarted(true);
+    };
     const onPause = () => setPlaying(false);
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
@@ -49,7 +52,7 @@ export function BackgroundMusic() {
       onClick={toggle}
       aria-pressed={playing}
       title={playing ? tr("Pause the music", "Mettre la musique en pause") : tr("Play the music", "Lancer la musique")}
-      className="fixed bottom-5 right-5 z-40 flex h-auto min-h-12 max-w-[calc(100vw-2.5rem)] items-center justify-center rounded-full border-0 band-sunset px-5 py-3 text-accent-foreground glow-accent transition hover:scale-105 md:bottom-6 md:right-6"
+      className="sr-only"
     >
       {playing && (
         <span
@@ -58,7 +61,13 @@ export function BackgroundMusic() {
         />
       )}
       {playing ? <Pause className="size-5" /> : <Music className="size-5" />}
-      <span className="whitespace-normal text-left">{playing ? tr("Pause Ski Sunday", "Pause Ski Sunday") : started ? tr("Resume Ski Sunday", "Reprendre Ski Sunday") : tr("click here if you like ski sunday", "cliquez ici si vous aimez Ski Sunday")}</span>
+      <span className="whitespace-normal text-left">
+        {playing
+          ? tr("Pause Ski Sunday", "Pause Ski Sunday")
+          : started
+            ? tr("Resume Ski Sunday", "Reprendre Ski Sunday")
+            : tr("click here if you like ski sunday", "cliquez ici si vous aimez Ski Sunday")}
+      </span>
     </Button>
   );
 }
