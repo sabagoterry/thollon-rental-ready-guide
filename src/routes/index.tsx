@@ -110,7 +110,8 @@ const rooms = [
     img: bunks.url,
     tall: true,
     text: "Cosy wood-panelled room with full-size bunk beds, each with privacy curtain — kids love it.",
-    textFr: "Chambre chaleureuse lambrissée, équipée de lits superposés de taille standard, chacun doté d’un rideau occultant — les enfants adorent.",
+    textFr:
+      "Chambre chaleureuse lambrissée, équipée de lits superposés de taille standard, chacun doté d’un rideau occultant — les enfants adorent.",
   },
   {
     name: "Shower ensuite",
@@ -394,37 +395,51 @@ function Index() {
         />
         <div className="bg-overlay absolute inset-0" />
         <div className="relative mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-24 text-primary-foreground">
-          <div className="max-w-xl">
-            <div className="flex items-center gap-4 md:gap-5">
-              <LogoMark />
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">
-                {tr("The apartment", "L’appartement")}
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+            {/* Left Column: Existing Overview content */}
+            <div className="max-w-xl">
+              <div className="flex items-center gap-4 md:gap-5">
+                <LogoMark />
+                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sunshine">
+                  {tr("The apartment", "L’appartement")}
+                </p>
+              </div>
+              <h2 className="mt-4 text-4xl md:text-5xl">{tr("Overview", "aperçu")}</h2>
+              <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-semibold">
+                <span className="inline-flex items-center gap-2">
+                  <Heart className="size-5" aria-hidden="true" />
+                  Airbnb {tr("Guest Favourite", "Coup de cœur voyageurs")}
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Award className="size-5" aria-hidden="true" />
+                  Airbnb Superhost
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Star className="size-5 fill-current" aria-hidden="true" />
+                  {airbnbReviews.rating.toLocaleString(lang, { minimumFractionDigits: 2 })}/5
+                </span>
+              </div>
+              <div className="mt-4 h-1.5 w-40 rounded-full bg-sunshine" />
+              <p className="mt-6 text-lg leading-relaxed opacity-95">
+                {tr(
+                  "On the second floor of Les Cyclamens building, the apartment is furnished to a high standard and is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.",
+                  "Situé au deuxième étage de l’immeuble Les Cyclamens, cet appartement bénéficie d’un aménagement de grande qualité ; il constitue un pied-à-terre chaleureux pour vos journées de ski en hiver, ainsi que pour la randonnée, le parapente et les excursions au bord du lac en été.",
+                )}
+              </p>
+              <GalleryLink className="mt-6" />
+            </div>
+
+            {/* Right Column: New family text box */}
+            <div className="rounded-2xl border border-primary-foreground/20 bg-card/15 p-8 text-primary-foreground shadow-lg backdrop-blur-md">
+              <p className="text-lg leading-relaxed opacity-95">
+                {tr(
+                  "Our family Alpine base for winter skiing and summer lakeside trails. Thollon is wonderfully family-friendly, and with two bathrooms, getting a group ready is effortless. We hope to welcome you to Les Cyclamens soon!",
+                  "Notre pied-à-terre alpin familial pour le ski en hiver et le lac en été. Thollon est une station idéale pour les familles, et avec deux salles de bains, se préparer à plusieurs devient un jeu d'enfant. Au plaisir de vous accueillir bientôt aux Cyclamens !",
+                )}
               </p>
             </div>
-            <h2 className="mt-4 text-4xl md:text-5xl">{tr("Overview", "aperçu")}</h2>
-            <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-semibold">
-              <span className="inline-flex items-center gap-2">
-                <Heart className="size-5" aria-hidden="true" />
-                Airbnb {tr("Guest Favourite", "Coup de cœur voyageurs")}
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Award className="size-5" aria-hidden="true" />
-                Airbnb Superhost
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Star className="size-5 fill-current" aria-hidden="true" />
-                {airbnbReviews.rating.toLocaleString(lang, { minimumFractionDigits: 2 })}/5
-              </span>
-            </div>
-            <div className="mt-4 h-1.5 w-40 rounded-full bg-sunshine" />
-            <p className="mt-6 text-lg leading-relaxed opacity-95">
-              {tr(
-                "On the second floor of Les Cyclamens building, the apartment is furnished to a high standard and is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.",
-                "Situé au deuxième étage de l’immeuble Les Cyclamens, cet appartement bénéficie d’un aménagement de grande qualité ; il constitue un pied-à-terre chaleureux pour vos journées de ski en hiver, ainsi que pour la randonnée, le parapente et les excursions au bord du lac en été.",
-              )}
-            </p>
-            <GalleryLink className="mt-6" />
           </div>
+
           <div className="mt-12 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
               { icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
