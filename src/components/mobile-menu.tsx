@@ -27,7 +27,7 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-label={open ? tr("Close menu", "Fermer le menu") : tr("Open menu", "Ouvrir le menu")}
-        className="inline-flex items-center justify-center rounded-md border border-primary/20 bg-white p-2 text-primary transition hover:border-accent hover:bg-white/90 hover:text-accent"
+        className="inline-flex size-12 items-center justify-center rounded-full border border-primary/20 bg-white text-primary shadow-lg transition hover:border-accent hover:bg-white/90 hover:text-accent"
       >
         {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
       </Button>
