@@ -19,7 +19,12 @@ import {
   Star,
   TowelRack,
   Layers,
-} from "lucide-react";
+  waves-ladder,
+  loader-pinwheel,
+  projector,
+  kayak,
+  } from "lucide-react";
+import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 import { FloorplanCompass } from "@/components/floorplan-compass";
 import { Button } from "@/components/ui/button";
