@@ -81,7 +81,7 @@ const rooms = [
     nameFr: "Séjour et salle à manger",
     size: "10.9 m²",
     img: living.url,
-    text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed for two extra guests.",
+    text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed.",
     textFr:
       "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit pour deux personnes supplémentaires.",
   },
