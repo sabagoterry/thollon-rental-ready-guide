@@ -440,7 +440,7 @@ function Index() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
+          <div className="mt-28 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
               { id: "parking", icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
               {
