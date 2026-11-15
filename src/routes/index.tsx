@@ -24,6 +24,13 @@ import {
   Projector,
   Kayak,
 } from "lucide-react";
+
+import bowlingIcon from "@/assets/icons/bowling.png";
+import cinemaIcon from "@/assets/icons/cinema.png";
+import golfIcon from "@/assets/icons/golf.png";
+import lidoIcon from "@/assets/icons/lido.png";
+import waterparkIcon from "@/assets/icons/waterpark.png";
+
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 import { FloorplanCompass } from "@/components/floorplan-compass";
