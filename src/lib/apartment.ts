@@ -14,9 +14,9 @@ export const houseRules = {
   checkOut: "10am",
   pets: "No pets.",
   smoking: "Strictly no smoking anywhere, including on the balconies.",
-  cleaning: "Cleaning can be arranged.",
-  linen: "Bed linen can be provided at an extra cost.",
   cancellation: "Free cancellation up to 45 days before arrival; after that a scaled cancellation charge applies.",
+  KeepingQuiet:
+    "To help us stay on good terms with our neighbours, please observe quiet hours from 11:00 PM to 7:00 AM. During these hours, please minimize noise in the shared hallways and courtyard.",
 } as const;
 
 export const apartmentAmenities = {
@@ -49,8 +49,8 @@ export const amenityList = [
   { en: "Carbon monoxide alarm", fr: "Détecteur de monoxyde de carbone" },
   { en: "Fire extinguisher", fr: "Extincteur" },
   { en: "First aid kit", fr: "Trousse de premiers secours" },
-  { en: 'Towels (Available on Request)', fr: 'Serviettes (sur demande)', onRequest: true },
-  { en: 'Bed linen (Available on Request)', fr: 'Linge de lit (sur demande)', onRequest: true }
+  { en: "Towels (Available on Request)", fr: "Serviettes (sur demande)", onRequest: true },
+  { en: "Bed linen (Available on Request)", fr: "Linge de lit (sur demande)", onRequest: true },
 ] as const;
 
 export const sleepingCapacity = {
