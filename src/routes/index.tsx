@@ -156,7 +156,7 @@ const facts = [
   { icon: Wifi, en: "Fibre Optic", fr: "Fibre optique" },
 ];
 
-const localIcons = [
+const LocalIcons
   {
     icon: ShoppingCart,
     en: "Supermarket",
@@ -169,15 +169,17 @@ const localIcons = [
   },
   { icon: Martini, en: "Bars", fr: "Bars", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: UtensilsCrossed, en: "Restaurants", fr: "Restaurants", modes: [{ icon: Footprints, minutes: 5 }] },
+  
+];
 
+const OtherActivitiesIcons
   { icon: bowlingIcon.url, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
   { icon: cinemaIcon.url, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
   { icon: lidoIcon.url, en: "Lido", fr: "Piscine", modes: [{ icon: Car, minutes: 15 }] },
   { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
-  
-  
 ];
+
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
 const skiingTowns = ["Bernex", "Leysin–Les Mosses", "Châtel", "Morzine", "Portes du Soleil"];
@@ -252,10 +254,10 @@ function Gallery() {
           {/* COLUMN 1: OTHER ACTIVITIES */}
           <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
             <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-              {tr("Local", "Autres Activites")}
+              {tr("Other Activities", "Autres Activites")}
             </h2>
             <div className="flex flex-col gap-1">
-              {localIcons.map(({ icon: Icon, en, fr, modes }) => (
+              {OtherActivitiesIcons.map(({ icon: Icon, en, fr, modes }) => (
                 <div
                   key={en}
                   className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]"
