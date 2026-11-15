@@ -394,7 +394,7 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="bg-overlay absolute inset-0" />
-{/* 2-Column Grid: pushes Left Column left and Right Column right */}
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-24 text-primary-foreground">
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left Column */}
             <div className="max-w-xl">
@@ -429,9 +429,9 @@ function Index() {
               <GalleryLink className="mt-6" />
             </div>
 
-            {/* Right Column: aligned with Overview heading and pushed right */}
+            {/* Right Column */}
             <div className="max-w-lg lg:ml-auto lg:mt-20">
-              <p className="text-lg leading-relaxed opacity-95">
+              <p className="text-lg italic leading-relaxed opacity-95">
                 {tr(
                   "We bought this apartment as an Alpine base for our growing family and have enjoyed wonderful ski holidays on the slopes and summer holidays walking and on the lake with our children.  The resort is extremely family friendly and we particularly like having two bathrooms in the apartment which makes getting ready as a group much easier!  Thank you for looking at our listing and we hope to welcome you to our mountain apartment soon!",
                   "Nous avons acheté cet appartement comme pied-à-terre dans les Alpes pour notre famille, qui s'est agrandie au fil du temps. Nous y avons passé de merveilleux séjours, profitant des pistes de ski en hiver, ainsi que de randonnées et d'activités au bord du lac en été, avec nos enfants. La station est parfaitement adaptée aux familles, et nous apprécions tout particulièrement la présence de deux salles de bain dans l'appartement, ce qui facilite grandement les préparatifs lorsque l'on est en groupe ! Merci de vous intéresser à notre annonce ; nous espérons avoir le plaisir de vous accueillir très bientôt dans notre appartement à la montagne !",
