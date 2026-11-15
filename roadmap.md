@@ -1,4 +1,5 @@
 # Roadmap
+
 - [x] Add nine photo-section gallery icons, verified Airbnb review excerpts and Guest Favourite/Superhost recognition with the actual 4.81/5 rating; remove the apartment-photo towels label. Desktop/mobile and gallery browsing checked; 22 tests passed.
 - [x] Apply November 14 comments: swapped availability and Questions, added Airbnb Book navigation, updated availability booking label and Refresh position (ff3dcbbe, f2ee0dbc, 83990691); desktop/mobile links and Refresh verified, eight tests passed.
 - [x] Apply November 13 comments: relocated apartment facts, added fibre Wi-Fi, updated sofa label, moved activities and key information to Local Area, simplified Book, added Portes du Soleil travel time, removed photo air freshener, and confirmed floor-plan download; desktop/mobile checks and 24 tests passed.
@@ -80,6 +81,6 @@
 - [x] Package and deliver a fresh full download of the site
 - [x] Hero copy: changed "shops and restaurants" to "restaurants and all village amenities"
 - [x] Scrolled header: section links become right-edge buttons like the floating Book button
-- [x] Restyle "Furnished to a high standard" section per owner choice; keep wording clear
+- [x] Restyle "Overview" section per owner choice; keep wording clear
 - [x] Rooms section: each room is now a full-width photo band with overlaid white text
 - [x] Apply outstanding comments (Nov 8 13:41)
