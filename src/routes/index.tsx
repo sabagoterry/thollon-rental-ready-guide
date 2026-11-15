@@ -443,16 +443,43 @@ function Index() {
 
           <div className="mt-12 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
-              { icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
+              { id: "parking", icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
               {
+                id: "skiing",
                 icon: skiingIcon.url,
                 detail: `${apartmentAmenities.skiingMinutes} minutes`,
                 subIcon: Footprints,
               },
-              { icon: hikingIcon.url, detail: tr("Right outside", "Juste à la porte") },
+              { id: "hiking", icon: hikingIcon.url, detail: tr("Right outside", "Juste à la porte") },
+              {
+                id: "bars",
+                Icon: Martini,
+                detail: tr("5 minutes", "5 minutes"),
+                subIcon: Footprints,
+              },
+              {
+                id: "restaurants",
+                Icon: UtensilsCrossed,
+                detail: tr("5 minutes", "5 minutes"),
+                subIcon: Footprints,
+              },
+              {
+                id: "supermarket",
+                Icon: ShoppingCart,
+                detail: tr("10 minutes", "10 minutes"),
+                subIcon: Footprints,
+              },
             ].map((item) => (
-              <div key={item.detail} className="flex flex-col items-center gap-1.5 text-center slideshow-caption">
-                <img src={item.icon} alt="" aria-hidden="true" className="h-14 w-20 object-contain" />
+              <div key={item.id} className="flex flex-col items-center gap-1.5 text-center slideshow-caption">
+                {item.icon ? (
+                  <img src={item.icon} alt="" aria-hidden="true" className="h-14 w-20 object-contain" />
+                ) : (
+                  item.Icon && (
+                    <div className="flex h-14 w-20 items-center justify-center">
+                      <item.Icon className="size-11" strokeWidth={1.6} aria-hidden="true" />
+                    </div>
+                  )
+                )}
                 <span className="inline-flex items-center gap-1.5 text-sm">
                   {item.subIcon && <item.subIcon className="size-4" aria-hidden="true" />}
                   {item.detail}
