@@ -109,8 +109,8 @@ const rooms = [
     size: "5.6 m²",
     img: bunks.url,
     tall: true,
-    text: "Cosy wood-panelled room with bunk beds — kids love it.",
-    textFr: "Chambre douillette lambrissée avec lits superposés — les enfants adorent.",
+    text: "Cosy wood-panelled room with full-size bunk beds, each with privacy curtain — kids love it.",
+    textFr: "Chambre chaleureuse lambrissée, équipée de lits superposés de taille standard, chacun doté d’un rideau occultant — les enfants adorent.",
   },
   {
     name: "Shower ensuite",
