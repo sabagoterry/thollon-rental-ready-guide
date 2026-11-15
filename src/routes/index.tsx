@@ -433,8 +433,8 @@ function Index() {
             <div className="rounded-2xl border border-primary-foreground/20 bg-card/15 p-8 text-primary-foreground shadow-lg backdrop-blur-md">
               <p className="text-lg leading-relaxed opacity-95">
                 {tr(
-                  "Our family Alpine base for winter skiing and summer lakeside trails. Thollon is wonderfully family-friendly, and with two bathrooms, getting a group ready is effortless. We hope to welcome you to Les Cyclamens soon!",
-                  "Notre pied-à-terre alpin familial pour le ski en hiver et le lac en été. Thollon est une station idéale pour les familles, et avec deux salles de bains, se préparer à plusieurs devient un jeu d'enfant. Au plaisir de vous accueillir bientôt aux Cyclamens !",
+                  "We bought this apartment as an Alpine base for our growing family and have enjoyed wonderful ski holidays on the slopes and summer holidays walking and on the lake with our children.  The resort is extremely family friendly and we particularly like having two bathrooms in the apartment which makes getting ready as a group much easier!  Thank you for looking at our listing and we hope to welcome you to our mountain apartment soon!",
+                  "Nous avons acheté cet appartement comme pied-à-terre dans les Alpes pour notre famille, qui s'est agrandie au fil du temps. Nous y avons passé de merveilleux séjours, profitant des pistes de ski en hiver, ainsi que de randonnées et d'activités au bord du lac en été, avec nos enfants. La station est parfaitement adaptée aux familles, et nous apprécions tout particulièrement la présence de deux salles de bain dans l'appartement, ce qui facilite grandement les préparatifs lorsque l'on est en groupe ! Merci de vous intéresser à notre annonce ; nous espérons avoir le plaisir de vous accueillir très bientôt dans notre appartement à la montagne !",
                 )}
               </p>
             </div>
