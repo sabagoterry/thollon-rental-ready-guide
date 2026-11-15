@@ -17,6 +17,8 @@ import {
   Heart,
   Award,
   Star,
+  Towel-Rack,
+  Layers, 
 } from "lucide-react";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 import { FloorplanCompass } from "@/components/floorplan-compass";
