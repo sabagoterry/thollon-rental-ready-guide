@@ -19,7 +19,7 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
   ] as const;
 
   return (
-    <div className="relative md:hidden">
+    <div className="relative lg:hidden">
       <Button
         variant="ghost"
         size="icon"
