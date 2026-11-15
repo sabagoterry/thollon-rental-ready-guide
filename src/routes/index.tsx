@@ -23,6 +23,7 @@ import {
   LoaderPinwheel,
   Projector,
   Kayak,
+  type LucideIcon,
 } from "lucide-react";
 
 import bowlingIcon from "@/assets/icons/bowling.png.asset.json";
@@ -172,7 +173,12 @@ const LocalIcons = [
   
 ];
 
-const OtherActivitiesIcons = [
+const OtherActivitiesIcons: Array<{
+  icon: string | LucideIcon;
+  en: string;
+  fr: string;
+  modes: Array<{ icon: LucideIcon; minutes: number }>;
+}> = [
   { icon: bowlingIcon.url, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
   { icon: cinemaIcon.url, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
