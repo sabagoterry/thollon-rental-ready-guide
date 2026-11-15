@@ -41,13 +41,19 @@ const options: { lang: Lang; label: string; Flag: () => ReactElement }[] = [
 ];
 
 export function LanguageToggle() {
-  const { lang, setLang } = useLang();
-
   const handleFlagClick = (selectedLang: Lang) => {
     setLang(selectedLang);
+    const musicBtn = document.querySelector<HTMLButtonElement>("[data-background-music]");
+    if (!musicBtn) return;
+
+    const isPlaying = musicBtn.getAttribute("aria-pressed") === "true";
+
     if (selectedLang === "en") {
-      const musicBtn = document.querySelector<HTMLButtonElement>("[data-background-music]");
-      musicBtn?.click();
+      // Toggle on or off when clicking the Union Jack
+      musicBtn.click();
+    } else if (selectedLang === "fr" && isPlaying) {
+      // Only stop the music when clicking the Tricolore if it is already playing
+      musicBtn.click();
     }
   };
 
