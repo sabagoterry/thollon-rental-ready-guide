@@ -127,8 +127,8 @@ const rooms = [
     size: "",
     img: bath.url,
     tall: true,
-    text: "Bathtub with shower, washbasin and toilet.",
-    textFr: "Baignoire avec douche, lavabo et WC.",
+    text: "Full size Bathtub with shower, washbasin and toilet.",
+    textFr: "Baignoire de taille standard avec douche, lavabo et wc.",
   },
 ];
 
