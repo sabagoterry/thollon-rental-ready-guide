@@ -227,7 +227,6 @@ function Gallery() {
       <div className="mt-14">
         {/* RESPONSIVE THREE-COLUMN / GRID CONTAINER */}
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          
           {/* COLUMN 1: LOCAL */}
           <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
             <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
@@ -235,11 +234,17 @@ function Gallery() {
             </h2>
             <div className="flex flex-col gap-1">
               {localIcons.map(({ icon: Icon, en, modes }) => (
-                <div key={en} className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]">
+                <div
+                  key={en}
+                  className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]"
+                >
                   <Icon aria-hidden="true" className="size-[18px] text-[#78999e]" strokeWidth={2} />
                   <div className="flex items-center gap-4">
                     {modes.map(({ icon: Mode, minutes }) => (
-                      <span key={Mode.displayName ?? Mode.name} className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                      <span
+                        key={Mode.displayName ?? Mode.name}
+                        className="flex items-center gap-1.5 text-[13px] text-[#657e85]"
+                      >
                         <Mode aria-hidden="true" className="size-[18px]" strokeWidth={2} />
                         {minutes != null && <span>{minutes} min</span>}
                       </span>
@@ -261,7 +266,10 @@ function Gallery() {
                 if (!town) return null;
                 const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
                 return (
-                  <div key={town.name} className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between">
+                  <div
+                    key={town.name}
+                    className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
+                  >
                     <a
                       href={town.url}
                       target="_blank"
@@ -301,7 +309,10 @@ function Gallery() {
                 if (!town) return null;
                 const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
                 return (
-                  <div key={town.name} className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between">
+                  <div
+                    key={town.name}
+                    className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
+                  >
                     <a
                       href={town.url}
                       target="_blank"
@@ -329,7 +340,6 @@ function Gallery() {
               })}
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -392,15 +402,24 @@ function Index() {
             </div>
             <h2 className="mt-4 text-4xl md:text-5xl">{tr("Furnished to a high standard", "Aménagé avec soin")}</h2>
             <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-semibold">
-              <span className="inline-flex items-center gap-2"><Heart className="size-5" aria-hidden="true" />Airbnb {tr('Guest Favourite', 'Coup de cœur voyageurs')}</span>
-              <span className="inline-flex items-center gap-2"><Award className="size-5" aria-hidden="true" />Airbnb Superhost</span>
-              <span className="inline-flex items-center gap-2"><Star className="size-5 fill-current" aria-hidden="true" />{airbnbReviews.rating.toLocaleString(lang, { minimumFractionDigits: 2 })}/5</span>
+              <span className="inline-flex items-center gap-2">
+                <Heart className="size-5" aria-hidden="true" />
+                Airbnb {tr("Guest Favourite", "Coup de cœur voyageurs")}
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Award className="size-5" aria-hidden="true" />
+                Airbnb Superhost
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Star className="size-5 fill-current" aria-hidden="true" />
+                {airbnbReviews.rating.toLocaleString(lang, { minimumFractionDigits: 2 })}/5
+              </span>
             </div>
             <div className="mt-4 h-1.5 w-40 rounded-full bg-sunshine" />
             <p className="mt-6 text-lg leading-relaxed opacity-95">
               {tr(
-                "On the second floor of the Les Cyclamens building, the apartment is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.",
-                "Au deuxième étage de la résidence Les Cyclamens, l’appartement est un nid douillet pour skier l’hiver, randonner, voler en parapente et profiter du lac l’été.",
+                "On the second floor of Les Cyclamens building, the apartment is furnished to a high standard and is a cosy base for ski days in winter and hiking, paragliding and lake trips in summer.",
+                "Situé au deuxième étage de l’immeuble Les Cyclamens, cet appartement bénéficie d’un aménagement de grande qualité ; il constitue un pied-à-terre chaleureux pour vos journées de ski en hiver, ainsi que pour la randonnée, le parapente et les excursions au bord du lac en été.",
               )}
             </p>
             <GalleryLink className="mt-6" />
