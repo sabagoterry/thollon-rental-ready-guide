@@ -29,13 +29,13 @@ export function MobileMenu({ includeSections = false }: { includeSections?: bool
         aria-label={open ? tr("Close menu", "Fermer le menu") : tr("Open menu", "Ouvrir le menu")}
         className="inline-flex size-12 items-center justify-center rounded-full border border-primary/20 bg-white text-primary shadow-lg transition hover:border-accent hover:bg-white/90 hover:text-accent"
       >
-        {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
+        {open ? <X className="size-6" aria-hidden="true" /> : <Menu className="size-6" aria-hidden="true" />}
       </Button>
 
       {open && (
         <nav
           aria-label={tr("Mobile pages", "Pages")}
-          className="card-vivid absolute right-0 top-full z-50 mt-2 w-56 rounded-md bg-card p-2 shadow-xl"
+          className="card-vivid absolute bottom-full right-0 z-50 mb-2 w-56 rounded-md bg-card p-2 shadow-xl"
         >
           <div className="bar-flow h-1 rounded-t-md" />
           {links.map((l) => (

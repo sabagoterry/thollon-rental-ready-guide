@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Link } from '@tanstack/react-router';
-import { LogoMark } from '@/components/logo-mark';
-import { LanguageToggle } from '@/components/language-toggle';
-import { MobileMenu } from '@/components/mobile-menu';
-import { Button } from '@/components/ui/button';
-import { House, MessageCircle, Ticket } from 'lucide-react';
-import { DEFAULT_AIRBNB_BOOKING_URL } from '@/lib/booking';
-import directionsIcon from '@/assets/navigation-directions.png.asset.json';
-import localIcon from '@/assets/navigation-local-area.png.asset.json';
-import calendarIcon from '@/assets/navigation-availability.png.asset.json';
-import galleryIcon from '@/assets/navigation-gallery.png.asset.json';
-import locationIcon from '@/assets/navigation-location.png.asset.json';
-import { useLang } from '@/lib/i18n';
+import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { LogoMark } from "@/components/logo-mark";
+import { LanguageToggle } from "@/components/language-toggle";
+import { Button } from "@/components/ui/button";
+import { House, MessageCircle, Ticket } from "lucide-react";
+import { DEFAULT_AIRBNB_BOOKING_URL } from "@/lib/booking";
+import directionsIcon from "@/assets/navigation-directions.png.asset.json";
+import localIcon from "@/assets/navigation-local-area.png.asset.json";
+import calendarIcon from "@/assets/navigation-availability.png.asset.json";
+import galleryIcon from "@/assets/navigation-gallery.png.asset.json";
+import locationIcon from "@/assets/navigation-location.png.asset.json";
+import { useLang } from "@/lib/i18n";
 
 export function HomeHeader() {
   const { tr } = useLang();
@@ -19,17 +18,17 @@ export function HomeHeader() {
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 100);
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    return () => window.removeEventListener('scroll', update);
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   const sections = [
-    { href: '#availability', en: 'Availability', fr: 'Disponibilités', image: calendarIcon.url },
-    { to: '/gallery', en: 'Gallery', fr: 'Galerie', image: galleryIcon.url },
-    { to: '/location', en: 'Location', fr: 'Situation', image: localIcon.url },
-    { to: '/getting-here', en: 'Getting here', fr: 'Venir', image: directionsIcon.url },
-    { to: '/local-area', en: 'Local area', fr: 'Le coin', image: locationIcon.url },
-    { href: '#ask', en: 'Ask us', fr: 'Questions', image: null },
+    { href: "#availability", en: "Availability", fr: "Disponibilités", image: calendarIcon.url },
+    { to: "/gallery", en: "Gallery", fr: "Galerie", image: galleryIcon.url },
+    { to: "/location", en: "Location", fr: "Situation", image: localIcon.url },
+    { to: "/getting-here", en: "Getting here", fr: "Venir", image: directionsIcon.url },
+    { to: "/local-area", en: "Local area", fr: "Le coin", image: locationIcon.url },
+    { href: "#ask", en: "Ask us", fr: "Questions", image: null },
   ] as const;
 
   return (
@@ -37,22 +36,41 @@ export function HomeHeader() {
       <header className="home-navigation pointer-events-none absolute inset-x-0 top-0 z-40 px-3 py-5">
         <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-4 px-3">
           <LogoMark />
-          <nav aria-label={tr('Main', 'Navigation principale')} className="flex items-center gap-4 text-sm text-primary-foreground">
+          <nav
+            aria-label={tr("Main", "Navigation principale")}
+            className="flex items-center gap-4 text-sm text-primary-foreground"
+          >
             {sections.map((s) => {
               const label = tr(s.en, s.fr);
-              const content = <><span>{label}</span><span className="flex size-9 items-center justify-center rounded-full bg-background text-primary">{s.image ? <img src={s.image} alt="" className="size-8 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-6!" />}</span></>;
+              const content = (
+                <>
+                  <span>{label}</span>
+                  <span className="flex size-9 items-center justify-center rounded-full bg-background text-primary">
+                    {s.image ? (
+                      <img src={s.image} alt="" className="size-8 rounded-full object-contain" />
+                    ) : (
+                      <MessageCircle aria-hidden="true" className="size-6!" />
+                    )}
+                  </span>
+                </>
+              );
               return (
-                <Button key={s.en} asChild variant="ghost" className="hidden h-auto flex-col gap-2 px-1 py-2 text-inherit hover:text-inherit md:inline-flex">
-                  {'to' in s ? <Link to={s.to}>{content}</Link> : <a href={s.href}>{content}</a>}
+                <Button
+                  key={s.en}
+                  asChild
+                  variant="ghost"
+                  className="hidden h-auto flex-col gap-2 px-1 py-2 text-inherit hover:text-inherit md:inline-flex"
+                >
+                  {"to" in s ? <Link to={s.to}>{content}</Link> : <a href={s.href}>{content}</a>}
                 </Button>
               );
             })}
             <Button asChild className="hidden h-auto flex-col gap-2 px-3 py-2 md:inline-flex">
               <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                <span>{tr('Book', 'Réserver')}</span><Ticket aria-hidden="true" className="size-7!" />
+                <span>{tr("Book", "Réserver")}</span>
+                <Ticket aria-hidden="true" className="size-7!" />
               </a>
             </Button>
-            <MobileMenu includeSections />
             <LanguageToggle />
           </nav>
         </div>
@@ -60,29 +78,43 @@ export function HomeHeader() {
 
       {scrolled && (
         <nav
-          aria-label={tr('Sections', 'Sections')}
+          aria-label={tr("Sections", "Sections")}
           className="fixed right-3 top-24 z-40 hidden flex-col items-end gap-2 md:flex"
         >
           <Button asChild variant="outline" size="icon" className="size-12 rounded-full shadow-lg">
-            <Link to="/" aria-label={tr('Home', 'Accueil')} title={tr('Home', 'Accueil')}>
+            <Link to="/" aria-label={tr("Home", "Accueil")} title={tr("Home", "Accueil")}>
               <House aria-hidden="true" className="size-7!" />
             </Link>
           </Button>
           {sections.map((s) => {
             const label = tr(s.en, s.fr);
-            const icon = s.image ? <img src={s.image} alt="" className="size-11 rounded-full object-contain" /> : <MessageCircle aria-hidden="true" className="size-7!" />;
+            const icon = s.image ? (
+              <img src={s.image} alt="" className="size-11 rounded-full object-contain" />
+            ) : (
+              <MessageCircle aria-hidden="true" className="size-7!" />
+            );
             return (
               <Button key={s.en} asChild variant="outline" size="icon" className="size-12 rounded-full shadow-lg">
-                {'to' in s ? (
-                  <Link to={s.to} aria-label={label} title={label}>{icon}</Link>
+                {"to" in s ? (
+                  <Link to={s.to} aria-label={label} title={label}>
+                    {icon}
+                  </Link>
                 ) : (
-                  <a href={s.href} aria-label={label} title={label}>{icon}</a>
+                  <a href={s.href} aria-label={label} title={label}>
+                    {icon}
+                  </a>
                 )}
               </Button>
             );
           })}
           <Button asChild size="icon" className="size-12 rounded-full shadow-lg">
-            <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer" aria-label={tr('Book', 'Réserver')} title={tr('Book', 'Réserver')}>
+            <a
+              href={DEFAULT_AIRBNB_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={tr("Book", "Réserver")}
+              title={tr("Book", "Réserver")}
+            >
               <Ticket aria-hidden="true" className="size-7!" />
             </a>
           </Button>
