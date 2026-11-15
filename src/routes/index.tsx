@@ -170,7 +170,6 @@ const LocalIcons = [
   },
   { icon: Martini, en: "Bars", fr: "Bars", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: UtensilsCrossed, en: "Restaurants", fr: "Restaurants", modes: [{ icon: Footprints, minutes: 5 }] },
-  
 ];
 
 const OtherActivitiesIcons: Array<{
@@ -185,7 +184,6 @@ const OtherActivitiesIcons: Array<{
   { icon: lidoIcon.url, en: "Lido", fr: "Piscine", modes: [{ icon: Car, minutes: 15 }] },
   { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
-
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
 const skiingTowns = ["Bernex", "Leysin–Les Mosses", "Châtel", "Morzine", "Portes du Soleil"];
@@ -269,9 +267,9 @@ function Gallery() {
                   className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]"
                 >
                   {typeof Icon === "string" ? (
-                    <img src={Icon} alt={tr(en, fr)} className="size-[18px] object-contain" />
+                    <img src={Icon} alt={tr(en, fr)} className="size-10 object-contain" />
                   ) : (
-                    <Icon aria-label={tr(en, fr)} className="size-[18px] text-primary" strokeWidth={2} />
+                    <Icon aria-label={tr(en, fr)} className="size-10 text-primary" strokeWidth={2} />
                   )}
                   <div className="flex items-center gap-4">
                     {modes.map(({ icon: Mode, minutes }) => (
