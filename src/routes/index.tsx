@@ -652,10 +652,10 @@ function Index() {
         >
           <Link
             to="/local-area"
-            className="flex w-1/2 min-w-[240px] flex-col justify-between rounded-2xl bg-[#669297] p-6 text-white shadow-sm transition hover:opacity-95"
+            className="flex w-full flex-col justify-between rounded-2xl bg-[#669297] p-6 text-white shadow-sm transition hover:opacity-95"
           >
             <h3 className="text-xl font-bold">{tr("Local Area", "Environs")}</h3>
-            <span className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium">
+            <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
               {tr("Take a look", "Découvrir")} <ArrowRight className="size-4" />
             </span>
           </Link>
