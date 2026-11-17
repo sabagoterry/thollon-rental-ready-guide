@@ -253,14 +253,14 @@ function Gallery() {
         </Link>
       </Button>
 
-      {/* 1. NEW FULL-WIDTH WHIZZY BENTO ROW (Isolated from side columns) */}
+      {/* 1. NEW FULL-WIDTH WHIZZY BENTO ROW */}
       <div className="mt-14 w-full max-w-[1200px] mx-auto">
         <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
           {tr("Other Activities", "Autres Activites")}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
-          {OtherActivitiesIcons.map(({ en, fr, modes, img }, index) => {
+          {OtherActivitiesIcons.map(({ en, fr, modes, icon: Icon }, index) => {
             const gridSpans = [
               "md:col-span-4 h-56",
               "md:col-span-2 h-56",
@@ -275,8 +275,9 @@ function Gallery() {
                 key={en}
                 className={`group relative overflow-hidden rounded-2xl bg-slate-900 col-span-1 sm:col-span-1 ${layoutClass} transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1`}
               >
+                {/* Dynamically uses your 'icon' string value as the image source URL */}
                 <img
-                  src={img || "/images/placeholder-activity.jpg"}
+                  src={typeof Icon === "string" ? Icon : "/images/placeholder-activity.jpg"}
                   alt={tr(en, fr)}
                   className="absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-500 ease-out group-hover:scale-105"
                 />
