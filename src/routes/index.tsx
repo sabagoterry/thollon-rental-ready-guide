@@ -242,6 +242,7 @@ function Gallery() {
   const { tr } = useLang();
   return (
     <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
+      {/* Location Link Button Banner */}
       <Button asChild className="h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
         <Link to="/location">
           <span className="text-sm uppercase">{tr("Location", "Situation")}</span>
@@ -252,153 +253,146 @@ function Gallery() {
         </Link>
       </Button>
 
-      {/* FULL WIDTH SECTION: OTHER ACTIVITIES */}
-<div className="col-span-1 md:col-span-2 xl:col-span-3 mt-8">
-  <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-    {tr("Other Activities", "Autres Activites")}
-  </h2>
-  
-  {/* The Whizzy Bento Box Grid Layout */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
-    {OtherActivitiesIcons.map(({ en, fr, modes, img }, index) => {
-      // Dynamic grid spans to create the asymmetrical bento layout puzzle automatically
-      const gridSpans = [
-        "md:col-span-4 h-56", // Item 1 (e.g. Bowling) - Large wide
-        "md:col-span-2 h-56", // Item 2 (e.g. Cinema) - Medium
-        "md:col-span-2 h-56", // Item 3 (e.g. Golf) - Medium
-        "md:col-span-4 h-56", // Item 4 (e.g. Lido) - Large wide
-        "md:col-span-6 h-48", // Item 5 (e.g. Water Park) - Extra wide horizontal footer
-      ];
-      const standardSpan = "md:col-span-2 h-56";
-      const layoutClass = gridSpans[index] || standardSpan;
+      {/* 1. NEW FULL-WIDTH WHIZZY BENTO ROW (Isolated from side columns) */}
+      <div className="mt-14 w-full max-w-[1200px] mx-auto">
+        <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+          {tr("Other Activities", "Autres Activites")}
+        </h2>
 
-      return (
-        <div
-          key={en}
-          className={`group relative overflow-hidden rounded-2xl bg-slate-900 col-span-1 sm:col-span-1 ${layoutClass} transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1`}
-        >
-          {/* Background Image with Hover Scale Effect */}
-          <img 
-            src={img || "/images/placeholder-activity.jpg"} 
-            alt={tr(en, fr)} 
-            className="absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-500 ease-out group-hover:scale-105" 
-          />
-          
-          {/* Smooth Dark Gradient for Typography Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
-          
-          {/* Card Content Overlay */}
-          <div className="absolute bottom-0 left-0 p-6 w-full flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 z-10">
-            <div>
-              <h3 className="text-xl font-black tracking-wide text-white uppercase drop-shadow-sm">
-                {tr(en, fr)}
-              </h3>
-            </div>
-            
-            {/* Travel Mode Pills */}
-            <div className="flex flex-wrap gap-1.5 self-start sm:self-end">
-              {modes.map(({ icon: Mode, minutes }) => (
-                <span
-                  key={Mode.displayName ?? Mode.name}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold text-white border border-white/10"
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
+          {OtherActivitiesIcons.map(({ en, fr, modes, img }, index) => {
+            const gridSpans = [
+              "md:col-span-4 h-56",
+              "md:col-span-2 h-56",
+              "md:col-span-2 h-56",
+              "md:col-span-4 h-56",
+              "md:col-span-6 h-48",
+            ];
+            const layoutClass = gridSpans[index] || "md:col-span-2 h-56";
+
+            return (
+              <div
+                key={en}
+                className={`group relative overflow-hidden rounded-2xl bg-slate-900 col-span-1 sm:col-span-1 ${layoutClass} transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1`}
+              >
+                <img
+                  src={img || "/images/placeholder-activity.jpg"}
+                  alt={tr(en, fr)}
+                  className="absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+
+                <div className="absolute bottom-0 left-0 p-6 w-full flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 z-10">
+                  <div>
+                    <h3 className="text-xl font-black tracking-wide text-white uppercase drop-shadow-sm">
+                      {tr(en, fr)}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 self-start sm:self-end">
+                    {modes.map(({ icon: Mode, minutes }, mIdx) => (
+                      <span
+                        key={mIdx}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold text-white border border-white/10"
+                      >
+                        <Mode aria-hidden="true" className="size-4 text-white" strokeWidth={2.5} />
+                        {minutes != null && <span>{minutes} min</span>}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 2. RESPONSIVE SIDE-BY-SIDE GRID FOR ORIGINAL LOWER SECTIONS */}
+      <div className="mt-10 mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2">
+        {/* COLUMN 1: DAYS OUT */}
+        <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
+          <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+            {tr("Days out", "Excursions")}
+          </h2>
+          <div className="flex flex-col gap-1">
+            {dayOutTowns.map((name) => {
+              const town = dayTrips.find((t) => t.name === name);
+              if (!town) return null;
+              const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
+              return (
+                <div
+                  key={town.name}
+                  className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
                 >
-                  <Mode aria-hidden="true" className="size-4 text-white" strokeWidth={2.5} />
-                  {minutes != null && <span>{minutes} min</span>}
-                </span>
-              ))}
-            </div>
+                  <a
+                    href={town.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
+                  >
+                    {town.name}
+                  </a>
+                  <div className="flex items-center gap-4">
+                    {times.car && (
+                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                        <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                        {times.car}
+                      </span>
+                    )}
+                    {times.bus && (
+                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                        <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                        {times.bus}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      );
-    })}
-  </div>
-</div>
 
-
-          {/* COLUMN 2: DAYS OUT */}
-          <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
-            <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-              {tr("Days out", "Excursions")}
-            </h2>
-            <div className="flex flex-col gap-1">
-              {dayOutTowns.map((name) => {
-                const town = dayTrips.find((t) => t.name === name);
-                if (!town) return null;
-                const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
-                return (
-                  <div
-                    key={town.name}
-                    className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
+        {/* COLUMN 2: SKIING CLOSE BY */}
+        <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
+          <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+            {tr("Skiing close by", "Ski à proximité")}
+          </h2>
+          <div className="flex flex-col gap-1">
+            {skiingTowns.map((name) => {
+              const town = dayTrips.find((t) => t.name === name);
+              if (!town) return null;
+              const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
+              return (
+                <div
+                  key={town.name}
+                  className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <a
+                    href={town.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
                   >
-                    <a
-                      href={town.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
-                    >
-                      {town.name}
-                    </a>
-                    <div className="flex items-center gap-4">
-                      {times.car && (
-                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                          <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                          {times.car}
-                        </span>
-                      )}
-                      {times.bus && (
-                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                          <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                          {times.bus}
-                        </span>
-                      )}
-                    </div>
+                    {town.name}
+                  </a>
+                  <div className="flex items-center gap-4">
+                    {times.car && (
+                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                        <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                        {times.car}
+                      </span>
+                    )}
+                    {times.bus && (
+                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
+                        <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+                        {times.bus}
+                      </span>
+                    )}
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* COLUMN 3: SKIING CLOSE BY */}
-          <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
-            <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-              {tr("Skiing close by", "Ski à proximité")}
-            </h2>
-            <div className="flex flex-col gap-1">
-              {skiingTowns.map((name) => {
-                const town = dayTrips.find((t) => t.name === name);
-                if (!town) return null;
-                const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
-                return (
-                  <div
-                    key={town.name}
-                    className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <a
-                      href={town.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
-                    >
-                      {town.name}
-                    </a>
-                    <div className="flex items-center gap-4">
-                      {times.car && (
-                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                          <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                          {times.car}
-                        </span>
-                      )}
-                      {times.bus && (
-                        <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                          <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                          {times.bus}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
