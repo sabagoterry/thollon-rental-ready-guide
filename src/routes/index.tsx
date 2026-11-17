@@ -650,10 +650,13 @@ function Index() {
           asChild
           className="group h-auto min-h-64 flex-col items-start justify-between gap-6 whitespace-normal p-8 text-left"
         >
-          <Link to="/local-area">
-            <span className="font-display text-3xl leading-snug">{tr("Local Area", "Les environs")}</span>
-            <span className="inline-flex items-center gap-2">
-              {tr("Take a look", "jetez un oeil")} <ArrowRight />
+          <Link
+            to="/local-area"
+            className="flex w-1/2 min-w-[240px] flex-col justify-between rounded-2xl bg-[#669297] p-6 text-white shadow-sm transition hover:opacity-95"
+          >
+            <h3 className="text-xl font-bold">{tr("Local Area", "Environs")}</h3>
+            <span className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium">
+              {tr("Take a look", "Découvrir")} <ArrowRight className="size-4" />
             </span>
           </Link>
         </Button>
