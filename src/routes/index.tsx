@@ -252,40 +252,68 @@ function Gallery() {
         </Link>
       </Button>
 
-      <div className="mt-14">
-        {/* RESPONSIVE THREE-COLUMN / GRID CONTAINER */}
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {/* COLUMN 1: OTHER ACTIVITIES */}
-          <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
-            <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-              {tr("Other Activities", "Autres Activites")}
-            </h2>
-            <div className="flex flex-col gap-1">
-              {OtherActivitiesIcons.map(({ icon: Icon, en, fr, modes }) => (
-                <div
-                  key={en}
-                  className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)]"
+      {/* FULL WIDTH SECTION: OTHER ACTIVITIES */}
+<div className="col-span-1 md:col-span-2 xl:col-span-3 mt-8">
+  <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+    {tr("Other Activities", "Autres Activites")}
+  </h2>
+  
+  {/* The Whizzy Bento Box Grid Layout */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
+    {OtherActivitiesIcons.map(({ en, fr, modes, img }, index) => {
+      // Dynamic grid spans to create the asymmetrical bento layout puzzle automatically
+      const gridSpans = [
+        "md:col-span-4 h-56", // Item 1 (e.g. Bowling) - Large wide
+        "md:col-span-2 h-56", // Item 2 (e.g. Cinema) - Medium
+        "md:col-span-2 h-56", // Item 3 (e.g. Golf) - Medium
+        "md:col-span-4 h-56", // Item 4 (e.g. Lido) - Large wide
+        "md:col-span-6 h-48", // Item 5 (e.g. Water Park) - Extra wide horizontal footer
+      ];
+      const standardSpan = "md:col-span-2 h-56";
+      const layoutClass = gridSpans[index] || standardSpan;
+
+      return (
+        <div
+          key={en}
+          className={`group relative overflow-hidden rounded-2xl bg-slate-900 col-span-1 sm:col-span-1 ${layoutClass} transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1`}
+        >
+          {/* Background Image with Hover Scale Effect */}
+          <img 
+            src={img || "/images/placeholder-activity.jpg"} 
+            alt={tr(en, fr)} 
+            className="absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-500 ease-out group-hover:scale-105" 
+          />
+          
+          {/* Smooth Dark Gradient for Typography Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+          
+          {/* Card Content Overlay */}
+          <div className="absolute bottom-0 left-0 p-6 w-full flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 z-10">
+            <div>
+              <h3 className="text-xl font-black tracking-wide text-white uppercase drop-shadow-sm">
+                {tr(en, fr)}
+              </h3>
+            </div>
+            
+            {/* Travel Mode Pills */}
+            <div className="flex flex-wrap gap-1.5 self-start sm:self-end">
+              {modes.map(({ icon: Mode, minutes }) => (
+                <span
+                  key={Mode.displayName ?? Mode.name}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold text-white border border-white/10"
                 >
-                  {typeof Icon === "string" ? (
-                    <img src={Icon} alt={tr(en, fr)} className="size-10 object-contain" />
-                  ) : (
-                    <Icon aria-label={tr(en, fr)} className="size-10 text-primary" strokeWidth={2} />
-                  )}
-                  <div className="flex items-center gap-4">
-                    {modes.map(({ icon: Mode, minutes }) => (
-                      <span
-                        key={Mode.displayName ?? Mode.name}
-                        className="flex items-center gap-1.5 text-[13px] text-[#657e85]"
-                      >
-                        <Mode aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                        {minutes != null && <span>{minutes} min</span>}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                  <Mode aria-hidden="true" className="size-4 text-white" strokeWidth={2.5} />
+                  {minutes != null && <span>{minutes} min</span>}
+                </span>
               ))}
             </div>
           </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
 
           {/* COLUMN 2: DAYS OUT */}
           <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
