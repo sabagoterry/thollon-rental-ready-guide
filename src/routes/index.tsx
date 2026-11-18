@@ -200,10 +200,11 @@ const OtherActivitiesIcons: Array<{
   modes: Array<{ icon: LucideIcon; minutes: number }>;
 }> = [
   { icon: genericBowlingImg, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
-  { icon: genericCinemaImg, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
+  { icon: cinemaImg, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: genericBunazImg, en: "Lido", fr: "Piscine", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: genericWaterparkImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: evianLidoImg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: aquaParcPicImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
 
 const AboutImages: Array<{
