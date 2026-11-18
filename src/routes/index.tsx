@@ -212,10 +212,7 @@ const AboutImages: Array<{
     image: evianImg,
     en: "Évian-les-Bains",
     fr: "Évian-les-Bains",
-    modes: [
-      { icon: Car, minutes: 15 },
-      { icon: Bus, minutes: 25 },
-    ],
+    modes: [{ icon: Car, minutes: 15 }],
   },
   {
     image: veveyImg,
@@ -227,10 +224,7 @@ const AboutImages: Array<{
     image: genevaImg,
     en: "Geneva",
     fr: "Genève",
-    modes: [
-      { icon: Car, minutes: 70 },
-      { icon: Bus, minutes: 100 },
-    ],
+    modes: [{ icon: Car, minutes: 70 }, ,],
   },
   {
     image: montreuxImg,
@@ -242,19 +236,13 @@ const AboutImages: Array<{
     image: yvoireImg,
     en: "Yvoire",
     fr: "Yvoire",
-    modes: [
-      { icon: Car, minutes: 38 },
-      { icon: Bus, minutes: 75 },
-    ],
+    modes: [{ icon: Car, minutes: 38 }],
   },
   {
     image: bernexImg,
     en: "Bernex",
     fr: "Bernex",
-    modes: [
-      { icon: Car, minutes: 10 },
-      { icon: Bus, minutes: 35 },
-    ],
+    modes: [{ icon: Car, minutes: 10 }],
   },
   {
     image: morzineImg,
@@ -266,21 +254,21 @@ const AboutImages: Array<{
     ],
   },
   {
-    image: aquaParcImg,
+    image: aquaParcPicImg,
     en: "Aqua Parc",
     fr: "Aqua Parc",
     modes: [{ icon: Car, minutes: 45 }],
   },
   {
-    image: genericBunazImg,
+    image: bunazImg,
     en: "Lake Bunaz",
     fr: "Lac de la Beunaz",
     modes: [{ icon: Car, minutes: 10 }],
   },
   {
-    image: genericCinemaImg,
-    en: "Cinema",
-    fr: "Cinéma",
+    image: cinemaImg,
+    en: "Thollon Cinema",
+    fr: "Thollon Cinéma",
     modes: [{ icon: Footprints, minutes: 5 }],
   },
   {
@@ -288,12 +276,6 @@ const AboutImages: Array<{
     en: "10 Pin Bowling",
     fr: "Bowling",
     modes: [{ icon: Car, minutes: 20 }],
-  },
-  {
-    image: genericWaterparkImg,
-    en: "Waterpark",
-    fr: "Parc Aquatique",
-    modes: [{ icon: Car, minutes: 15 }],
   },
 ];
 
