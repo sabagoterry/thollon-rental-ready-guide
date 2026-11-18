@@ -45,6 +45,13 @@ import genericBunazImg from "@/assets/photos/generic Bunaz.png";
 import genericCinemaImg from "@/assets/photos/generic Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
+import aquaParcPicSpacedImg from "@/assets/photos/Aqua Parc Pic.jpg";
+import aquaParcSymbolSpacedImg from "@/assets/photos/Aqua Parc Symbol.png";
+import bunazImg from "@/assets/photos/Bunaz.png";
+import cinemaImg from "@/assets/photos/Cinema.png";
+import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
+import aquaParcSymbolImg from "@/assets/photos/AquaParcSymbol.png";
+import evianLidoImg from "@/assets/photos/EvianLido.png";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
