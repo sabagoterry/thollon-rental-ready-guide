@@ -41,12 +41,14 @@ import montreuxImg from "@/assets/photos/Montreux.png";
 import morzineImg from "@/assets/photos/Morzine.png";
 import yvoireImg from "@/assets/photos/Yvoire.png";
 import veveyImg from "@/assets/photos/vevey.png";
+import bunazImg from "@/assets/photos/Bunaz.png";
+import cinemaImg from "@/assets/photos/Cinema.png";
+import GolfImg from "@/assets/photos/EvianGolf.png";
 import genericBunazImg from "@/assets/photos/generic Bunaz.png";
 import genericCinemaImg from "@/assets/photos/generic Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
-import bunazImg from "@/assets/photos/generic Bunaz.png";
-import cinemaImg from "@/assets/photos/generic Cinema.png";
+import genericWaterparkImg from "@/assets/photos/aquaParcPicImg.jpg";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
@@ -195,8 +197,13 @@ const OtherActivitiesIcons: Array<{
   modes: Array<{ icon: LucideIcon; minutes: number }>;
 }> = [
   { icon: genericBowlingImg, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
-  { icon: cinemaImg, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
-  { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: cinemaImg, en: "Thollon Cinema", fr: "Thollon Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
+  {
+    icon: golfIcon.url,
+    en: "Évian Resort Golf Club",
+    fr: "Évian Resort Golf Club",
+    modes: [{ icon: Car, minutes: 15 }],
+  },
   { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
   { icon: lidoIcon.url, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
   { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
