@@ -45,13 +45,8 @@ import genericBunazImg from "@/assets/photos/generic Bunaz.png";
 import genericCinemaImg from "@/assets/photos/generic Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
-import aquaParcPicSpacedImg from "@/assets/photos/Aqua Parc Pic.jpg";
-import aquaParcSymbolSpacedImg from "@/assets/photos/Aqua Parc Symbol.png";
-import bunazImg from "@/assets/photos/Bunaz.png";
-import cinemaImg from "@/assets/photos/Cinema.png";
-import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
-import aquaParcSymbolImg from "@/assets/photos/AquaParcSymbol.png";
-import evianLidoImg from "@/assets/photos/EvianLido.png";
+import bunazImg from "@/assets/photos/generic Bunaz.png";
+import cinemaImg from "@/assets/photos/generic Cinema.png";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
@@ -203,8 +198,8 @@ const OtherActivitiesIcons: Array<{
   { icon: cinemaImg, en: "Cinema", fr: "Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
   { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
   { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: evianLidoImg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: aquaParcPicImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: lidoIcon.url, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
 
 const AboutImages: Array<{
