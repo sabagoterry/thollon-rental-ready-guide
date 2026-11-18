@@ -339,6 +339,82 @@ function TownGroup({ title, names, left = false }: { title: string; names: strin
   );
 }
 
+const townImages: Record<string, string> = {
+  "Évian-les-Bains": evianImg,
+  Vevey: veveyImg,
+  Geneva: genevaImg,
+  Montreux: montreuxImg,
+  Yvoire: yvoireImg,
+  Bernex: bernexImg,
+  Morzine: morzineImg,
+};
+
+const townCarOverride: Record<string, string> = {
+  "Évian-les-Bains": "15 min",
+  Vevey: "50 min",
+  Geneva: "1h 10",
+  Montreux: "45 min",
+  Yvoire: "38 min",
+};
+
+function TownBento({ title, names }: { title: string; names: string[] }) {
+  const gridSpans = ["md:col-span-4", "md:col-span-2", "md:col-span-2", "md:col-span-4", "md:col-span-6"];
+  const towns = names
+    .map((name) => dayTrips.find((t) => t.name === name))
+    .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
+  return (
+    <div className="mt-14 w-full max-w-[1200px] mx-auto">
+      <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
+        {title}
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
+        {towns.map((town, index) => {
+          const base = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
+          const times = { ...base, car: townCarOverride[town.name] ?? base.car };
+          const modes = [
+            ...(times.car ? [{ icon: Car, time: times.car }] : []),
+            ...(times.bus ? [{ icon: Bus, time: times.bus }] : []),
+          ];
+          const img = townImages[town.name];
+          return (
+            <a
+              key={town.name}
+              href={town.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative h-56 overflow-hidden rounded-2xl bg-slate-900 col-span-1 ${gridSpans[index] ?? "md:col-span-2"} transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1`}
+            >
+              {img && (
+                <img
+                  src={img}
+                  alt={town.name}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-6 w-full flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 z-10">
+                <h3 className="text-xl font-black tracking-wide text-white uppercase drop-shadow-sm">{town.name}</h3>
+                <div className="flex flex-wrap gap-1.5 self-start sm:self-end">
+                  {modes.map(({ icon: Mode, time }, mIdx) => (
+                    <span
+                      key={mIdx}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold text-white border border-white/10"
+                    >
+                      <Mode aria-hidden="true" className="size-4 text-white" strokeWidth={2.5} />
+                      <span>{time}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function Gallery() {
   const { tr } = useLang();
   return (
@@ -410,94 +486,8 @@ function Gallery() {
         </div>
       </div>
 
-      {/* 2. RESPONSIVE SIDE-BY-SIDE GRID FOR ORIGINAL LOWER SECTIONS */}
-      <div className="mt-10 mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2">
-        {/* COLUMN 1: DAYS OUT */}
-        <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
-          <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-            {tr("Days out", "Excursions")}
-          </h2>
-          <div className="flex flex-col gap-1">
-            {dayOutTowns.map((name) => {
-              const town = dayTrips.find((t) => t.name === name);
-              if (!town) return null;
-              const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
-              return (
-                <div
-                  key={town.name}
-                  className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <a
-                    href={town.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
-                  >
-                    {town.name}
-                  </a>
-                  <div className="flex items-center gap-4">
-                    {times.car && (
-                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                        <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                        {times.car}
-                      </span>
-                    )}
-                    {times.bus && (
-                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                        <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                        {times.bus}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* COLUMN 2: SKIING CLOSE BY */}
-        <div className="rounded-xl border border-[rgba(120,153,158,0.2)] bg-white p-6 shadow-[0_4px_12px_rgba(74,107,119,0.04)]">
-          <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
-            {tr("Skiing close by", "Ski à proximité")}
-          </h2>
-          <div className="flex flex-col gap-1">
-            {skiingTowns.map((name) => {
-              const town = dayTrips.find((t) => t.name === name);
-              if (!town) return null;
-              const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
-              return (
-                <div
-                  key={town.name}
-                  className="flex flex-col gap-2 rounded-md p-3 transition hover:bg-[rgba(120,153,158,0.08)] sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <a
-                    href={town.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[15px] font-medium text-[#2c3e44] underline-offset-4 transition hover:text-[#4a6b77] hover:underline"
-                  >
-                    {town.name}
-                  </a>
-                  <div className="flex items-center gap-4">
-                    {times.car && (
-                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                        <Car aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                        {times.car}
-                      </span>
-                    )}
-                    {times.bus && (
-                      <span className="flex items-center gap-1.5 text-[13px] text-[#657e85]">
-                        <Bus aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-                        {times.bus}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <TownBento title={tr("Days out", "Excursions")} names={dayOutTowns} />
+      <TownBento title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} />
     </section>
   );
 }
