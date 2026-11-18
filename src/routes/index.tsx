@@ -42,6 +42,7 @@ import morzineImg from "@/assets/photos/Morzine.png";
 import yvoireImg from "@/assets/photos/Yvoire.png";
 import veveyImg from "@/assets/photos/vevey.png";
 import bunazImg from "@/assets/photos/Bunaz.png";
+import PortesDuSoleilImg from "@/assets/photos/PortesDuSoleil.png";
 import cinemaImg from "@/assets/photos/Cinema.png";
 import GolfImg from "@/assets/photos/EvianGolf.png";
 import genericBunazImg from "@/assets/photos/generic Bunaz.png";
