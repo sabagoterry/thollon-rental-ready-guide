@@ -294,9 +294,9 @@ const skiingTowns = ["Bernex", "Morzine", "Portes du Soleil"];
 const townTimes: Record<string, { car?: string; bus?: string }> = {
   "Évian-les-Bains": { car: "15 min" },
   Montreux: { car: "45 min" },
-  Geneva: { car: "1h 10"  },
+  Geneva: { car: "1h 10" },
   Vevey: { car: "50 min" },
-  Yvoire: { car: "38 min"  },
+  Yvoire: { car: "38 min" },
   Bernex: { car: "10 min" },
   Morzine: { car: "55 min" },
 };
@@ -346,6 +346,7 @@ const townImages: Record<string, string> = {
   Yvoire: yvoireImg,
   Bernex: bernexImg,
   Morzine: morzineImg,
+  PortesDuSoleil: PortesDuSoleilImg,
 };
 
 const townCarOverride: Record<string, string> = {
