@@ -538,7 +538,7 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="bg-overlay absolute inset-0" />
-        <div className="relative mx-auto flex w-full max-w-full flex-col justify-between px-8 py-24 text-primary-foreground">
+        <div className="relative mx-auto flex w-full max-w-full flex-col justify-between px-8 pt-24 pb-6 text-primary-foreground">
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left Column */}
             <div className="max-w-xl">
@@ -635,7 +635,7 @@ function Index() {
       </section>
 
       <section className="rooms-showcase overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6 py-24">
+        <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="flex items-center justify-between gap-4">
             <SectionHeading>{tr("Inside the apartment", "À l’intérieur")} </SectionHeading>
             <GalleryLink />
