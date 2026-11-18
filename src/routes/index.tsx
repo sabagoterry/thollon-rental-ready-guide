@@ -183,7 +183,6 @@ const LocalIcons = [
     modes: [
       { icon: Car, minutes: 5 },
       { icon: Footprints, minutes: 15 },
-      { icon: Bike, minutes: 8 },
     ],
   },
   { icon: Martini, en: "Bars", fr: "Bars", modes: [{ icon: Footprints, minutes: 5 }] },
@@ -199,14 +198,11 @@ const OtherActivitiesIcons: Array<{
   { icon: genericBowlingImg, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
   { icon: cinemaImg, en: "Thollon Cinema", fr: "Thollon Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
   {
-    icon: golfIcon.url,
-    en: "Évian Resort Golf Club",
-    fr: "Évian Resort Golf Club",
-    modes: [{ icon: Car, minutes: 15 }],
+    icon: EvianGolfimg.,    en: "Évian Resort Golf Club",    fr: "Évian Resort Golf Club",    modes: [{ icon: Car, minutes: 15 }],
   },
   { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: lidoIcon.url, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: evianLidoimg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: aquaParcPicSpacedImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
 
 const AboutImages: Array<{
