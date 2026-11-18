@@ -297,7 +297,7 @@ const townTimes: Record<string, { car?: string; bus?: string }> = {
   Geneva: { car: "1h 10"  },
   Vevey: { car: "50 min" },
   Yvoire: { car: "38 min"  },
-  Bernex: { car: "10 min" },,
+  Bernex: { car: "10 min" },
   Morzine: { car: "55 min" },
 };
 
