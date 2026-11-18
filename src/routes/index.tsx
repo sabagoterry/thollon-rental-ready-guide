@@ -49,6 +49,7 @@ import genericCinemaImg from "@/assets/photos/generic Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
 import genericWaterparkImg from "@/assets/photos/aquaParcPicImg.jpg";
+import EvianLidoImg from "@/assets/photos/EvianLido.png";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
@@ -204,7 +205,7 @@ const OtherActivitiesIcons: Array<{
     modes: [{ icon: Car, minutes: 15 }],
   },
   { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: evianLidoImg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: EvianLidoImg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
   { icon: aquaParcPicSpacedImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
 
