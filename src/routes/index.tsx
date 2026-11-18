@@ -725,56 +725,92 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-[1440px] gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <div>
-          <SectionHeading kicker={tr("A Resort for All Passions", "Une station pour toutes les passions")}>
-            {tr("Your Alpine Escape", "Votre escapade alpine")}
-          </SectionHeading>
-          <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
-            <li>
-              <span className="font-medium text-primary">{tr("Winter:", "Hiver :")}</span>{" "}
-              {tr(
-                "Ski the pristine Mémises slopes with the main cable car just a short walk away.",
-                "Skiez sur les pistes immaculées des Mémises, avec la télécabine principale à quelques pas.",
-              )}
-            </li>
-            <li>
-              <span className="font-medium text-primary">{tr("Spring:", "Printemps :")}</span>{" "}
-              {tr(
-                "Catch early mountain hikes as the snow melts.",
-                "Profitez des premières randonnées en montagne à la fonte des neiges.",
-              )}
-            </li>
-            <li>
-              <span className="font-medium text-accent">{tr("Summer:", "Été :")}</span>{" "}
-              {tr(
-                "Discover alpine ridges, panoramic paragliding, and Lake Geneva's beaches below.",
-                "Découvrez les crêtes alpines, le parapente panoramique et les plages du Léman en contrebas.",
-              )}
-            </li>
-            <li>
-              <span className="font-medium text-lake">{tr("Nearby:", "À proximité :")}</span>{" "}
-              {tr(
-                "Unwind anytime with quick trips to Évian-les-Bains, the Swiss Riviera, and Geneva.",
-                "Détendez-vous en toute saison avec des escapades à Évian-les-Bains, sur la Riviera suisse et à Genève.",
-              )}
-            </li>
-          </ul>
-        </div>
-        <Button
-          asChild
-          className="group h-auto min-h-64 flex-col items-start justify-between gap-6 whitespace-normal p-8 text-left"
-        >
+      <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
+        <div className="mx-auto max-w-6xl rounded-2xl border border-gray-100 bg-white p-8 shadow-sm sm:p-12">
+          {/* Header Section */}
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-gray-400">
+              {tr("A Resort for all passions", "Une station pour toutes les passions")}
+            </p>
+            <h2 className="text-3xl font-light tracking-wide text-slate-700 sm:text-4xl">
+              {tr("Your Alpine Escape", "Votre escapade alpine")}
+            </h2>
+            <div className="mx-auto mt-4 h-[2px] w-16 bg-slate-400" />
+          </div>
+
+          {/* Seasonal Grid */}
+          <div className="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Winter */}
+            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50 p-6 transition-shadow duration-200 hover:shadow-md">
+              <div className="mb-3 text-2xl">❄️</div>
+              <h3 className="mb-2 font-medium text-slate-800">{tr("Winter", "Hiver")}</h3>
+              <p className="text-sm leading-relaxed text-slate-600">
+                {tr(
+                  "Ski the pristine Mémises slopes with the main cable car just a short walk away.",
+                  "Skiez sur les pistes immaculées des Mémises, avec la télécabine principale à quelques pas.",
+                )}
+              </p>
+            </div>
+
+            {/* Spring */}
+            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50 p-6 transition-shadow duration-200 hover:shadow-md">
+              <div className="mb-3 text-2xl">🌱</div>
+              <h3 className="mb-2 font-medium text-slate-800">{tr("Spring", "Printemps")}</h3>
+              <p className="text-sm leading-relaxed text-slate-600">
+                {tr(
+                  "Catch early mountain hikes as the snow melts.",
+                  "Profitez des premières randonnées en montagne à la fonte des neiges.",
+                )}
+              </p>
+            </div>
+
+            {/* Summer */}
+            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50 p-6 transition-shadow duration-200 hover:shadow-md">
+              <div className="mb-3 text-2xl">☀️</div>
+              <h3 className="mb-2 font-medium text-slate-800">{tr("Summer", "Été")}</h3>
+              <p className="text-sm leading-relaxed text-slate-600">
+                {tr(
+                  "Discover alpine ridges, panoramic paragliding, and Lake Geneva's beaches below.",
+                  "Découvrez les crêtes alpines, le parapente panoramique et les plages du Léman en contrebas.",
+                )}
+              </p>
+            </div>
+
+            {/* Nearby */}
+            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50 p-6 transition-shadow duration-200 hover:shadow-md">
+              <div className="mb-3 text-2xl">📍</div>
+              <h3 className="mb-2 font-medium text-slate-800">{tr("Nearby", "À proximité")}</h3>
+              <p className="text-sm leading-relaxed text-slate-600">
+                {tr(
+                  "Unwind anytime with quick trips to Évian-les-Bains, the Swiss Riviera, and Geneva.",
+                  "Détendez-vous en toute saison avec des escapades à Évian-les-Bains, sur la Riviera suisse et à Genève.",
+                )}
+              </p>
+            </div>
+          </div>
+
+          {/* Unified Local Area Call-to-Action Banner */}
           <Link
             to="/local-area"
-            className="flex w-full flex-col justify-between rounded-2xl bg-[#669297] p-6 text-white shadow-sm transition hover:opacity-95"
+            className="group flex flex-col items-center justify-between rounded-xl bg-[#5B8288] p-6 text-white shadow-sm transition-colors duration-200 hover:bg-[#4A6B70] sm:flex-row"
           >
-            <h3 className="text-xl font-bold">{tr("Local Area", "Environs")}</h3>
-            <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
-              {tr("Take a look", "Découvrir")} <ArrowRight className="size-4" />
-            </span>
+            <div className="mb-4 text-center sm:mb-0 sm:text-left">
+              <h4 className="text-lg font-medium tracking-wide">
+                {tr("Local Area Insights", "Découvrir les environs")}
+              </h4>
+              <p className="mt-1 text-xs text-teal-100">
+                {tr(
+                  "Explore interactive maps, local guides, and regional attractions.",
+                  "Explorez les cartes interactives, les guides locaux et les attractions de la région.",
+                )}
+              </p>
+            </div>
+            <div className="flex items-center space-x-2 rounded-lg bg-white/10 px-4 py-2.5 text-sm font-medium transition-colors group-hover:bg-white/20">
+              <span>{tr("Take a look", "Jeter un coup d’œil")}</span>
+              <span className="transform transition-transform group-hover:translate-x-1">→</span>
+            </div>
           </Link>
-        </Button>
+        </div>
       </section>
 
       <AvailabilityCalendar />
