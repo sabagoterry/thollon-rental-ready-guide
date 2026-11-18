@@ -288,19 +288,18 @@ const AboutImages: Array<{
 ];
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
-const skiingTowns = ["Bernex", "Leysin–Les Mosses", "Châtel", "Morzine", "Portes du Soleil"];
+const skiingTowns = ["Bernex", "Châtel", "Morzine", "Portes du Soleil"];
 
 // Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
 const townTimes: Record<string, { car?: string; bus?: string }> = {
-  "Évian-les-Bains": { car: "15 min", bus: "25 min" },
+  "Évian-les-Bains": { car: "15 min" },
   Montreux: { car: "45 min" },
-  Geneva: { car: "1h 10", bus: "1h 40 (x2)" },
+  Geneva: { car: "1h 10"  },
   Vevey: { car: "50 min" },
-  Yvoire: { car: "38 min", bus: "1h 15 (x2)" },
-  Bernex: { car: "10 min", bus: "35 min" },
-  "Leysin–Les Mosses": { car: "1h 15" },
-  Châtel: { car: "45–50 min", bus: "1h 45 (x2)" },
-  Morzine: { car: "55 min", bus: "2h 15" },
+  Yvoire: { car: "38 min"  },
+  Bernex: { car: "10 min" },,
+  Châtel: { car: "45–50 min" },
+  Morzine: { car: "55 min" },
 };
 
 function TownGroup({ title, names, left = false }: { title: string; names: string[]; left?: boolean }) {
