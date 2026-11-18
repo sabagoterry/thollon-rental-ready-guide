@@ -800,8 +800,8 @@ function Index() {
               </h4>
               <p className="mt-1 text-xs text-teal-100">
                 {tr(
-                  "Explore interactive maps, local guides, and regional attractions.",
-                  "Explorez les cartes interactives, les guides locaux et les attractions de la région.",
+                  "Live webcams, ski info, dining, and day trips..",
+                  "Webcams en direct, infos ski, restaurants et excursions..",
                 )}
               </p>
             </div>
