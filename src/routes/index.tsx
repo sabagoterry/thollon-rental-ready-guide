@@ -538,7 +538,7 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="bg-overlay absolute inset-0" />
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-24 text-primary-foreground">
+        <div className="relative mx-auto flex w-full max-w-full flex-col justify-between px-8 py-24 text-primary-foreground">
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left Column */}
             <div className="max-w-xl">
