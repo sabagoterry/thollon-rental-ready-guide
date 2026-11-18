@@ -32,6 +32,20 @@ import golfIcon from "@/assets/icons/golf.png.asset.json";
 import lidoIcon from "@/assets/icons/lido.png.asset.json";
 import waterparkIcon from "@/assets/icons/waterpark.png.asset.json";
 
+import aquaParcImg from "@/assets/photos/Aqua Parc.png";
+import bernexImg from "@/assets/photos/Bernex.png";
+import bowlingImg from "@/assets/photos/Bowling.png";
+import evianImg from "@/assets/photos/Evian.png";
+import genevaImg from "@/assets/photos/Geneva.png";
+import montreuxImg from "@/assets/photos/Montreux.png";
+import morzineImg from "@/assets/photos/Morzine.png";
+import yvoireImg from "@/assets/photos/Yvoire.png";
+import veveyImg from "@/assets/photos/vevey.png";
+import genericBunazImg from "@/assets/photos/generic Bunaz.png";
+import genericCinemaImg from "@/assets/photos/generic Cinema.png";
+import genericBowlingImg from "@/assets/photos/generic bowling.png";
+import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
+
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 import { FloorplanCompass } from "@/components/floorplan-compass";
@@ -183,6 +197,101 @@ const OtherActivitiesIcons: Array<{
   { icon: golfIcon.url, en: "Golf", fr: "Golf", modes: [{ icon: Car, minutes: 15 }] },
   { icon: lidoIcon.url, en: "Lido", fr: "Piscine", modes: [{ icon: Car, minutes: 15 }] },
   { icon: waterparkIcon.url, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
+];
+
+const AboutImages: Array<{
+  image: string;
+  en: string;
+  fr: string;
+  modes?: Array<{ icon: LucideIcon; minutes: number }>;
+}> = [
+  {
+    image: evianImg,
+    en: "Évian-les-Bains",
+    fr: "Évian-les-Bains",
+    modes: [
+      { icon: Car, minutes: 15 },
+      { icon: Bus, minutes: 25 },
+    ],
+  },
+  {
+    image: veveyImg,
+    en: "Vevey",
+    fr: "Vevey",
+    modes: [{ icon: Car, minutes: 50 }],
+  },
+  {
+    image: genevaImg,
+    en: "Geneva",
+    fr: "Genève",
+    modes: [
+      { icon: Car, minutes: 70 },
+      { icon: Bus, minutes: 100 },
+    ],
+  },
+  {
+    image: montreuxImg,
+    en: "Montreux",
+    fr: "Montreux",
+    modes: [{ icon: Car, minutes: 45 }],
+  },
+  {
+    image: yvoireImg,
+    en: "Yvoire",
+    fr: "Yvoire",
+    modes: [
+      { icon: Car, minutes: 38 },
+      { icon: Bus, minutes: 75 },
+    ],
+  },
+  {
+    image: bernexImg,
+    en: "Bernex",
+    fr: "Bernex",
+    modes: [
+      { icon: Car, minutes: 10 },
+      { icon: Bus, minutes: 35 },
+    ],
+  },
+  {
+    image: morzineImg,
+    en: "Morzine",
+    fr: "Morzine",
+    modes: [
+      { icon: Car, minutes: 55 },
+      { icon: Bus, minutes: 135 },
+    ],
+  },
+  {
+    image: aquaParcImg,
+    en: "Aqua Parc",
+    fr: "Aqua Parc",
+    modes: [{ icon: Car, minutes: 45 }],
+  },
+  {
+    image: genericBunazImg,
+    en: "Lake Bunaz",
+    fr: "Lac de la Beunaz",
+    modes: [{ icon: Car, minutes: 10 }],
+  },
+  {
+    image: genericCinemaImg,
+    en: "Cinema",
+    fr: "Cinéma",
+    modes: [{ icon: Footprints, minutes: 5 }],
+  },
+  {
+    image: genericBowlingImg,
+    en: "10 Pin Bowling",
+    fr: "Bowling",
+    modes: [{ icon: Car, minutes: 20 }],
+  },
+  {
+    image: genericWaterparkImg,
+    en: "Waterpark",
+    fr: "Parc Aquatique",
+    modes: [{ icon: Car, minutes: 15 }],
+  },
 ];
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
