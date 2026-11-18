@@ -48,7 +48,7 @@ import genericBunazImg from "@/assets/photos/generic Bunaz.png";
 import genericCinemaImg from "@/assets/photos/generic Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
-import genericWaterparkImg from "@/assets/photos/aquaParcPicImg.jpg";
+import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
 import EvianLidoImg from "@/assets/photos/EvianLido.png";
 
 import { FaBowlingBall } from "react-icons/fa";
@@ -206,7 +206,7 @@ const OtherActivitiesIcons: Array<{
   },
   { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
   { icon: EvianLidoImg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: aquaParcPicSpacedImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: aquaParcPicImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
 
 const AboutImages: Array<{
@@ -231,7 +231,7 @@ const AboutImages: Array<{
     image: genevaImg,
     en: "Geneva",
     fr: "Genève",
-    modes: [{ icon: Car, minutes: 70 }, ,],
+    modes: [{ icon: Car, minutes: 70 }],
   },
   {
     image: montreuxImg,
