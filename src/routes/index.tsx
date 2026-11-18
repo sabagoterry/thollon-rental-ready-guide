@@ -586,7 +586,7 @@ function Index() {
 
           <div className="mt-28 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
-              { id: "parking", icon: parkingIcon.url, detail: tr("Free", "Gratuit") },
+              { id: "parking", icon: parkingIcon.url, detail: tr("Free on site", "Gratuit sur place") },
               {
                 id: "skiing",
                 icon: skiingIcon.url,
