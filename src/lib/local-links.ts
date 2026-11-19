@@ -6,6 +6,7 @@ export const venues = [
     type: "Mountain restaurant",
     typeFr: "Restaurant d’altitude",
     url: "https://www.leman-mountains-explore.com/en/offers/restaurant-les-balcons-du-lac-thollon-les-memises-en-4978466/",
+    atTelecabine: true,
   },
   {
     name: "Scoobies — Le Scoubidou",

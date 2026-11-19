@@ -177,8 +177,6 @@ export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
                   {venue.name}
                   <ArrowUpRight className="size-4 shrink-0" />
                 </a>
-              </Button>
-            </div>
             <p className="mt-1 text-sm text-muted-foreground">
               {tr(venue.type, venue.typeFr)}
             </p>
