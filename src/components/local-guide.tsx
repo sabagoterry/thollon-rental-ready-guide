@@ -168,20 +168,22 @@ export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
                   <CableCar className="size-3.5" />
                 </span>
               )}
-              <Button
-                asChild
-                variant="link"
-                className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent"
-              >
-                <a href={venue.url} target="_blank" rel="noopener noreferrer">
-                  {venue.name}
-                  <ArrowUpRight className="size-4 shrink-0" />
-                </a>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {tr(venue.type, venue.typeFr)}
-            </p>
+<Button
+              asChild
+              variant="link"
+              className="h-auto max-w-full justify-start whitespace-normal p-0 text-base text-foreground hover:text-accent"
+            >
+              <a href={venue.url} target="_blank" rel="noopener noreferrer">
+                {venue.name}
+                <ArrowUpRight className="size-4 shrink-0" />
+              </a>
+            </Button>
           </div>
-        ))}
+          <p className="mt-1 text-sm text-muted-foreground">
+            {tr(venue.type, venue.typeFr)}
+          </p>
+        </div>
+      ))}
 </div>
         </div>
         <h3 className="mt-14 flex items-center gap-3 text-4xl text-rainbow md:text-5xl">
