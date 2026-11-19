@@ -10,6 +10,7 @@ import {
   PartyPopper,
   Car,
   Sun,
+  CableCar
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
@@ -155,9 +156,18 @@ export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
             "Les jours d’ouverture varient selon la saison ; renseignez-vous auprès de chaque établissement.",
           )}
         </p>
-        <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-          {venues.map((venue) => (
-            <div key={venue.name} className="border-b border-accent/30 pb-5">
+      <div className="mt-6 grid gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+        {venues.map((venue) => (
+          <div key={venue.name} className="border-b border-accent/30 pb-5">
+            <div className="flex items-center gap-2">
+              {"atTelecabine" in venue && venue.atTelecabine && (
+                <span
+                  title={tr("At the top of the télécabine", "Au sommet de la télécabine")}
+                  className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent"
+                >
+                  <CableCar className="size-3.5" />
+                </span>
+              )}
               <Button
                 asChild
                 variant="link"
@@ -168,9 +178,13 @@ export function LocalGuide({ standalone = false }: { standalone?: boolean }) {
                   <ArrowUpRight className="size-4 shrink-0" />
                 </a>
               </Button>
-              <p className="mt-1 text-sm text-muted-foreground">{tr(venue.type, venue.typeFr)}</p>
             </div>
-          ))}
+            <p className="mt-1 text-sm text-muted-foreground">
+              {tr(venue.type, venue.typeFr)}
+            </p>
+          </div>
+        ))}
+</div>
         </div>
         <h3 className="mt-14 flex items-center gap-3 text-4xl text-rainbow md:text-5xl">
           <Car className="size-5" />

@@ -23,6 +23,7 @@ import {
   LoaderPinwheel,
   Projector,
   Kayak,
+  CableCar,
   type LucideIcon,
 } from "lucide-react";
 
