@@ -85,7 +85,7 @@ import bunks from "@/assets/photos/bunks-sharp.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
-import heroVideoAsset from "@/assets/videos/Layout as a PNG Good to go.png";
+import heroVideoAsset from "@/assets/videos/halo-drone.mp4.json";
 import floorplan3d from "@/assets/photos/Layout as a PNG Good to go.png";
 import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
 import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
