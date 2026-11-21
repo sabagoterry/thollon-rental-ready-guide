@@ -34,10 +34,10 @@ import lidoIcon from "@/assets/icons/lido.png.asset.json";
 import waterparkIcon from "@/assets/icons/waterpark.png.asset.json";
 
 import aquaParcImg from "@/assets/photos/Aqua Parc.png";
-import AvoriazImg from "@/assets/photos/Avoriaz.jpg";
-import GrandMassifImg from "@/assets/photos/GrandMassif.png";
-import ChatelImg from "@/assets/photos/Chatel.png";
-import LesGetsImg from "@/assets/photos/LesGets.png";
+import avoriazImg from "@/assets/photos/Avoriaz.jpg";
+import grandMassifImg from "@/assets/photos/GrandMassif.png";
+import chatelImg from "@/assets/photos/Chatel.png";
+import lesGetsImg from "@/assets/photos/LesGets.png";
 import bernexImg from "@/assets/photos/Bernex.png";
 import bowlingImg from "@/assets/photos/Bowling.png";
 import evianImg from "@/assets/photos/Evian.png";
@@ -312,12 +312,12 @@ const townImages: Record<string, string> = {
   Geneva: genevaImg,
   Vevey: veveyImg,
   Yvoire: yvoireImg,
-  Chatel: ChatelImg,
-  LesGets: LesGetsImg,
-  Morzine: MorzineImg,
-  Avoriaz: AvoriazImg,
-  Bernex: BernexImg,
-  GrandMassif: GrandMassifImg,
+  Chatel: chatelImg,
+  LesGets: lesGetsImg,
+  Morzine: morzineImg,
+  Avoriaz: avoriazImg,
+  Bernex: bernexImg,
+  GrandMassif: grandMassifImg,
 };
 
 const townCarOverride: Record<string, string> = {
@@ -337,6 +337,7 @@ function TownBento({ title, names, spans }: { title: string; names: string[]; sp
   const towns = names
     .map((name) => dayTrips.find((t) => t.name === name))
     .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
+
   return (
     <div className="mt-14 w-full max-w-[1200px] mx-auto">
       <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
@@ -387,6 +388,15 @@ function TownBento({ title, names, spans }: { title: string; names: string[]; sp
   );
 }
 
+const skiGridSpans = [
+  "md:col-span-6", // 1. Full width across
+  "md:col-span-3", // 2. 50% split (left)
+  "md:col-span-3", // 3. 50% split (right)
+  "md:col-span-6", // 4. Full width across
+  "md:col-span-3", // 5. 50% split (left)
+  "md:col-span-3", // 6. 50% split (right)
+];
+
 function Gallery() {
   const { tr } = useLang();
   return (
@@ -417,14 +427,6 @@ function Gallery() {
               "md:col-span-4 h-56",
               "md:col-span-3 h-56",
               "md:col-span-3 h-56",
-            ];
-            const skiGridSpans = [
-              "md:col-span-6", // 1. Full width across
-              "md:col-span-3", // 2. 50% split (left)
-              "md:col-span-3", // 3. 50% split (right)
-              "md:col-span-6", // 4. Full width across
-              "md:col-span-3", // 5. 50% split (left)
-              "md:col-span-3", // 6. 50% split (right)
             ];
 
             const layoutClass = gridSpans[index] || "md:col-span-2 h-56";
