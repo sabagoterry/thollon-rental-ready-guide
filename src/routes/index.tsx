@@ -34,10 +34,10 @@ import lidoIcon from "@/assets/icons/lido.png.asset.json";
 import waterparkIcon from "@/assets/icons/waterpark.png.asset.json";
 
 import aquaParcImg from "@/assets/photos/Aqua Parc.png";
-import AvoriazImg from "@/assets/photos/Avoriaz.png";
-import GrandMassifImg  from "@/assets/photos/GrandMassif.png";
-import ChatelImg  from "@/assets/photos/ from "@/assets/photos/Chatel.png";
-import LesGetsImg  from "@/assets/photos/LesGets.png";
+import AvoriazImg from "@/assets/photos/Avoriaz.jpg";
+import GrandMassifImg from "@/assets/photos/GrandMassif.png";
+import ChatelImg from "@/assets/photos/Chatel.png";
+import LesGetsImg from "@/assets/photos/LesGets.png";
 import bernexImg from "@/assets/photos/Bernex.png";
 import bowlingImg from "@/assets/photos/Bowling.png";
 import evianImg from "@/assets/photos/Evian.png";
@@ -289,7 +289,7 @@ const AboutImages: Array<{
 ];
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
-const skiingTowns = ["Chatel", "LesGets" ,  "Morzine", "Avoriaz", "Bernex","GrandMassif"];
+const skiingTowns = ["Chatel", "LesGets", "Morzine", "Avoriaz", "Bernex", "GrandMassif"];
 
 // Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
 const townTimes: Record<string, { car?: string; bus?: string }> = {
@@ -301,21 +301,21 @@ const townTimes: Record<string, { car?: string; bus?: string }> = {
   Chatel: { car: "45 min" },
   LesGets: { car: "50 min" },
   Morzine: { car: "45 min" },
-  Avoriaz": { car: "50 min" },
+  Avoriaz: { car: "50 min" },
   Bernex: { car: "10 min" },
   GrandMassif: { car: "1h 10 min" },
 };
 
 const townImages: Record<string, string> = {
   "Évian-les-Bains": evianImg,
-  Montreux: montreuxImg,  
+  Montreux: montreuxImg,
   Geneva: genevaImg,
   Vevey: veveyImg,
   Yvoire: yvoireImg,
-  Chatel: ChatelfImg,
+  Chatel: ChatelImg,
   LesGets: LesGetsImg,
   Morzine: MorzineImg,
-  Avoriaz": AvoriazImg,
+  Avoriaz: AvoriazImg,
   Bernex: BernexImg,
   GrandMassif: GrandMassifImg,
 };
