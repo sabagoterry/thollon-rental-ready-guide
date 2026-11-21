@@ -469,7 +469,7 @@ function Gallery() {
       </div>
 
       <TownBento title={tr("Days out", "Excursions")} names={dayOutTowns} />
-      <TownBento title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} />
+      <TownBento title={tr("Skiing close by", "Ski à proximité")} names={skiingTowns} spans={skiGridSpans} />
     </section>
   );
 }
