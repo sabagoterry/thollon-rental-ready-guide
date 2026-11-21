@@ -298,39 +298,6 @@ const townTimes: Record<string, { car?: string; bus?: string }> = {
   Morzine: { car: "55 min" },
 };
 
-function TownGroup({ title, names, left = false }: { title: string; names: string[]; left?: boolean }) {
-  const towns = names
-    .map((name) => dayTrips.find((t) => t.name === name))
-    .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
-  return (
-    <div className={left ? "text-left" : "text-center"}>
-      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{title}</p>
-      <div className={`mt-6 flex w-full flex-col gap-5 ${left ? "" : "mx-auto"}`}>
-        {towns.map((town) => {
-          const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
-          const modes = [{ icon: Car, time: times.car }, ...(times.bus ? [{ icon: Bus, time: times.bus }] : [])];
-          return (
-              <span
-                className={`min-w-0 text-sm font-medium text-foreground ${left ? "text-left" : "text-right"}`}
-              >
-                {town.name}
-              </span>
-              <span className="flex shrink-0 items-start gap-3 text-primary">
-                {modes.map(({ icon: Mode, time }) => (
-                  <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
-                    <Mode aria-hidden="true" className="size-6" strokeWidth={1.8} />
-                    {time && <span className="text-xs text-foreground">{time}</span>}
-                  </span>
-                ))}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 const townImages: Record<string, string> = {
   "Évian-les-Bains": evianImg,
   Vevey: veveyImg,
