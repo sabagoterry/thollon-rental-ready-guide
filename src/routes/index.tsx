@@ -201,14 +201,9 @@ const OtherActivitiesIcons: Array<{
 }> = [
   { icon: genericBowlingImg, en: "10 pin bowling", fr: "Bowling à 10 quilles", modes: [{ icon: Car, minutes: 20 }] },
   { icon: cinemaImg, en: "Thollon Cinema", fr: "Thollon Cinéma", modes: [{ icon: Footprints, minutes: 5 }] },
-  {
-    icon: GolfImg,
-    en: "Évian Resort Golf Club",
-    fr: "Évian Resort Golf Club",
-    modes: [{ icon: Car, minutes: 15 }],
-  },
+  { icon: GolfImg, en: "Évian Resort Golf Club", fr: "Évian Resort Golf Club", modes: [{ icon: Car, minutes: 15 }] },
   { icon: bunazImg, en: "La Plage de la Beunaz", fr: "La Plage de la Beunaz", modes: [{ icon: Car, minutes: 15 }] },
-  { icon: EvianLidoImg, en: "Lido", fr: "piscine", modes: [{ icon: Car, minutes: 15 }] },
+  { icon: EvianLidoImg, en: "Lido", fr: "Piscine", modes: [{ icon: Car, minutes: 15 }] },
   { icon: aquaParcLandImg, en: "Waterpark", fr: "Parc Aquatique", modes: [{ icon: Car, minutes: 15 }] },
 ];
 
@@ -445,7 +440,8 @@ function Gallery() {
               "md:col-span-2 h-56",
               "md:col-span-2 h-56",
               "md:col-span-4 h-56",
-              "md:col-span-6 h-48",
+              "md:col-span-3 h-56",
+              "md:col-span-3 h-56",
             ];
             const layoutClass = gridSpans[index] || "md:col-span-2 h-56";
 
