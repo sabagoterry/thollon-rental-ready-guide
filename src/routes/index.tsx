@@ -308,13 +308,16 @@ const townTimes: Record<string, { car?: string; bus?: string }> = {
 
 const townImages: Record<string, string> = {
   "Évian-les-Bains": evianImg,
-  Vevey: veveyImg,
+  Montreux: montreuxImg,  
   Geneva: genevaImg,
-  Montreux: montreuxImg,
+  Vevey: veveyImg,
   Yvoire: yvoireImg,
-  Bernex: bernexImg,
-  Morzine: morzineImg,
-  PortesDuSoleil: PortesDuSoleilImg,
+  Chatel: ChatelfImg,
+  LesGets: LesGetsImg,
+  Morzine: MorzineImg,
+  Avoriaz": AvoriazImg,
+  Bernex: BernexImg,
+  GrandMassif: GrandMassifImg,
 };
 
 const townCarOverride: Record<string, string> = {
