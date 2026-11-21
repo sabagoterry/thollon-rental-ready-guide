@@ -57,7 +57,7 @@ import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
 import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
 import aquaParcLandImg from "@/assets/photos/AquaParcLand.png";
 import EvianLidoImg from "@/assets/photos/EvianLido.png";
-import LayoutNewImg from "@/assets/photos/Layout as a PNG Good to go";
+import LayoutNewImg from "@/assets/photos/Layout as a PNG Good to go.jpg";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
