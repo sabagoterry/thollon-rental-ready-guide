@@ -337,11 +337,8 @@ function TownBento({ title, names }: { title: string; names: string[] }) {
           ];
           const img = townImages[town.name];
           return (
-            <a
+            <div
               key={town.name}
-              href={town.url}
-              target="_blank"
-              rel="noopener noreferrer"
               className={`group relative h-56 overflow-hidden rounded-2xl bg-slate-900 col-span-1 ${gridSpans[index] ?? "md:col-span-2"} transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1`}
             >
               {img && (
@@ -367,7 +364,7 @@ function TownBento({ title, names }: { title: string; names: string[] }) {
                   ))}
                 </div>
               </div>
-            </a>
+            </div>
           );
         })}
       </div>
