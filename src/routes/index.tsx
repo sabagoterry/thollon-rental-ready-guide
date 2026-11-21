@@ -51,6 +51,7 @@ import genericCinemaImg from "@/assets/photos/generic Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
 import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
+import aquaParcPicImg from "@/assets/photos/AquaParcLand.png",
 import EvianLidoImg from "@/assets/photos/EvianLido.png";
 
 import { FaBowlingBall } from "react-icons/fa";
