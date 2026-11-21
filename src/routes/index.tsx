@@ -42,7 +42,7 @@ import bernexImg from "@/assets/photos/Bernex.png";
 import bowlingImg from "@/assets/photos/Bowling.png";
 import evianImg from "@/assets/photos/Evian.png";
 import genevaImg from "@/assets/photos/Geneva.png";
-import montreuxImg from "@/assets/photos/Montreux.png";
+import montreuxImg from "@/assets/photos/Montreux.jpg";
 import morzineImg from "@/assets/photos/Morzine.png";
 import yvoireImg from "@/assets/photos/Yvoire.png";
 import veveyImg from "@/assets/photos/vevey.png";
