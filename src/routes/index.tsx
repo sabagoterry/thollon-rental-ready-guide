@@ -414,6 +414,15 @@ function Gallery() {
               "md:col-span-3 h-56",
               "md:col-span-3 h-56",
             ];
+            const skiGridSpans = [
+              "md:col-span-6", // 1. Full width across
+              "md:col-span-3", // 2. 50% split (left)
+              "md:col-span-3", // 3. 50% split (right)
+              "md:col-span-6", // 4. Full width across
+              "md:col-span-3", // 5. 50% split (left)
+              "md:col-span-3", // 6. 50% split (right)
+            ];
+
             const layoutClass = gridSpans[index] || "md:col-span-2 h-56";
 
             return (
