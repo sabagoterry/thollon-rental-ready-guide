@@ -328,8 +328,12 @@ const townCarOverride: Record<string, string> = {
   Yvoire: "38 min",
 };
 
-function TownBento({ title, names }: { title: string; names: string[] }) {
-  const gridSpans = ["md:col-span-4", "md:col-span-2", "md:col-span-2", "md:col-span-4", "md:col-span-6"];
+function TownBento({ title, names, spans }: { title: string; names: string[]; spans?: string[] }) {
+  const defaultSpans = ["md:col-span-4", "md:col-span-2", "md:col-span-2", "md:col-span-4", "md:col-span-6"];
+  const gridSpans = spans ?? defaultSpans;
+
+  // ... rest of the component unchanged
+
   const towns = names
     .map((name) => dayTrips.find((t) => t.name === name))
     .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
