@@ -57,6 +57,7 @@ import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
 import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
 import aquaParcLandImg from "@/assets/photos/AquaParcLand.png";
 import EvianLidoImg from "@/assets/photos/EvianLido.png";
+import LayoutNewImg from "@/assets/photos/Layout as a PNG Good to go";
 
 import { FaBowlingBall } from "react-icons/fa";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
@@ -84,8 +85,8 @@ import bunks from "@/assets/photos/bunks-sharp.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
-import heroVideoAsset from "@/assets/videos/halo-drone.mp4.asset.json";
-import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
+import heroVideoAsset from "@/assets/videos/Layout as a PNG Good to go.png";
+import floorplan3d from "@/assets/photos/Layout as a PNG Good to go.png";
 import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
 import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
 import hikingIcon from "@/assets/icons/apartment-hiking.png.asset.json";
