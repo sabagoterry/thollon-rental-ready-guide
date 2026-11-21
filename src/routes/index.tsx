@@ -80,7 +80,7 @@ import bunks from "@/assets/photos/bunks-sharp.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
-import heroVideo from "@/assets/videos/thollon-slopes.mp4.asset.json";
+import heroVideo from "@/assets/videos/Halovidxshrunk(1).mp4";
 import floorplan3d from "@/assets/photos/floorplan-3d-v13.jpg";
 import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
 import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
@@ -502,7 +502,7 @@ function Index() {
       <HomeHeader />
       <section className="relative flex min-h-[92vh] items-end pt-44">
         <video
-          src={heroVideo.url}
+          src={heroVideo}
           poster={exterior.url}
           autoPlay
           muted
