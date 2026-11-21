@@ -310,15 +310,11 @@ function TownGroup({ title, names, left = false }: { title: string; names: strin
           const times = "carMinutes" in town ? { car: `${town.carMinutes} min` } : (townTimes[town.name] ?? {});
           const modes = [{ icon: Car, time: times.car }, ...(times.bus ? [{ icon: Bus, time: times.bus }] : [])];
           return (
-            <div key={town.name} className={`flex items-center gap-4 ${left ? "justify-start" : "justify-center"}`}>
-              <a
-                href={town.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`min-w-0 text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline ${left ? "text-left" : "text-right"}`}
+              <span
+                className={`min-w-0 text-sm font-medium text-foreground ${left ? "text-left" : "text-right"}`}
               >
                 {town.name}
-              </a>
+              </span>
               <span className="flex shrink-0 items-start gap-3 text-primary">
                 {modes.map(({ icon: Mode, time }) => (
                   <span key={Mode.displayName ?? Mode.name} className="flex flex-col items-center gap-1">
