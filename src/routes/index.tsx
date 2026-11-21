@@ -334,9 +334,7 @@ function TownBento({ title, names, spans }: { title: string; names: string[]; sp
 
   // ... rest of the component unchanged
 
-  const towns = names
-    .map((name) => dayTrips.find((t) => t.name === name))
-    .filter((t): t is (typeof dayTrips)[number] => Boolean(t));
+  const towns = names.map((name) => dayTrips.find((t) => t.name === name) ?? { name });
 
   return (
     <div className="mt-14 w-full max-w-[1200px] mx-auto">
