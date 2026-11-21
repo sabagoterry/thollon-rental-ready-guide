@@ -289,7 +289,7 @@ const AboutImages: Array<{
 ];
 
 const dayOutTowns = ["Évian-les-Bains", "Vevey", "Geneva", "Montreux", "Yvoire"];
-const skiingTowns = ["Bernex", "Morzine", "Portes du Soleil"];
+const skiingTowns = ["Chatel", "LesGets" ,  "Morzine", "Avoriaz", "Bernex","GrandMassif"];
 
 // Owner-supplied travel times from the apartment; no bus icon means no practical bus route.
 const townTimes: Record<string, { car?: string; bus?: string }> = {
@@ -298,8 +298,12 @@ const townTimes: Record<string, { car?: string; bus?: string }> = {
   Geneva: { car: "1h 10" },
   Vevey: { car: "50 min" },
   Yvoire: { car: "38 min" },
+  Chatel: { car: "45 min" },
+  LesGets: { car: "50 min" },
+  Morzine: { car: "45 min" },
+  Avoriaz": { car: "50 min" },
   Bernex: { car: "10 min" },
-  Morzine: { car: "55 min" },
+  GrandMassif: { car: "1h 10 min" },
 };
 
 const townImages: Record<string, string> = {
