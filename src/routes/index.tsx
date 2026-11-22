@@ -313,12 +313,12 @@ const townImages: Record<string, string> = {
   Geneva: genevaImg,
   Vevey: veveyImg,
   Yvoire: yvoireImg,
-  Chatel: chatelImg,
-  LesGets: lesGetsImg,
+  Châtel: chatelImg,
+  "Les Gets": lesGetsImg,
   Morzine: morzineImg,
   Avoriaz: avoriazImg,
   Bernex: bernexImg,
-  GrandMassif: grandMassifImg,
+  "Grand Massif": grandMassifImg,
 };
 
 const townCarOverride: Record<string, string> = {
