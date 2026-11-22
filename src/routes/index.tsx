@@ -27,28 +27,35 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import bowlingIcon from "@/assets/icons/bowling.png.asset.json";
-import cinemaIcon from "@/assets/icons/cinema.png.asset.json";
-import golfIcon from "@/assets/icons/golf.png.asset.json";
-import lidoIcon from "@/assets/icons/lido.png.asset.json";
-import waterparkIcon from "@/assets/icons/waterpark.png.asset.json";
+//Other Icons
+import { FaBowlingBall } from "react-icons/fa";
+import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
+import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
+import hikingIcon from "@/assets/icons/apartment-hiking.png.asset.json";
+import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 
+//activities images
 import aquaParcImg from "@/assets/photos/Aqua Parc.png";
+import bowlingImg from "@/assets/photos/Bowling.png";
+import bunazImg from "@/assets/photos/Bunaz.png";
+import EvianLidoImg from "@/assets/photos/EvianLido.png";
+
+//skiing clode by images
 import avoriazImg from "@/assets/photos/Avoriaz.jpg";
 import grandMassifImg from "@/assets/photos/GrandMassif.png";
 import chatelImg from "@/assets/photos/Chatel.png";
 import lesGetsImg from "@/assets/photos/LesGets.png";
 import bernexImg from "@/assets/photos/Bernex.png";
-import bowlingImg from "@/assets/photos/Bowling.png";
+import morzineImg from "@/assets/photos/Morzine.png";
+import PortesDuSoleilImg from "@/assets/photos/PortesDuSoleil.png";
+
+//visit Images
 import evianImg from "@/assets/photos/Evian.png";
 import genevaImg from "@/assets/photos/Geneva.png";
 import montreuxImg from "@/assets/photos/Montreux.jpg";
-import morzineImg from "@/assets/photos/Morzine.png";
 import yvoireImg from "@/assets/photos/Yvoire.png";
 import veveyImg from "@/assets/photos/vevey.png";
-import bunazImg from "@/assets/photos/Bunaz.png";
-import PortesDuSoleilImg from "@/assets/photos/PortesDuSoleil.png";
-import cinemaImg from "@/assets/photos/Cinema.png";
+
 import GolfImg from "@/assets/photos/EvianGolf.png";
 import genericBunazImg from "@/assets/photos/generic Bunaz.png";
 import genericCinemaImg from "@/assets/photos/generic Cinema.png";
@@ -56,11 +63,12 @@ import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
 import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
 import aquaParcLandImg from "@/assets/photos/AquaParcLand.png";
-import EvianLidoImg from "@/assets/photos/EvianLido.png";
-import LayoutNewImg from "@/assets/photos/Layout as a PNG Good to go.jpg";
 
-import { FaBowlingBall } from "react-icons/fa";
-import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
+//Site imagery
+import heroVideoAsset from "@/assets/videos/halo-drone.mp4.asset.json";
+import floorplan3d from "@/assets/photos/Layout as a PNG Good to go.jpg";
+import LayoutNewImg from "@/assets/photos/Layout as a PNG Good to go.jpg";
+import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
 import { FloorplanCompass } from "@/components/floorplan-compass";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
@@ -77,6 +85,8 @@ import { WhatsAppEnquiry } from "@/components/whatsapp-enquiry";
 import { HomeHeader } from "@/components/home-header";
 import { FindUs } from "@/components/find-us";
 import { useLang } from "@/lib/i18n";
+
+//Apartment inside Images
 import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
 import building from "@/assets/photos/cyclamens-building.png.asset.json";
@@ -85,12 +95,6 @@ import bunks from "@/assets/photos/BunkRoom.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
-import heroVideoAsset from "@/assets/videos/halo-drone.mp4.asset.json";
-import floorplan3d from "@/assets/photos/Layout as a PNG Good to go.jpg";
-import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
-import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
-import hikingIcon from "@/assets/icons/apartment-hiking.png.asset.json";
-import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
