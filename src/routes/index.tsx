@@ -81,7 +81,7 @@ import exterior from "@/assets/photos/exterior.jpg.asset.json";
 import living from "@/assets/photos/living.jpg.asset.json";
 import building from "@/assets/photos/cyclamens-building.png.asset.json";
 import master from "@/assets/photos/master.jpg.asset.json";
-const bunks = "https://your-cdn-domain.com/path/to/bunks-sharp.jpg";
+import bunks from "@/assets/photos/BunkRoom.jpg.asset.json";
 import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
 import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
