@@ -9,7 +9,7 @@ import { FindUs } from '@/components/find-us';
 import { Button } from '@/components/ui/button';
 import { useLang } from '@/lib/i18n';
 import { apartmentLocation, apartmentDirectionsUrl } from '@/lib/apartment-location';
-import exterior from '@/assets/photos/exterior.jpg.asset.json';
+import exterior from '@/assets/photos/exterior.jpg';
 
 export const Route = createFileRoute('/getting-here')({
   head: () => ({ meta: [
@@ -39,7 +39,7 @@ function GettingHerePage() {
       </div>
     </header>
     <section className="relative flex min-h-[48vh] items-end">
-      <img src={exterior.url} alt={tr('The Les Cyclamens building', 'La résidence Les Cyclamens')} className="absolute inset-0 h-full w-full object-cover" />
+      <img src={exterior} alt={tr('The Les Cyclamens building', 'La résidence Les Cyclamens')} className="absolute inset-0 h-full w-full object-cover" />
       <div className="bg-overlay absolute inset-0" />
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-12 text-primary-foreground">
         <p className="mb-4 text-sm font-semibold text-sunshine">Les Cyclamens · Thollon-les-Mémises</p>

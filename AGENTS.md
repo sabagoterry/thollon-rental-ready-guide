@@ -39,4 +39,4 @@
 - Share the default Airbnb booking destination through the booking module so public navigation and availability buttons use the same listing and guest parameters.
 - Direct booking requests use validated public server calls, recheck the fresh read-only availability cache, and store name, email, dates and guests in the private enquiries inbox before fixed-recipient WhatsApp notification; requests never imply a confirmed reservation.
 - Owner booking receipt emails use fixed-recipient React Email templates and the managed send helper with per-request idempotency keys; email failures never discard saved requests and no local email queue is created.
-- Serve the opening video through a Lovable Assets pointer so playback does not depend on raw repository media deployment.
+- Import all media (photos, icons, music, video) directly from files under src/assets, never via .asset.json pointers, because the owner manages media as plain files in GitHub.

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Music, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import track from "@/assets/music/ski-sunday.mp3.asset.json";
+import track from "@/assets/music/ski-sunday.mp3";
 import { useLang } from "@/lib/i18n";
 
 /**
@@ -16,7 +16,7 @@ export function BackgroundMusic() {
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio(track.url);
+    const audio = new Audio(track);
     audio.loop = true;
     audio.volume = 0.25;
     audio.preload = "auto";

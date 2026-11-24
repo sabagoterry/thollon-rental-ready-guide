@@ -2,24 +2,24 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
-import living from "@/assets/photos/living.jpg.asset.json";
-import lounge from "@/assets/photos/lounge.jpg.asset.json";
-import sofabed from "@/assets/photos/sofabed.jpg.asset.json";
-import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
-import master from "@/assets/photos/master.jpg.asset.json";
-import bunkroom from "@/assets/photos/BunkRoom.jpg.asset.json";
+import living from "@/assets/photos/living.jpg";
+import lounge from "@/assets/photos/lounge.jpg";
+import sofabed from "@/assets/photos/sofabed.jpg";
+import kitchen from "@/assets/photos/kitchen.jpg";
+import master from "@/assets/photos/master.jpg";
+import bunkroom from "@/assets/photos/BunkRoom.jpg";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
-import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
+import bath from "@/assets/photos/bath-sharp.jpg";
 
 const slides = [
-  { src: living.url, en: "Living and dining room", fr: "Séjour et salle à manger" },
-  { src: lounge.url, en: "Armchairs and dresser", fr: "Fauteuils et commode" },
-  { src: sofabed.url, en: "Sofa bed made up", fr: "Canapé-lit déplié" },
-  { src: kitchen.url, en: "Kitchen", fr: "Cuisine" },
-  { src: master.url, en: "Double bedroom", fr: "Chambre double" },
-  { src: bunkroom.url, en: "Bunk beds", fr: "Lits superposés" },
+  { src: living, en: "Living and dining room", fr: "Séjour et salle à manger" },
+  { src: lounge, en: "Armchairs and dresser", fr: "Fauteuils et commode" },
+  { src: sofabed, en: "Sofa bed made up", fr: "Canapé-lit déplié" },
+  { src: kitchen, en: "Kitchen", fr: "Cuisine" },
+  { src: master, en: "Double bedroom", fr: "Chambre double" },
+  { src: bunkroom, en: "Bunk beds", fr: "Lits superposés" },
   { src: shower, en: "Shower room", fr: "Salle d’eau" },
-  { src: bath.url, en: "Bathroom", fr: "Salle de bains" },
+  { src: bath, en: "Bathroom", fr: "Salle de bains" },
 ];
 
 export function ApartmentSlideshow() {

@@ -5,11 +5,11 @@ import { LanguageToggle } from "@/components/language-toggle";
 import { Button } from "@/components/ui/button";
 import { House, MessageCircle, Ticket } from "lucide-react";
 import { DEFAULT_AIRBNB_BOOKING_URL } from "@/lib/booking";
-import directionsIcon from "@/assets/navigation-directions.png.asset.json";
-import localIcon from "@/assets/navigation-local-area.png.asset.json";
-import calendarIcon from "@/assets/navigation-availability.png.asset.json";
-import galleryIcon from "@/assets/navigation-gallery.png.asset.json";
-import locationIcon from "@/assets/navigation-location.png.asset.json";
+import directionsIcon from "@/assets/navigation-directions.png";
+import localIcon from "@/assets/navigation-local-area.png";
+import calendarIcon from "@/assets/navigation-availability.png";
+import galleryIcon from "@/assets/navigation-gallery.png";
+import locationIcon from "@/assets/navigation-location.png";
 import { useLang } from "@/lib/i18n";
 
 export function HomeHeader() {
@@ -23,11 +23,11 @@ export function HomeHeader() {
   }, []);
 
   const sections = [
-    { href: "#availability", en: "Availability", fr: "Disponibilités", image: calendarIcon.url },
-    { to: "/gallery", en: "Gallery", fr: "Galerie", image: galleryIcon.url },
-    { to: "/location", en: "Location", fr: "Situation", image: localIcon.url },
-    { to: "/getting-here", en: "Getting here", fr: "Venir", image: directionsIcon.url },
-    { to: "/local-area", en: "Local area", fr: "Le coin", image: locationIcon.url },
+    { href: "#availability", en: "Availability", fr: "Disponibilités", image: calendarIcon },
+    { to: "/gallery", en: "Gallery", fr: "Galerie", image: galleryIcon },
+    { to: "/location", en: "Location", fr: "Situation", image: localIcon },
+    { to: "/getting-here", en: "Getting here", fr: "Venir", image: directionsIcon },
+    { to: "/local-area", en: "Local area", fr: "Le coin", image: locationIcon },
     { href: "#ask", en: "Ask us", fr: "Questions", image: null },
   ] as const;
 

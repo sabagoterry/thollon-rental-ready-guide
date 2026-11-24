@@ -29,9 +29,9 @@ import {
 
 //Other Icons
 import { FaBowlingBall } from "react-icons/fa";
-import parkingIcon from "@/assets/icons/apartment-parking.png.asset.json";
-import skiingIcon from "@/assets/icons/apartment-skiing-clean.png.asset.json";
-import hikingIcon from "@/assets/icons/apartment-hiking.png.asset.json";
+import parkingIcon from "@/assets/icons/apartment-parking.png";
+import skiingIcon from "@/assets/icons/apartment-skiing-clean.png";
+import hikingIcon from "@/assets/icons/apartment-hiking.png";
 import { BunkBeds, BathWithShower } from "@/components/accommodation-icons";
 
 //activities images
@@ -59,16 +59,17 @@ import veveyImg from "@/assets/photos/vevey.png";
 import GolfImg from "@/assets/photos/EvianGolf.png";
 import genericBunazImg from "@/assets/photos/generic Bunaz.png";
 import genericCinemaImg from "@/assets/photos/generic Cinema.png";
+import cinemaImg from "@/assets/photos/Cinema.png";
 import genericBowlingImg from "@/assets/photos/generic bowling.png";
 import genericWaterparkImg from "@/assets/photos/generic waterpark.png";
 import aquaParcPicImg from "@/assets/photos/AquaParcPic.jpg";
 import aquaParcLandImg from "@/assets/photos/AquaParcLand.png";
 
 //Site imagery
-import heroVideoAsset from "@/assets/videos/halo-drone.mp4.asset.json";
+import heroVideoAsset from "@/assets/videos/halo-drone.mp4";
 import floorplan3d from "@/assets/photos/Layout as a PNG Good to go.jpg";
 import LayoutNewImg from "@/assets/photos/Layout as a PNG Good to go.jpg";
-import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg.asset.json";
+import telecabineWalkMap from "@/assets/photos/telecabine-walk-map.jpg";
 import { FloorplanCompass } from "@/components/floorplan-compass";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
@@ -87,14 +88,14 @@ import { FindUs } from "@/components/find-us";
 import { useLang } from "@/lib/i18n";
 
 //Apartment inside Images
-import exterior from "@/assets/photos/exterior.jpg.asset.json";
-import living from "@/assets/photos/living.jpg.asset.json";
-import building from "@/assets/photos/cyclamens-building.png.asset.json";
-import master from "@/assets/photos/master.jpg.asset.json";
-import bunks from "@/assets/photos/BunkRoom.jpg.asset.json";
-import kitchen from "@/assets/photos/kitchen.jpg.asset.json";
+import exterior from "@/assets/photos/exterior.jpg";
+import living from "@/assets/photos/living.jpg";
+import building from "@/assets/photos/cyclamens-building.png";
+import master from "@/assets/photos/master.jpg";
+import bunks from "@/assets/photos/BunkRoom.jpg";
+import kitchen from "@/assets/photos/kitchen.jpg";
 import shower from "@/assets/photos/shower-without-air-freshener.jpg";
-import bath from "@/assets/photos/bath-sharp.jpg.asset.json";
+import bath from "@/assets/photos/bath-sharp.jpg";
 
 const AIRBNB_URL = "https://www.airbnb.co.uk/rooms/1300151240294300447";
 
@@ -126,7 +127,7 @@ const rooms = [
     name: "Living & dining room",
     nameFr: "Séjour et salle à manger",
     size: "10.9 m²",
-    img: living.url,
+    img: living,
     text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed.",
     textFr: "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit.",
   },
@@ -134,7 +135,7 @@ const rooms = [
     name: "Kitchen",
     nameFr: "Cuisine",
     size: "",
-    img: kitchen.url,
+    img: kitchen,
     text: "Microwave oven, 2 hobs, 2 fridge/freezers, slow cooker, air fryer, toaster, coffee machine and kettle.",
     textFr:
       "Four micro-ondes, 2 plaques, 2 réfrigérateurs-congélateurs, mijoteuse, friteuse à air, grille-pain, cafetière et bouilloire.",
@@ -143,7 +144,7 @@ const rooms = [
     name: "Double bedroom",
     nameFr: "Chambre double",
     size: "8.9 m²",
-    img: master.url,
+    img: master,
     text: "Double bed and built-in wardrobes, with ensuite shower room.",
     textFr: "Lit double et placards intégrés, à côté de la salle de douche.",
   },
@@ -151,7 +152,7 @@ const rooms = [
     name: "Bunk room",
     nameFr: "Chambre à lits superposés",
     size: "5.6 m²",
-    img: bunks.url,
+    img: bunks,
     tall: true,
     text: "Cosy wood-panelled room with full-size bunk beds, each with privacy curtain — kids love it.",
     textFr:
@@ -170,7 +171,7 @@ const rooms = [
     name: "Full-size bathroom",
     nameFr: "Salle de bains complète",
     size: "",
-    img: bath.url,
+    img: bath,
     tall: true,
     text: "Full size Bathtub with shower, washbasin and toilet.",
     textFr: "Baignoire de taille standard avec douche, lavabo et wc.",
@@ -487,8 +488,8 @@ function Index() {
       <HomeHeader />
       <section className="relative flex min-h-[92vh] items-end pt-44">
         <video
-          src={heroVideoAsset.url}
-          poster={exterior.url}
+          src={heroVideoAsset}
+          poster={exterior}
           autoPlay
           muted
           loop
@@ -519,7 +520,7 @@ function Index() {
 
       <section className="relative flex min-h-[70vh] overflow-hidden">
         <img
-          src={building.url}
+          src={building}
           alt={tr("Les Cyclamens apartment building", "La résidence Les Cyclamens")}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
@@ -574,14 +575,14 @@ function Index() {
 
           <div className="mt-28 flex flex-wrap items-end justify-center gap-x-10 gap-y-6">
             {[
-              { id: "parking", icon: parkingIcon.url, detail: tr("Free on site", "Gratuit sur place") },
+              { id: "parking", icon: parkingIcon, detail: tr("Free on site", "Gratuit sur place") },
               {
                 id: "skiing",
-                icon: skiingIcon.url,
+                icon: skiingIcon,
                 detail: `${apartmentAmenities.skiingMinutes} minutes`,
                 subIcon: Footprints,
               },
-              { id: "hiking", icon: hikingIcon.url, detail: tr("Right outside", "Juste à la porte") },
+              { id: "hiking", icon: hikingIcon, detail: tr("Right outside", "Juste à la porte") },
               {
                 id: "bars",
                 Icon: Martini,
