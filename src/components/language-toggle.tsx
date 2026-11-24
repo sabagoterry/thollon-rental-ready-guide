@@ -46,13 +46,12 @@ export function LanguageToggle() {
   const handleFlagClick = (selectedLang: Lang) => {
     setLang(selectedLang);
     const musicBtn = document.querySelector<HTMLButtonElement>("[data-background-music]");
-    const audio = document.querySelector<HTMLAudioElement>("audio");
     if (!musicBtn) return;
 
     if (selectedLang === "en") {
       // Toggle on or off when clicking the Union Jack
       musicBtn.click();
-    } else if (selectedLang === "fr" && audio && !audio.paused) {
+    } else if (selectedLang === "fr" && musicBtn.getAttribute("aria-pressed") === "true") {
       // Stop the music when clicking the Tricolore only if audio is actively playing
       musicBtn.click();
     }
