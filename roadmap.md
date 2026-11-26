@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Add an Airbnb listing button on refresh failure and a presentation-only click timestamp for successful checks within 15 minutes; preserve actual cached sync timestamps.
+
 - [x] Make manual Refresh fetch a fresh calendar and display its actual successful sync date/time, retaining the previous timestamp on failure; nine tests and real preview refresh verified.
 - [x] Move amenities and floor plan above Other Activities, add Location and news linking to the local guide, and fix the mobile gallery button; desktop and 320/390px phone navigation verified.
 - [x] Add nine photo-section gallery icons, verified Airbnb review excerpts and Guest Favourite/Superhost recognition with the actual 4.81/5 rating; remove the apartment-photo towels label. Desktop/mobile and gallery browsing checked; 22 tests passed.

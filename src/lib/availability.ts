@@ -8,6 +8,16 @@ export type Availability = {
   today: string;
 };
 
+// Presentation only: never overwrite the cache's actual upstream sync timestamp.
+export function refreshDisplayTime(updated: Availability, clickedAt: number): string | null {
+  if (updated.status !== 'ready' || !updated.syncedAt) return null;
+  const age = clickedAt - Date.parse(updated.syncedAt);
+  if (!Number.isFinite(age)) return null;
+  return age >= 0 && age <= 15 * 60 * 1000
+    ? new Date(clickedAt).toISOString()
+    : updated.syncedAt;
+}
+
 export function parisToday(now = new Date()): string {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
