@@ -1,5 +1,6 @@
 # Roadmap
 
+- [x] Move amenities and floor plan above Other Activities, add Location and news linking to the local guide, and fix the mobile gallery button; desktop and 320/390px phone navigation verified.
 - [x] Add nine photo-section gallery icons, verified Airbnb review excerpts and Guest Favourite/Superhost recognition with the actual 4.81/5 rating; remove the apartment-photo towels label. Desktop/mobile and gallery browsing checked; 22 tests passed.
 - [x] Apply November 14 comments: swapped availability and Questions, added Airbnb Book navigation, updated availability booking label and Refresh position (ff3dcbbe, f2ee0dbc, 83990691); desktop/mobile links and Refresh verified, eight tests passed.
 - [x] Apply November 13 comments: relocated apartment facts, added fibre Wi-Fi, updated sofa label, moved activities and key information to Local Area, simplified Book, added Portes du Soleil travel time, removed photo air freshener, and confirmed floor-plan download; desktop/mobile checks and 24 tests passed.

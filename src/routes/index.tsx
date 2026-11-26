@@ -416,6 +416,15 @@ function Gallery() {
         </Link>
       </Button>
 
+      <Button asChild className="mt-4 h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
+        <Link to="/local-area">
+          <span className="text-3xl md:text-4xl">{tr("Location and news", "Situation et actualités")}</span>
+          <span className="flex items-center gap-2">
+            {tr("Take a look", "Jeter un œil")} <ArrowRight aria-hidden="true" className="size-4 shrink-0" />
+          </span>
+        </Link>
+      </Button>
+
       {/* 1. NEW FULL-WIDTH WHIZZY BENTO ROW */}
       <div className="mt-14 w-full max-w-[1200px] mx-auto">
         <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
@@ -624,9 +633,11 @@ function Index() {
 
       <section className="rooms-showcase overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-12">
-          <div className="flex items-center justify-between gap-4">
-            <SectionHeading>{tr("Inside the apartment", "À l’intérieur")} </SectionHeading>
-            <GalleryLink />
+          <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-[minmax(0,1fr)_auto]">
+            <div className="min-w-0">
+              <SectionHeading className="[&_h2]:text-2xl sm:[&_h2]:text-4xl md:[&_h2]:text-5xl [&_.bar-flow]:max-w-full">{tr("Inside the apartment", "À l’intérieur")} </SectionHeading>
+            </div>
+            <GalleryLink className="justify-self-start sm:justify-self-end" />
           </div>
           <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
             {facts.map(({ icon: Icon, en, fr: french }) => (
@@ -664,8 +675,6 @@ function Index() {
           ))}
         </div>
       </section>
-
-      <Gallery />
 
       <section className="band-soft">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
@@ -712,6 +721,8 @@ function Index() {
           </figure>
         </div>
       </section>
+
+      <Gallery />
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
         <div className="mx-auto max-w-6xl rounded-2xl border border-gray-100 bg-white p-8 shadow-sm sm:p-12">
