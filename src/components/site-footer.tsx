@@ -43,8 +43,8 @@ const quickFacts = [
     "Veuillez limiter le bruit dans les espaces communs entre 23 h 00 et 7 h 00.",
   ],
   [
-    `Accessibility: ${houseRules.accessibility}`,
-    `Accessibilité : ${houseRules.accessibilityFr}`,
+    `Accessibility: ${houseRules.accessibilityShort}`,
+    `Accessibilité : ${houseRules.accessibilityShortFr}`,
   ],
 ] as const;
 

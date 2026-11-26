@@ -72,3 +72,12 @@ it("tells the guest assistant about the stairs and missing lift", () => {
   expect(guide).toContain("3 flights of stairs");
   expect(guide).toContain("isn't a lift");
 });
+it("keeps the footer accessibility note short enough for one line", () => {
+  expect(houseRules.accessibilityShort).toContain("2nd floor");
+  expect(houseRules.accessibilityShort).toContain("3 flights of stairs");
+  expect(houseRules.accessibilityShort).toContain("no lift");
+  expect(houseRules.accessibilityShortFr).toContain("2ᵉ étage");
+  expect(houseRules.accessibilityShortFr).toContain("pas d’ascenseur");
+  expect(houseRules.accessibilityShort.length).toBeLessThan(70);
+  expect(houseRules.accessibilityShortFr.length).toBeLessThan(90);
+});

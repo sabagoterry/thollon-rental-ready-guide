@@ -20,6 +20,10 @@ export const houseRules = {
     "The apartment is on the 2nd floor of the apartment block and is 3 flights of stairs from the front door. Sadly there isn't a lift at the moment.",
   accessibilityFr:
     "L’appartement se trouve au 2ᵉ étage de la résidence et à 3 volées de marches de la porte d’entrée. Il n’y a malheureusement pas d’ascenseur pour le moment.",
+  /** Short display form for the footer rules row. */
+  accessibilityShort: "2nd floor, 3 flights of stairs from the front door, sadly no lift",
+  accessibilityShortFr:
+    "2ᵉ étage, 3 volées de marches depuis la porte d’entrée, malheureusement pas d’ascenseur",
 } as const;
 
 export const apartmentAmenities = {
