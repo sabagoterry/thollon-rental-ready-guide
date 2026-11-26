@@ -13,6 +13,7 @@
 - Store only sanitized date intervals in the public read-only availability cache; service-role access is limited to fixed-source cache refreshes, never ordinary public reads.
 - Parse iCalendar with ical.js and preserve exclusive checkout dates; failed or stale syncs must not imply dates are available.
 - Manual Refresh uses a separate no-input POST action; keep actual upstream timestamps in the cache, but allow a presentation-only click timestamp after a successful result within 15 minutes. Failures never advance it, preserving cache accuracy.
+- Home and stay-planner calendars share useAvailabilityRefresh for identical mutation, cache and timestamp behavior.
 - Owner-confirmed balcony data lives in a shared apartment module used by the facts and layout descriptions so count and orientation stay consistent.
 - Local visitor links live in a focused guide component, using official venue or tourism pages and a directory link rather than claiming an exhaustive business list.
 - Keep destination-specific owner travel times with their shared destination entry so displayed timing and guest knowledge stay consistent.

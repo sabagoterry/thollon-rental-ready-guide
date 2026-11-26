@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { addMonths, format, parseISO } from 'date-fns';
 import type { DateRange } from 'react-day-picker';
 import { ArrowLeft, ArrowUpRight, Minus, Plus, Zap } from 'lucide-react';
@@ -11,9 +10,9 @@ import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/section-heading';
 import { WhatsAppEnquiry } from '@/components/whatsapp-enquiry';
 import { SiteFooter } from '@/components/site-footer';
-import { availabilityQuery } from '@/lib/availability.query';
+import { useAvailabilityRefresh } from '@/lib/use-availability-refresh';
 import { isBlocked } from '@/lib/availability';
-import { MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
+import { DEFAULT_AIRBNB_BOOKING_URL, MAX_GUESTS, addNights, airbnbBookingUrl, countNights, stayOverlapsBlocked } from '@/lib/booking';
 import { LogoMark } from '@/components/logo-mark';
 import { LanguageToggle } from '@/components/language-toggle';
 import { MobileMenu } from '@/components/mobile-menu';
@@ -38,7 +37,7 @@ function Stepper({ label, value, min, max, onChange }: { label: string; value: n
 export function StayPlanner({ selection, direct = false }: { selection: BookingSelection; direct?: boolean }) {
   const { lang, tr } = useLang();
   const locale = lang === 'fr' ? frLocale : enGB;
-  const { data } = useSuspenseQuery(availabilityQuery);
+  const { data, refresh, refreshing, displaySyncedAt } = useAvailabilityRefresh();
   const today = parseISO(data.today);
   const [range, setRange] = useState<DateRange | undefined>(selection.checkIn && selection.checkOut ? { from: parseISO(selection.checkIn), to: parseISO(selection.checkOut) } : undefined);
   const [guests, setGuests] = useState(selection.guests ?? 2);
@@ -79,9 +78,20 @@ export function StayPlanner({ selection, direct = false }: { selection: BookingS
         )}
       </div>
       </div>
+      <div className="mt-6 flex flex-wrap items-center gap-3" role="status">
+        <p className="text-base text-muted-foreground">{displaySyncedAt ? `${tr('Last synced at', 'Dernière synchronisation le')} ${format(parseISO(displaySyncedAt), 'd MMM yyyy, HH:mm:ss', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
+        <Button variant="outline" disabled={refreshing} onClick={() => refresh.mutate(Date.now())}>
+          {refreshing ? tr('Refreshing…', 'Actualisation…') : tr('Refresh', 'Actualiser')}
+        </Button>
+      </div>
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div className="card-vivid overflow-hidden rounded-md bg-card p-4">
-          {!ready && <p className="mb-3 text-sm text-destructive">{tr("Availability couldn't be updated just now. Airbnb will confirm your dates.", 'Les disponibilités n’ont pas pu être actualisées. Airbnb confirmera vos dates.')}</p>}
+          {(!ready || refresh.isError) && <div className="mb-4 flex flex-wrap items-center gap-3" role="status">
+            <p className="text-sm text-destructive">{tr('Availability could not be updated.', 'Les disponibilités n’ont pas pu être mises à jour.')}</p>
+            <Button asChild variant="outline" className="h-auto max-w-full whitespace-normal py-2">
+              <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer">{tr('Please check dates on Airbnb', 'Vérifiez les dates sur Airbnb')}<ArrowUpRight /></a>
+            </Button>
+          </div>}
           <Calendar
             mode="range" selected={range} onSelect={setRange}
             aria-label={tr('Choose your stay dates', 'Choisissez vos dates')}

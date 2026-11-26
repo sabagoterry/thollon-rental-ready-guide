@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Add the same Refresh behavior, timestamp and failure listing link to the shared Book/Direct Booking calendar.
+
 - [x] Add an Airbnb listing button on refresh failure and a presentation-only click timestamp for successful checks within 15 minutes; preserve actual cached sync timestamps.
 
 - [x] Make manual Refresh fetch a fresh calendar and display its actual successful sync date/time, retaining the previous timestamp on failure; nine tests and real preview refresh verified.

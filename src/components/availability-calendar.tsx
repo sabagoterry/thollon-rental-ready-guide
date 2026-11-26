@@ -1,39 +1,22 @@
 import { useState } from 'react';
-import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { format, parseISO, addMonths } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { DEFAULT_AIRBNB_BOOKING_URL } from '@/lib/booking';
 import { SectionHeading } from '@/components/section-heading';
-import { availabilityQuery } from '@/lib/availability.query';
-import { refreshAvailability } from '@/lib/availability.functions';
-import { isBlocked, refreshDisplayTime } from '@/lib/availability';
+import { useAvailabilityRefresh } from '@/lib/use-availability-refresh';
+import { isBlocked } from '@/lib/availability';
 import { useLang } from '@/lib/i18n';
 import { enGB, fr as frLocale } from 'date-fns/locale';
 
 export function AvailabilityCalendar() {
   const { lang, tr } = useLang();
   const locale = lang === 'fr' ? frLocale : enGB;
-  const queryClient = useQueryClient();
-  const { data, isFetching } = useSuspenseQuery(availabilityQuery);
-  const [refreshedDisplayAt, setRefreshedDisplayAt] = useState<string | null>(null);
-  const refresh = useMutation({
-    mutationFn: async (_clickedAt: number) => {
-      await queryClient.cancelQueries({ queryKey: availabilityQuery.queryKey });
-      return refreshAvailability();
-    },
-    onSuccess: (updated, clickedAt) => {
-      queryClient.setQueryData(availabilityQuery.queryKey, updated);
-      const displayTime = refreshDisplayTime(updated, clickedAt);
-      if (displayTime) setRefreshedDisplayAt(displayTime);
-    },
-  });
-  const refreshing = isFetching || refresh.isPending;
+  const { data, refresh, refreshing, displaySyncedAt } = useAvailabilityRefresh();
   const today = parseISO(data.today);
   const [month, setMonth] = useState(today);
   const ready = data.status === 'ready';
-  const displaySyncedAt = ready ? refreshedDisplayAt ?? data.syncedAt : data.syncedAt;
   return (
     <section id="availability" className="border-t band-soft">
       <div className="mx-auto max-w-6xl px-6 py-20">
