@@ -39,8 +39,8 @@ const quickFacts = [
   ["No pets", "Animaux non admis"],
   ["No smoking, including balconies", "Non-fumeur, balcons compris"],
   [
-    "To help us stay on good terms with our neighbours, please observe quiet hours from 11:00 PM to 7:00 AM. During these hours, please minimize noise in the shared hallways and courtyard.",
-    "Afin de préserver de bonnes relations avec nos voisins, nous vous prions de respecter le calme entre 23 h 00 et 7 h 00. Durant cette période, veillez à limiter le bruit dans les espaces communs, notamment dans les couloirs et la cour.",
+    "Please minimize noise in the shared areas from 11:00 PM to 7:00 AM.",
+    "Veuillez limiter le bruit dans les espaces communs entre 23 h 00 et 7 h 00.",
   ],
 ] as const;
 

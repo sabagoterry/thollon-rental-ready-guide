@@ -15,8 +15,7 @@ export const houseRules = {
   pets: "No pets.",
   smoking: "Strictly no smoking anywhere, including on the balconies.",
   cancellation: "Free cancellation up to 45 days before arrival; after that a scaled cancellation charge applies.",
-  KeepingQuiet:
-    "To help us stay on good terms with our neighbours, please observe quiet hours from 11:00 PM to 7:00 AM. During these hours, please minimize noise in the shared hallways and courtyard.",
+  KeepingQuiet: "Please minimize noise in the shared areas from 11:00 PM to 7:00 AM.",
 } as const;
 
 export const apartmentAmenities = {
