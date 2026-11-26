@@ -417,17 +417,6 @@ function Gallery() {
         </Link>
       </Button>
 
-      <Button asChild className="mt-4 h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
-        <Link to="/local-area">
-          <span className="text-3xl md:text-4xl">
-            {tr("Local knowledge and news", "Connaissances et actualités locales")}
-          </span>
-          <span className="flex items-center gap-2">
-            {tr("Take a look", "Jeter un œil")} <ArrowRight aria-hidden="true" className="size-4 shrink-0" />
-          </span>
-        </Link>
-      </Button>
-
       {/* 1. NEW FULL-WIDTH WHIZZY BENTO ROW */}
       <div className="mt-14 w-full max-w-[1200px] mx-auto">
         <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
