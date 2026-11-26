@@ -1,5 +1,13 @@
 import { expect, it } from "vitest";
-import { balconies, washingFacilities, apartmentAmenities, amenityList, sleepingCapacity } from "@/lib/apartment";
+import {
+  balconies,
+  washingFacilities,
+  apartmentAmenities,
+  amenityList,
+  sleepingCapacity,
+  houseRules,
+} from "@/lib/apartment";
+import { guideInstructions } from "@/lib/guest-guide";
 
 it("has exactly two balconies", () => {
   expect(balconies).toHaveLength(2);
@@ -47,4 +55,20 @@ it("provides the travel cot only on request", () => {
 it("provides the high chair only on request", () => {
   const item = amenityList.find((a) => a.en.startsWith("High chair"));
   expect(item && "onRequest" in item ? item.onRequest : false).toBe(true);
+});
+it("says the apartment is on the second floor with three flights of stairs", () => {
+  expect(houseRules.accessibility).toContain("2nd floor");
+  expect(houseRules.accessibility).toContain("3 flights of stairs");
+  expect(houseRules.accessibilityFr).toContain("2ᵉ étage");
+  expect(houseRules.accessibilityFr).toContain("3 volées de marches");
+});
+it("says there is no lift at the moment", () => {
+  expect(houseRules.accessibility.toLowerCase()).toContain("isn't a lift");
+  expect(houseRules.accessibilityFr).toContain("pas d’ascenseur");
+});
+it("tells the guest assistant about the stairs and missing lift", () => {
+  const guide = guideInstructions();
+  expect(guide).toContain("Accessibility:");
+  expect(guide).toContain("3 flights of stairs");
+  expect(guide).toContain("isn't a lift");
 });

@@ -16,6 +16,10 @@ export const houseRules = {
   smoking: "Strictly no smoking anywhere, including on the balconies.",
   cancellation: "Free cancellation up to 45 days before arrival; after that a scaled cancellation charge applies.",
   KeepingQuiet: "Please minimize noise in the shared areas from 11:00 PM to 7:00 AM.",
+  accessibility:
+    "The apartment is on the 2nd floor of the apartment block and is 3 flights of stairs from the front door. Sadly there isn't a lift at the moment.",
+  accessibilityFr:
+    "L’appartement se trouve au 2ᵉ étage de la résidence et à 3 volées de marches de la porte d’entrée. Il n’y a malheureusement pas d’ascenseur pour le moment.",
 } as const;
 
 export const apartmentAmenities = {

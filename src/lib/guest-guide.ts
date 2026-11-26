@@ -36,6 +36,8 @@ APARTMENT
 - Shower ensuite (2.75 m²): walk-in shower, washbasin, toilet, lit mirror. Also a full-size bathroom with a bathtub. Hall 4 m².
 - Check-in from ${houseRules.checkIn}, check-out by ${houseRules.checkOut}.
 - ${houseRules.pets} ${houseRules.smoking}
+- Accessibility: ${houseRules.accessibility}
+- Please minimize noise in the shared areas from 11:00 PM to 7:00 AM.
 - Cancellation: ${houseRules.cancellation} For the exact scale, refer guests to the Airbnb listing.
 - Price is not published here; guests see the price on Airbnb.
 - Availability is shown on the site's calendar (synced from Airbnb).

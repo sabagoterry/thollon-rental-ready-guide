@@ -42,6 +42,10 @@ const quickFacts = [
     "Please minimize noise in the shared areas from 11:00 PM to 7:00 AM.",
     "Veuillez limiter le bruit dans les espaces communs entre 23 h 00 et 7 h 00.",
   ],
+  [
+    `Accessibility: ${houseRules.accessibility}`,
+    `Accessibilité : ${houseRules.accessibilityFr}`,
+  ],
 ] as const;
 
 export function SiteFooter() {
