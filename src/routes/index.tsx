@@ -128,8 +128,8 @@ const rooms = [
     nameFr: "Séjour et salle à manger",
     size: "10.9 m²",
     img: living,
-    text: "Big picture window onto the balcony, dining table for four, armchairs, TV and a sofa bed.",
-    textFr: "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, TV et canapé-lit.",
+    text: "Big picture window onto the balcony, dining table for four, armchairs, Smart TV and a sofa bed.",
+    textFr: "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, Smart TV et canapé-lit.",
   },
   {
     name: "Kitchen",
@@ -635,7 +635,9 @@ function Index() {
         <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-[minmax(0,1fr)_auto]">
             <div className="min-w-0">
-              <SectionHeading className="[&_h2]:text-2xl sm:[&_h2]:text-4xl md:[&_h2]:text-5xl [&_.bar-flow]:max-w-full">{tr("Inside the apartment", "À l’intérieur")} </SectionHeading>
+              <SectionHeading className="[&_h2]:text-2xl sm:[&_h2]:text-4xl md:[&_h2]:text-5xl [&_.bar-flow]:max-w-full">
+                {tr("Inside the apartment", "À l’intérieur")}{" "}
+              </SectionHeading>
             </div>
             <GalleryLink className="justify-self-start sm:justify-self-end" />
           </div>
