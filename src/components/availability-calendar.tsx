@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { format, parseISO, addMonths } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { DEFAULT_AIRBNB_BOOKING_URL } from '@/lib/booking';
 import { SectionHeading } from '@/components/section-heading';
 import { availabilityQuery } from '@/lib/availability.query';
+import { refreshAvailability } from '@/lib/availability.functions';
 import { isBlocked } from '@/lib/availability';
 import { useLang } from '@/lib/i18n';
 import { enGB, fr as frLocale } from 'date-fns/locale';
@@ -14,7 +15,16 @@ import { enGB, fr as frLocale } from 'date-fns/locale';
 export function AvailabilityCalendar() {
   const { lang, tr } = useLang();
   const locale = lang === 'fr' ? frLocale : enGB;
-  const { data, refetch, isFetching } = useSuspenseQuery(availabilityQuery);
+  const queryClient = useQueryClient();
+  const { data, isFetching } = useSuspenseQuery(availabilityQuery);
+  const refresh = useMutation({
+    mutationFn: async () => {
+      await queryClient.cancelQueries({ queryKey: availabilityQuery.queryKey });
+      return refreshAvailability();
+    },
+    onSuccess: updated => queryClient.setQueryData(availabilityQuery.queryKey, updated),
+  });
+  const refreshing = isFetching || refresh.isPending;
   const today = parseISO(data.today);
   const [month, setMonth] = useState(today);
   const ready = data.status === 'ready';
@@ -24,7 +34,7 @@ export function AvailabilityCalendar() {
         <div className="flex flex-wrap items-start gap-x-8 gap-y-6">
           <SectionHeading>{tr("Current Availability", "Disponibilités actuelles")}</SectionHeading>
           <div className="flex flex-col items-center gap-3 md:ml-8" role="status">
-            <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced', 'Dernière synchro')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
+            <p className="text-base text-muted-foreground">{data.syncedAt ? `${tr('Last synced at', 'Dernière synchronisation le')} ${format(parseISO(data.syncedAt), 'd MMM yyyy, HH:mm:ss', { locale })}` : tr('No confirmed calendar update yet.', 'Aucune mise à jour confirmée pour le moment.')}</p>
             <div className="flex items-center justify-center gap-3">
               <Button asChild size="lg" className="h-auto max-w-full whitespace-normal py-3 text-center">
                 <a href={DEFAULT_AIRBNB_BOOKING_URL} target="_blank" rel="noopener noreferrer">{tr('Book Direct Now Through AirBnB', 'Réservez directement sur AirBnB')}<ArrowRight className="shrink-0" /></a>
@@ -34,8 +44,8 @@ export function AvailabilityCalendar() {
         </div>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <p className="text-muted-foreground">{tr('Check the calendar below for up-to-date availability.', 'Consultez le calendrier ci-dessous pour connaître les disponibilités à jour.')}</p>
-          <Button variant="outline" disabled={isFetching} onClick={() => void refetch()}>
-            {isFetching ? tr('Refreshing…', 'Actualisation…') : tr('Refresh', 'Actualiser')}
+          <Button variant="outline" disabled={refreshing} onClick={() => refresh.mutate()}>
+            {refreshing ? tr('Refreshing…', 'Actualisation…') : tr('Refresh', 'Actualiser')}
           </Button>
         </div>
         <div className="mt-8 flex flex-wrap gap-6 text-base md:text-lg" aria-label={tr('Calendar legend', 'Légende')}>
@@ -43,7 +53,7 @@ export function AvailabilityCalendar() {
           <span className="flex items-center gap-2"><span className="size-3 rounded-sm bg-coral/70" />{tr('Unavailable', 'Indisponible')}</span>
         </div>
         <div className="mt-6" role="status">
-          {!ready && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
+          {(!ready || refresh.isError) && <p className="mb-4 text-sm text-destructive">{tr('Availability could not be updated. Please check dates on Airbnb.', 'Les disponibilités n’ont pas pu être mises à jour. Vérifiez les dates sur Airbnb.')}</p>}
         </div>
          <div className="card-vivid mt-6 overflow-hidden rounded-lg bg-card p-4">
           <Calendar
