@@ -22,7 +22,7 @@ export const houseRules = {
     "L’appartement se situe au 2e étage de l’immeuble ; il faut gravir trois volées d’escaliers depuis la porte d’entrée. Il n’y a pas d’ascenseur pour le moment.",
   /** Short display form for the footer rules row. */
   accessibilityShort:
-    "L’appartement se situe au 2e étage, soit trois volées d’escaliers depuis la porte d’entrée ; malheureusement, il n’y a pas d’ascenseur pour le moment.",
+    "The apartment is on the 2nd floor of the block and is 3 flights of stairs from the front door. Currently there isn't a lift.",
   accessibilityShortFr: "2ᵉ étage, 3 volées de marches depuis la porte d’entrée, malheureusement pas d’ascenseur",
 } as const;
 
