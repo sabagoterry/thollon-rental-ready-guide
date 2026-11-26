@@ -344,7 +344,7 @@ function TownBento({ title, names, spans }: { title: string; names: string[]; sp
   const towns = names.map((name) => dayTrips.find((t) => t.name === name) ?? { name });
 
   return (
-    <div className="mt-14 w-full max-w-[1200px] mx-auto">
+    <div className="mt-8 w-full max-w-[1200px] mx-auto">
       <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
         {title}
       </h2>
@@ -405,7 +405,7 @@ const skiGridSpans = [
 function Gallery() {
   const { tr } = useLang();
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
+    <section className="mx-auto w-full max-w-[1440px] px-6 py-6">
       {/* Location Link Button Banner */}
       <Button asChild className="h-auto w-full min-w-0 flex-col items-start gap-3 whitespace-normal p-8 text-left">
         <Link to="/location">
@@ -418,7 +418,7 @@ function Gallery() {
       </Button>
 
       {/* 1. NEW FULL-WIDTH WHIZZY BENTO ROW */}
-      <div className="mt-14 w-full max-w-[1200px] mx-auto">
+      <div className="mt-8 w-full max-w-[1200px] mx-auto">
         <h2 className="mb-6 border-b-2 border-[rgba(120,153,158,0.08)] pb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-[#4a6b77]">
           {tr("Other Activities", "Autres Activites")}
         </h2>
@@ -671,7 +671,7 @@ function Index() {
       </section>
 
       <section className="band-soft">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 py-8 md:grid-cols-2 md:items-center">
           <div>
             <SectionHeading>{tr("Floor plan", "Plan")}</SectionHeading>
             <p className="mt-5 text-lg text-muted-foreground">{tr("Two balconies.", "Deux balcons.")}</p>
@@ -718,7 +718,7 @@ function Index() {
 
       <Gallery />
 
-      <section className="mx-auto w-full max-w-[1440px] px-6 py-24">
+      <section className="mx-auto w-full max-w-[1440px] px-6 py-6">
         <div className="mx-auto max-w-6xl rounded-2xl border border-gray-100 bg-white p-8 shadow-sm sm:p-12">
           {/* Header Section */}
           <div className="mb-10 text-center">
