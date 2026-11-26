@@ -128,8 +128,9 @@ const rooms = [
     nameFr: "Séjour et salle à manger",
     size: "10.9 m²",
     img: living,
-    text: "Big picture window onto the balcony, dining table for four, armchairs, Smart TV and a sofa bed.",
-    textFr: "Grande baie vitrée sur le balcon, table pour quatre, fauteuils, Smart TV et canapé-lit.",
+    text: "A open wood panneled room with a big picture window onto the balcony, dining table for four, armchairs, Smart TV and a sofa bed.",
+    textFr:
+      "Une pièce ouverte lambrissée de bois, dotée d’une grande baie vitrée donnant sur le balcon, d’une table à manger pour quatre personnes, de fauteuils, d’une télévision connectée et d’un canapé-lit.",
   },
   {
     name: "Kitchen",
