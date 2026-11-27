@@ -16,14 +16,14 @@ export const houseRules = {
   smoking: "Strictly no smoking anywhere, including on the balconies.",
   cancellation: "Free cancellation up to 45 days before arrival; after that a scaled cancellation charge applies.",
   KeepingQuiet: "Please minimise noise in the shared areas from 11:00 PM to 7:00 AM.",
-  accessibility:
-    "The apartment is on the 2nd floor of the block and is 3 flights of stairs from the front door. Currently there isn't a lift.",
+  accessibility: "The apartment is accessed via 3 flights of stairs from the front door. Currently there isn't a lift.",
   accessibilityFr:
-    "L’appartement se situe au 2e étage de l’immeuble ; il faut gravir trois volées d’escaliers depuis la porte d’entrée. Il n’y a pas d’ascenseur pour le moment.",
+    "On accède à l’appartement en montant trois volées d’escaliers depuis la porte d’entrée. Il n’y a pas d’ascenseur pour le moment.",
   /** Short display form for the footer rules row. */
   accessibilityShort:
-    "The apartment is on the 2nd floor of the block and is 3 flights of stairs from the front door. Currently there isn't a lift.",
-  accessibilityShortFr: "2ᵉ étage, 3 volées de marches depuis la porte d’entrée, malheureusement pas d’ascenseur",
+    "The apartment is accessed via 3 flights of stairs from the front door. Currently there isn't a lift.",
+  accessibilityShortFr:
+    "On accède à l’appartement en montant trois volées d’escaliers depuis la porte d’entrée. Il n’y a pas d’ascenseur pour le moment.",
 } as const;
 
 export const apartmentAmenities = {
